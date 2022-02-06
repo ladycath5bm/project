@@ -10,11 +10,12 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
+            $table->integer('code')->unique();
             $table->string('name');
             $table->decimal('price');
             $table->decimal('discount');
             $table->integer('stock');
+            //$table->boolean('status');
 
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
