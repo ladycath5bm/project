@@ -34,6 +34,6 @@ class Product extends Model
 
     public function image(): MorphOne
     {
-        return $this->MorphOne(Image::class, 'imagebale');
+        return $this->morphOne(Image::class, 'imagebale');
     }
 }
