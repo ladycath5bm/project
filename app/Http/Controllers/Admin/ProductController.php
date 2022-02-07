@@ -12,7 +12,9 @@ class ProductController extends Controller
 
     public function index(): View
     {
-        return view('admin.products.index');
+        //se puede pasar a un scope 
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     public function create(): View
