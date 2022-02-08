@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+
+
 class ProductController extends Controller
 {
 
@@ -24,23 +26,25 @@ class ProductController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        //return redirect()->route('admin.products.create)->with('information', 'Products created successfully!');
+        Product::create($request->all());
+
+        return redirect()->route('admin.products.index')->with('informaction','g');
     }
 
-    public function show(Product $product): View
+    public function show(Product $product)
     {
-        //
+        //return view();
     }
 
-    public function edit(Product $product): View
+    public function edit(Product $product)
     {
-        //
+        //return view();
     }
 
     public function update(Request $request, Product $product): RedirectResponse
     {
         $product->update($request->all());
-        return redirect()->route('admin.show.index', $product);
+        return redirect()->route('admin.products.index', $product)->with('information', 'Product updated successfully!');
     }
 
     public function destroy(Product $product): RedirectResponse
