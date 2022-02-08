@@ -15,14 +15,11 @@ class CreateProductsTable extends Migration
             $table->decimal('price');
             $table->unsignedDecimal('discount')->nullable();
             $table->unsignedInteger('stock');
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->nullable()->default(false);
 
             $table->unsignedBigInteger('category_id')->nullable();
-            //$table->unsignedBigInteger('user_id');
-            //$table->unsignedBigInteger('image_id');
 
             $table->foreign('category_id')->references('id')->on('categories');
-            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

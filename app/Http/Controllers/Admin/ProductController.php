@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminProductStoreRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -24,11 +25,11 @@ class ProductController extends Controller
         return view('admin.products.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AdminProductStoreRequest $request): RedirectResponse
     {
-        Product::create($request->all());
+        Product::create($request->validated());
 
-        return redirect()->route('admin.products.index')->with('informaction','g');
+        return redirect()->route('admin.products.index')->with('informaction','Product created successfully!');
     }
 
     public function show(Product $product)
