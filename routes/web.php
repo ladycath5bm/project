@@ -9,8 +9,9 @@ Route::get('/', function (): View {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function (): View {
+//Route::get('/', [ProductController::class, 'index'])->name('products.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('products/index', [ProductController::class, 'index'])->name('products.index');

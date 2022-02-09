@@ -11,7 +11,7 @@ class AdminProductStoreTest extends TestCase
     use RefreshDatabase;
 
     private array $dataStore = [
-        'name' => 'nametest',
+            'name' => 'nametest',
             'code' => 124345,
             'price' => 323,
             'stock' => 10,
