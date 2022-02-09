@@ -10,12 +10,12 @@ class ProductController extends Controller
     public function index(): View
     {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        return view('custom.products.index', compact('products'));
     }
 
     public function show(Product $product): View
     {
-        return view('products.show', compact('product'));
+        return view('custom.products.show', compact('product'));
     }
 
 }
