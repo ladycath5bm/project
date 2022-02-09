@@ -28,7 +28,7 @@ class ProductIndexAdminTest extends TestCase
         Category::factory(4)->create();
         Product::factory()->count(2)->create();
 
-        $response=$this->get(route('admin.products.index'));
+        $response = $this->get(route('admin.products.index'));
 
         $response->assertOk();
         $response->assertViewIs('admin.products.index');
