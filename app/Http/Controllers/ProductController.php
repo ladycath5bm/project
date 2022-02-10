@@ -17,12 +17,13 @@ class ProductController extends Controller
     public function show(Product $product): View
     {
         //dd($product);
+        //pasar a una consulta e otra capa
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
             ->where('id','!=',$product->id)
             ->where('status', true)
-            ->take(5)
+            ->take(3)
             ->get();
-            
+
         return view('custom.products.show', compact('product', 'similarProductsByCategory'));
     }
 
