@@ -18,8 +18,14 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->nullable()->default(false);
 
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('image_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories');
+
+            $table->foreign('image_id')->references('id')->on('images');
+            
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

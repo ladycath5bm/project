@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -24,9 +25,9 @@ class Product extends Model
         'category_id',
     ];
 
-    public function users(): BelongsToMany
+    public function user(): BelongsTo
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function category(): BelongsTo
@@ -34,8 +35,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function image(): MorphOne
+    public function image(): BelongsTo
     {
-        return $this->morphOne(Image::class, 'imagebale');
+        return $this->belongsTo(Image::class);
     }
 }

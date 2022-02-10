@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -17,6 +18,8 @@ class ProductFactory extends Factory
             'discount' => $this->faker->numberBetween(0,100),
             'stock' => $this->faker->numberBetween(0,10000),
             'category_id' => Category::factory()->create()->id,
+            'image_id' => Image::factory()->create()->id,
+            'user_id' => User::factory()->create()->id,
         ];
     }
 }

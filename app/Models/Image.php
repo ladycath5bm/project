@@ -10,8 +10,8 @@ class Image extends Model
 {
     use HasFactory;
 
-    public function imageable(): MorphTo
+    public function product()
     {
-        return $this->morphTo();
+        return $this->hasOne(Product::class);
     }
 }

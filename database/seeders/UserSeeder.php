@@ -18,12 +18,7 @@ class UserSeeder extends Seeder
         
         //User::factory(10)->create();
 
-        $users = User::factory(10)->create();
+        User::factory(10)->create();
 
-        foreach ($users as $user) {
-            Image::factory(1)->create([
-                'imageable_id' => $user->id, 
-                'imageable_type' => User::class]);
-        }
     }
 }

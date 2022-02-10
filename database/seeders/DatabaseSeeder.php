@@ -14,9 +14,7 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('products');
         
         $this->call(UserSeeder::class);
-
-        Category::factory(10)->create();
-
+        Category::factory(4)->create();
         $this->call(ProductSeeder::class);
     }
 }

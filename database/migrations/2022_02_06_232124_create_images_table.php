@@ -12,11 +12,7 @@ class CreateImagesTable extends Migration
 
             $table->id();
             $table->string('url')->nullable();
-            $table->unsignedBigInteger('imageable_id');
-            $table->string('imageable_type');
             $table->timestamps();
-
-            //$table->primary(['imageable_id', 'imageable_type']);
 
         });
     }
