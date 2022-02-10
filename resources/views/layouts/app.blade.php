@@ -20,11 +20,19 @@
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation')
-
+            <div class="flex">
+                @livewire('sidebar-categories')
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
+            
+            
+            
+        </div>
+    
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            
         </div>
 
         @stack('modals')

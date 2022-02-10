@@ -13,6 +13,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 15);
             $table->integer('code')->unique();
             $table->decimal('price');
+            $table->string('description')->nullable();
             $table->unsignedDecimal('discount')->nullable();
             $table->unsignedInteger('stock');
             $table->boolean('status')->nullable()->default(false);
