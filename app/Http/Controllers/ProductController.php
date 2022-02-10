@@ -9,20 +9,21 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::all();
+        $products = Product::where('status', true)->paginate();
+        //dd($products);
         return view('custom.products.index', compact('products'));
     }
 
     public function show(Product $product): View
     {
         //dd($product);
-        return view('custom.products.show', compact('product'));
-    }
-
-    public function similarsProduct(Product $product)
-    {
-        $similarProductsByCategory = Product::where('category_id', $product->category_id);
-        return ;
+        $similarProductsByCategory = Product::where('category_id', $product->category_id)
+            ->where('id','!=',$product->id)
+            ->where('status', true)
+            ->take(5)
+            ->get();
+            
+        return view('custom.products.show', compact('product', 'similarProductsByCategory'));
     }
 
 }

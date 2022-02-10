@@ -1,5 +1,5 @@
 <div>
-    <div class="min-h-screen flex flex-row bg-gray-100">
+    <div class="min-h-screen flex flex-row bg-gray-100 py-4 mx-4">
         <div class="flex flex-col w-60 bg-white rounded-r-3xl overflow-hidden">
           <div class="flex items-center justify-center h-20 shadow-md">
             <h1 class="text-2xl text-gray-800 justify-center">Search by Category</h1>

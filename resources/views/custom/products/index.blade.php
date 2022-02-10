@@ -17,15 +17,15 @@
                             <p class="text-sm text-gray-600 flex items-center mb-2">
                 
                             </p>
-                            <div class="text-sm mx-4 mt-4">
-                                <div class="text-gray-900 font-bold text-2xl mb-2">
+                            <div class="text-sm mx-4">
+                                <div class="text-gray-900 font-bold text-2xl">
                                         <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                                     </div>
                             
-                                    <p class="text-gray-700 text-2xl mb-4"><strong>$ </strong>{{ $product->price }}</p>
+                                    <p class="text-gray-700 text-xl mb-4"><strong>$ </strong>{{ $product->price }}</p>
                                     <p class="text-gray-900 leading-none"><strong>Code: </strong>{{ $product->code }}</p>
                                     <p class="text-gray-600 mb-4"><strong>Stock: </strong>{{ $product->stock }}</p>
-                                    <a href=# class="btn-custom btn-primary justify-center text-white text-xl rounded">Buy</a>
+                                    <a href=# class="btn-custom btn-primary justify-center text-white text-sm rounded">Buy</a>
                                 
                             </div>
                         </div>
@@ -35,8 +35,8 @@
 
             @endforeach
         </div>
-        <!--<div class="mt-4">
-            { $products->links() }}
-        </div>-->
+        <div class="mt-4">
+            {{ $products->links() }}
+        </div>
     </div>
 </x-app-layout>

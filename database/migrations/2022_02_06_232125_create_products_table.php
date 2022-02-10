@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->unsignedDecimal('discount')->nullable();
             $table->unsignedInteger('stock');
-            $table->boolean('status')->nullable()->default(false);
+            $table->boolean('status')->nullable();
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('image_id')->nullable();
