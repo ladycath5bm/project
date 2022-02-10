@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-4 pb-4  bg-gray-100 rounded lg:rounded justify-between leading-normal">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h1>
-        <a class="text-sm mt-1 text-gray-400" href="{{ route('products.index') }}">{{ __('Home ') }}></a> 
-        <a class="text-sm mt-1 text-gray-400" href="#">{{ $product->category->name }}</a>
+        <a class="text-sm mt-1 text-gray-400" href="{{ route('products.index') }}">{{ __('Home ') }}></a>
+        <a class="text-sm mt-1 text-gray-400" href="{{ route('products.showbycategory', $product->category) }}">{{ $product->category->name }}</a>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
             
             <div class="lg:col-span-2">

@@ -17,6 +17,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('products/index', [ProductController::class, 'index'])->name('products.index');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
 
 
 Route::get('test', function(){

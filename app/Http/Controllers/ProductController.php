@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 
 class ProductController extends Controller
@@ -25,6 +26,14 @@ class ProductController extends Controller
             ->get();
 
         return view('custom.products.show', compact('product', 'similarProductsByCategory'));
+    }
+
+    public function showByCategory(Category $category): View
+    {
+        $products = Product::where('category_id', $category->id)
+            ->where('status', true)
+            ->paginate(10);
+        return view('custom.products.index', compact('products'));
     }
 
 }
