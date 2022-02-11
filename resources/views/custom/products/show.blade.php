@@ -12,7 +12,7 @@
                     <div class="border border-gray-400 lg:border-gray-400 bg-white rounded lg:rounded p-4 flex flex-col justify-between leading-normal">
                       
                       <div class="flex items-center mb-4 mt-4">
-                        <img class="h-80 sm:h-20 object-cover object-center mx-4" src="{{ Storage::url($product->image->url) }}" alt="">
+                        <img class="h-80 sm:h-20 object-cover object-center mx-4" src="@if($product->image) {{ Storage::url($product->image->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
                         
                         <div class="mb-6 mx-4 mt-4">
                             <p class="text-sm text-gray-600 flex items-center mb-2">
@@ -50,7 +50,7 @@
                             <div class="border border-gray-400 bg-white rounded lg:rounded p-2 flex-col">
                                 
                                 <div class="flex items-center mb-2 rounded">
-                                    <img class="w-36 object-cover object-center rounded" src="{{ Storage::url($similar->image->url) }}" alt="">
+                                    <img class="w-36 object-cover object-center rounded" src="@if($similar->image) {{ Storage::url($similar->image->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
         
                                 </div>
                                 <div class="mx-2">

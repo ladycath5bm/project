@@ -3,13 +3,13 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1 class="text-bold text-g text-gray-800">Crate new product</h1>
+    <h1 class="text-bold text-g text-gray-800">Create new product</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.products.store']) !!}
+            {!! Form::open(['route' => 'admin.products.store', 'files' => true]) !!}
 
                 {!! Form::hidden('user_id', auth()->user()->id) !!}
 
@@ -67,7 +67,17 @@
                         {!! Form::radio('status', 1, true) !!}
                         Enabled
                     </label>
-                    
+                </div>
+                <div class="row mb-2">
+                    <div class="col mt-2 mb-2">
+                        <img id ="image" width="400px" src="http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg" alt="">
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {!! Form::label('file', 'Image for product') !!}
+                            {!! Form::file('file', ['class' => 'form-control-file']) !!}
+                        </div>
+                    </div>
                 </div>
 
                 {!! Form::submit('Create', ['class' => 'btn btn-success btn-sm']) !!}
@@ -89,5 +99,17 @@
             .catch( error => {
                 console.error( error );
             } );
+
+        document.getElementById("file").addEventListener('change', changeImage);
+
+        function changeImage(event){
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("image").setAttribute('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
     </script>
 @endsection

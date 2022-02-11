@@ -10,6 +10,7 @@ use App\Http\Requests\AdminProductUpdateRequest;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
@@ -32,10 +33,17 @@ class ProductController extends Controller
 
     public function store(AdminProductStoreRequest $request): RedirectResponse
     {
-        //$request->user_id = auth()->user()->id;
+        $product = Product::create($request->validated());
+        if ($request->file('file'))
+        {
+            $url = Storage::put('products', $request->file('file'));    
+
+            $product->image()->create(['id' => $product->id, 'url' => $url]);
+        }
+        
         //dd($request);
         //dd($request->user_id);
-        $us = Product::create($request->validated());
+        
         //dd($request->name);
         //dd($request->user_id);
         return redirect()->route('admin.products.index')->with('information','Product created successfully!');
