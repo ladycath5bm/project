@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProductStoreRequest;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -16,30 +17,36 @@ class ProductController extends Controller
     public function index(): View
     {
         //se puede pasar a un scope 
-        $products = Product::all();
+        $products = Product::where('user_id', auth()->user()->id)
+            ->latest('id')
+            ->paginate(5);
         return view('admin.products.index', compact('products'));
     }
 
     public function create(): View
     {
-        return view('admin.products.create');
+        $categories = Category::pluck('name', 'id');
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(AdminProductStoreRequest $request): RedirectResponse
     {
-        Product::create($request->validated());
-
-        return redirect()->route('admin.products.index')->with('informaction','Product created successfully!');
+        //$request->user_id = auth()->user()->id;
+        //dd($request);
+        $us = Product::create($request->validated());
+        //dd($us);
+        return redirect()->route('admin.products.index')->with('information','Product created successfully!');
     }
 
-    public function show(Product $product)
+    public function show(Product $product): View
     {
-        //return view();
+        return view('admin.products.show', compact('product'));
     }
 
-    public function edit(Product $product)
+    public function edit(Product $product): View
     {
-        //return view();
+        $categories = Category::pluck('name', 'id');
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product): RedirectResponse

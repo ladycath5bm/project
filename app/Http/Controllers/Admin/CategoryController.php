@@ -39,13 +39,13 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category): RedirectResponse
     {
         //integrar validacion
-        $category->update($request->all());
-        return redirect()->route('admin.categories.index')->with('info', 'Category updated successfully');
+        $category->update($request->validated());
+        return redirect()->route('admin.categories.index')->with('information', 'Category updated successfully');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('info', 'Category deleted successfully');
+        return redirect()->route('admin.categories.index')->with('information', 'Category deleted successfully');
     }
 }

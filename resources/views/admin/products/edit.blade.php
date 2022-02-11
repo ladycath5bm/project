@@ -3,14 +3,13 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1 class="text-bold text-g text-gray-800">Crate new product</h1>
+    <h1 class="text-bold text-g text-gray-800">Edit product information</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.products.store']) !!}
-                {!! Form::hidden('user_id', auth()->user()->id) !!}
+            {!! Form::model($product, ['route' => ['admin.products.update', $product], 'files' => true, 'method' => 'PUT']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name of product']) !!}
@@ -68,7 +67,7 @@
                     
                 </div>
 
-                {!! Form::submit('Create', ['class' => 'btn btn-success btn-sm']) !!}
+                {!! Form::submit('update', ['class' => 'btn btn-success btn-sm']) !!}
 
             {!! Form::close() !!}
         </div>
