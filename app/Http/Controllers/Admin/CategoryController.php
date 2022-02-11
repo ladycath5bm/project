@@ -12,9 +12,9 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
-        $categories = Category::all();
-        dd($categories);
-        return view('admin.categories.index', compact('categories'));
+        $categories = Category::where('id', auth()->user()->id);
+        //dd($categories);
+        return view('admin.categories.index', compact('categories'));   
     }
 
     

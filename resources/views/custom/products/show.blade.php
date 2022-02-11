@@ -75,9 +75,5 @@
                 @endforeach
             </div>
         </aside>
-        
     </div>
-    
-    
-    
 </x-app-layout>

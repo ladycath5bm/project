@@ -1190,6 +1190,9 @@ select {
 .w-4 {
   width: 1rem;
 }
+.w-40 {
+  width: 10rem;
+}
 .w-60 {
   width: 15rem;
 }

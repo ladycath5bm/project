@@ -33,6 +33,7 @@ class ProductController extends Controller
         $products = Product::where('category_id', $category->id)
             ->where('status', true)
             ->paginate(10);
+            
         return view('custom.products.index', compact('products'));
     }
 

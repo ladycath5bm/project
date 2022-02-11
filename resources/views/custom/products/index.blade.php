@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mx-2">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4 mx-4 ">
+    <div class="max-w-7xl sm:px-4 lg:px-2 py-1">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4 mx-4 ">
             @foreach ($products as $product)
                 <div class="col-span-1 lg:col-span-1 xl:col-span-1 flex-col">
                     <div class="max-w-sm h-full lg:max-w-full mt-4">
@@ -33,7 +33,7 @@
 
             @endforeach
         </div>
-        <div class="mt-4">
+        <div class="mt-4 px-4 mb-4">
             {{ $products->links() }}
         </div>
     </div>
