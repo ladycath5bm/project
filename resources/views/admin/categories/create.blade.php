@@ -17,13 +17,8 @@
                         <span class="text-danger">{{ $message }}</span>    
                     @enderror
                 </div>
-                
-                <div class="form-group">
-                    {!! Form::label('slug', 'Slug') !!}
-                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'slug of category']) !!}
-                </div>
 
-                {!! Form::submit('Create', ['class' => 'btn btn-primary btn-sm']) !!}
+                {!! Form::submit('Create', ['class' => 'btn btn-success btn-sm']) !!}
 
             {!! Form::close() !!}
         </div>

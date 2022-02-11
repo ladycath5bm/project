@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\AdminProductStoreRequest;
+use App\Http\Requests\AdminCategoryStoreRequest;
 
 class CategoryController extends Controller
 {
     public function index(): View
     {
-        $categories = Category::paginate(5);
+        $categories = Category::latest('id')->paginate(5);
         //dd($categories);
         return view('admin.categories.index', compact('categories'));   
     }
@@ -23,15 +25,10 @@ class CategoryController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AdminCategoryStoreRequest $request): RedirectResponse
     {
-        return redirect()->route('admin.categories.index');
-    }
-
-
-    public function show(Category $category): View
-    {
-        return view('admin.categories.show');
+        Category::create($request->validated());
+        return redirect()->route('admin.categories.index')->with('information', 'Category created successfully!');
     }
 
     public function edit(Category $category): View
@@ -43,11 +40,12 @@ class CategoryController extends Controller
     {
         //integrar validacion
         $category->update($request->all());
-        return redirect()->route('admin.caegories.index')->with('info', 'Category updated successfully');
+        return redirect()->route('admin.categories.index')->with('info', 'Category updated successfully');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
+        $category->delete();
         return redirect()->route('admin.categories.index')->with('info', 'Category deleted successfully');
     }
 }

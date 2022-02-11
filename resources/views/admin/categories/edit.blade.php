@@ -3,7 +3,7 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1>Edit category</h1>
+    <h1 class="text-bold text-g text-gray-800">Edit category</h1>
 @stop
 
 @section('content')
@@ -17,13 +17,8 @@
                     <span class="text-danger">{{ $message }}</span>    
                 @enderror
             </div>
-            
-            <div class="form-group">
-                {!! Form::label('slug', 'Slug') !!}
-                {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'slug of category']) !!}
-            </div>
 
-            {!! Form::submit('Update', ['class' => 'btn btn-primary btn-sm']) !!}
+            {!! Form::submit('Update', ['class' => 'btn btn-success btn-sm']) !!}
 
         {!! Form::close() !!}
     </div>

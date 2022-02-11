@@ -29,7 +29,7 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td  width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.categories.edit', $category) }}">Editar</a>
+                                <a class="btn btn-success btn-sm" href="{{ route('admin.categories.edit', $category) }}">Editar</a>
                             </td>
                             <td  width="10px">
                                 <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">

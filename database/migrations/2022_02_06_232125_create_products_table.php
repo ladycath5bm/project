@@ -22,11 +22,11 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('image_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('image_id')->references('id')->on('images');
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade')->onUpdate('cascade');
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
