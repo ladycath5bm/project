@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 
-Route::resource('/', HomeController::class);
+Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
 Route::resource('products', ProductController::class)->names('products');
 

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 
-Route::get('/', function (){
+Route::get('welcome', function (){
     return view('welcome');
 });
 
