@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'status' => $this->faker->randomElement([false, true]),
             'category_id' => Category::inRandomOrder()->first()->id,
             'image_id' => Image::factory()->create()->id,
-            'user_id' => User::factory()->create()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             
         ];
     }
