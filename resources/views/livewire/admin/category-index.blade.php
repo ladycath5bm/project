@@ -18,7 +18,7 @@
                     @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
-                        <td><a href="{{ route('admin.categories.show', $category) }}">{{ $category->name }}</a></td>
+                        <td>{{ $category->name }}</td>
                         <td width="10px">
                             <a class="btn btn-sm btn-success" href="{{ route('admin.categories.edit', $category) }}">Edit</a>
                         </td>

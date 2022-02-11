@@ -70,6 +70,7 @@
                 {!! Form::submit('update', ['class' => 'btn btn-success btn-sm']) !!}
 
             {!! Form::close() !!}
+            <a class="btn btn-dark btn-sm mt-2 float-left" href="{{ route('admin.products.index') }}">Back</a>
         </div>
     </div>
 @stop

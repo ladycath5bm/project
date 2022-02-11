@@ -19,8 +19,12 @@
                 </div>
 
                 {!! Form::submit('Create', ['class' => 'btn btn-success btn-sm']) !!}
-
+                
             {!! Form::close() !!}
+            <a class="btn btn-dark btn-sm float-left mt-2" href="{{ route('admin.categories.index') }}">Back</a>
+            
         </div>
+        
     </div>
+    
 @stop

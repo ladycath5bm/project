@@ -72,6 +72,9 @@
 
             {!! Form::close() !!}
         </div>
+        <div class="card-header">
+            <a class="btn btn-dark btn-sm" href="{{ route('admin.products.index') }}">Back</a>
+        </div>
     </div>
 @stop
 
