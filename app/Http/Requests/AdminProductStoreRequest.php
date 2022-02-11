@@ -8,7 +8,11 @@ class AdminProductStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        if($this->user_id == auth()->user()->id){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function rules(): array
@@ -19,6 +23,9 @@ class AdminProductStoreRequest extends FormRequest
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'description' => 'required|max:2501string',
+            'user_id' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
         ];
     }
 

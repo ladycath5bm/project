@@ -22,7 +22,9 @@ class Product extends Model
         'discount',
         'stock',
         'status',
+        'description',
         'category_id',
+        'user_id',
     ];
 
     public function user(): BelongsTo

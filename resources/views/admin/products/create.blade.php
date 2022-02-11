@@ -10,7 +10,9 @@
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'admin.products.store']) !!}
+
                 {!! Form::hidden('user_id', auth()->user()->id) !!}
+
                 <div class="form-group">
                     {!! Form::label('name', 'Name') !!}
                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name of product']) !!}

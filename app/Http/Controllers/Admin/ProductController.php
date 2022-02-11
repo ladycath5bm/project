@@ -34,8 +34,10 @@ class ProductController extends Controller
     {
         //$request->user_id = auth()->user()->id;
         //dd($request);
+        //dd($request->user_id);
         $us = Product::create($request->validated());
-        //dd($us);
+        //dd($request->name);
+        //dd($request->user_id);
         return redirect()->route('admin.products.index')->with('information','Product created successfully!');
     }
 
