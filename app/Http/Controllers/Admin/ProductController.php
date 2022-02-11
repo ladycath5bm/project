@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProductStoreRequest;
+use App\Http\Requests\AdminProductUpdateRequest;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -49,9 +50,9 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    public function update(Request $request, Product $product): RedirectResponse
+    public function update(AdminProductUpdateRequest $request, Product $product): RedirectResponse
     {
-        $product->update($request->all());
+        $product->update($request->validated());
         return redirect()->route('admin.products.index', $product)->with('information', 'Product updated successfully!');
     }
 

@@ -4,14 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminProductStoreRequest extends FormRequest
+class AdminProductUpdateRequest extends FormRequest
 {
-    public function authorize(): bool
+    
+    public function authorize()
     {
         return true;
     }
 
-    public function rules(): array
+   
+    public function rules()
     {
         return [
             'name' => 'required|max:15',
@@ -20,15 +22,5 @@ class AdminProductStoreRequest extends FormRequest
             'stock' => 'required|integer',
             'description' => 'required|max:2501string',
         ];
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'name' => 'name of product',
-            'code' => 'code of product',
-            'price' => 'price of product',
-            'stock' => 'availale units of product'
-        ];        
     }
 }
