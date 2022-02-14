@@ -10,9 +10,10 @@ class CustomProductsIndex extends Component
 {
     use WithPagination;
 
-    public $search; 
+    public $search;
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 

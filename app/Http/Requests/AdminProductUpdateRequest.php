@@ -6,13 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AdminProductUpdateRequest extends FormRequest
 {
-    
     public function authorize()
     {
         return true;
     }
-
-   
     public function rules()
     {
         return [

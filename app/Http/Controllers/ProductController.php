@@ -20,7 +20,7 @@ class ProductController extends Controller
         //dd($product);
         //pasar a una consulta e otra capa
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
-            ->where('id','!=',$product->id)
+            ->where('id', '!=', $product->id)
             ->where('status', true)
             ->take(3)
             ->get();
@@ -33,8 +33,7 @@ class ProductController extends Controller
         $products = Product::where('category_id', $category->id)
             ->where('status', true)
             ->paginate(10);
-            
+
         return view('custom.products.index', compact('products'));
     }
-
 }

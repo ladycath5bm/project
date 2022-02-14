@@ -12,13 +12,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
-
 class ProductController extends Controller
 {
-
     public function index(): View
     {
-        //se puede pasar a un scope 
+        //se puede pasar a un scope
         $products = Product::where('user_id', auth()->user()->id)
             ->latest('id')
             ->paginate(5);
@@ -34,19 +32,18 @@ class ProductController extends Controller
     public function store(AdminProductStoreRequest $request): RedirectResponse
     {
         $product = Product::create($request->validated());
-        if ($request->file('file'))
-        {
-            $url = Storage::put('products', $request->file('file'));    
+        if ($request->file('file')) {
+            $url = Storage::put('products', $request->file('file'));
 
             $product->image()->create(['id' => $product->id, 'url' => $url]);
         }
-        
+
         //dd($request);
         //dd($request->user_id);
-        
+
         //dd($request->name);
         //dd($request->user_id);
-        return redirect()->route('admin.products.index')->with('information','Product created successfully!');
+        return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
     }
 
     public function show(Product $product): View

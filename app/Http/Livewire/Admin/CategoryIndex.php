@@ -12,9 +12,10 @@ class CategoryIndex extends Component
 
     protected $paginationTheme = "bootstrap";
 
-    public $search; 
+    public $search;
 
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
