@@ -1,36 +1,33 @@
 <div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add products</a>
+        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.users.create') }}">Add user</a>
         <input wire:model="search" class="form-control-sm float-left" placeholder="Search">
 
     </div>
-    @if($products->count())
+    @if($users->count())
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Code</th>
-                    <th>Status</th>
-                    <th>Stock</th>
+                    <th>Email</th>
+                    <th>Role</th>
                     <th class="col-span-2"></th>
             
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($users as $user)
                     <tr>
-                        <td>{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->code }}</td>
-                        <td> @if ($product->status == 1) {{ __('Enable') }} @else {{ __('Disable') }} @endif </td>
-                        <td>{{ $product->stock }}</td>
-                        <td><a href="{{ route('admin.products.show', $product) }}">{{ $product->name }}</a></td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td> @if(isset( $user->roles()->first()->name )) {{ $user->roles()->first()->name }} @else '' @endif </td>
                         <td width="10px">
-                            <a class="btn btn-sm btn-success" href="{{ route('admin.products.edit', $product) }}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="{{ route('admin.users.edit', $user) }}">Role</a>
                         </td>
                         <td width="10px">
-                            <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
+                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
@@ -43,7 +40,7 @@
             </table>
         </div>
         <div class="card-footer">
-            {{ $products->links() }}
+            {{ $users->links() }}
         </div>    
     @else
         <x-alert>

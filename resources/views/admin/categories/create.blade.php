@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Blogkt')
+@section('title', 'Ecom')
 
 @section('content_header')
     <h1 class="text-bold text-g text-gray-800">Create new category</h1>

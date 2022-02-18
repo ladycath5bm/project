@@ -12,6 +12,11 @@ use App\Http\Requests\AdminCategoryStoreRequest;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.categories.index');
+    }
+
     public function index(): View
     {
         $categories = Category::latest('id')->paginate(5);

@@ -14,10 +14,10 @@ class AdminProductUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:15',
-            'code' => 'required|numeric|integer|unique:products',
+            'code' => 'required|numeric|integer|exists:products,code',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'description' => 'required|max:2501string',
+            'description' => 'required|max:250|string',
         ];
     }
 }

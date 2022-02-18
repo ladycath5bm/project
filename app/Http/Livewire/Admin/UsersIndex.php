@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\User;
 use Livewire\Component;
-use App\Models\Category;
 use Livewire\WithPagination;
 
-class CategoryIndex extends Component
+class UsersIndex extends Component
 {
     use WithPagination;
 
@@ -21,10 +21,10 @@ class CategoryIndex extends Component
 
     public function render()
     {
-        $categories = Category::where('name', 'LIKE', '%' . $this->search . '%')
-        ->latest('id')
-        ->paginate(5);
+        $users = User::where('name', 'LIKE', '%' . $this->search . '%')
+            ->latest('id')
+            ->paginate();
 
-        return view('livewire.admin.category-index', compact('categories'));
+        return view('livewire.admin.users-index', compact('users'));
     }
 }

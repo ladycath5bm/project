@@ -18,15 +18,11 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('stock');
             $table->boolean('status')->nullable();
 
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('image_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('category_id')->nullable();
+            $table->foreignId('user_id')->nullable();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade')->onUpdate('cascade');
-            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
 
             $table->timestamps();
         });

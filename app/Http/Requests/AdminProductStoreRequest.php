@@ -26,6 +26,7 @@ class AdminProductStoreRequest extends FormRequest
             'user_id' => 'required',
             'category_id' => 'required',
             'status' => 'required',
+            'file' => 'image',
         ];
     }
 

@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-body">
             {!! Form::model($product, ['route' => ['admin.products.update', $product], 'files' => true, 'method' => 'PUT']) !!}
