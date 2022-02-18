@@ -16,11 +16,13 @@ class UserController extends Controller
         $this->middleware('can:admin.users.index');
     }
 
+
     public function index(): View
     {
         $users = User::paginate(10);
         return view('admin.users.index', compact('users'));
     }
+
 
     public function edit(User $user): view
     {
@@ -30,7 +32,7 @@ class UserController extends Controller
     
     public function update(Request $request, User $user): RedirectResponse
     {
-        //$user->roles()->sync($request->rols);
+
         $user->roles()->sync($request->roles);
         return redirect()->route('admin.users.index', $user)->with('information', 'Role assgined successfully!');
     }
