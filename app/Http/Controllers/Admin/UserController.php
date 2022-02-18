@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +32,7 @@ class UserController extends Controller
     
     public function update(Request $request, User $user): RedirectResponse
     {
-
+        
         $user->roles()->sync($request->roles);
         return redirect()->route('admin.users.index', $user)->with('information', 'Role assgined successfully!');
     }

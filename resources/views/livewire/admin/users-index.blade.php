@@ -27,12 +27,7 @@
                             <a class="btn btn-sm btn-success" href="{{ route('admin.users.edit', $user) }}">Role</a>
                         </td>
                         <td width="10px">
-                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            
                         </td>
                     </tr>
                     @endforeach
