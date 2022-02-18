@@ -13,14 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         Storage::deleteDirectory('products');
         Storage::makeDirectory('products');
-
-        $this->call(RoleSeeder::class);
         
         $this->call(UserSeeder::class);
-        
+        //Image::factory(100)->create(); 
+        //Category::factory(4)->create();
         Category::factory(10)->create();
-        
         $this->call(ProductSeeder::class);
-        
     }
 }

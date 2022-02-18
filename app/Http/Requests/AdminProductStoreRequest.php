@@ -8,11 +8,7 @@ class AdminProductStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        if ($this->user_id == auth()->user()->id) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     public function rules(): array
@@ -22,11 +18,6 @@ class AdminProductStoreRequest extends FormRequest
             'code' => 'required|numeric|integer|unique:products',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'description' => 'required|max:2501string',
-            'user_id' => 'required',
-            'category_id' => 'required',
-            'status' => 'required',
-            'file' => 'image',
         ];
     }
 
@@ -37,6 +28,6 @@ class AdminProductStoreRequest extends FormRequest
             'code' => 'code of product',
             'price' => 'price of product',
             'stock' => 'availale units of product'
-        ];
+        ];        
     }
 }
