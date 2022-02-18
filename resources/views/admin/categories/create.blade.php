@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Blogkt')
+@section('title', 'Ecom')
 
 @section('content_header')
     <h1 class="text-bold text-g text-gray-800">Create new category</h1>
@@ -17,15 +17,14 @@
                         <span class="text-danger">{{ $message }}</span>    
                     @enderror
                 </div>
+
+                {!! Form::submit('Create', ['class' => 'btn btn-success btn-sm']) !!}
                 
-                <div class="form-group">
-                    {!! Form::label('slug', 'Slug') !!}
-                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'slug of category']) !!}
-                </div>
-
-                {!! Form::submit('Create', ['class' => 'btn btn-primary btn-sm']) !!}
-
             {!! Form::close() !!}
+            <a class="btn btn-dark btn-sm float-left mt-2" href="{{ route('admin.categories.index') }}">Back</a>
+            
         </div>
+        
     </div>
+    
 @stop

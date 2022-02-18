@@ -7,31 +7,33 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\AdminProductStoreRequest;
+use App\Http\Requests\AdminCategoryStoreRequest;
 
 class CategoryController extends Controller
 {
-    public function index(): View
+    public function __construct()
     {
-        $categories = Category::paginate(5);
-        //dd($categories);
-        return view('admin.categories.index', compact('categories'));   
+        $this->middleware('can:admin.categories.index');
     }
 
-    
+    public function index(): View
+    {
+        $categories = Category::latest('id')->paginate(5);
+        //dd($categories);
+        return view('admin.categories.index', compact('categories'));
+    }
+
+
     public function create(): View
     {
         return view('admin.categories.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AdminCategoryStoreRequest $request): RedirectResponse
     {
-        return redirect()->route('admin.categories.index');
-    }
-
-
-    public function show(Category $category): View
-    {
-        return view('admin.categories.show');
+        Category::create($request->validated());
+        return redirect()->route('admin.categories.index')->with('information', 'Category created successfully!');
     }
 
     public function edit(Category $category): View
@@ -42,12 +44,13 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category): RedirectResponse
     {
         //integrar validacion
-        $category->update($request->all());
-        return redirect()->route('admin.caegories.index')->with('info', 'Category updated successfully');
+        $category->update($request->validated());
+        return redirect()->route('admin.categories.index')->with('information', 'Category updated successfully');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
-        return redirect()->route('admin.categories.index')->with('info', 'Category deleted successfully');
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('information', 'Category deleted successfully');
     }
 }

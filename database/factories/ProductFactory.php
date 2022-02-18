@@ -20,9 +20,9 @@ class ProductFactory extends Factory
             'stock' => $this->faker->numberBetween(0,10000),
             'status' => $this->faker->randomElement([false, true]),
             'category_id' => Category::inRandomOrder()->first()->id,
-            'image_id' => Image::factory()->create()->id,
+            //'image_id' => Image::factory()->create()->id,
             'user_id' => User::inRandomOrder()->first()->id,
-            
+
         ];
     }
 }
