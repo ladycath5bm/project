@@ -22,7 +22,7 @@ class AdminProductStoreRequest extends FormRequest
             'code' => 'required|numeric|integer|unique:products',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'description' => 'required|max:2501string',
+            'description' => 'required|max:250|string',
             'user_id' => 'required',
             'category_id' => 'required',
             'status' => 'required',

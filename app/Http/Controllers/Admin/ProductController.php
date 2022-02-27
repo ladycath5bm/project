@@ -42,10 +42,16 @@ class ProductController extends Controller
         //dd($request->file);
         $product = Product::create($request->validated());
         if ($request->hasfile('file')) {
-            $url = Storage::put('products', $request->file);
+            //$file = $request->file('file');
+            //$fileName = $file->hashName();
+            //$file->storeAs('public', $fileName);
+            
             //dd($url);
-            $product->images()->create(['url' => $url]);
+            $request->file('file')->storeAs('public', $request->file('file')->hashName());
+            $product->images()->create(['url' => $request->file('file')->hashName()]);
+            //$product->images()->create(['url' => $fileName]);
         }
+
         Cache::flush();
         
         return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
