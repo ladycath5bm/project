@@ -38,6 +38,8 @@ class ProductController extends Controller
 
     public function store(CreateNewProduct $createNewProduct, AdminProductStoreRequest $request): RedirectResponse
     {
+        
+
         //dd($request->file);
         //$product = Product::create($request->validated());
         $product = $createNewProduct->create($request->validated());
