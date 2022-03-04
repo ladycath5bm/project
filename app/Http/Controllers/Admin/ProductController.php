@@ -47,8 +47,6 @@ class ProductController extends Controller
             //$file = $request->file('file');
             //$fileName = $file->hashName();
             //$file->storeAs('public', $fileName);
-            
-            //dd($url);
             $request->file('file')->storeAs('public', $request->file('file')->hashName());
             $product->images()->create(['url' => $request->file('file')->hashName()]);
             //$product->images()->create(['url' => $fileName]);
