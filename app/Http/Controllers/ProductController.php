@@ -25,11 +25,13 @@ class ProductController extends Controller
             $products = Product::where('status', true)
             //->where('user_id', auth()->user()->id)
             ->latest('id')
-            ->paginate(9);
+            ->paginate(20);
             Cache::put($key, $products);
         }
 
-        return view('custom.products.index', compact('products'));
+        $categories = Category::all();
+
+        return view('custom.products.index', compact('products', 'categories'));
     }
 
     public function show(Product $product): View
