@@ -1,7 +1,7 @@
 <div class="max-w-3xl sm:px-4 lg:px-2 ">
     <div class="mx-4 mt-4">
         
-        <input wire:model="search" class=" rounded form-control-lg mt-2 mx-6 px-6" placeholder="Search">
+        <!--<input wiremodel="search" class=" rounded form-control-lg mt-2 mx-6 px-6" placeholder="Search">-->
 
     </div>
     @if($products)

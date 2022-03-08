@@ -4,9 +4,15 @@
 
 
 .btn-custom {
-    @apply px-6 py-4
+    @apply px-6 py-2 
 }
 
 .btn-primary {
-    @apply bg-red-700
+    @apply bg-red-800
+}
+.h-30 {
+    height: 7.5rem;
+}
+.h-36 {
+    height: 8.5rem;
 }
