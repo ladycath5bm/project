@@ -1,4 +1,4 @@
-<nav class="bg-orange-600" x-data="{ open: false }">
+<nav class="bg-orange-600 shadow-lg" x-data="{ open: false }">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -18,7 +18,7 @@
         <a href="{{ route('products.index') }}" class="flex-shrink-0 flex items-center">    
           <!--<img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">-->
         
-        <img class="hidden lg:block h-8 w-auto" src="{{ Storage::url('logo_home.png') }}" alt="">
+        <img class="hidden lg:block h-8 w-auto shadow-lg" src="{{ Storage::url('logo_home.png') }}" alt="">
       </a>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
@@ -48,7 +48,7 @@
             <!-- Profile dropdown -->
             <div class="ml-3 relative" x-data="{ open: false }">
             <div>
-                <button x-on:click="open = true" type="button" class="bg-gray-900 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <button x-on:click="open = true" type="button" class="bg-gray-600 flex text-sm rounded-full focus:outline-none ring-1 ring-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">   </span>
                 <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
                 </button>
