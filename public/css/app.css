@@ -1113,17 +1113,10 @@ select {
 }
 .ml-auto {
   margin-left: auto;
-<<<<<<< HEAD
-=======
-}
-.mt-0 {
-  margin-top: 0px;
->>>>>>> feature/products-create
 }
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-<<<<<<< HEAD
 .mt-0 {
   margin-top: 0px;
 }
@@ -1133,11 +1126,6 @@ select {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
-=======
-.-mt-px {
-  margin-top: -1px;
-}
->>>>>>> feature/products-create
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -1189,12 +1177,9 @@ select {
 .h-20 {
   height: 5rem;
 }
-<<<<<<< HEAD
 .h-screen {
   height: 100vh;
 }
-=======
->>>>>>> feature/products-create
 .h-auto {
   height: auto;
 }
@@ -1204,21 +1189,18 @@ select {
 .h-60 {
   height: 15rem;
 }
-.h-14 {
-  height: 3.5rem;
-}
 .h-80 {
   height: 20rem;
 }
-<<<<<<< HEAD
 .h-40 {
   height: 10rem;
+}
+.h-14 {
+  height: 3.5rem;
 }
 .max-h-screen {
   max-height: 100vh;
 }
-=======
->>>>>>> feature/products-create
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1270,11 +1252,11 @@ select {
 .w-64 {
   width: 16rem;
 }
-.w-40 {
-  width: 10rem;
-}
 .w-36 {
   width: 9rem;
+}
+.w-40 {
+  width: 10rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1297,12 +1279,9 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
-<<<<<<< HEAD
 .max-w-full {
   max-width: 100%;
 }
-=======
->>>>>>> feature/products-create
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1515,13 +1494,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
-<<<<<<< HEAD
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
-=======
->>>>>>> feature/products-create
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
@@ -1578,15 +1554,21 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-.bg-orange-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
-=======
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
->>>>>>> feature/products-create
+}
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1678,10 +1660,6 @@ select {
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-}
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 .pt-6 {
   padding-top: 1.5rem;
@@ -1866,7 +1844,6 @@ select {
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 .text-black {
-<<<<<<< HEAD
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
@@ -1875,8 +1852,6 @@ select {
   color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 .text-orange-600 {
-=======
->>>>>>> feature/products-create
   --tw-text-opacity: 1;
   color: rgb(234 88 12 / var(--tw-text-opacity));
 }
@@ -1887,10 +1862,6 @@ select {
 .text-orange-900 {
   --tw-text-opacity: 1;
   color: rgb(124 45 18 / var(--tw-text-opacity));
-}
-.text-gray-200 {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1950,9 +1921,9 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
-.ring-orange-600 {
+.ring-gray-900 {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(234 88 12 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(17 24 39 / var(--tw-ring-opacity));
 }
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
@@ -1999,7 +1970,6 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 .btn-custom {
-<<<<<<< HEAD
   padding-left: 6rem;
   padding-right: 6rem;
   padding-top: 0.5rem;
@@ -2014,16 +1984,6 @@ select {
 }
 .h-36 {
     height: 8.5rem;
-=======
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-.btn-primary {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
->>>>>>> feature/products-create
 }
 .hover\:translate-x-2:hover {
   --tw-translate-x: 0.5rem;
@@ -2057,13 +2017,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-.hover\:bg-orange-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
-}
 .hover\:bg-orange-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(194 65 12 / var(--tw-bg-opacity));
+}
+.hover\:bg-orange-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
 }
 .hover\:font-bold:hover {
   font-weight: 700;
@@ -2126,6 +2086,14 @@ select {
 .focus\:border-gray-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.focus\:border-orange-900:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(124 45 18 / var(--tw-border-opacity));
+}
+.focus\:border-orange-300:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(253 186 116 / var(--tw-border-opacity));
 }
 .focus\:bg-indigo-600:focus {
   --tw-bg-opacity: 1;
@@ -2204,6 +2172,10 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(31 41 55 / var(--tw-ring-opacity));
 }
+.focus\:ring-orange-200:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(254 215 170 / var(--tw-ring-opacity));
+}
 .focus\:ring-opacity-50:focus {
   --tw-ring-opacity: 0.5;
 }
@@ -2231,6 +2203,10 @@ select {
 .active\:bg-gray-50:active {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+.active\:bg-orange-900:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(124 45 18 / var(--tw-bg-opacity));
 }
 .active\:text-gray-700:active {
   --tw-text-opacity: 1;
@@ -2451,14 +2427,11 @@ select {
     padding-right: 1rem;
   }
 
-<<<<<<< HEAD
   .sm\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
-=======
->>>>>>> feature/products-create
   .sm\:pt-0 {
     padding-top: 0px;
   }
@@ -2575,6 +2548,11 @@ select {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .lg\:px-2 {

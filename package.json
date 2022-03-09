@@ -21,14 +21,12 @@
         "postcss-import": "^14.0.1",
         "tailwindcss": "^3.0.0"
     },
-<<<<<<< HEAD
     "dependencies": {
         "material-icons": "^1.10.7"
-=======
+    },
     "config": {
         "commitizen": {
             "path": "./node_modules/git-cz"
         }
->>>>>>> feature/products-create
     }
 }
