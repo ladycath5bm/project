@@ -49,6 +49,7 @@ class ProductController extends Controller
 
     public function showByCategory(Category $category): View
     {
+        $categories = Category::all();
         $products = Product::where('category_id', $category->id)
         //where('user_id', auth()->user()->id)
             
@@ -57,6 +58,6 @@ class ProductController extends Controller
             ->where('status', true)
             ->paginate(9);
         $category_id = $category->id;
-        return view('custom.products.index', compact('products'));
+        return view('custom.products.index', compact('products', 'categories'));
     }
 }

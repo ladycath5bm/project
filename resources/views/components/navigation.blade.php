@@ -26,7 +26,7 @@
             <!--<a href="#" class="bg-gray-900 text-gray-900 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>-->
 
             
-            <a href="{{ route('products.index') }}" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Home</a>
+            <a href="{{ route('welcome') }}" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Home</a>
             <a href="{{ route('products.index') }}" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Products</a>
             <a href="#" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">About Us</a>
             <a href="#" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Contact Us</a>
@@ -88,7 +88,7 @@
     <div class="px-2 pt-2 pb-2 space-y-1">
       <!-- Current: "bg-gray-900 text-gray-900", Default: "text-gray-100 hover:bg-orange-700 hover:text-white" -->
       <!--<a href="#" class="bg-gray-900 text-gray-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>-->
-      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md text-md font-bold">Home</a>
+      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md text-md font-bold">Home</a>
       <a href="{{ route('products.index') }}" class="lg:text-md text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md text-md font-bold">Products</a>
       <a href="#" class="lg:text-md text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md text-md font-bold">About Us</a>
       <a href="#" class="lg:text-md text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md text-md font-bold">Contact Us</a>
