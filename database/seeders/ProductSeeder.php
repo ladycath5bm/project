@@ -11,7 +11,12 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        $products = Product::factory(20)->create();
-        Image::factory(50)->create();
+        Product::factory(20)->create()
+            ->each(function (Product $product) {
+                Image::factory()->create([
+                    'product_id' => $product->id,
+                ]);         
+            });
+        
     }
 }

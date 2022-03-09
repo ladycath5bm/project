@@ -70,7 +70,7 @@
                 </div>
                 <div class="row mb-2">
                     <div class="col mt-2 mb-2">
-                        <img id ="image" width="400px" src="http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg" alt="">
+                        <img id ="image" width="400px" src="{{ asset('images/image.jpg') }}" alt="">
                     </div>
                     <div class="col">
                         <div class="form-group">

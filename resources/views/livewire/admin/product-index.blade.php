@@ -1,4 +1,4 @@
-<div class="card">   
+    <div class="card">   
 
     <div class="card-header">
         <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add products</a>

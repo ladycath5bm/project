@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\Products\CreateNewProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,17 +36,22 @@ class ProductController extends Controller
         return view('admin.products.create', compact('categories'));
     }
 
-    public function store(AdminProductStoreRequest $request): RedirectResponse
+    public function store(CreateNewProduct $createNewProduct, AdminProductStoreRequest $request): RedirectResponse
     {
         
 
         //dd($request->file);
-        $product = Product::create($request->validated());
+        //$product = Product::create($request->validated());
+        $product = $createNewProduct->create($request->validated());
         if ($request->hasfile('file')) {
-            $url = Storage::put('products', $request->file);
-            //dd($url);
-            $product->images()->create(['url' => $url]);
+            //$file = $request->file('file');
+            //$fileName = $file->hashName();
+            //$file->storeAs('public', $fileName);
+            $request->file('file')->storeAs('public', $request->file('file')->hashName());
+            $product->images()->create(['url' => $request->file('file')->hashName()]);
+            //$product->images()->create(['url' => $fileName]);
         }
+
         Cache::flush();
         
         return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
