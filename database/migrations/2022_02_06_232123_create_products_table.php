@@ -21,8 +21,8 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

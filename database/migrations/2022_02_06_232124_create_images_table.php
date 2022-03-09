@@ -15,7 +15,7 @@ class CreateImagesTable extends Migration
 
             $table->foreignId('product_id')->nullable();
 
-            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products');
 
             $table->timestamps();
 

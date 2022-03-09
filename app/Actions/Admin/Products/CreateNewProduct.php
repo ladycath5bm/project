@@ -10,12 +10,6 @@ class CreateNewProduct
 {
     public function create(array $input): Product
     {
-        /***Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        ])->validate();**/
         $product = new Product();
         
         $product->name =  $input['name'];
@@ -26,6 +20,8 @@ class CreateNewProduct
         //$product->discount = $input['discount'];
         $product->status = $input['status'];
         //$product->file = $input['file'];
+        $product->category()->associate($input['category_id']);
+        $product->user()->associate($input['user_id']);
         $product->save();
         
         
