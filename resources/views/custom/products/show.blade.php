@@ -1,4 +1,28 @@
 <x-app-layout>
+    @section('sidebar')
+    <div class="min-h-screen px-4 py-4 rounded bg-gray-100 ">
+        <div class="flex flex-wrap justify-center bg-white rounded-lg shadow-lg mb-4">
+            <button class="font-bold flex-grow text-gray-900 rounded-lg shadow-lg bg-white text-lg h-12">Ecom</button>            
+        </div>
+        <nav class="flex flex-col bg-white w-48 max-h-screen tex-gray-900 rounded-lg shadow-lg">
+        
+            <div class="mt-2 mb-2 mr-2  max-h-screen">
+                <ul class="ml-2">
+                    @foreach ($categories as $category)
+                        <li class="w-full py-2 text-black flex flex-row hover:text-white   hover:bg-orange-600  hover:font-bold rounded  ">
+                            <span>
+                                
+                            </span>
+                            <a href="{{ route('products.showbycategory', $category) }}">
+                                <span class="ml-2">{{ $category->name }}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </nav>
+    </div>
+    @endsection
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-4 pb-4  bg-gray-100 rounded lg:rounded justify-between leading-normal">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h1>
         <a class="text-sm mt-1 text-gray-400" href="{{ route('products.index') }}">{{ __('Home ') }}></a>
@@ -12,7 +36,7 @@
                     <div class="border border-gray-400 lg:border-gray-400 bg-white rounded lg:rounded p-4 flex flex-col justify-between leading-normal">
                       
                       <div class="flex items-center mb-4 mt-4">
-                        <img class="h-80 sm:h-20 object-cover object-center mx-4" src="@if($product->image) {{ Storage::url($product->image->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
+                        <img class="h-80 sm:h-20 object-cover object-center mx-4" src="@if(isset($product->images->first()->url)) {{ Storage::url($product->images->first()->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
                         
                         <div class="mb-6 mx-4 mt-4">
                             <p class="text-sm text-gray-600 flex items-center mb-2">
@@ -50,7 +74,7 @@
                             <div class="border border-gray-400 bg-white rounded lg:rounded p-2 flex-col">
                                 
                                 <div class="flex items-center mb-2 rounded">
-                                    <img class="w-36 object-cover object-center rounded" src="@if($similar->image) {{ Storage::url($similar->image->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
+                                    <img class="w-36 object-cover object-center rounded" src="@if(isset($similar->images->first()->url)) {{ Storage::url($similar->images->first()->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
         
                                 </div>
                                 <div class="mx-2">

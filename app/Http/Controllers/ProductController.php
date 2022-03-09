@@ -38,13 +38,14 @@ class ProductController extends Controller
     {
         //dd($product);
         //pasar a una consulta e otra capa
+        $categories = Category::all();
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->where('status', true)
             ->take(3)
             ->get();
 
-        return view('custom.products.show', compact('product', 'similarProductsByCategory'));
+        return view('custom.products.show', compact('product', 'similarProductsByCategory', 'categories'));
     }
 
     public function showByCategory(Category $category): View
