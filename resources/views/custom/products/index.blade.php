@@ -48,7 +48,7 @@
                                                     <!--<p class="text-gray-900 leading-none text-sm"><strong>Code: </strong>{{ $product->code }}</p>-->
                                                     <!--<p class="text-gray-600 mb-2"><strong>Stock: </strong>{{ $product->stock }}</p>-->
                                                     <div class="flex items-center justify-center">
-                                                        <a href=# class="btn-custom bg-white  ring-1 ring-orange-600 px-6 justify-center text-orange-600 text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white">Buy</a>
+                                                        <a href=# class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white">Buy</a>
                                                     </div>
                                             </div>
                                         </div>
