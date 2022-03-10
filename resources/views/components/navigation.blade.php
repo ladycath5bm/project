@@ -26,10 +26,10 @@
             <!--<a href="#" class="bg-gray-900 text-gray-900 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>-->
 
             
-            <a href="{{ route('welcome') }}" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Home</a>
-            <a href="{{ route('products.index') }}" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Products</a>
-            <a href="#" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">About Us</a>
-            <a href="#" class="lg:text-lg text-gray-900 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Contact Us</a>
+            <a href="{{ route('welcome') }}" class="lg:text-lg text-gray-700 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Home</a>
+            <a href="{{ route('products.index') }}" class="lg:text-lg text-gray-700 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Products</a>
+            <a href="#" class="lg:text-lg text-gray-700 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">About Us</a>
+            <a href="#" class="lg:text-lg text-gray-700 hover:bg-orange-700 hover:text-white px-3 py-2 rounded-md font-bold text-lg">Contact Us</a>
             
             
           </div>
@@ -48,7 +48,7 @@
             <!-- Profile dropdown -->
             <div class="ml-3 relative" x-data="{ open: false }">
             <div>
-                <button x-on:click="open = true" type="button" class="bg-gray-600 flex text-sm rounded-full focus:outline-none ring-1 ring-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <button x-on:click="open = true" type="button" class="flex text-sm rounded-full focus:outline-none ring-1 ring-orange-300 ring-offset-2 ring-offset-orange-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-orange-500 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">   </span>
                 <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
                 </button>

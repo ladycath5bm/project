@@ -1192,11 +1192,11 @@ select {
 .h-80 {
   height: 20rem;
 }
-.h-40 {
-  height: 10rem;
-}
 .h-14 {
   height: 3.5rem;
+}
+.h-40 {
+  height: 10rem;
 }
 .max-h-screen {
   max-height: 100vh;
@@ -1251,9 +1251,6 @@ select {
 }
 .w-64 {
   width: 16rem;
-}
-.w-36 {
-  width: 9rem;
 }
 .w-40 {
   width: 10rem;
@@ -1565,10 +1562,6 @@ select {
 .bg-orange-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 88 12 / var(--tw-bg-opacity));
-}
-.bg-gray-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1921,12 +1914,18 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
-.ring-gray-900 {
+.ring-orange-300 {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(17 24 39 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(253 186 116 / var(--tw-ring-opacity));
 }
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
+}
+.ring-offset-2 {
+  --tw-ring-offset-width: 2px;
+}
+.ring-offset-orange-600 {
+  --tw-ring-offset-color: #ea580c;
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2188,6 +2187,9 @@ select {
 .focus\:ring-offset-gray-900:focus {
   --tw-ring-offset-color: #111827;
 }
+.focus\:ring-offset-orange-500:focus {
+  --tw-ring-offset-color: #f97316;
+}
 .active\:bg-gray-100:active {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -2300,10 +2302,6 @@ select {
 
   .sm\:h-10 {
     height: 2.5rem;
-  }
-
-  .sm\:h-20 {
-    height: 5rem;
   }
 
   .sm\:w-10 {
@@ -2524,8 +2522,8 @@ select {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .lg\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:rounded {

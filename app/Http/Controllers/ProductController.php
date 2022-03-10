@@ -42,7 +42,7 @@ class ProductController extends Controller
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->where('status', true)
-            ->take(3)
+            ->take(4)
             ->get();
 
         return view('custom.products.show', compact('product', 'similarProductsByCategory', 'categories'));

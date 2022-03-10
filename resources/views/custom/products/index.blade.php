@@ -44,7 +44,11 @@
                                     <div class="max-w-full  h-full bg-white rounded lg:rounded p-1 flex flex-col shadow-lg justify-between leading-normal">
                                         
                                         <div class="justify-center mb-2 rounded flex items-center">
-                                            <img class=" h-40 object-cover mt-1 justify-center object-center rounded flex-col" src="@if(isset($product->images->first()->url)) {{ Storage::url($product->images->first()->url) }} @else http://wallup.net/wp-content/uploads/2016/03/10/322474-sunlight-winter-landscape-snow.jpg @endif" alt="">
+                                            @if($product->images->isNotEmpty())
+                                                <img class="h-60 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                                            @else
+                                                <img class="h-60 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                            @endif
             
                                         </div>
                                         <div class="mb-2 mx-2">
