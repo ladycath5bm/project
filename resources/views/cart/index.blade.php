@@ -70,7 +70,7 @@
                             </button>
                             <form id="empty-cart" action="{{ route('cart.clear') }}" method="POST">
                                 @csrf
-                                @method('DELETE')
+                                @method('POST')
                             </form>
                             <button type="submit" form="empty-cart" class="btn px-6 py-2 bg-gray-900 text-sm text-white mx-6 rounded-md ">
                                 Cancel
