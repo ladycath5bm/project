@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Models\Category;
@@ -25,3 +26,7 @@ Route::resource('cart', ShoppingCartController::class)->except('create', 'show',
 Route::post('cart', [ShoppingCartController::class, 'store'])->name('cart.store');
 
 Route::post('cart/clear', [ShoppingCartController::class, 'clear'])->name('cart.clear');
+
+Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
+
+Route::get('/consult', [PaymentController::class, 'consult'])->name('consult');

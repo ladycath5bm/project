@@ -2,12 +2,13 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
+use App\Services\Payments\PlacetoPay\Buyer;
 use App\Models\Order;
 use Illuminate\Http\Client;
 use Illuminate\Support\Arr;
 use Illuminate\Http\JsonResponse;
 use App\Contracts\GatewayContract;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\PlacetoPay\Auth;
@@ -16,22 +17,18 @@ use PHPUnit\Framework\Constraint\JsonMatches;
 
 class PlacetoPay implements GatewayContract
 {
-    public function createRequest()
+    public function createRequest(Request $request)
     {
         $reference = 12345;
         $auth = Auth::make();
+        $buyer = Buyer::buyer($request);
         $url = url('https://dev.placetopay.com/redirection/api/session/');
         $returnURL = url('/consult');
 
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $auth,
-                'buyer' => [
-                    'name' => 'leidy',
-                    'document' => 1022213011,
-                    'email' => 'leidy@gmail.com',
-                    'address' => ['fvdfv', 'dfdfv'],
-                ],
+                'buyer' => $buyer,
                 'payment' => [
                     'reference' => $reference,
                     'description' => 'mi primer pago C:',
@@ -53,7 +50,8 @@ class PlacetoPay implements GatewayContract
         $order->customerName = $dat['buyer']['name'];
         $order->customerDocument = $dat['buyer']['document'];
         $order->customerEmail = $dat['buyer']['email'];
-        $order->referenceId = $response['requestId'];
+        $order->reference = $response['requestId'];
+        $order->total = $request['total'];
         $order->status = 'Created';
         $order->save();
         //dd($order);
@@ -61,10 +59,10 @@ class PlacetoPay implements GatewayContract
         return $response->json();
     }
 
-    public static function getRequestInformation(string $requestId)
+    public static function getRequestInformation(string $reference)
     {
         //dd($requestId);
-        $url = url('https://dev.placetopay.com/redirection/api/session/' . $requestId);
+        $url = url('https://dev.placetopay.com/redirection/api/session/' . $reference);
         $data = [
             'auth' => Auth::make()
         ];
@@ -74,10 +72,10 @@ class PlacetoPay implements GatewayContract
         return $response->json();
     }
 
-    public function pay(): array
+    public function pay(Request $request): array
     {
         //return "Estamos pagandpo usando placetopay Key: {$this->tranKey}";
-        $response = $this->createRequest();
+        $response = $this->createRequest($request);
         return $response;
         //return redirect()->away($response['processUrl']); 
     }

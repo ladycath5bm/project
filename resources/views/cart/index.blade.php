@@ -7,26 +7,26 @@
                 
                 <div class="border rounded-md  mr-6">
                     <div class="p-4">
-                        <form id="pay" action="#">
+                        <form id="pay" action="{{ route('pay') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="rounded-md shadow-md" value="{{ auth()->user()->name }}" required>
+                                <input type="text" name="name" id="name" class="rounded-md shadow-md" value="{{ auth()->user()->name }}">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="rounded-md shadow-md" value="{{ auth()->user()->email }}" required>
+                                <input type="email" name="email" id="email" class="rounded-md shadow-md" value="{{ auth()->user()->email }}">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="document">Document</label>
-                                <input type="text" name="document" id="document" class="rounded-md shadow-md" required>
+                                <input type="text" name="document" id="document" class="rounded-md shadow-md">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="address">Addres</label>
-                                <input type="text" name="address" id="address" class="rounded-md shadow-md" required>
+                                <input type="text" name="address" id="address" class="rounded-md shadow-md">
                             </div>
                         </form>
                     </div>
