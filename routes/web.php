@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
@@ -19,8 +20,5 @@ Route::get('products/index', [ProductController::class, 'index'])->name('product
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
 
-
-Route::get('test', function(){
-    $test = 'hhhh';
-    echo phpinfo();
-});
+Route::resource('cart', ShoppingCartController::class)->except('create', 'show', 'update')->names('cart');
+Route::post('cart', [ShoppingCartController::class, 'clear'])->name('cart.clear');

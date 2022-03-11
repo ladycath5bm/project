@@ -11,6 +11,7 @@ class OrderFactory extends Factory
         return [
             'total' => $this->faker->numberBetween(10000, 999999),
             'status' => $this->faker->randomElement(['pending', 'complete']),
+            'description' => $this->faker->sentence(),
         ];
     }
 }

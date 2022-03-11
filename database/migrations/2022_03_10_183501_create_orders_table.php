@@ -13,6 +13,7 @@ class CreateOrdersTable extends Migration
             $table->char('reference', 15)->nullable();
             $table->integer('total');
             $table->string('status')->nullable();
+            $table->string('description');
             $table->foreignId('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('users');
             $table->timestamps();
