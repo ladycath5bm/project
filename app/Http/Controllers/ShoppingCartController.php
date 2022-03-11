@@ -12,16 +12,18 @@ class ShoppingCartController extends Controller
 {
     public function index(): View
     {
-        $items = Cart::getContent();
-        return view('cart', compact('items'));
+        //$items = Cart::getContent();
+        return view('cart.index');
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $product = Product::whereid($request->id)->firstOrFail();
+        //dd($request->id);
+        $product = Product::whereId($request->id)->first();
         //Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
+        //dd($product->id);
         Cart::add($product->id, $product->name, 1, $product->price);
-        return back();
+        return redirect()->route('cart.index');
     }
 
     public function destroy(Product $product): RedirectResponse
@@ -30,7 +32,7 @@ class ShoppingCartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function clear()
+    public function clear(): RedirectResponse
     {
         Cart::destroy();
         return redirect()->route('products.index');

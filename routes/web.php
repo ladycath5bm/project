@@ -20,5 +20,8 @@ Route::get('products/index', [ProductController::class, 'index'])->name('product
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
 
-Route::resource('cart', ShoppingCartController::class)->except('create', 'show', 'update')->names('cart');
-Route::post('cart', [ShoppingCartController::class, 'clear'])->name('cart.clear');
+Route::resource('cart', ShoppingCartController::class)->except('create', 'show', 'update', 'edit')->names('cart');
+
+Route::post('cart', [ShoppingCartController::class, 'store'])->name('cart.store');
+
+Route::post('cart/clear', [ShoppingCartController::class, 'clear'])->name('cart.clear');

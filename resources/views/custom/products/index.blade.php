@@ -64,7 +64,15 @@
                                                     <!--<p class="text-gray-900 leading-none text-sm"><strong>Code: </strong>{{ $product->code }}</p>-->
                                                     <!--<p class="text-gray-600 mb-2"><strong>Stock: </strong>{{ $product->stock }}</p>-->
                                                     <div class="flex items-center justify-center">
-                                                        <a href=# class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white">Buy</a>
+                                                        <form id="add-cart-{{ $product->id }}" action="{{ route('cart.store') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="{{ $product->id }}">
+                                                        </form>
+                                                        <button type="submit" class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white" form="add-cart-{{ $product->id }}">
+                                                            Buy
+                                                        </button>
+
+                                                        
                                                     </div>
                                             </div>
                                         </div>
