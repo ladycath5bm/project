@@ -25,7 +25,7 @@ class ProductController extends Controller
             $products = Product::where('status', true)
             //->where('user_id', auth()->user()->id)
             ->latest('id')
-            ->paginate(20);
+            ->paginate(8);
             Cache::put($key, $products);
         }
 
