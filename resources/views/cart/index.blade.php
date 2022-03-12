@@ -1,64 +1,60 @@
 <x-app-layout>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-6 mb-4">
+    <div class="max-w-7xl mx-auto md:px-2 lg:px-2 mb-4">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="flex items-center justify-center mt-4"><span class="flex justify-center font-bold text-gray-500 text-2xl">Cart Shopping</span></div>
-            <div class="p-6 sm:px-20 bg-white border-b border-gray-200 flex">
+            <div class="p-6 sm:px-10 bg-white border-b border-gray-200 flex">
                 
-                <div class="border rounded-md  mr-6">
-                    <div class="p-4">
-                        <form id="pay" action="{{ route('pay') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="rounded-md shadow-md" value="{{ auth()->user()->name }}">
+                <div class="bg-white w-full">
+                    
+                    <div class="bg-white rounded-lg text-center w-full gap-5">
+                        @foreach ($items as $item)
+                            <div class="border rounded-md shadow-md px-2 py-2 mb-6 mt-6">
+                                <div class="flex w-full">
+                                    <div class="mr-2 w-1/4">
+                                        @if($item->options['url'])
+                                            <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
+                                        @else
+                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                        @endif
+                                    </div>
+                                    <div class="w-1/3">
+                                        <div class="flex justify-items-start">
+                                            <span class="text-md font-bold text-gray-700 justify-start">{{ $item->name }}</span>
+                                        </div>
+                                        <div class="flex justify-items-start">
+                                            <span class="text-sm text-gray-500 justify-start">{{ $item->options['code'] }}</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="w-1/4 font-bold text-gray-700 mr-4 justify-end">
+                                        <span>$ {{ $item->price }}</span>
+                                    </div>
+                                    <div class="w-1/4">
+                                        <select name="qty" id="qty" value="{{ $item->qty }}"></select>
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="rounded-md shadow-md" value="{{ auth()->user()->email }}">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="document">Document</label>
-                                <input type="text" name="document" id="document" class="rounded-md shadow-md">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="address">Addres</label>
-                                <input type="text" name="address" id="address" class="rounded-md shadow-md">
-                            </div>
-                        </form>
+                            @endforeach
                     </div>
                     
                 </div>
-                <div class="bg-white rounded-lg dhadow-sm p-4 text-center w-full gap-5 flex border">
-                    <table class="table flex-col w-full">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (Cart::content() as $item)
+                
+                <div class="bg-white ml-10 py-6 w-1/2">
+                    <div class="border rounded-md  bg-gray-100">
+                        <table class="table table-light w-full">
+                            <thead>
+                                <th scope="col">gggg</th>
+                                <th scope="col">gggg</th>
+                            </thead>
+                            <tbody>
                                 <tr>
-                                    <td>{{ $item->qty }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{ $item->qty * $item->price }}</td>
+                                    <td></td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot class="border border-gray-600 rounded-md">
-                            <tr >
-                                <th scope="row">Total</th>
-                                <td colspan="2">{{ Cart::subtotal() }}</td>
-                            </tr>
-                        </tfoot>
-                    </table>    
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
             </div>
             <div class="mt-2 mb-4 mx-6">
