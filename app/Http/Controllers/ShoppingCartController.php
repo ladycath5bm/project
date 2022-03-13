@@ -12,6 +12,8 @@ class ShoppingCartController extends Controller
 {
     public function index(): View
     {
+        //Cart::store(auth()->user()->id);
+        //Cart::restore('username');
         $items = Cart::Content();
         //dd($items);
         return view('cart.index', compact('items'));
@@ -22,18 +24,19 @@ class ShoppingCartController extends Controller
         //dd($request->id);
         $product = Product::whereId($request->id)->first();
         //Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
-        //dd($product->id);
         Cart::add($product->id, $product->name, 1, $product->price, [
             'url' => $product->images->first()->url, 
             'code' => $product->code, 
             'discount' => $product->discount,
+            'stock' => $product->stock,
         ]);
         return redirect()->route('cart.index');
     }
 
-    public function destroy(Product $product): RedirectResponse
+    public function remove(string $id): RedirectResponse
     {
-        Cart::remove($product->id);
+        //dd($id);
+        Cart::remove($id);
         return redirect()->route('cart.index');
     }
 
