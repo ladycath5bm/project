@@ -1,54 +1,54 @@
 <x-app-layout>
     
     <div class="flex justify-center border bg-white px-12 rounded-md">
-        <div class="mt-6 mb-6 px-20 bg-white shadow-md rounded-md w-full">
+        <div class="mt-6 mb-6 px-20 border bg-white shadow-xl rounded-md w-full">
             <div class="px-4 mt-4"> 
-                <span class="font-bold text-gray-700 text-lg">Your data</span>
+                <span class="font-bold text-gray-700 text-xl">Your data</span>
                 <hr/>
             </div>
             <div class="p-4 justify-center">
-                <form id="pay" action="{{ route('pay') }}" method="POST">
+                <form id="payment" action="{{ route('pay') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>
                         <br>
-                        <input type="text" name="name" id="name" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->name }}">
+                        <input type="text" name="name" id="name" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->name }}"  required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <br>
-                        <input type="email" name="email" id="email" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->email }}">
+                        <input type="email" name="email" id="email" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->email }}" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="document">Document</label>
                         <br>
-                        <input type="text" name="document" id="document" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md">
+                        <input type="text" name="document" id="document" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="mobile">Phone</label>
                         <br>
-                        <input type="text" name="mobile" id="mobile" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md">
+                        <input type="text" name="mobile" id="mobile" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="address">Addres</label>
                         <br>
-                        <input type="text" name="address" id="address" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md">
+                        <input type="text" name="address" id="address" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
                 </form>
-                <div class="mt-6 mb-4 flex justify-start">
-                    <div class="btn-group ">
-                        <button type="submit" form="pay" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mb-2 rounded-md">
+                <div class="mt-6 mb-4 flex">
+                    <div class="btn-group">
+                        <button type="submit" form="payment" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mb-2 rounded-md">
                             Pay
                         </button>
-                        <form id="empty-cart" action="{{ route('cart.clear') }}" method="POST">
+                        <form id="cancel" action="{{ route('cart.index') }}" method="GET">
                             @csrf
-                            @method('POST')
+                            @method('GET')
                         </form>
-                        <button type="submit" form="empty-cart" class="btn px-6 py-2 bg-gray-900 text-sm text-white  rounded-md ">
+                        <button type="submit" form="cancel" class="btn px-6 py-2 bg-gray-900 text-sm text-white  rounded-md ">
                             Cancel
                         </button>
                     </div>
@@ -56,7 +56,7 @@
             </div>
             
         </div>
-        <div class="mt-6 mb-6  ml-10 px-6 bg-gray-50 shadow-md rounded-md w-1/2">
+        <div class="mt-6 mb-6  ml-10 border px-6 bg-gray-50 shadow-xl rounded-md w-1/2">
             <table class="table w-full">
                 <thead>
                     <span class="font-bold text-xl text-gray-600 flex justify-center mt-4 mb-4">My Cart</span>

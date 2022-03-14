@@ -12,10 +12,13 @@ class ShoppingCartController extends Controller
 {
     public function index(): View
     {
-        //Cart::store(auth()->user()->id);
-        //Cart::restore('username');
-        $items = Cart::Content();
-        //dd($items);
+        if (Cart::content(auth()->user()->id)) {
+            $items = Cart::content(auth()->user()->id);
+            //dd($items);
+        }
+        else {
+            $items = Cart::Content();
+        }
         return view('cart.index', compact('items'));
     }
 
@@ -24,12 +27,14 @@ class ShoppingCartController extends Controller
         //dd($request->id);
         $product = Product::whereId($request->id)->first();
         //Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
+        
         Cart::add($product->id, $product->name, 1, $product->price, [
             'url' => $product->images->first()->url, 
             'code' => $product->code, 
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
+        Cart::store(auth()->user()->id);
         return redirect()->route('cart.index');
     }
 
@@ -48,8 +53,7 @@ class ShoppingCartController extends Controller
 
     public function checkout()
     {
-        $items = Cart::content();
-        //dd($items);
+        $items = Cart::content(auth()->user()->id);
         return view('cart.checkout', compact('items'));
     }
 }

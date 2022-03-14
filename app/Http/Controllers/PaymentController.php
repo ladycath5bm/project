@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\GatewayFactory;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
 
 class PaymentController extends Controller

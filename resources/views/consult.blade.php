@@ -16,7 +16,7 @@
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->customerName }}</td>
                     <td>{{ $order->customerEmail }}</td>
-                    <td>{{ $order->referenceId }}</td>
+                    <td>{{ $order->reference }}</td>
                     <td>{{ $order->status }}</td>      
                 </tr>
             </tbody>

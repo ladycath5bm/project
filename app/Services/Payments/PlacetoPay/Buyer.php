@@ -7,12 +7,13 @@ use Illuminate\Http\Client\Response;
 
 class Buyer 
 {
-    public static function buyer(Request $request): array 
+    public static function make(Request $request): array 
     {
         return [
             'name' => $request->name,
             'document' => $request->document,
             'email' => $request->email,
+            'mobile' => $request->mobile,
             'address' => $request->address,
         ];
     }

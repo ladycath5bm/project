@@ -71,9 +71,7 @@
                                             <button type="submit" class="text-sm text-orange-500" form="delete">
                                                 Delete
                                             </button>
-
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
