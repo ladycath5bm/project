@@ -29,6 +29,10 @@ Route::delete('cart/clear', [ShoppingCartController::class, 'clear'])->name('car
 
 Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('cart.remove');
 
+Route::post('cart/checkout', [ShoppingCartController::class, 'checkout'])->name('cart.checkout');
+
 Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
 
 Route::get('/consult', [PaymentController::class, 'consult'])->name('consult');
+
+

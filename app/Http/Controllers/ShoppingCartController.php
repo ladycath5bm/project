@@ -45,4 +45,11 @@ class ShoppingCartController extends Controller
         Cart::destroy();
         return redirect()->route('products.index');
     }
+
+    public function checkout()
+    {
+        $items = Cart::content();
+        //dd($items);
+        return view('cart.checkout', compact('items'));
+    }
 }

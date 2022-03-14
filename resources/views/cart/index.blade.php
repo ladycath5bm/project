@@ -129,10 +129,10 @@
                         </table>
                     </div>
                     <div class="flex items-center justify-center">
-                        <form action="#">
-
+                        <form action="{{ route('cart.checkout') }}" method="POST" id="checkout">
+                            @csrf
                         </form>
-                        <button type="submit" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
+                        <button type="submit" form="checkout" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
                             Continue
                         </button>
                     </div>
