@@ -14,43 +14,60 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Services\Payments\PlacetoPay\Auth;
 use League\CommonMark\Reference\Reference;
 use App\Services\Payments\PlacetoPay\Buyer;
+use Illuminate\Support\Collection;
+use PharIo\Manifest\Url;
 use PHPUnit\Framework\Constraint\JsonMatches;
 
 class PlacetoPay implements GatewayContract
 {
+    protected Collection $items;
+    protected int $reference;
+    protected array $auth;
+    protected array $buyer;
+    protected array $payment;
+    protected string $url;
+    protected string $returnURL;
+    protected string $cancelUrl;
+
+    public function __construct()
+    {
+        $this->items = Cart::content(auth()->user()->id);
+        $this->reference = Order::latest()->first()->reference++;
+        $this->auth = Auth::make();
+        $this->buyer = [];
+        $this->payment = Payment::make($this->reference, $this->items);
+        $this->url = 'https://dev.placetopay.com/redirection/api/session/';
+        $this->returnURL = '/consult';
+        $this->cancelUrl = '/cart/index';
+    }
     public function createRequest(Request $request)
     {
-        $items = Cart::content(auth()->user()->id);
-        $reference = Order::latest()->first()->reference++;
-        $auth = Auth::make();
-        $buyer = Buyer::make($request);
-        $payment = Payment::make($reference, $items);
-        $url = url('https://dev.placetopay.com/redirection/api/session/');
-        $returnURL = url('/consult');
-        $cancelUrl = url('/cart/index');
-
+        $order = new Order();
+        $order->status = 'CREATED';
+        $this->buyer = Buyer::make($request);
         $dat = [
                 'locale' => 'es_CO',
-                'auth' => $auth,
-                'buyer' => $buyer,
-                'payment' => $payment,
+                'auth' => $this->auth,
+                'buyer' => $this->buyer,
+                'payment' => $this->payment,
                 'expiration' => date('c', strtotime('+1 hour')),
-                'returnUrl' => $returnURL,
-                'cancelUrl' => $cancelUrl,
+                'returnUrl' => url($this->returnURL),
+                'cancelUrl' => url($this->cancelUrl),
                 'ipAddress' => '127.0.0.1',
                 'userAgent' => 'Chrome/51.0.2704.103 Safari/537.36',
         ];
         //dd($dat);
-        $response = Http::acceptJson()->post($url, $dat);
+        $response = Http::acceptJson()->post(url($this->url), $dat);
         //dd($response->json());
-        $order = new Order();
+        //crear action para order
+        
         $order->customerName = $dat['buyer']['name'];
         $order->customerDocument = $dat['buyer']['document'];
         $order->customerEmail = $dat['buyer']['email'];
         $order->requestId = $response['requestId'];
-        $order->reference = $reference;
+        $order->reference = $this->reference;
         $order->total = $request['total'];
-        $order->status = 'Created';
+        
         $order->save();
         //dd($order);
         
