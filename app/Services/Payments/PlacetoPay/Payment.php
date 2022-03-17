@@ -14,12 +14,12 @@ class Payment
         //dd(Cart::subtotal());
         return [
             'reference' => $reference,
-                    'description' => 'Payment services, your products' ,
-                    'amount' => [
-                        'currency' => 'COP',
-                        'total' => $subtotal + 100000,
-                    ],
-                    'allowPartial' => false,
+            'description' => 'Payment services, your products' ,
+            'amount' => [
+                'currency' => 'COP',
+                'total' => $subtotal + 100000,
+                ],
+            'allowPartial' => false,
         ];
     }
 }

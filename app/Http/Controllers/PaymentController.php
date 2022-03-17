@@ -25,8 +25,30 @@ class PaymentController extends Controller
         //dd($this->requestId);
         $order = Order::latest()->first();
         //dd($order->first());
-        $response = PlacetoPay::getRequestInformation($order->reference);
+        $response = PlacetoPay::getRequestInformation($order->requestId);
+
+        if ($response->isSuccessful()) {
+            $responseTransaction = $response->status();
+            dd($responseTransaction);
+            //$orderRepository->updateStatusTransaction($order, $responseTransaction->status());
+            $order->status = $responseTransaction->status();
+            $message = $responseTransaction->message();
+        } else {
+            $message = $response->status()->message();
+        }
+
+        $order = $orderRepository->find($id);
+        return view('order.show', compact('order', 'message'));
+
+        //order->status = $response['payment'][0]['status']['status']);
         $order->status = $response['status']['status'];
+        //dd($order->status);
+
+        if ($order->status == 'PENDING') {
+            //IR A JOD COMMAND Y SCHEDULING;
+            //comando de consulta
+            $this->consult();
+        }
         return view('consult', compact('order'));
     }
 }
