@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Console\Command;
+use Database\Factories\OrderFactory;
+use App\Jobs\ConsultPaymentStatusJob;
 
 class ConsultPaymentStatusCommand extends Command
 {
@@ -18,25 +22,18 @@ class ConsultPaymentStatusCommand extends Command
      *
      * @var string
      */
-    protected $description = 'This commnd consult the transactio status for payments proccess';
+    protected $description = 'This commnd consult the transaction status for payments proccess';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
-        return 0;
+        ConsultPaymentStatusJob::dispatchSync();
+        //User::factory(1)->create();
+        //$this->info('holi');
+        info("log message");
     }
 }

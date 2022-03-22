@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Artisan;
 use App\Services\Payments\GatewayFactory;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
@@ -20,35 +21,32 @@ class PaymentController extends Controller
         return redirect()->to($response['processUrl']);
     }
 
-    public function consult()
+    public static function consult()//Order $order)
     {
-        //dd($this->requestId);
         $order = Order::latest()->first();
-        //dd($order->first());
+        //dd($order);
         $response = PlacetoPay::getRequestInformation($order->requestId);
-
-        if ($response->isSuccessful()) {
-            $responseTransaction = $response->status();
-            dd($responseTransaction);
-            //$orderRepository->updateStatusTransaction($order, $responseTransaction->status());
-            $order->status = $responseTransaction->status();
-            $message = $responseTransaction->message();
+        //dd($response->json());
+        if ($response->successful()) {
+            //$responseTransaction = $response->status();
+            //dd($response->json()['status']);
+            $responseSesion = $response->json()['status'];
+            $responseTransaction = $response->json()['payment'][0]['status'];
+            $order->status = $responseTransaction['status'];
+            //dd($response->json()['payment'][0]['status']['status']);
+            $message = $responseTransaction['message'];
+            //$order->save();
         } else {
-            $message = $response->status()->message();
+            $responseTransaction = $response->json()['payment'][0]['status'];
+            $message = $responseTransaction['message'];
         }
-
-        $order = $orderRepository->find($id);
-        return view('order.show', compact('order', 'message'));
 
         //order->status = $response['payment'][0]['status']['status']);
-        $order->status = $response['status']['status'];
+        //$order->status = $responseTransaction['status'];
         //dd($order->status);
-
-        if ($order->status == 'PENDING') {
-            //IR A JOD COMMAND Y SCHEDULING;
-            //comando de consulta
-            $this->consult();
-        }
-        return view('consult', compact('order'));
+        $order->save();
+        //echo 'holi, no mueriendo en el intento #6';
+        //dd($order);
+        return view('consult', compact('order', 'message'));
     }
 }

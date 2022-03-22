@@ -2,7 +2,7 @@
 
         <div class="card-header">
             <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.categories.create') }}">Add categories</a>
-            <!--<input wiremodel="search" class="form-control-sm float-left" placeholder="Search">-->
+            <input wiremodel="search" class="form-control-sm float-left" placeholder="Search">
 
         </div>
         @if($categories->count())

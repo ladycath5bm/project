@@ -28,7 +28,7 @@ class Auth
 
     public function generateTranKey(string $nonce, string $seed): string 
     {
-        return base64_encode(sha1($nonce . $seed . $this->tranKey, true));;
+        return base64_encode(sha1($nonce . $seed . $this->tranKey, true));
     }
 
     public function getLogin(): string
