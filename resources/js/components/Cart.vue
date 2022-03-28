@@ -5,7 +5,7 @@
 
 <template>
     <div>
-        <span class="bg-orange-300 rounded-full  px-1 text-sm text-justify text-orange-700 font-bold">
+        <span class="bg-white rounded-full  px-1 font-size-10 text-justify text-gray-400 hover:text-orange-500 font-bold">
         {{ msg }}
         </span> 
     </div>
