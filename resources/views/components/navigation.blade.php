@@ -1,10 +1,9 @@
-<nav class="bg-orange-500 shadow-lg" x-data="{ open: false }">
+<nav class="bg-white shadow-lg" x-data="{ open: false }">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
-        <button x-on:click="open = true" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-          <span class="sr-only">Op</span>
+        <button x-on:click="open = true" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-600" aria-controls="mobile-menu" aria-expanded="false">
           <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg> 
@@ -22,14 +21,14 @@
       </a>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-gray-900", Default: "text-gray-100 hover:bg-orange-600 hover:text-white" -->
+            <!-- Current: "bg-gray-900 text-gray-900", Default: "text-orange-500     hover:scale-110" -->
             <!--<a href="#" class="bg-gray-900 text-gray-900 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>-->
 
             
-            <a href="{{ route('welcome') }}" class="lg:text-lg text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md font-semibold text-lg">Home</a>
-            <a href="{{ route('products.index') }}" class="lg:text-lg text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md font-semibold text-lg">Products</a>
-            <a href="#" class="lg:text-lg text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md font-semibold text-lg">About Us</a>
-            <a href="#" class="lg:text-lg text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md font-semibold text-lg">Contact Us</a>
+            <a href="{{ route('welcome') }}" class="lg:text-lg text-orange-500     hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Home</a>
+            <a href="{{ route('products.index') }}" class="lg:text-lg text-orange-500     hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Products</a>
+            <a href="#" class="lg:text-lg text-orange-500  hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">About Us</a>
+            <a href="#" class="lg:text-lg text-orange-500   hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Contact Us</a>
             
             
           </div>
@@ -37,7 +36,7 @@
       </div>
       @auth
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <!--<button type="button" class="bg-gray-900 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white">
+            <!--<button type="button" class="bg-gray-900 p-1 rounded-full text-gray-400   hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white">
             <span class="sr-only"></span>-->
             <!-- Heroicon name: outline/bell -->
             <!--<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -45,10 +44,23 @@
             </svg>
             </button>-->
 
+            <div id="app">
+                <div>
+                    <div class="flex bg-orange-500">
+                        <a class="bg-orange-500 flex rounded-md px-2" href="{{ route('cart.index') }}">
+                            <span class="material-icons-sharp text-orange-500">add_shopping_cart</span> 
+                            <span class="bg-orange-300 rounded-full  px-1 text-sm text-justify text-orange-700 font-bold">
+                                <cart msg="1"/>
+                            </span> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Profile dropdown -->
             <div class="ml-3 relative" x-data="{ open: false }">
             <div>
-                <button x-on:click="open = true" type="button" class="flex text-sm rounded-full focus:outline-none ring-1 ring-orange-300 ring-offset-2 ring-offset-orange-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-orange-500 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <button x-on:click="open = true" type="button" class="flex text-sm rounded-full focus:outline-none ring-1 ring-orange-400 ring-offset-2 ring-offset-orange-300 focus:ring-2 focus:ring-offset-2 focus:ring-offset-orange-500 focus:ring-orange-300" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">   </span>
                 <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
                 </button>
@@ -75,8 +87,8 @@
         </div>  
       @else
         <div>
-            <a href="{{ route('login') }}" class="text-gray-900 lg:text-md hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-            <a href="{{ route('register') }}" class="text-gray-900 lg:text-md hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+            <a href="{{ route('login') }}" class="text-gray-900 lg:text-md     hover:scale-110 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="{{ route('register') }}" class="text-gray-900 lg:text-md     hover:scale-110 px-3 py-2 rounded-md text-sm font-medium">Register</a>
         </div>
       @endauth
         
@@ -86,12 +98,12 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open = false">
     <div class="px-2 pt-2 pb-2 space-y-1">
-      <!-- Current: "bg-gray-900 text-gray-900", Default: "text-gray-100 hover:bg-orange-600 hover:text-white" -->
+      <!-- Current: "bg-gray-900 text-gray-900", Default: "text-orange-500     hover:scale-110" -->
       <!--<a href="#" class="bg-gray-900 text-gray-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>-->
-      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-md font-semibold">Home</a>
-      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-md font-semibold">Products</a>
-      <a href="#" class="lg:text-md text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-md font-semibold">About Us</a>
-      <a href="#" class="lg:text-md text-gray-100 hover:bg-orange-600 hover:text-white px-3 py-2 rounded-md text-md font-semibold">Contact Us</a>
+      <a href="{{ route('welcome') }}" class="lg:text-md text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Home</a>
+      <a href="{{ route('products.index') }}" class="lg:text-md text-orange-500 hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Products</a>
+      <a href="#" class="lg:text-md text-orange-500  hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">About Us</a>
+      <a href="#" class="lg:text-md text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Contact Us</a>
       
     </div>
   </div>

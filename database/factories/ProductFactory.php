@@ -14,8 +14,9 @@ class ProductFactory extends Factory
         
         return [
             'name' => $this->faker->word(),
-            'code' => $this->faker->numberBetween($int1 = 1, $int2 = 9999999),
-            'price' => $this->faker->numberBetween(100, 999),
+            'code' => $this->faker->numberBetween($int1 = 1, $int2 = 999999),
+            'price' => $this->faker->numberBetween(1000, 999999),
+            'description' => $this->faker->sentence(),
             'discount' => $this->faker->numberBetween(0,100),
             'stock' => $this->faker->numberBetween(0,10000),
             'status' => $this->faker->randomElement([false, true]),

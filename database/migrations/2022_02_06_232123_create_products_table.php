@@ -9,14 +9,16 @@ class CreateProductsTable extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
+
             $table->id();
             $table->string('name', 15);
             $table->integer('code')->unique();
             $table->decimal('price');
-            $table->string('description')->nullable();
+            $table->text('description', 150);
             $table->unsignedDecimal('discount')->default(0);
             $table->unsignedInteger('stock');
             $table->boolean('status')->nullable();
+            $table->string('slug')->nullable();
 
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();
@@ -33,3 +35,4 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products');
     }
 }
+
