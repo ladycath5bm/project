@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="max-w-7xl mx-auto sm:px-4 md:px-2 lg:px-2 mb-4">
+    <div class="max-w-7xl mx-auto sm:px-4 lg:px-2 mb-4">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="flex items-center justify-center mt-6">
                 <span class="flex justify-center font-bold text-gray-800 text-3xl">Cart Shopping</span>
@@ -24,7 +24,7 @@
                                             <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
                                         @endif
                                     </div>
-                                    <div class="w-1/3 mt-6">
+                                    <div class="w-1/3 ml-2 mt-6">
                                         <div class="flex justify-items-start">
                                             <span class="text-lg font-bold text-gray-700 justify-start">{{ $item->name }}</span>
                                         </div>
@@ -88,20 +88,42 @@
                     
                 </div>
                 
-                <div class="bg-white ml-10 py-6 w-1/3">
+                <div class="bg-white ml-10 py-6 w-1/2">
                     <div class="border rounded-md  bg-gray-100">
                         <table class="table w-full">
                             <thead>
                                 <span class="font-bold text-xl text-gray-600 flex justify-center mt-4 mb-4">My Cart</span>
                             </thead>
                             <tbody>
+                                @foreach ($items as $item)
                                 <tr>
                                     <hr/>
                                     <td>
-                                        <span class="mx-4 text-md text-gray-600  mt-4 mb-4">Subtotal</span>
+                                        <div class="pl-4 mt-2 mb-2 w-full">
+                                            @if($item->options['url'])
+                                                <img class="h-20 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
+                                            @else
+                                                <img class="h-20 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                            @endif
+                                        </div>
                                     </td>
                                     <td>
-                                        <span class="mx-4 text-md text-gray-600  mt-4 mb-4">{{  Cart::subtotal() }}</span>
+                                        <span class="mx-4 text-sm font-bold text-gray-600  mt-4 mb-4">{{  $item->name }}</span>
+                                        <br>
+                                        <span class="mx-4 text-sm text-gray-600  mt-4 mb-4">Cant: {{ $item->qty }}</span>
+                                        <br>
+                                        <span class="mx-4 text-sm font-bold text-gray-700  mt-4 mb-4">$ {{ $item->price }}</span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                <tr>
+                                    <td>
+                                        <hr/>
+                                        <span class="mx-4 text-md text-gray-700  mt-4 mb-4">Subtotal</span>
+                                    </td>
+                                    <td>
+                                        <hr/>
+                                        <span class="mx-4 text-md text-gray-700  mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -115,12 +137,12 @@
                                 
                             </tbody>
                             <tfoot>
-                                <tr class="rounded border">
-                                    <td>
-                                        <span class="mx-4 text-md text-gray-900 font-bold mt-4 mb-4">Total</span>
+                                <tr class="border-t rounded-md">
+                                    <td class="rounded-md text-center">
+                                        <span class="mx-4 text-center text-md text-gray-900 rounded font-bold mt-4 mb-4">Total</span>
                                     </td>
                                     <td>
-                                        <span class="mx-4 text-xl text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
+                                        <span class="mr-4 text-lg text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
                                     </td>
                                 </tr>
                             </tfoot>
