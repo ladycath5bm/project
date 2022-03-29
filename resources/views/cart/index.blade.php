@@ -12,7 +12,6 @@
                 
                 <div class="bg-white w-full">
                     
-                    
                     <div class="bg-white rounded-lg text-center w-full gap-5">
                         @foreach ($items as $item)
                             <div class="border rounded-md shadow-md px-2 py-2 mb-6 mt-6">
