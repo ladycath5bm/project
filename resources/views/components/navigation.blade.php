@@ -25,10 +25,10 @@
             <!--<a href="#" class="bg-gray-900 text-gray-900 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>-->
             
             
-            <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Home</a>
-            <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Products</a>
-            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">About Us</a>
-            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500   hover:scale-110 px-3 py-2 rounded-md font-semibold text-lg">Contact Us</a>
+            <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Home</a>
+            <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Products</a>
+            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md font-medium text-md">About Us</a>
+            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500   hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Contact Us</a>
             
             
           </div>
@@ -107,10 +107,10 @@
       </a>
       <!-- Current: "bg-gray-900 text-gray-900", Default: "text-orange-500     hover:scale-110" -->
       <!--<a href="#" class="bg-gray-900 text-gray-900 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>-->
-      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Home</a>
-      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Products</a>
-      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">About Us</a>
-      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-semibold">Contact Us</a>
+      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Home</a>
+      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Products</a>
+      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md text-md font-medium">About Us</a>
+      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Contact Us</a>
       
     </div>
 
