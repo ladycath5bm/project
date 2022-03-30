@@ -11,6 +11,10 @@ class UserObserver
         //
     }
 
+    public function creating()
+    {
+        //
+    }
 
     public function updated(User $user)
     {

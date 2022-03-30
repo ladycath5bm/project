@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="flex justify-between">
-        <div class="bg-black">
+        <div class="w-2/3">
             <x-jet-authentication-card>
                 <x-slot name="logo">
                     
@@ -39,7 +39,7 @@
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900 ml-4" href="{{ route('register') }}">
+                        <a class="underline mr-8 text-sm text-gray-600 hover:text-gray-900 ml-4" href="{{ route('register') }}">
                             {{ __('Register') }}
                         </a>
 
@@ -54,7 +54,7 @@
             </x-jet-authentication-card>
         </div>
         <div class="bg-gray-900 flex-grow">
-            
+            <img class="h-full" src="http://www.fondox.net/wallpapers/resoluciones/14/flores-con-petalos-naranjas_1920x1080_4133.jpg" alt="">
         </div>
     </div>
 </x-guest-layout>
