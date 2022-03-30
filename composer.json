@@ -42,6 +42,8 @@
         }
     },
     "scripts": {
+        "phpcs": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php",
+        "phpcs_validate": "vendor/bin/php-cs-fixer fix --dry-run --diff",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
