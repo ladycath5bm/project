@@ -36,4 +36,6 @@ Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
 Route::get('/consult', [PaymentController::class, 'consult'])->name('consult');
 //Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
 
-
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
