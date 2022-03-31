@@ -22,15 +22,15 @@ class Kernel extends ConsoleKernel
             ->everyMinute()
             ->when(
                 function () {
-                $order = Order::latest()->first();
-                //info('helou');
-                if ($order->status == 'PENDING') {
-                    info('log holis');
-                    return true;
-                } else {
-                    return false;
+                    $order = Order::latest()->first();
+                    //info('helou');
+                    if ($order->status == 'PENDING') {
+                        info('log holis');
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
-            }
             );
         //info("holi");
     }
