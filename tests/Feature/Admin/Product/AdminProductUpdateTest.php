@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminProductUpdateTest extends TestCase

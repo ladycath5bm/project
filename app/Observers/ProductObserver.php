@@ -13,20 +13,19 @@ class ProductObserver
         /***Log::info(['message, created se ha creado un :model', ['model' => get_class($product)]], [
             'product_id' => $product->getKey()
         ]);**/
-        Log::info( 'Se ha creado un product con id y usuario:', $this->info($product));
-
+        Log::info('Se ha creado un product con id y usuario:', $this->info($product));
     }
 
     public function updated(Product $product)
     {
         Log::info(['message, updated se ha creado un :model', ['model' => get_class($product)]], [
-            'product_id' => $product->getKey()
+            'product_id' => $product->getKey(),
         ]);
     }
     public function deleted(Product $product)
     {
         Log::warning(['message, deleted se ha creado un :model', ['model' => get_class($product)]], [
-            'product_id' => $product->getKey()
+            'product_id' => $product->getKey(),
         ]);
     }
 

@@ -1,13 +1,12 @@
-<?php 
+<?php
 
 namespace App\Services\Payments\PlacetoPay;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Client\Response;
 
-class Buyer 
+class Buyer
 {
-    public static function make(Request $request): array 
+    public static function make(Request $request): array
     {
         return [
             'name' => $request->name,

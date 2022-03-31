@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\AdminProductStoreRequest;
 use App\Http\Requests\AdminCategoryStoreRequest;
+use App\Models\Category;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -23,7 +22,6 @@ class CategoryController extends Controller
         //dd($categories);
         return view('admin.categories.index', compact('categories'));
     }
-
 
     public function create(): View
     {

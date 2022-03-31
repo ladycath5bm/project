@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 
@@ -11,17 +11,15 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        if(request()->page){
+        if (request()->page) {
             $key = 'products' . request()->page;
-        }
-        else{
+        } else {
             $key = 'products';
         }
 
         if (Cache::has($key)) {
             $products = Cache::get($key);
-        }
-        else{
+        } else {
             $products = Product::where('status', true)
             //->where('user_id', auth()->user()->id)
             ->latest('id')
@@ -53,9 +51,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::where('category_id', $category->id)
         //where('user_id', auth()->user()->id)
-            
+
             //  ->where('id', '!=', $product->id)
-            
+
             ->where('status', true)
             ->paginate(9);
         $category_id = $category->id;

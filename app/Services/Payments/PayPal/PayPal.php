@@ -1,9 +1,8 @@
-<?php 
+<?php
 
 namespace App\Services\Payments\PayPal;
 
 use App\Contracts\GatewayContract;
-use Illuminate\Http\JsonResponse;
 
 class PayPal implements GatewayContract
 {
@@ -15,7 +14,7 @@ class PayPal implements GatewayContract
         $this->key = config('payments.gateways.paypal.key');
     }
 
-    public function pay(): array        
+    public function pay(): array
     {
         return ["Estamos pagandpo usando paypal Key: {$this->key}"];
     }

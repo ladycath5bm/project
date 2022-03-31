@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Artisan;
 use App\Services\Payments\GatewayFactory;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -35,7 +33,7 @@ class PaymentController extends Controller
             $order->status = $responseTransaction['status'];
             //dd($response->json()['payment'][0]['status']['status']);
             $message = $responseTransaction['message'];
-            //$order->save();
+        //$order->save();
         } else {
             $responseTransaction = $response->json()['payment'][0]['status'];
             $message = $responseTransaction['message'];

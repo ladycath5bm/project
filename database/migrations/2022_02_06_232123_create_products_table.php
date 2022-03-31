@@ -9,7 +9,6 @@ class CreateProductsTable extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-
             $table->id();
             $table->string('name', 15);
             $table->integer('code')->unique();
@@ -35,4 +34,3 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products');
     }
 }
-

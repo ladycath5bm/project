@@ -5,10 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
 
-
-Route::get('/', function (){
+Route::get('/', function () {
     $categories = Category::all();
     return view('welcome', compact('categories'));
 })->name('welcome');

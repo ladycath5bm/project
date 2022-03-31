@@ -2,28 +2,25 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Monolog\Logger;
-use Tests\TestCase;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 use Monolog\Handler\TestHandler;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Monolog\Logger;
+use Tests\TestCase;
 
 class AdminProductCreateTest extends TestCase
 {
     protected function setUp(): void
     {
-            parent::setUp();
-            
-            $user = User::factory()->create();
-            $user->assignRole('admin');
-            Sanctum::actingAs($user);
-         
+        parent::setUp();
+
+        $user = User::factory()->create();
+        $user->assignRole('admin');
+        Sanctum::actingAs($user);
     }
-    
+
     public function testItVisitCreateproduct(): void
     {
-        
         $response = $this->get(route('admin.products.create'));
 
         $response->assertOk();
@@ -56,6 +53,4 @@ class AdminProductCreateTest extends TestCase
 
         //$monolog->getHandlers();
     }
-
-
 }

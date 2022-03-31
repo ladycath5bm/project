@@ -3,7 +3,6 @@
 namespace Tests\Feature\Admin\Product;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminProductStoreTest extends TestCase
@@ -29,7 +28,6 @@ class AdminProductStoreTest extends TestCase
     /**
      * @dataProvider invalidInputForCreatedProduct
      */
-    
     public function testValidateDataProductCreate($key, $data)
     {
         $this->withoutMiddleware();
@@ -54,7 +52,7 @@ class AdminProductStoreTest extends TestCase
 
             'stock has null' => ['stock', array_replace_recursive($this->dataStore, ['stock' => null])],
             'stock is not numeric' => ['stock', array_replace_recursive($this->dataStore, ['stock' => 'testnumeric'])],
-            
+
         ];
     }
 }

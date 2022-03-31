@@ -1,26 +1,16 @@
-<?php 
+<?php
 
 namespace App\Services\Payments\PlacetoPay;
 
 use App\Actions\CreateOrderAction;
-use App\Models\Order;
-use Illuminate\Http\Client;
-use Illuminate\Support\Arr;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Contracts\GatewayContract;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Services\Payments\PlacetoPay\Auth;
-use League\CommonMark\Reference\Reference;
-use App\Services\Payments\PlacetoPay\Buyer;
-use Facade\FlareClient\Http\Response as HttpResponse;
 use Illuminate\Http\Client\Response as ClientResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 use PharIo\Manifest\Url;
-use PHPUnit\Framework\Constraint\JsonMatches;
 
 class PlacetoPay implements GatewayContract
 {
@@ -44,11 +34,11 @@ class PlacetoPay implements GatewayContract
         $this->returnURL = '/consult';
         $this->cancelUrl = '/cart';
     }
-    
+
     public function createRequest(Request $request)
     {
         $this->buyer = Buyer::make($request);
-        $order = new CreateOrderAction;
+        $order = new CreateOrderAction();
         $order = $order->create($this->reference, $this->buyer);
 
         $dat = [
@@ -66,12 +56,12 @@ class PlacetoPay implements GatewayContract
         //dd($dat);
         $response = Http::acceptJson()->post(url($this->url), $dat);
         //dd($response->json());
-        
+
         $order->requestId = $response['requestId'];
         $order->total = $this->payment['amount']['total'];
         $order->save();
         //dd($order);
-        
+
         return $response->json();
     }
 
@@ -80,7 +70,7 @@ class PlacetoPay implements GatewayContract
         //dd($requestId);
         $url = url('https://dev.placetopay.com/redirection/api/session/' . $requestId);
         $data = [
-            'auth' => Auth::make()
+            'auth' => Auth::make(),
         ];
 
         $response = Http::post($url, $data);
@@ -95,7 +85,6 @@ class PlacetoPay implements GatewayContract
         //return "Estamos pagandpo usando placetopay Key: {$this->tranKey}";
         $response = $this->createRequest($request);
         return $response;
-        //return redirect()->away($response['processUrl']); 
+        //return redirect()->away($response['processUrl']);
     }
-
 }

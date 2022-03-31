@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Admin;
 
-use Livewire\Component;
 use App\Models\Category;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 class CategoryIndex extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = "bootstrap";
+    protected $paginationTheme = 'bootstrap';
 
     public $search;
 

@@ -5,7 +5,6 @@ namespace Tests\Feature\Admin\Product;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ProductIndexAdminTest extends TestCase
@@ -21,7 +20,7 @@ class ProductIndexAdminTest extends TestCase
         $response->assertOk();
     }
 
-    public function testItListProduct(): void 
+    public function testItListProduct(): void
     {
         $this->withoutMiddleware();
 

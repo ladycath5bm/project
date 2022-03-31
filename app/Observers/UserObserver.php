@@ -21,7 +21,6 @@ class UserObserver
         //
     }
 
-
     public function deleted(User $user)
     {
         //
@@ -31,7 +30,6 @@ class UserObserver
     {
         //
     }
-
 
     public function forceDeleted(User $user)
     {

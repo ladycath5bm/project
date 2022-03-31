@@ -2,11 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
-use App\Models\Order;
-use Illuminate\Console\Command;
-use Database\Factories\OrderFactory;
 use App\Jobs\ConsultPaymentStatusJob;
+use App\Models\User;
+use Illuminate\Console\Command;
 
 class ConsultPaymentStatusCommand extends Command
 {
@@ -34,6 +32,6 @@ class ConsultPaymentStatusCommand extends Command
         ConsultPaymentStatusJob::dispatchSync();
         //User::factory(1)->create();
         //$this->info('holi');
-        info("log message");
+        info('log message');
     }
 }

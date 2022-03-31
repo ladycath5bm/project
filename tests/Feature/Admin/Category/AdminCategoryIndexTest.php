@@ -4,7 +4,6 @@ namespace Tests\Feature\Admin\Category;
 
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminCategoryIndexTest extends TestCase

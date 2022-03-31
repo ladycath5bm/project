@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Image;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -15,8 +14,7 @@ class UserSeeder extends Seeder
             'email' => 'leidy@gmail.com',
             'password' => bcrypt('leidy123'),
         ])->assignRole('admin');
-    
-        User::factory(10)->create();
 
+        User::factory(10)->create();
     }
 }

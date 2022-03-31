@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace App\Services\Payments\PlacetoPay;
 
-class Auth  
+class Auth
 {
     private string $login;
     private string $key;
@@ -22,11 +22,11 @@ class Auth
         } else {
             $nonce = mt_rand();
         }
-        
+
         return $nonce;
     }
 
-    public function generateTranKey(string $nonce, string $seed): string 
+    public function generateTranKey(string $nonce, string $seed): string
     {
         return base64_encode(sha1($nonce . $seed . $this->tranKey, true));
     }
@@ -38,7 +38,7 @@ class Auth
 
     public static function make(): array
     {
-        $auth = new Auth();
+        $auth = new self();
         $nonce = $auth->generateNonce();
         $seed = date('c');
 

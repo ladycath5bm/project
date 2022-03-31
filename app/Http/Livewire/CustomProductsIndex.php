@@ -12,14 +12,12 @@ class CustomProductsIndex extends Component
 
     public $search;
     protected $products;
-    
 
     public function updatingSearch()
     {
         $this->resetPage();
     }
 
- 
     public function mount($products)
     {
         $this->products = $products;

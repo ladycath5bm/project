@@ -3,14 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        
         $permissionAdminIndex = Permission::create(['name' => 'admin.home']);
 
         $permissionAdminUsersIndex = Permission::create(['name' => 'admin.users.index']);
@@ -27,10 +26,10 @@ class RoleSeeder extends Seeder
         $permissionAdminCategoryEdit = Permission::create(['name' => 'admin.categories.edit']);
         $permissionAdminCategoryDelete = Permission::create(['name' => 'admin.categories.destroy']);
 
-        $rolAdmin = Role::create(['name' => 'admin'])->syncPermissions([ 
+        $rolAdmin = Role::create(['name' => 'admin'])->syncPermissions([
             $permissionAdminProductsIndex,
             $permissionAdminIndex,
-            
+
             $permissionAdminUsersIndex,
             $permissionAdminUsersCreate,
             $permissionAdminUsersEdit,

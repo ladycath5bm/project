@@ -11,8 +11,8 @@ class CreateNewProduct
     public function create(array $input): Product
     {
         $product = new Product();
-        
-        $product->name =  $input['name'];
+
+        $product->name = $input['name'];
         $product->code = $input['code'];
         $product->price = $input['price'];
         $product->description = $input['description'];
@@ -23,8 +23,7 @@ class CreateNewProduct
         $product->category()->associate($input['category_id']);
         $product->user()->associate($input['user_id']);
         $product->save();
-        
-        
+
         return $product;
     }
 }

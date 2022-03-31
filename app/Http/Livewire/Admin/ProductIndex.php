@@ -10,7 +10,7 @@ class ProductIndex extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = "bootstrap";
+    protected $paginationTheme = 'bootstrap';
 
     public $search;
 

@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\Category;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminCategoryCreateTest extends TestCase
@@ -22,4 +20,3 @@ class AdminCategoryCreateTest extends TestCase
         $response->assertViewIs('admin.categories.create');
     }
 }
-

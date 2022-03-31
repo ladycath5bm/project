@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace App\Services\Payments;
 
-use InvalidArgumentException;
 use App\Contracts\GatewayContract;
 use App\Services\Payments\PayPal\PayPal;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
+use InvalidArgumentException;
 
 class GatewayFactory
 {

@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin\Products\CreateNewProduct;
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProductStoreRequest;
 use App\Http\Requests\AdminProductUpdateRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('can:admin.products.index');
@@ -49,7 +46,7 @@ class ProductController extends Controller
         }
 
         Cache::flush();
-        
+
         return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
     }
 

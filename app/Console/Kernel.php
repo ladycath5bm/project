@@ -17,25 +17,22 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-       
+
         $schedule->command('consult:payment')
             ->everyMinute()
-            ->when( function () {
+            ->when(
+                function () {
                 $order = Order::latest()->first();
                 //info('helou');
                 if ($order->status == 'PENDING') {
-                    info("log holis");
+                    info('log holis');
                     return true;
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             }
-        );
+            );
         //info("holi");
-
-        
     }
 
     /**
@@ -45,7 +42,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

@@ -4,11 +4,8 @@ namespace App\Actions;
 
 use App\Models\Order;
 
-use Illuminate\Support\Facades\Validator;
-
 class CreateOrderAction
 {
-
     public function create(int $reference, array $data): Order
     {
         $order = new Order();
@@ -19,7 +16,7 @@ class CreateOrderAction
         $order->customerEmail = $data['email'];
         $order->customer()->associate(auth()->user()->id);
         $order->save();
-        
+
         return $order;
     }
 }

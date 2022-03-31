@@ -37,7 +37,7 @@ class AdminProductStoreRequest extends FormRequest
             'name' => 'name of product',
             'code' => 'code of product',
             'price' => 'price of product',
-            'stock' => 'availale units of product'
+            'stock' => 'availale units of product',
         ];
     }
 }

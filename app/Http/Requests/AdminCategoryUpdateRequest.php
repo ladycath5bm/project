@@ -14,7 +14,7 @@ class AdminCategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:15|unique:categories'
+            'name' => 'required|string|max:15|unique:categories',
         ];
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
@@ -14,9 +14,8 @@ class ShoppingCartController extends Controller
     {
         if (Cart::content(auth()->user()->id)) {
             $items = Cart::content(auth()->user()->id);
-            //dd($items);
-        }
-        else {
+        //dd($items);
+        } else {
             $items = Cart::Content();
         }
         return view('cart.index', compact('items'));
@@ -27,10 +26,10 @@ class ShoppingCartController extends Controller
         //dd($request->id);
         $product = Product::whereId($request->id)->first();
         //Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
-        
+
         Cart::add($product->id, $product->name, 1, $product->price, [
-            'url' => $product->images->first()->url, 
-            'code' => $product->code, 
+            'url' => $product->images->first()->url,
+            'code' => $product->code,
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
