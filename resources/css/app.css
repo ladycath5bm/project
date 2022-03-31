@@ -1,3 +1,40 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.btn-select {
+    @apply mb-3
+    appearance-none
+    block
+    w-full
+    px-4
+    py-2
+    text-lg
+    font-normal
+    text-gray-700
+    bg-white bg-clip-padding bg-no-repeat
+    border border-solid border-gray-300
+    rounded
+    transition
+    ease-in-out
+    m-0
+    focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none
+}
+
+.btn-sele {
+    @apply border border-solid border-gray-300 rounded-md focus:text-gray-700 focus:ring-1 focus:ring-orange-600 focus:border-orange-600 focus:outline-none
+}
+
+.btn-custom {
+    @apply px-24 py-2 
+}
+
+.btn-primary {
+    @apply bg-orange-700
+}
+.h-30 {
+    height: 7.5rem;
+}
+.h-36 {
+    height: 8.5rem;
+}
