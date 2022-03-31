@@ -4,7 +4,6 @@
 /storage/*.key
 /vendor
 .env
-.env.testing
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
@@ -15,4 +14,3 @@ yarn-error.log
 /.idea
 /.vscode
 .php-cs-fixer.cache
-/tests/coverage
