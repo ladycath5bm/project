@@ -6,6 +6,7 @@ use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 use Monolog\Handler\TestHandler;
 use Monolog\Logger;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class AdminProductCreateTest extends TestCase
@@ -14,8 +15,9 @@ class AdminProductCreateTest extends TestCase
     {
         parent::setUp();
 
-        $user = User::factory()->create();
-        $user->assignRole('admin');
+        $user = User::factory()->create();  
+        //$role = Role::create(['name' => 'admin']);
+        //$user->assignRole('admin');
         Sanctum::actingAs($user);
     }
 
