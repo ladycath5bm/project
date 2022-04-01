@@ -38,12 +38,6 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
 
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: composer testdox
-
     - name: Execute php-cs-fixer
       run: composer phpcs_validate
 
@@ -51,9 +45,15 @@ jobs:
       run: |
         sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.report.xml
         sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.coverage.xml
+        
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: composer testdox
 
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
+      uses: sonarsource/sonarcloud-github-action@master
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
