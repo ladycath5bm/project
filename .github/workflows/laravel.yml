@@ -39,7 +39,7 @@ jobs:
         touch database/database.sqlite
 
     - name: Execute php-cs-fixer
-      run: composer phpcs_validate
+      run: composer phpcs
 
     - name: Prepare paths for SonarQube analysis
       run: |
