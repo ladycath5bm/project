@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\Order;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Support\Arrayable;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,3 +26,5 @@ class DatabaseSeeder extends Seeder
         Order::factory(10)->create();
     }
 }
+
+
