@@ -1,5 +1,4 @@
 <x-app-layout>
-    
     <div class="flex justify-center border bg-white px-12 rounded-md">
         <div class="mt-6 mb-6 px-20 border bg-white shadow-xl rounded-md w-full">
             <div class="px-4 mt-4"> 

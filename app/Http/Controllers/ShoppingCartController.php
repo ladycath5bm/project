@@ -51,8 +51,9 @@ class ShoppingCartController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function checkout(?Order $order)
+    public function checkout(?Order $order, request $request)
     { 
+        //dd($request->all());
         // $order = Order::where('id', $order->id);
         $items = Cart::content(auth()->user()->id);
         return view('cart.checkout', compact('items'));

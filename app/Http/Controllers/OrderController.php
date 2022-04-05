@@ -33,11 +33,6 @@ class OrderController extends Controller
         //
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
         //

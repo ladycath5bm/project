@@ -38,7 +38,7 @@
                                     <div class="w-1/4 mt-6">
                                         <div class="flex justify-center">
                                             <div class="mb-3 xl:w-96">
-                                              <select class="form-select form-select-sm btn-sele" aria-label=".form-select-sm">
+                                              <select name="qty" id="qty" class="form-select form-select-sm btn-sele" aria-label=".form-select-sm">
                                                 <option selected="{{ $item->qty }}">{{ $item->qty }}</option>|
                                                 @if($item->options['stock'] <= 5)
                                                     @for ( $stock = 1;  $stock <= $item->options['stock']; $stock++)
@@ -78,7 +78,7 @@
                     </div>
                     <div class="py-4 px-6 flex justify-between rounded-md mb-4 border-2 border-orange-500">
                         <a class="text-gray-800 text-lg font-bold" href="{{ route('products.index') }}">Keep shopping</a>
-                        <form class="text-lg" action="{{ route('cart.clear') }}" method="POST" id="clear">
+                        <form class="text-lg" action="{{ route('cart.clear') }}" method="POST" id="clear" name="clear">
                             @csrf
                             @method('DELETE')
                         </form>

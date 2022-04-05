@@ -21,9 +21,15 @@ class PaymentController extends Controller
 
     public static function consult(int $id)
     {
-        $order = Order::where('id', $id)->first();
+        if( isset($id))
+        {
+            $order = Order::where('id', $id)->first();
+        }else {
+            $order = Order::latest()->first();
+        }  
+        //
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        //dd($response->json()['payment']);
+        //dd($response->json());
         if ($response->successful()) {
             //dd($response->json()['status']);
             $responseSesion = $response->json()['status'];
@@ -33,21 +39,19 @@ class PaymentController extends Controller
             $order->transactions = $response->json()['payment'];
             //$order->save();
         } else {
+            //dd($response->json());
             $responseTransaction = $response->json()['payment'][0]['status'];
             $message = $responseTransaction['message'];
         }
-        //dd($order->status);
         $order->save();
         //echo 'holi, no mueriendo en el intento #6';
+        //aqui un litener para borrar carrito de compras y bajar stock si es aprovada
         return view('consult', compact('order', 'message'));
     }
 
     public function retray(int $id)
     {
-        //dd($order);
         $order = Order::where('id', $id)->first();
-
-        //dd($order);
         return redirect()->to($order->processUrl);
     }
 }

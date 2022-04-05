@@ -2,12 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\PaymentController;
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 
 class ConsultPaymentStatusJob implements ShouldQueue
 {
@@ -26,6 +27,7 @@ class ConsultPaymentStatusJob implements ShouldQueue
     public function handle()
     {
         //consulta
-        $consult = PaymentController::consult();
+        $id = Order::latest()->first()->id;
+        $consult = PaymentController::consult((int)$id);
     }
 }
