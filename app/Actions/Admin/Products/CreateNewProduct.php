@@ -4,8 +4,6 @@ namespace App\Actions\Admin\Products;
 
 use App\Models\Product;
 
-//use Illuminate\Support\Facades\Validator;
-
 class CreateNewProduct
 {
     public function create(array $input): Product

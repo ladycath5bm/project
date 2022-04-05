@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Custom;
 
 use App\Models\Order;
-
-use Illuminate\Support\Facades\Validator;
 
 class CreateOrderAction
 {
 
-    public function create(int $reference, array $data): Order
+    public function create(array $data, ?int $reference): Order
     {
         $order = new Order();
         $order->status = 'CREATED';

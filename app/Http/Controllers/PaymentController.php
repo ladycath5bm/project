@@ -14,6 +14,7 @@ class PaymentController extends Controller
 {
     public function pay(Request $request): RedirectResponse
     {
+        //dd($request);
         $gateway = GatewayFactory::make('placetopay');
         $response = $gateway->pay($request);
         //dd($response);
@@ -26,15 +27,17 @@ class PaymentController extends Controller
         $order = Order::latest()->first();
         //dd($order);
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        //dd($response->json());
+        //dd($response->json()['payment']);
         if ($response->successful()) {
             //$responseTransaction = $response->status();
             //dd($response->json()['status']);
             $responseSesion = $response->json()['status'];
             $responseTransaction = $response->json()['payment'][0]['status'];
+            //$response->
             $order->status = $responseTransaction['status'];
             //dd($response->json()['payment'][0]['status']['status']);
             $message = $responseTransaction['message'];
+            $order->transactions = $response->json()['payment'];
             //$order->save();
         } else {
             $responseTransaction = $response->json()['payment'][0]['status'];
@@ -48,5 +51,10 @@ class PaymentController extends Controller
         //echo 'holi, no mueriendo en el intento #6';
         //dd($order);
         return view('consult', compact('order', 'message'));
+    }
+
+    public function retray(Order $order)
+    {
+        dd($order);
     }
 }

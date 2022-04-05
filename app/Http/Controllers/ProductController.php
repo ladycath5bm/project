@@ -23,7 +23,6 @@ class ProductController extends Controller
         }
         else{
             $products = Product::where('status', true)
-            //->where('user_id', auth()->user()->id)
             ->latest('id')
             ->paginate(8);
             Cache::put($key, $products);
@@ -36,7 +35,6 @@ class ProductController extends Controller
 
     public function show(Product $product): View
     {
-        //dd($product);
         //pasar a una consulta e otra capa
         $categories = Category::all();
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
@@ -52,10 +50,6 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('category_id', $category->id)
-        //where('user_id', auth()->user()->id)
-            
-            //  ->where('id', '!=', $product->id)
-            
             ->where('status', true)
             ->paginate(9);
         $category_id = $category->id;

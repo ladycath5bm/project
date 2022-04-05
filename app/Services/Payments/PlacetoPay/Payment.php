@@ -10,11 +10,11 @@ class Payment
 {
     public static function make(int $reference, Collection $items): array 
     {
-        $subtotal = (int)Cart::subtotal();
-        //dd(Cart::subtotal());
+        $subtotal = (int)Cart::subtotal(auth()->user()->id);
+        //dd($items);
         return [
             'reference' => $reference,
-            'description' => 'Payment services, your products' ,
+            'description' => 'Yoour payment for Ecom by webcheckout',
             'amount' => [
                 'currency' => 'COP',
                 'total' => $subtotal + 100000,
@@ -22,4 +22,5 @@ class Payment
             'allowPartial' => false,
         ];
     }
+
 }
