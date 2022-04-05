@@ -3,36 +3,32 @@
 namespace App\Observers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class UserObserver
 {
     public function created(User $user)
     {
-        //
-    }
-
-    public function creating()
-    {
-        //
+        Log::info('Se ha creado un usuario con id:', $this->info($user));
     }
 
     public function updated(User $user)
     {
-        //
+        Log::info(['message, se ha actualizado un usuario'], [
+            'user_id' => $user->getKey(),
+        ]);
     }
-
     public function deleted(User $user)
     {
-        //
+        Log::warning(['message, se ha eliminado un usuario'], [
+            'user_id' => $user->getKey(),
+        ]);
     }
 
-    public function restored(User $user)
+    protected function info(User $user): array
     {
-        //
-    }
-
-    public function forceDeleted(User $user)
-    {
-        //
+        return [
+            'user_id' => $user->getKey(),
+        ];
     }
 }
