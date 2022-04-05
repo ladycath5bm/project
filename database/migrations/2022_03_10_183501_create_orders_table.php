@@ -13,6 +13,7 @@ class CreateOrdersTable extends Migration
             $table->string('customerName')->nullable();
             $table->string('customerEmail')->nullable();
             $table->string('customerDocument')->nullable();
+            $table->json('transactions')->nullable();
             $table->char('reference', 6)->nullable();
             $table->char('requestId')->nullable();
             $table->integer('total')->nullable();
