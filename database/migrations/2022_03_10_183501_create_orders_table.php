@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
             $table->json('transactions')->nullable();
             $table->char('reference', 6)->nullable();
             $table->char('requestId')->nullable();
+            $table->string('processUrl')->nullable();
             $table->integer('total')->nullable();
             $table->string('status')->nullable();
             $table->string('description')->nullable();

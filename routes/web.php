@@ -6,7 +6,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
 
 
 Route::get('/', function (){
@@ -34,7 +33,7 @@ Route::post('cart/checkout', [ShoppingCartController::class, 'checkout'])->name(
 
 Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
 
-Route::get('/consult', [PaymentController::class, 'consult'])->name('consult');
+Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
 //Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
 
 Route::get('/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
