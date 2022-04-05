@@ -36,7 +36,7 @@ class PlacetoPay implements GatewayContract
         $this->buyer = [];
         $this->payment = Payment::make($this->reference, $this->items);
         $this->url = 'https://dev.placetopay.com/redirection/api/session/';
-        $this->returnURL = '/consult';
+        $this->returnURL = '/consult/';
         $this->cancelUrl = '/orders/cancel/';
     }
 
@@ -52,7 +52,7 @@ class PlacetoPay implements GatewayContract
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
                 'expiration' => date('c', strtotime('+15 min')),
-                'returnUrl' => url($this->returnURL),
+                'returnUrl' => url($this->returnURL . $order->id),
                 //'returnUrl' => url($this->returnURL . $order->id),
                 'cancelUrl' => url($this->cancelUrl . $order->id),
                 'ipAddress' => app(Request::class)->getClientIp(),
@@ -63,6 +63,7 @@ class PlacetoPay implements GatewayContract
         //dd($response->json());
 
         $order->requestId = $response['requestId'];
+        $order->processUrl = $response['processUrl'];
         $order->total = $this->payment['amount']['total'];
         $order->save();
         
