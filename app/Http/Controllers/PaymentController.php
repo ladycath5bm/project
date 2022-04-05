@@ -19,32 +19,35 @@ class PaymentController extends Controller
         return redirect()->to($response['processUrl']);
     }
 
-    public static function consult()//Order $order)
+    public static function consult(int $id)
     {
-        $order = Order::latest()->first();
-        //dd($order);
+        $order = Order::where('id', $id)->first();
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        //dd($response->json());
+        //dd($response->json()['payment']);
         if ($response->successful()) {
-            //$responseTransaction = $response->status();
             //dd($response->json()['status']);
             $responseSesion = $response->json()['status'];
             $responseTransaction = $response->json()['payment'][0]['status'];
             $order->status = $responseTransaction['status'];
-            //dd($response->json()['payment'][0]['status']['status']);
             $message = $responseTransaction['message'];
-        //$order->save();
+            $order->transactions = $response->json()['payment'];
+            //$order->save();
         } else {
             $responseTransaction = $response->json()['payment'][0]['status'];
             $message = $responseTransaction['message'];
         }
-
-        //order->status = $response['payment'][0]['status']['status']);
-        //$order->status = $responseTransaction['status'];
         //dd($order->status);
         $order->save();
         //echo 'holi, no mueriendo en el intento #6';
-        //dd($order);
         return view('consult', compact('order', 'message'));
+    }
+
+    public function retray(int $id)
+    {
+        //dd($order);
+        $order = Order::where('id', $id)->first();
+
+        //dd($order);
+        return redirect()->to($order->processUrl);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\View\View;
@@ -50,8 +51,9 @@ class ShoppingCartController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function checkout()
-    {
+    public function checkout(?Order $order)
+    { 
+        // $order = Order::where('id', $order->id);
         $items = Cart::content(auth()->user()->id);
         return view('cart.checkout', compact('items'));
     }
