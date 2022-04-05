@@ -19,6 +19,8 @@ Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
 Route::get('products/index', [ProductController::class, 'index'])->name('products.index');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
+Route::get('products/top', [ProductController::class, 'top'])->name('products.top');
+
 
 Route::resource('cart', ShoppingCartController::class)->only('index', 'store')->names('cart');
 
@@ -33,7 +35,6 @@ Route::post('cart/checkout', [ShoppingCartController::class, 'checkout'])->name(
 Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
 
 Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
-//Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
 
 Route::get('/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
 
@@ -45,3 +46,4 @@ Route::get('/debug-sentry', function () {
 Route::resource('/orders', OrderController::class)->names('orders')->except('destroy');
 
 Route::get('orders/cancel/{order}', [OrderController::class, 'cancel'])->name('orders.cancel');
+
