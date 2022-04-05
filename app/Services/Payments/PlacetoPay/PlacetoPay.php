@@ -2,20 +2,15 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
-use App\Models\Order;
-use PharIo\Manifest\Url;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Actions\Custom\CreateOrderAction;
 use App\Contracts\GatewayContract;
+use App\Models\Order;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Client\Response as ClientResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\RedirectResponse;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Services\Payments\PlacetoPay\Auth;
-use App\Services\Payments\PlacetoPay\Buyer;
-use PHPUnit\Framework\Constraint\JsonMatches;
-use Illuminate\Http\Client\Response as ClientResponse;
+use PharIo\Manifest\Url;
 
 class PlacetoPay implements GatewayContract
 {
@@ -43,7 +38,7 @@ class PlacetoPay implements GatewayContract
     public function createRequest(Request $request)
     {
         $this->buyer = Buyer::make($request);
-        $order = (new CreateOrderAction)->create($this->buyer, $this->reference);
+        $order = (new CreateOrderAction())->create($this->buyer, $this->reference);
         $order->description = $this->payment['description'];
 
         $dat = [
@@ -66,7 +61,7 @@ class PlacetoPay implements GatewayContract
         $order->processUrl = $response['processUrl'];
         $order->total = $this->payment['amount']['total'];
         $order->save();
-        
+
         return $response->json();
     }
 

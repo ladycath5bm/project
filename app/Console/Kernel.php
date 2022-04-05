@@ -28,15 +28,12 @@ class Kernel extends ConsoleKernel
                     if ($order->status == 'PENDING') {
                         info('log holis');
                         return true;
-                    } elseif ($order->status == 'APROVED')
-                        {
-                            Cart::destroy();
-                            return false;
-                    }else 
-                    {
+                    } elseif ($order->status == 'APPROVED') {
+                        Cart::destroy();
+                        return false;
+                    } else {
                         return false;
                     }
-                    
                 }
             );
         //info("holi");

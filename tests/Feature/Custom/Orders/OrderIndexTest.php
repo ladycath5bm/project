@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Custom\Orders;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class OrderIndexTest extends TestCase
@@ -15,6 +13,5 @@ class OrderIndexTest extends TestCase
         $response->assertOk();
         $response->assertViewIs('orders.index');
         $response->assertViewHas('orders');
- 
     }
 }

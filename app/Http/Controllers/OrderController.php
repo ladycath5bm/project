@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use App\Actions\Custom\CreateOrderAction;
+use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -21,7 +21,6 @@ class OrderController extends Controller
 
     public function create()
     {
-        
     }
 
     public function store(CreateOrderAction $createNewOrderAction, Request $request)
@@ -30,18 +29,16 @@ class OrderController extends Controller
     }
 
     public function show($id)
-    {   
+    {
         //
     }
 
     public function completed(int $id)
     {
         $order = Order::finOrfail('id', $id);
-        if($order->status == 'APROVED')
-        {
+        if ($order->status == 'APROVED') {
             Cart::destroy();
         }
-        
     }
 
     public function cancel(Order $order)
@@ -49,7 +46,7 @@ class OrderController extends Controller
         //dd($order);
         $orderCancel = Order::where('id', $order->id)->first();
         $orderCancel->status = 'REJECTED';
-        $orderCancel->save(); 
+        $orderCancel->save();
 
         //dd($orderCancel->first()->id);
         return redirect()->route('cart.index');

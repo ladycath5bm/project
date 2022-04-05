@@ -52,7 +52,7 @@ class ShoppingCartController extends Controller
     }
 
     public function checkout(?Order $order, request $request)
-    { 
+    {
         //dd($request->all());
         // $order = Order::where('id', $order->id);
         $items = Cart::content(auth()->user()->id);

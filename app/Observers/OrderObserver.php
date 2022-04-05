@@ -20,7 +20,7 @@ class OrderObserver
     }
     public function deleted(Order $order)
     {
-        Log::warning(['message, se ha borrado una orden' ], [
+        Log::warning(['message, se ha borrado una orden'], [
             'order_id' => $order->getKey(),
         ]);
     }
@@ -32,6 +32,4 @@ class OrderObserver
             'user_id' => auth()->id(),
         ];
     }
-
-
 }

@@ -21,5 +21,4 @@ class Payment
             'allowPartial' => false,
         ];
     }
-
 }

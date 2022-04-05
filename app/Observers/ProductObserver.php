@@ -32,5 +32,4 @@ class ProductObserver
             'uesr_id' => auth()->id(),
         ];
     }
-
 }

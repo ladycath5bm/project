@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\GatewayFactory;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -22,12 +21,11 @@ class PaymentController extends Controller
 
     public static function consult(int $id)
     {
-        if( isset($id))
-        {
+        if (isset($id)) {
             $order = Order::where('id', $id)->first();
-        }else {
+        } else {
             $order = Order::latest()->first();
-        }  
+        }
         //
         $response = PlacetoPay::getRequestInformation($order->requestId);
         //dd($response->json());
@@ -38,14 +36,14 @@ class PaymentController extends Controller
             $order->status = $responseTransaction['status'];
             $message = $responseTransaction['message'];
             $order->transactions = $response->json()['payment'];
-            //$order->save();
+        //$order->save();
         } else {
             //dd($response->json());
             $responseTransaction = $response->json()['payment'][0]['status'];
             $message = $responseTransaction['message'];
         }
         $order->save();
-       
+
         //echo 'holi, no mueriendo en el intento #6';
         //aqui un litener para borrar carrito de compras y bajar stock si es aprovada
         return view('consult', compact('order', 'message'));

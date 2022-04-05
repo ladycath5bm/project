@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Events\ProductVisited;
-use App\Models\ProductVisit;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -40,7 +39,7 @@ class ProductController extends Controller
         $userAgent = $request->userAgent();
 
         ProductVisited::dispatch($product, $request->ip(), $request->userAgent());
-        
+
         //pasar a una consulta e otra capa
         $categories = Category::all();
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
@@ -65,7 +64,7 @@ class ProductController extends Controller
     public function top(): View
     {
         dd('fum');
-        
+
         $categories = Category::all();
         dd($categories);
         return view('custom.products.top', compact('top', 'categories'));

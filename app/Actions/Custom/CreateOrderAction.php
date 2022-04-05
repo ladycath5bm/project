@@ -6,7 +6,6 @@ use App\Models\Order;
 
 class CreateOrderAction
 {
-
     public function create(array $data, ?int $reference): Order
     {
         $order = new Order();
