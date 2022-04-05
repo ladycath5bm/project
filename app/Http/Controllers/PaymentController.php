@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Services\Payments\GatewayFactory;
-use App\Services\Payments\PlacetoPay\PlacetoPay;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Services\Payments\GatewayFactory;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Services\Payments\PlacetoPay\PlacetoPay;
 
 class PaymentController extends Controller
 {
@@ -44,6 +45,7 @@ class PaymentController extends Controller
             $message = $responseTransaction['message'];
         }
         $order->save();
+       
         //echo 'holi, no mueriendo en el intento #6';
         //aqui un litener para borrar carrito de compras y bajar stock si es aprovada
         return view('consult', compact('order', 'message'));

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Actions\Custom\CreateOrderAction;
 use Illuminate\Contracts\View\View;
+use App\Actions\Custom\CreateOrderAction;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
 {
@@ -33,9 +34,14 @@ class OrderController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function completed(int $id)
     {
-        //
+        $order = Order::finOrfail('id', $id);
+        if($order->status == 'APROVED')
+        {
+            Cart::destroy();
+        }
+        
     }
 
     public function cancel(Order $order)
