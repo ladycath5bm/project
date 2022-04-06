@@ -65,7 +65,7 @@
                                 </button>
                             </div>
                             <div class="flex justify-items-end mt-4 text-xs text-orange-400 ">
-                                <a  href="{{ route('products.top') }}">Products most visited!</a>
+                                <a  href="{{ route('top') }}">Products most visited!</a>
                             </div>
                             
                         </div>

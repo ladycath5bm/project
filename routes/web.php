@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
 Route::get('products/index', [ProductController::class, 'index'])->name('products.index');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
-Route::get('products/top', [ProductController::class, 'top'])->name('products.top');
+Route::get('/top', [ProductController::class, 'top'])->name('top');
 
 Route::resource('cart', ShoppingCartController::class)->only('index', 'store')->names('cart');
 Route::post('cart', [ShoppingCartController::class, 'store'])->name('cart.store');

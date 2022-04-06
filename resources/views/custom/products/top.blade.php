@@ -24,7 +24,20 @@
     </div>
     @endsection
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-4 pb-4  bg-gray-100 rounded lg:rounded justify-between leading-normal">
-        
+       
+        @forelse ($top as $product)
+            <div>
+                <div>
+                    {{ $product }}
+                </div>
+            </div>
+        @empty
+            <div>
+                <span>
+                    Products not found
+                </span>
+            </div>
+        @endforelse
         
     </div>
 </x-app-layout>

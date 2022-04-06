@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\ProductVisited;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductVisit;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -63,10 +64,14 @@ class ProductController extends Controller
 
     public function top(): View
     {
-        dd('fum');
-
         $categories = Category::all();
-        dd($categories);
+        $top = ProductVisit::select('product_id')->selectRaw('count(product_id) as visits')
+            ->with('product:id,name')
+            ->groupBy('product_id')
+            ->orderBy('visits', 'DESC')
+            ->limit(10)
+            ->get();
+        //dd($top);
         return view('custom.products.top', compact('top', 'categories'));
     }
 }
