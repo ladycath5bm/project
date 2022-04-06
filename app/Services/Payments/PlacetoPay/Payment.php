@@ -16,7 +16,7 @@ class Payment
             'description' => 'Yoour payment for Ecom by webcheckout',
             'amount' => [
                 'currency' => 'COP',
-                'total' => $subtotal + 100000,
+                'total' => $subtotal,
                 ],
             'allowPartial' => false,
         ];
