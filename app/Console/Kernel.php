@@ -3,6 +3,8 @@
 namespace App\Console;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Log;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,14 +27,19 @@ class Kernel extends ConsoleKernel
                     $order = Order::latest()->first();
                     //info('helou');
                     if ($order->status == 'PENDING') {
-                        info('log holis');
+                        info('order PENDING, consulting ...');
                         return true;
-                    } else {
+                    } elseif ($order->status == 'APPROVED') {
+                        Cart::destroy();
+                        Log::info("shopping cart remove, payment aproved");
+                        info('shopping cart remove, transaction aproved');
+                        return false;
+                    }
+                    else {
                         return false;
                     }
                 }
             );
-        //info("holi");
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\ProductVisited;
+use App\Listeners\AddProductVisit;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -24,14 +26,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        ProductVisited::class => [
+            AddProductVisit::class,
+        ],
     ];
 
-    /**
-     * Register any events for your application.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         Product::observe(ProductObserver::class);
         Order::observe(OrderObserver::class);

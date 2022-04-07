@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductVisited;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductVisit;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -21,7 +24,6 @@ class ProductController extends Controller
             $products = Cache::get($key);
         } else {
             $products = Product::where('status', true)
-            //->where('user_id', auth()->user()->id)
             ->latest('id')
             ->paginate(8);
             Cache::put($key, $products);
@@ -32,9 +34,13 @@ class ProductController extends Controller
         return view('custom.products.index', compact('products', 'categories'));
     }
 
-    public function show(Product $product): View
+    public function show(Product $product, Request $request): View
     {
-        //dd($product);
+        $ip = $request->ip();
+        $userAgent = $request->userAgent();
+
+        ProductVisited::dispatch($product, $request->ip(), $request->userAgent());
+
         //pasar a una consulta e otra capa
         $categories = Category::all();
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
@@ -50,13 +56,22 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('category_id', $category->id)
-        //where('user_id', auth()->user()->id)
-
-            //  ->where('id', '!=', $product->id)
-
             ->where('status', true)
             ->paginate(9);
         $category_id = $category->id;
         return view('custom.products.index', compact('products', 'categories'));
+    }
+
+    public function top(): View
+    {
+        $categories = Category::all();
+        $top = ProductVisit::select('product_id')->selectRaw('count(product_id) as visits')
+            ->with('product:id,name')
+            ->groupBy('product_id')
+            ->orderBy('visits', 'DESC')
+            ->limit(10)
+            ->get();
+        //dd($top);
+        return view('custom.products.top', compact('top', 'categories'));
     }
 }

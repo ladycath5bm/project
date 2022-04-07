@@ -44,12 +44,12 @@
             </svg>
             </button>-->
 
-            <div id="app">
+            <div id="app"> 
                 <div>
                     <div class="flex bg-white justify-items-center">
                         <a class="bg-white flex text:sm rounded-md px-2" href="{{ route('cart.index') }}">
                             <span class="bg-white border border-orange-500 rounded-full flex items-center px-1 text-sm text-orange-700 font-bold">
-                                <Cart msg="1"/>
+                                <Cart msg={{ Cart::content()->count()}} />
                             </span> 
                             <span class="material-icons-sharp text-gray-400 hover:text-orange-500 text:sm">add_shopping_cart</span> 
                         </a>
@@ -68,15 +68,15 @@
 
             <div x-show="open" x-on:click.away=" open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-900" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                <!--<a href="{ route('') }}"></a>-->
+                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                <a href="{{ route('orders.index') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Your purchases</a>
                 @can('admin.home')
-                  <a href="{{ url('admin') }}" class="block px-4 py-2 text-sm text-gray-900" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>          
+                  <a href="{{ url('admin') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>          
                 @endcan
         
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-900" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); 
+                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); 
                         this.closest('form').submit();">
                     Sign out
                 </a>

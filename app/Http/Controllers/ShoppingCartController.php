@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
     public function index(): View
     {
+        //dd(Cart::restore("12"));
         if (Cart::content(auth()->user()->id)) {
             $items = Cart::content(auth()->user()->id);
         //dd($items);
         } else {
-            $items = Cart::Content();
+            $items = Cart::content();
         }
+        //dd($items);
         return view('cart.index', compact('items'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        //dd($id, $request->all());
+        Cart::update($id, $request->qty);
+        return redirect()->route('cart.index');
     }
 
     public function store(Request $request): RedirectResponse
@@ -33,7 +43,7 @@ class ShoppingCartController extends Controller
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
-        Cart::store(auth()->user()->id);
+        Cart::instance('default')->store((string) auth()->user()->id);
         return redirect()->route('cart.index');
     }
 
@@ -47,11 +57,12 @@ class ShoppingCartController extends Controller
     public function clear(): RedirectResponse
     {
         Cart::destroy();
-        return redirect()->route('products.index');
+        return redirect()->route('cart.index');
     }
 
-    public function checkout()
+    public function checkout(): View
     {
+        // $order = Order::where('id', $order->id);
         $items = Cart::content(auth()->user()->id);
         return view('cart.checkout', compact('items'));
     }

@@ -47,7 +47,7 @@
                             @endif
                         </div>
                         <div class="text-sm mx-4 mt-4 flex-col">
-                            <div class="text-gray-900 font-bold text-2xl mb-2">{{ $product->name }}</div>
+                            <div class="text-orange-600 font-bold text-2xl mb-2">{{ $product->name }}</div>
                             <p class="text-sm text-gray-600 flex items-center mb-2">
                                 {{  $product->description }}
                             </p>
@@ -55,7 +55,18 @@
                             <p class="text-gray-900 leading-none"><strong>Code: </strong>{{ $product->code }}</p>
                             <p class="text-gray-600 mb-4"><strong>Stock: </strong>{{ $product->stock }}</p>
 
-                            <a href=# class="btn-custom btn-primary rounded justify-center text-white text-xl">Buy</a>
+                            <div class="flex items-center justify-center">
+                                <form id="add-cart-{{ $product->id }}" action="{{ route('cart.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                </form>
+                                <button type="submit" class="btn-custom px-6 hover:text-orange-700 hover:bg-orange-300 rounded-md bg-orange-600 justify-center text-white font-bold text-sm  hover:ring-orange-300" form="add-cart-{{ $product->id }}">
+                                    Buy
+                                </button>
+                            </div>
+                            <div class="flex justify-items-end mt-4 text-xs text-orange-400 ">
+                                <a  href="{{ route('top') }}">Products most visited!</a>
+                            </div>
                             
                         </div>
                         
