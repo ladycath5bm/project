@@ -21,11 +21,14 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('products/index/{category}', [ProductController::class, 'showByCategory'])->name('products.showbycategory');
 Route::get('/top', [ProductController::class, 'top'])->name('top');
 
-Route::resource('cart', ShoppingCartController::class)->only('index', 'store')->names('cart');
+//Route::resource('cart', ShoppingCartController::class)->only('index', 'store')->names('cart');
+Route::get('cart', [ShoppingCartController::class, 'index'])->name('cart.index');
 Route::post('cart', [ShoppingCartController::class, 'store'])->name('cart.store');
+Route::post('cart/checkout', [ShoppingCartController::class, 'checkout'])->name('cart.checkout');
+Route::patch('cart/update/{product}', [ShoppingCartController::class, 'update'])->name('cart.update');
+
 Route::delete('cart/clear', [ShoppingCartController::class, 'clear'])->name('cart.clear');
 Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('cart.remove');
-Route::post('cart/checkout', [ShoppingCartController::class, 'checkout'])->name('cart.checkout');
 
 Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
 Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');

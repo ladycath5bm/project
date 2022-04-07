@@ -19,15 +19,21 @@ class ConsultPaymentStatusJob implements ShouldQueue
 
     protected array $responseTransaction;
 
+    protected int $id;
+
     public function __construct()
     {
-        //
+        $this->id = Order::latest()
+            //select('id', 'customer_id')
+            //->where('customer_id','=' , auth()->user()->id)
+            //->latest()  
+            ->first()
+            ->id;
     }
 
     public function handle()
     {
         //consulta
-        $id = Order::latest()->first()->id;
-        $consult = PaymentController::consult((int)$id);
+        $consult = PaymentController::consult((int)$this->id);
     }
 }

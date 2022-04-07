@@ -20,13 +20,15 @@ class ShoppingCartController extends Controller
         } else {
             $items = Cart::content();
         }
-        
+        //dd($items);
         return view('cart.index', compact('items'));
     }
 
-    public function update()
+    public function update(Request $request, string $id)
     {
-        //
+        //dd($id, $request->all());
+        Cart::update($id, $request->qty);
+        return redirect()->route('cart.index');
     }
 
     public function store(Request $request): RedirectResponse
@@ -58,9 +60,8 @@ class ShoppingCartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function checkout(?Order $order, request $request)
+    public function checkout(): View
     {
-        //dd($request->all());
         // $order = Order::where('id', $order->id);
         $items = Cart::content(auth()->user()->id);
         return view('cart.checkout', compact('items'));

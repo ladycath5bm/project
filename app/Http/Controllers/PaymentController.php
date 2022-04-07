@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Services\Payments\GatewayFactory;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,6 @@ class PaymentController extends Controller
     {
         $gateway = GatewayFactory::make('placetopay');
         $response = $gateway->pay($request);
-        //dd($response);
 
         return redirect()->to($response['processUrl']);
     }
@@ -26,9 +26,9 @@ class PaymentController extends Controller
         } else {
             $order = Order::latest()->first();
         }
-        //
+
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        //dd($response->json());
+
         if ($response->successful()) {
             //dd($response->json()['status']);
             $responseSesion = $response->json()['status'];
@@ -36,15 +36,17 @@ class PaymentController extends Controller
             $order->status = $responseTransaction['status'];
             $message = $responseTransaction['message'];
             $order->transactions = $response->json()['payment'];
-        //$order->save();
         } else {
-            //dd($response->json());
             $responseTransaction = $response->json()['payment'][0]['status'];
             $message = $responseTransaction['message'];
         }
+
         $order->save();
 
-        //echo 'holi, no mueriendo en el intento #6';
+        if ($order->status == 'APPROVED') {
+            Cart::destroy();
+        }
+
         //aqui un litener para borrar carrito de compras y bajar stock si es aprovada
         return view('consult', compact('order', 'message'));
     }

@@ -26,12 +26,13 @@ class Kernel extends ConsoleKernel
                     $order = Order::latest()->first();
                     //info('helou');
                     if ($order->status == 'PENDING') {
-                        info('log holis');
+                        info('order PENDING, consulting ...');
                         return true;
                     } elseif ($order->status == 'APPROVED') {
                         Cart::destroy();
                         return false;
-                    } else {
+                    }
+                    else {
                         return false;
                     }
                 }

@@ -49,7 +49,7 @@
                     <div class="flex bg-white justify-items-center">
                         <a class="bg-white flex text:sm rounded-md px-2" href="{{ route('cart.index') }}">
                             <span class="bg-white border border-orange-500 rounded-full flex items-center px-1 text-sm text-orange-700 font-bold">
-                                <Cart msg={{ Cart::count() }} />
+                                <Cart msg={{ Cart::content()->count()}} />
                             </span> 
                             <span class="material-icons-sharp text-gray-400 hover:text-orange-500 text:sm">add_shopping_cart</span> 
                         </a>

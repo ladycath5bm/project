@@ -6,14 +6,14 @@
                 <span class="flex justify-center font-bold text-gray-800 text-3xl">Cart Shopping</span>
             </div>
             <div class="px-10 mt-4">
-                <span class="text-gray-600 text-xl mx-4 font-bold">Products: {{ Cart::count() }}</span> 
+                <span class="text-gray-600 text-xl mx-4 font-bold">Products: {{ Cart::content()->count() }}</span> 
             </div>
             <div class="sm:px-2 md:px-10 lg:px-10 bg-white border-b border-gray-200 flex">
                 
                 <div class="bg-white w-full">
                     
                     <div class="bg-white rounded-lg text-center w-full gap-5">
-                        @foreach ($items as $item)
+                        @forelse ($items as $item)
                             <div class="border rounded-md shadow-md px-2 py-2 mb-6 mt-6">
                                 <div class="flex w-full">
                                     <div class="w-1/4">
@@ -38,43 +38,54 @@
                                     <div class="w-1/4 mt-6">
                                         <div class="flex justify-center">
                                             <div class="mb-3 xl:w-96">
-                                              <select name="qty" id="qty" class="form-select form-select-sm btn-sele" aria-label=".form-select-sm">
-                                                <option selected="{{ $item->qty }}">{{ $item->qty }}</option>|
-                                                @if($item->options['stock'] <= 5)
-                                                    @for ( $stock = 1;  $stock <= $item->options['stock']; $stock++)
-                                                        @if (1 == $item->qty and $stock == 1)
-                                                            break;
+                                                <form name="update" action="{{ route('cart.update', $item->rowId) }}" method="POST" id="update">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <input type="hidden" name="id" value="{{ $item->id}}" >
+                                                    <select name="qty" id="qty" class="form-select form-select-sm btn-sele" aria-label=".form-select-sm">
+                                                        <option selected="{{ $item->qty }}">{{ $item->qty }}</option>|
+                                                        @if($item->options['stock'] <= 5)
+                                                            @for ( $stock = 1;  $stock <= $item->options['stock']; $stock++)
+                                                                @if (1 == $item->qty and $stock == 1)
+                                                                    break;
+                                                                @else
+                                                                    <option value="{{ $stock }}">{{ $stock }}</option>
+                                                                @endif
+                                                            @endfor
                                                         @else
-                                                            <option value="{{ $stock }}">{{ $stock }}</option>
+                                                            @for ( $stock = 1; $stock <= 8; $stock++)
+                                                                @if (1 == $item->qty and $stock == 1)
+                                                                    break;
+                                                                @else
+                                                                    <option value="{{ $stock }}">{{ $stock }}</option>
+                                                                @endif
+                                                             @endfor
                                                         @endif
-                                                    @endfor
-                                                @else
-                                                    @for ( $stock = 1; $stock <= 8; $stock++)
-                                                    @if (1 == $item->qty and $stock == 1)
-                                                        break;
-                                                    @else
-                                                        <option value="{{ $stock }}">{{ $stock }}</option>
-                                                    @endif
-                                                        @endfor
-                                                    @endif
-                                                
-                                              </select>
+                                                    </select>
+                                                </form>
+                                              
+                                                <button name="update" type="submit" class="text-sm text-orange-500" form="update">
+                                                    Update
+                                                </button>
                                             </div>
                                         </div>
                                         <div>
-                                            <form id="delete" action="{{ route('cart.remove', $item->rowId) }}" method="POST">
+                                            <form name="delete" id="delete" action="{{ route('cart.remove', $item->rowId) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="id" value="{{ $item->rowId }}">
                                             </form>
-                                            <button type="submit" class="text-sm text-orange-500" form="delete">
+                                            <button name="delete" type="submit" class="text-sm text-orange-500" form="delete">
                                                 Delete
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                        
+                        @empty
+                            <span class="text-gray-800 text-lg font-bold">Cart empty</span>        
+                        @endforelse
                     </div>
                     <div class="py-4 px-6 flex justify-between rounded-md mb-4 border-2 border-orange-500">
                         <a class="text-gray-800 text-lg font-bold" href="{{ route('products.index') }}">Keep shopping</a>
@@ -82,7 +93,7 @@
                             @csrf
                             @method('DELETE')
                         </form>
-                        <button type="submit" form="clear">Clear cart</button>
+                        <button type="submit" name="clear" form="clear">Clear cart</button>
                     </div>
                     
                 </div>
@@ -148,10 +159,11 @@
                         </table>
                     </div>
                     <div class="flex items-center justify-center">
-                        <form action="{{ route('cart.checkout') }}" method="POST" id="checkout">
+                        <form name="checkout" action="{{ route('cart.checkout') }}" method="POST" id="checkout">
                             @csrf
+                            @method('POST')
                         </form>
-                        <button type="submit" form="checkout" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
+                        <button type="submit" form="checkout" name="checkout" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
                             Continue
                         </button>
                     </div>
