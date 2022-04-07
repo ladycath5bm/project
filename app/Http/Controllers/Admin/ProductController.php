@@ -37,12 +37,8 @@ class ProductController extends Controller
     {
         $product = $createNewProduct->create($request->validated());
         if ($request->hasfile('file')) {
-            //$file = $request->file('file');
-            //$fileName = $file->hashName();
-            //$file->storeAs('public', $fileName);
             $request->file('file')->storeAs('public', $request->file('file')->hashName());
             $product->images()->create(['url' => $request->file('file')->hashName()]);
-            //$product->images()->create(['url' => $fileName]);
         }
 
         Cache::flush();

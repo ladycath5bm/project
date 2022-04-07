@@ -13,6 +13,8 @@ class CreateOrdersTable extends Migration
             $table->string('customerName')->nullable();
             $table->string('customerEmail')->nullable();
             $table->string('customerDocument')->nullable();
+            $table->string('customerPhone')->nullable();
+            $table->string('customerAddress')->nullable();
             $table->json('transactions')->nullable();
             $table->char('reference', 6)->nullable();
             $table->char('requestId')->nullable();
@@ -22,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('description')->nullable();
             $table->foreignId('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }

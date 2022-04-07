@@ -2,18 +2,19 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class Buyer
 {
-    public static function make(Request $request): array
+    public static function make(Order $order): array
     {
         return [
-            'name' => $request->name,
-            'document' => $request->document,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'address' => $request->address,
+            'name' => $order->name,
+            'document' => $order->document,
+            'email' => $order->email,
+            'mobile' => $order->mobile,
+            'address' => $order->address,
         ];
     }
 }

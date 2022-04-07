@@ -14,7 +14,7 @@ class PayPal implements GatewayContract
         $this->key = config('payments.gateways.paypal.key');
     }
 
-    public function pay(): array
+    public function pay(Order $order): array
     {
         return ["Estamos pagandpo usando paypal Key: {$this->key}"];
     }

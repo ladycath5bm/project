@@ -7,13 +7,13 @@ use Illuminate\Support\Collection;
 
 class Payment
 {
-    public static function make(int $reference, Collection $items): array
+    public static function make(int $reference): array
     {
         $subtotal = (int)Cart::subtotal(auth()->user()->id);
         //dd($items);
         return [
             'reference' => $reference,
-            'description' => 'Yoour payment for Ecom by webcheckout',
+            'description' => 'Your payment for Ecom by webcheckout',
             'amount' => [
                 'currency' => 'COP',
                 'total' => $subtotal,

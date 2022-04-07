@@ -4,7 +4,7 @@
             <span class="flex justify-center font-bold text-orange-600 text-3xl">Consult your payment</span>
         </div>
         <div class="px-12 mt-8 flex items-start justify-start">
-            <span class="flex justify-center text-gray-700 text-sm">Your transaction has been {{ $message }}, see the detail</span>
+            <span class="flex justify-center text-gray-700 text-sm">{{ $message }}, mira el detalle</span>
         </div>
         <div class="bg-white rounded-lg dhadow-sm p-6  text-center flex flex-col gap-5 mt-4  mx-10">
             <table>

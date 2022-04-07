@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $order)
+                    @forelse ($orders as $order)
                     <tr class="rounded-md border-b">
                         <td class="px-6 py-3 text-gray-600 text-xs">{{ $order->created_at }}</td>
                         <td class="px-6 py-3 text-gray-600 text-sm"><a href="#" class="hover:text-orange-500">{{ $order->reference }}</a></td>
@@ -26,12 +26,18 @@
                                 {{ $order->status }}    
                                 <br>
                                 <a class="text-xs hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Retray payment</a>
+                            @elseif($order->status == "CREATED")
+                                {{ $order->status }}
+                                <br>
+                                <a class="text-xs hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Pay</a>
                             @else
                                 {{ $order->status }}
                             @endif
                         </td>          
                     </tr>
-                    @endforeach
+                    @empty 
+                        <span class="px-6 py-2 text-sm text-gray-700">Ups! you don't have orders</span>
+                    @endforelse
                 </tbody>
             </table>
             

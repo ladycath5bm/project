@@ -3,7 +3,9 @@
 namespace App\Services\Payments\PlacetoPay;
 
 use App\Actions\Custom\CreateOrderAction;
+use App\Actions\Custom\UpdateOrderAction;
 use App\Contracts\GatewayContract;
+use App\Http\Controllers\OrderController;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Client\Response as ClientResponse;
@@ -26,62 +28,61 @@ class PlacetoPay implements GatewayContract
     public function __construct()
     {
         $this->items = Cart::content(auth()->user()->id);
-        $this->reference = Order::latest()->first()->reference + 1;
+        //$this->reference = Order::latest()->first()->reference + 1;
         $this->auth = Auth::make();
-        $this->buyer = [];
-        $this->payment = Payment::make($this->reference, $this->items);
+        //$this->buyer = [];
+        //$this->payment = Payment::make($this->reference);
         $this->url = 'https://dev.placetopay.com/redirection/api/session/';
         $this->returnURL = '/consult/';
         $this->cancelUrl = '/orders/cancel/';
     }
 
-    public function createRequest(Request $request)
+    public function createRequest(Order $order)//Request $request)
     {
-        $this->buyer = Buyer::make($request);
-        $order = (new CreateOrderAction())->create($this->buyer, $this->reference);
-        $order->description = $this->payment['description'];
+        $buyer = Buyer::make($order);
+        $payment = Payment::make($order->reference);
+        //$order = (new CreateOrderAction())->create($this->buyer, $this->reference);
 
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $this->auth,
-                'buyer' => $this->buyer,
-                'payment' => $this->payment,
+                'buyer' => $buyer,
+                'payment' => $payment,
                 'expiration' => date('c', strtotime('+15 min')),
                 'returnUrl' => url($this->returnURL . $order->id),
-                //'returnUrl' => url($this->returnURL . $order->id),
                 'cancelUrl' => url($this->cancelUrl . $order->id),
                 'ipAddress' => app(Request::class)->getClientIp(),
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];
-        //dd($dat);
         $response = Http::acceptJson()->post(url($this->url), $dat);
+        
+
+        $order = (new UpdateOrderAction)->update($order, $payment, $response['requestId'], $response['processUrl']);
+
+        //$order->description = $this->payment['description'];
+        //$order->requestId = $response['requestId'];
+        //$order->processUrl = $response['processUrl'];
+        //$order->total = $this->payment['amount']['total'];
+        //$order->save();
         //dd($response->json());
-
-        $order->requestId = $response['requestId'];
-        $order->processUrl = $response['processUrl'];
-        $order->total = $this->payment['amount']['total'];
-        $order->save();
-
         return $response->json();
     }
 
     public static function getRequestInformation(string $requestId): ClientResponse
     {
-        //dd($requestId);
         $url = url('https://dev.placetopay.com/redirection/api/session/' . $requestId);
         $data = [
             'auth' => Auth::make(),
         ];
 
         $response = Http::post($url, $data);
-        //dd($response->json());
         return $response;
     }
 
     public function pay(Request $request): array
     {
-        $response = $this->createRequest($request);
+        $order = OrderController::store($request);
+        $response = $this->createRequest($order);
         return $response;
-        //return redirect()->away($response['processUrl']);
     }
 }

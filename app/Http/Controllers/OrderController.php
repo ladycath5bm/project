@@ -2,30 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Custom\CreateOrderAction;
 use App\Models\Order;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Client\Response;
+use Illuminate\Http\RedirectResponse;
+use App\Actions\Custom\CreateOrderAction;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Services\Payments\PlacetoPay\Buyer;
+use App\Services\Payments\PlacetoPay\Payment;
 
 class OrderController extends Controller
 {
     public function index(): View
     {
-        $orders = Order::where('customer_id', auth()->user()->id)
+        $orders = Order::select('id', 'total', 'description', 'status', 'created_at','reference', 'requestId', 'processUrl')
+            ->where('customer_id', auth()->user()->id)
             ->latest('id')
             ->paginate(5);
-        //dd($orders->toArray());
         return view('orders.index', compact('orders'));
     }
 
-    public function create()
+    public static function store(Request $request): Order
     {
-    }
-
-    public function store(CreateOrderAction $createNewOrderAction, Request $request)
-    {
-        //$order = $createNewOrderAction->create($request->validated());
+        $createNewOrderAction = new CreateOrderAction(); 
+        $reference = Order::select('id')->latest()->first()->reference + 1;
+        $order = $createNewOrderAction->create($request, $reference);
+       
+        return $order;
     }
 
     public function show($id)
@@ -41,14 +45,13 @@ class OrderController extends Controller
         }
     }
 
-    public function cancel(Order $order)
+    public function cancel(Order $order): RedirectResponse
     {
-        //dd($order);
         $orderCancel = Order::where('id', $order->id)->first();
         $orderCancel->status = 'REJECTED';
         $orderCancel->save();
 
-        //dd($orderCancel->first()->id);
         return redirect()->route('cart.index');
     }
+
 }
