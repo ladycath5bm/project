@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Http;
 
 class PlacetoPay implements GatewayContract
 {
-    protected int $reference;
     protected array $auth;
     protected array $buyer;
     protected array $payment;
@@ -30,13 +29,13 @@ class PlacetoPay implements GatewayContract
 
     public function createRequest(Order $order)
     {
-        $buyer = Buyer::make($order);
-        $payment = Payment::make($order->reference);
+        $this->buyer = Buyer::make($order);
+        $this->payment = Payment::make($order->reference);
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $this->auth,
-                'buyer' => $buyer,
-                'payment' => $payment,
+                'buyer' => $this->buyer,
+                'payment' => $this->payment,
                 'expiration' => date('c', strtotime('+15 min')),
                 'returnUrl' => url($this->returnURL . $order->id),
                 'cancelUrl' => url($this->cancelUrl . $order->id),
@@ -45,7 +44,7 @@ class PlacetoPay implements GatewayContract
         ];
         $response = Http::acceptJson()->post(url($this->url), $dat);
 
-        $order = (new UpdateOrderAction())->update($order, $payment, $response['requestId'], $response['processUrl']);
+        $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
 
         return $response->json();
     }

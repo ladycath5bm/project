@@ -18,14 +18,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
 
         $schedule->command('consult:payment')
             ->everyMinute()
             ->when(
                 function () {
                     $order = Order::latest()->first();
-                    //info('helou');
+                    
                     if ($order->status == 'PENDING') {
                         info('order PENDING, consulting ...');
                         return true;
