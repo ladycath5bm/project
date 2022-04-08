@@ -3,7 +3,6 @@
 namespace App\Actions\Custom;
 
 use App\Models\Order;
-use Illuminate\Http\Client\Response;
 
 class UpdateOrderAction
 {
@@ -14,7 +13,7 @@ class UpdateOrderAction
         $order->processUrl = $processUrl;
         $order->total = $payment['amount']['total'];
         $order->save();
-        
+
         return $order;
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Jobs\ConsultPaymentStatusJob;
-use App\Models\User;
 use Illuminate\Console\Command;
 
 class ConsultPaymentStatusCommand extends Command

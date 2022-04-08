@@ -31,13 +31,12 @@ Route::delete('cart/clear', [ShoppingCartController::class, 'clear'])->name('car
 Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('cart.remove');
 
 Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
-Route::get('/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
-Route::get('/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
+Route::get('pay/consult/{order}', [PaymentController::class, 'consult'])->name('consult');
+Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
+Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('cancel');
 
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
 });
 
 Route::resource('/orders', OrderController::class)->names('orders')->except('destroy');
-
-Route::get('orders/cancel/{order}', [OrderController::class, 'cancel'])->name('orders.cancel');

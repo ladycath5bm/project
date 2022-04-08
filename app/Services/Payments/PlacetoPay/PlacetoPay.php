@@ -2,21 +2,16 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
-use App\Actions\Custom\CreateOrderAction;
 use App\Actions\Custom\UpdateOrderAction;
 use App\Contracts\GatewayContract;
 use App\Http\Controllers\OrderController;
 use App\Models\Order;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use PharIo\Manifest\Url;
 
 class PlacetoPay implements GatewayContract
 {
-    protected Collection $items;
     protected int $reference;
     protected array $auth;
     protected array $buyer;
@@ -27,22 +22,16 @@ class PlacetoPay implements GatewayContract
 
     public function __construct()
     {
-        $this->items = Cart::content(auth()->user()->id);
-        //$this->reference = Order::latest()->first()->reference + 1;
         $this->auth = Auth::make();
-        //$this->buyer = [];
-        //$this->payment = Payment::make($this->reference);
         $this->url = 'https://dev.placetopay.com/redirection/api/session/';
-        $this->returnURL = '/consult/';
-        $this->cancelUrl = '/orders/cancel/';
+        $this->returnURL = '/pay/consult/';
+        $this->cancelUrl = '/pay/cancel/';
     }
 
-    public function createRequest(Order $order)//Request $request)
+    public function createRequest(Order $order)
     {
         $buyer = Buyer::make($order);
         $payment = Payment::make($order->reference);
-        //$order = (new CreateOrderAction())->create($this->buyer, $this->reference);
-
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $this->auth,
@@ -55,16 +44,9 @@ class PlacetoPay implements GatewayContract
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];
         $response = Http::acceptJson()->post(url($this->url), $dat);
-        
 
-        $order = (new UpdateOrderAction)->update($order, $payment, $response['requestId'], $response['processUrl']);
+        $order = (new UpdateOrderAction())->update($order, $payment, $response['requestId'], $response['processUrl']);
 
-        //$order->description = $this->payment['description'];
-        //$order->requestId = $response['requestId'];
-        //$order->processUrl = $response['processUrl'];
-        //$order->total = $this->payment['amount']['total'];
-        //$order->save();
-        //dd($response->json());
         return $response->json();
     }
 

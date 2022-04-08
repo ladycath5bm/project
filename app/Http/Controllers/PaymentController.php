@@ -24,7 +24,9 @@ class PaymentController extends Controller
             ->where('id', $id)
             ->where('customer_id', auth()->user()->id)
             ->first();
+
         $response = PlacetoPay::getRequestInformation($order->requestId);
+
         $responsePayment = $response->json()['payment'];
         //dd($response);
         if ($response->successful()) {
@@ -35,11 +37,10 @@ class PaymentController extends Controller
                 $order->status = $responseTransaction['status'];
                 $message = $responseTransaction['message'];
                 $order->transactions = $responsePayment;
-            }else{
-                $order->status = $responseSesion['status'];
+            } else {
+                $order->status = $responseSesion['status'] . '-EXPIRED';
                 $message = $responseSesion['message'];
             }
-            
         } else {
             $responseTransaction = $responsePayment[0]['status'];
             $message = $responseTransaction['message'];
@@ -49,17 +50,19 @@ class PaymentController extends Controller
         return view('consult', compact('order', 'message'));
     }
 
-    public function retray(int $id)
+    public function retray(int $id): RedirectResponse
     {
         $order = Order::where('id', $id)->first();
         return redirect()->to($order->processUrl);
     }
 
-    // public function payContinue(Order $order): RedirectResponse
-    // {
-    //     $gateway = GatewayFactory::make('placetopay');
-    //     $response = $gateway->pay($request);
+    public function cancel(Order $order): RedirectResponse
+    {
+        $orderCancel = Order::select('id', 'status')
+            ->where('id', $order->id)->first();
+        $orderCancel->status = 'REJECTED';
+        $orderCancel->save();
 
-    //     return redirect()->to($response['processUrl']);
-    // }
+        return redirect()->route('orders.index');
+    }
 }

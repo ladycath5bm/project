@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('description')->nullable();
             $table->foreignId('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('users');
-            
+
             $table->timestamps();
         });
     }

@@ -3,10 +3,10 @@
 namespace App\Console;
 
 use App\Models\Order;
-use Illuminate\Support\Facades\Log;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,11 +31,10 @@ class Kernel extends ConsoleKernel
                         return true;
                     } elseif ($order->status == 'APPROVED') {
                         Cart::destroy();
-                        Log::info("shopping cart remove, payment aproved");
+                        Log::info('shopping cart remove, payment aproved');
                         info('shopping cart remove, transaction aproved');
                         return false;
-                    }
-                    else {
+                    } else {
                         return false;
                     }
                 }

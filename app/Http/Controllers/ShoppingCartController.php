@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
@@ -43,7 +43,7 @@ class ShoppingCartController extends Controller
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
-        Cart::instance('default')->store((string) auth()->user()->id);
+        Cart::instance('default')->store((string)auth()->user()->id);
         return redirect()->route('cart.index');
     }
 

@@ -26,7 +26,7 @@ class ConsultPaymentStatusJob implements ShouldQueue
         $this->id = Order::latest()
             //select('id', 'customer_id')
             //->where('customer_id','=' , auth()->user()->id)
-            //->latest()  
+            //->latest()
             ->first()
             ->id;
     }

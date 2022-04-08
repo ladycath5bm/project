@@ -3,7 +3,6 @@
 namespace App\Services\Payments\PlacetoPay;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
 
 class Buyer
 {

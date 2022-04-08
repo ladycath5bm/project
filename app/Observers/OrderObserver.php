@@ -3,8 +3,8 @@
 namespace App\Observers;
 
 use App\Models\Order;
-use Illuminate\Support\Facades\Log;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Log;
 
 class OrderObserver
 {

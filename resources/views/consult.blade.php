@@ -28,6 +28,10 @@
                                 {{ $order->status }}    
                                 <br>
                                 <a class="text-xs hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Retray payment</a>
+                            @elseif($order->status == "CREATED")
+                                {{ $order->status }}
+                                <br>
+                                <a class="text-xs hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Pay</a>
                             @else
                                 {{ $order->status }}
                             @endif
