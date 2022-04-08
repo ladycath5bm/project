@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Custom\CreateOrderAction;
 use App\Models\Order;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Actions\Custom\CreateOrderAction;
+use App\Http\Requests\Orders\OrderStoreRequest;
+use Illuminate\Http\RedirectResponse;
 
 class OrderController extends Controller
 {
@@ -19,17 +21,13 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public static function store(Request $request): Order
+    public function store(OrderStoreRequest $request): RedirectResponse
     {
         $createNewOrderAction = new CreateOrderAction();
 
-        $reference = Order::select('reference')
-            ->where('customer_id', auth()->user()->id)
-            ->latest('id')->first()->reference + 1;
-            
-        $order = $createNewOrderAction->create($request, $reference);
+        $order = $createNewOrderAction->create($request->validated());
 
-        return $order;
+        return redirect()->route('pay', $order);
     }
 
     public function show($id)

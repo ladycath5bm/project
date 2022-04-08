@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function pay(Request $request): RedirectResponse
+    public function pay(Order $order): RedirectResponse
     {
         $gateway = GatewayFactory::make('placetopay');
-        $response = $gateway->pay($request);
+        $response = $gateway->pay($order);
 
         return redirect()->to($response['processUrl']);
     }
 
-    public static function consult(int $id)
+    public function consult(int $id)
     {
         $order = Order::select('id', 'status', 'requestId', 'processUrl', 'transactions', 'created_at', 'customerName', 'customerEmail', 'reference')
             ->where('id', $id)

@@ -2,9 +2,8 @@
 
 namespace App\Contracts;
 
-use Illuminate\Http\Request;
-
+use App\Models\Order;
 interface GatewayContract
 {
-    public function pay(Request $request): array;
+    public function pay(Order $order): array;
 }

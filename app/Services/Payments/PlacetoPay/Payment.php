@@ -8,7 +8,7 @@ class Payment
 {
     public static function make(int $reference): array
     {
-        $subtotal = (int)Cart::subtotal(auth()->user()->id);
+        $subtotal = Cart::subtotal(2, '.', '');
 
         return [
             'reference' => $reference,

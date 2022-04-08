@@ -27,10 +27,10 @@ class PlacetoPay implements GatewayContract
         $this->cancelUrl = '/pay/cancel/';
     }
 
-    public function createRequest(Order $order)
+    protected function createRequest(Order $order)
     {
         $this->buyer = Buyer::make($order);
-        $this->payment = Payment::make($order->reference);
+        $this->payment = Payment::make((int)$order->reference);
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $this->auth,
@@ -42,8 +42,9 @@ class PlacetoPay implements GatewayContract
                 'ipAddress' => app(Request::class)->getClientIp(),
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];
+        
         $response = Http::acceptJson()->post(url($this->url), $dat);
-
+       
         $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
 
         return $response->json();
@@ -60,10 +61,8 @@ class PlacetoPay implements GatewayContract
         return $response;
     }
 
-    public function pay(Request $request): array
+    public function pay(Order $order): array
     {
-        $order = OrderController::store($request);
-        $response = $this->createRequest($order);
-        return $response;
+        return $this->createRequest($order);
     }
 }

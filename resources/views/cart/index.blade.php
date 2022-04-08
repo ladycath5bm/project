@@ -159,13 +159,8 @@
                         </table>
                     </div>
                     <div class="flex items-center justify-center">
-                        <form name="checkout" action="{{ route('cart.checkout') }}" method="POST" id="checkout">
-                            @csrf
-                            @method('POST')
-                        </form>
-                        <button type="submit" form="checkout" name="checkout" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
-                            Continue
-                        </button>
+                        <a class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white" href="{{ route('cart.checkout') }}">Continue</a>
+                        
                     </div>
                 </div>
                 
