@@ -1,7 +1,7 @@
 <template>
     <div>
         hola
-    </div>
+    </div> 
 </template>
 
 <script>
@@ -14,7 +14,6 @@ export default {
     name: 'App',
     components: {
         Cart,
-        
     }
 }
 </script>

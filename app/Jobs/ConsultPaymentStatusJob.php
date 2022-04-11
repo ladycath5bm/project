@@ -34,6 +34,5 @@ class ConsultPaymentStatusJob implements ShouldQueue
     public function handle()
     {
         //consulta
-        $consult = PaymentController::consult((int)$this->id);
     }
 }

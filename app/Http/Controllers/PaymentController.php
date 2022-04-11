@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Services\Payments\GatewayFactory;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
@@ -27,22 +28,22 @@ class PaymentController extends Controller
 
         $response = PlacetoPay::getRequestInformation($order->requestId);
 
-        $responsePayment = $response->json()['payment'];
-        //dd($response);
         if ($response->successful()) {
             $responseSesion = $response->json()['status'];
-
+       
             if ($responseSesion['status'] != 'REJECTED') {
+                $responsePayment = $response->json()['payment'];
                 $responseTransaction = $responsePayment[0]['status'];
                 $order->status = $responseTransaction['status'];
                 $message = $responseTransaction['message'];
                 $order->transactions = $responsePayment;
             } else {
-                $order->status = $responseSesion['status'] . '-EXPIRED';
+                $order->status = $responseSesion['status'];
                 $message = $responseSesion['message'];
             }
         } else {
-            $responseTransaction = $responsePayment[0]['status'];
+            //dd($response->json());
+            $responseTransaction = $response->json()['status'];
             $message = $responseTransaction['message'];
         }
 
@@ -60,7 +61,7 @@ class PaymentController extends Controller
     {
         $orderCancel = Order::select('id', 'status')
             ->where('id', $order->id)->first();
-        $orderCancel->status = 'REJECTED';
+        $orderCancel->status = OrderStatus::REJECTED;
         $orderCancel->save();
 
         return redirect()->route('orders.index');

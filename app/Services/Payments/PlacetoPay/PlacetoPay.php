@@ -4,7 +4,6 @@ namespace App\Services\Payments\PlacetoPay;
 
 use App\Actions\Custom\UpdateOrderAction;
 use App\Contracts\GatewayContract;
-use App\Http\Controllers\OrderController;
 use App\Models\Order;
 use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
@@ -16,35 +15,32 @@ class PlacetoPay implements GatewayContract
     protected array $buyer;
     protected array $payment;
     protected string $url;
-    protected string $returnURL;
-    protected string $cancelUrl;
 
     public function __construct()
     {
         $this->auth = Auth::make();
-        $this->url = 'https://dev.placetopay.com/redirection/api/session/';
-        $this->returnURL = '/pay/consult/';
-        $this->cancelUrl = '/pay/cancel/';
+        $this->url = config('payments.gateways.placetopay.url');
     }
 
     protected function createRequest(Order $order)
     {
         $this->buyer = Buyer::make($order);
-        $this->payment = Payment::make((int)$order->reference);
+        $this->payment = Payment::make($order);
+
         $dat = [
                 'locale' => 'es_CO',
                 'auth' => $this->auth,
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
-                'expiration' => date('c', strtotime('+15 min')),
-                'returnUrl' => url($this->returnURL . $order->id),
-                'cancelUrl' => url($this->cancelUrl . $order->id),
+                'expiration' => date('c', strtotime('+45 min')),
+                'returnUrl' => route('consult', $order),
+                'cancelUrl' => route('cancel', $order),
                 'ipAddress' => app(Request::class)->getClientIp(),
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];
-        
+
         $response = Http::acceptJson()->post(url($this->url), $dat);
-       
+
         $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
 
         return $response->json();
@@ -52,7 +48,7 @@ class PlacetoPay implements GatewayContract
 
     public static function getRequestInformation(string $requestId): ClientResponse
     {
-        $url = url('https://dev.placetopay.com/redirection/api/session/' . $requestId);
+        $url = url(config('payments.gateways.placetopay.url') . $requestId);
         $data = [
             'auth' => Auth::make(),
         ];
