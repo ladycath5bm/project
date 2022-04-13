@@ -21,16 +21,6 @@ class ConsultPaymentStatusJob implements ShouldQueue
 
     protected int $id;
 
-    public function __construct()
-    {
-        $this->id = Order::latest()
-            //select('id', 'customer_id')
-            //->where('customer_id','=' , auth()->user()->id)
-            //->latest()
-            ->first()
-            ->id;
-    }
-
     public function handle()
     {
         //consulta

@@ -31,7 +31,6 @@ class ConsultPaymentStatusCommand extends Command
         $orders = Order::select('id', 'status', 'requestId')
             ->where('status', '=', OrderStatus::PENDING)
             ->get();
-        Log::info('commmand por consult paymetn status run..');
         if ($orders->isNotEmpty()) {
             Log::info('Consult payment status for orders in PENDING status');
 

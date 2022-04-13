@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
 use Illuminate\Http\RedirectResponse;
@@ -34,6 +35,12 @@ class PaymentController extends Controller
 
     public function retray(Order $order): RedirectResponse
     {
+    
+        foreach ($order->products as $product) {
+            
+            Product::find($product->id)->decrement('stock', $product->pivot->quantity);
+        }
+
         return $this->pay($order);
     }
 
@@ -41,9 +48,11 @@ class PaymentController extends Controller
     {
         $orderCancel = Order::select('id', 'status')
             ->where('id', $order->id)->first();
+
         $orderCancel->status = OrderStatus::REJECTED;
         $orderCancel->save();
-        $order = ConsultPaymentStatusAction::updateOrderRejected($order);
+
+        ConsultPaymentStatusAction::updateOrderRejected($order);
 
         return redirect()->route('orders.index');
     }

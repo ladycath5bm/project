@@ -10,14 +10,13 @@ class Payment
 {
     public static function make(Order $order): array
     {
-        $subtotal = Cart::subtotal();
 
         return [
             'reference' => $order->reference,
             'description' => trans('payment.description'),
             'amount' => [
                 'currency' => Currencies::COP,
-                'total' => $subtotal,
+                'total' => $order->total,
                 ],
             'allowPartial' => false,
         ];
