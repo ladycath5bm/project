@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\OrderStatus;
 use App\Models\Order;
+use Illuminate\Http\Request;
+use App\Constants\OrderStatus;
+use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\GatewayFactory;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Actions\Custom\ConsultPaymentStatusAction;
 
 class PaymentController extends Controller
 {
@@ -15,46 +16,25 @@ class PaymentController extends Controller
     {
         $gateway = GatewayFactory::make('placetopay');
         $response = $gateway->pay($order);
-
-        return redirect()->to($response['processUrl']);
+        
+        return redirect()->away($response['processUrl']);
     }
 
-    public function consult(int $id)
+    public function consult(Order $order)
     {
         $order = Order::select('id', 'status', 'requestId', 'processUrl', 'transactions', 'created_at', 'customerName', 'customerEmail', 'reference')
-            ->where('id', $id)
+            ->where('id', $order->id)
             ->where('customer_id', auth()->user()->id)
             ->first();
-
-        $response = PlacetoPay::getRequestInformation($order->requestId);
-
-        if ($response->successful()) {
-            $responseSesion = $response->json()['status'];
-       
-            if ($responseSesion['status'] != 'REJECTED') {
-                $responsePayment = $response->json()['payment'];
-                $responseTransaction = $responsePayment[0]['status'];
-                $order->status = $responseTransaction['status'];
-                $message = $responseTransaction['message'];
-                $order->transactions = $responsePayment;
-            } else {
-                $order->status = $responseSesion['status'];
-                $message = $responseSesion['message'];
-            }
-        } else {
-            //dd($response->json());
-            $responseTransaction = $response->json()['status'];
-            $message = $responseTransaction['message'];
-        }
-
-        $order->save();
-        return view('consult', compact('order', 'message'));
+        
+        $order = (new ConsultPaymentStatusAction())->consult($order);
+        
+        return view('consult', compact('order'));
     }
 
-    public function retray(int $id): RedirectResponse
+    public function retray(Order $order): RedirectResponse
     {
-        $order = Order::where('id', $id)->first();
-        return redirect()->to($order->processUrl);
+        return $this->pay($order);
     }
 
     public function cancel(Order $order): RedirectResponse
@@ -63,6 +43,7 @@ class PaymentController extends Controller
             ->where('id', $order->id)->first();
         $orderCancel->status = OrderStatus::REJECTED;
         $orderCancel->save();
+        $order = ConsultPaymentStatusAction::updateOrderRejected($order);
 
         return redirect()->route('orders.index');
     }

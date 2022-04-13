@@ -2,11 +2,8 @@
 
 namespace App\Console;
 
-use App\Models\Order;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,25 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 
-        $schedule->command('consult:payment')
-            ->everyMinute()
-            ->when(
-                function () {
-                    $order = Order::latest()->first();
-                    
-                    if ($order->status == 'PENDING') {
-                        info('order PENDING, consulting ...');
-                        return true;
-                    } elseif ($order->status == 'APPROVED') {
-                        Cart::destroy();
-                        Log::info('shopping cart remove, payment aproved');
-                        info('shopping cart remove, transaction aproved');
-                        return false;
-                    } else {
-                        return false;
-                    }
-                }
-            );
+        $schedule->command('consult:payment')->everyMinute();
+        $schedule->command('consult:order')->everyThirtyMinutes();
     }
 
     /**

@@ -5,7 +5,6 @@ namespace App\Actions\Custom;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;

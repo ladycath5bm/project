@@ -32,7 +32,7 @@ class PlacetoPay implements GatewayContract
                 'auth' => $this->auth,
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
-                'expiration' => date('c', strtotime('+45 min')),
+                'expiration' => date('c', strtotime('+15 min')),
                 'returnUrl' => route('consult', $order),
                 'cancelUrl' => route('cancel', $order),
                 'ipAddress' => app(Request::class)->getClientIp(),
