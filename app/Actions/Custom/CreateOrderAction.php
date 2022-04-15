@@ -14,6 +14,7 @@ class CreateOrderAction
     public function create(array $data): Order
     {
         return DB::transaction(function() use ($data) {
+            
             $order = new Order();
             $order->status = OrderStatus::CREATED;
             $order->reference = $this->createReference();
@@ -22,6 +23,7 @@ class CreateOrderAction
             $order->customerEmail = $data['email'];
             $order->customerPhone = $data['mobile'];
             $order->customerAddress = $data['address'];
+            $order->total = Cart::subtotal();
             $order->customer()->associate(auth()->id());
             $order->save();
 

@@ -34,7 +34,7 @@
                 
                 <div class="max-w-sm h-full lg:max-w-full mt-2">
                     
-                    <div class="border border-gray-400 lg:border-gray-400 bg-white rounded lg:rounded p-4 justify-between leading-normal">
+                    <div class=" bg-white shadow-md rounded lg:rounded p-4 justify-between leading-normal">
                       
                       <div class="flex items-center mb-4 mt-4">
                         
@@ -60,7 +60,7 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $product->id }}">
                                 </form>
-                                <button type="submit" class="btn-custom px-6 hover:text-orange-700 hover:bg-orange-300 rounded-md bg-orange-600 justify-center text-white font-bold text-sm  hover:ring-orange-300" form="add-cart-{{ $product->id }}">
+                                <button type="submit" class="btn-custom w-full hover:text-orange-700 hover:bg-orange-300 rounded-md bg-orange-600 justify-center text-white font-bold text-sm  hover:ring-orange-300" form="add-cart-{{ $product->id }}">
                                     Buy
                                 </button>
                             </div>

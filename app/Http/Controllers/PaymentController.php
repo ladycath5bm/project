@@ -21,21 +21,8 @@ class PaymentController extends Controller
         return redirect()->away($response['processUrl']);
     }
 
-    public function consult(Order $order)
-    {
-        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'transactions', 'created_at', 'customerName', 'customerEmail', 'reference')
-            ->where('id', $order->id)
-            ->where('customer_id', auth()->user()->id)
-            ->first();
-        
-        $order = (new ConsultPaymentStatusAction())->consult($order);
-        
-        return view('consult', compact('order'));
-    }
-
     public function retray(Order $order): RedirectResponse
     {
-    
         foreach ($order->products as $product) {
             
             Product::find($product->id)->decrement('stock', $product->pivot->quantity);

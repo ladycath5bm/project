@@ -56,7 +56,7 @@
                 <button type="submit" form="payment" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mb-2 rounded-md">
                     Pay
                 </button>
-                
+
                 <div class="mt-6 mb-4 flex">
                     <div class="btn-group">
                         

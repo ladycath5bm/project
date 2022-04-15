@@ -26,7 +26,7 @@
 }
 
 .btn-custom {
-    @apply px-24 py-2 
+    @apply  py-2 
 }
 
 .btn-primary {

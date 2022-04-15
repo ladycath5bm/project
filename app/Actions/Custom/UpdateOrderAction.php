@@ -11,7 +11,6 @@ class UpdateOrderAction
         $order->description = $payment['description'];
         $order->requestId = $requestId;
         $order->processUrl = $processUrl;
-        $order->total = $payment['amount']['total'];
         $order->save();
 
         return $order;

@@ -12,13 +12,14 @@
                         <th class="px-6 py-2 text-sm text-gray-700" scope="col">Description</th>
                         <th class="px-6 py-2 text-sm text-gray-700" scope="col">Total</th>
                         <th class="px-6 py-2 text-sm text-gray-700" scope="col">Status</th>
+                        <th class="px-6 py-2 text-sm text-gray-700" scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
                     <tr class="rounded-md border-b">
                         <td class="px-6 py-3 text-gray-600 text-xs">{{ $order->created_at }}</td>
-                        <td class="px-6 py-3 text-gray-600 text-sm"><a href="#" class="hover:text-orange-500">{{ $order->reference }}</a></td>
+                        <td class="px-6 py-3 text-gray-600 text-sm"><a href="{{ route('orders.show', $order) }}" class="hover:text-orange-500">{{ $order->reference }}</a></td>
                         <td class="px-6 py-3 text-gray-600 text-sm">{{ $order->description }}</td>
                         <td class="px-6 py-3 text-gray-600 text-sm">{{ $order->total }}</td>
                         <td class="px-6 py-3 text-gray-600 text-sm">
@@ -33,7 +34,19 @@
                             @else
                                 {{ $order->status }}
                             @endif
-                        </td>          
+                        </td> 
+                        <td>
+                            <form action="{{ route('orders.destroy', $order) }}" method="POST" id="delete" name="delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" name="delete" class="text-orange-500">
+                                    <span class="material-icons hover:text-orange-400">
+                                        delete_forever
+                                    </span>
+                                        
+                                </button>
+                            </form>
+                        </td>         
                     </tr>
                     @empty 
                         <span class="px-6 py-2 text-sm text-gray-700">Ups! you don't have orders</span>

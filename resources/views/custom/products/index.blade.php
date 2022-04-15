@@ -68,7 +68,7 @@
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{ $product->id }}">
                                                         </form>
-                                                        <button type="submit" class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white" form="add-cart-{{ $product->id }}">
+                                                        <button type="submit" class="btn-custom bg-white w-full justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white" form="add-cart-{{ $product->id }}">
                                                             Buy
                                                         </button>
                                                     </div>
