@@ -8,7 +8,7 @@
         </div>
         <div class="bg-white rounded-lg dhadow-sm p-6  text-center flex flex-col gap-5 mt-4  mx-10">
             <table>
-                <thead>
+                <thead class="bg-gray-200 rounded-md">
                     <tr>
                         <th class="px-6 py-2 text-md text-gray-700" scope="col">Date</th>
                         <th class="px-6 py-2 text-md text-gray-700" scope="col">Name</th>
@@ -39,6 +39,9 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="bg-gray-50 rounded-lg dhadow-sm px-6 mt-1 mx-10 flex"> 
+            <a href="{{ route('orders.index') }}" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mt-2 mb-2 rounded-md">Back</a>
         </div>
     </div>
 </x-app-layout>

@@ -59,9 +59,7 @@
 
                 <div class="mt-6 mb-4 flex">
                     <div class="btn-group">
-                        
                         <a class="btn px-6 py-2 bg-gray-900 text-sm text-white  rounded-md " href="{{ route('cart.index') }}">Cancel</a>
-                       
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ class OrderController extends Controller
         $orders = Order::select('id', 'total', 'description', 'status', 'created_at', 'reference', 'requestId', 'processUrl')
             ->where('customer_id', auth()->user()->id)
             ->latest('id')
-            ->paginate(5);
+            ->paginate(10);
 
         return view('orders.index', compact('orders'));
     }

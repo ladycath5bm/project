@@ -17,7 +17,7 @@ Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); 
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
@@ -37,4 +37,3 @@ Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('c
 Route::get('/pay/{order}', [PaymentController::class, 'pay'])->name('pay');
 Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
 Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('cancel');
-
