@@ -38,11 +38,11 @@
                                     </div>
                                     <div class="w-1/4 mt-6">
                                         <div class="flex justify-center">
-                                            <div class="mb-3 xl:w-96 flex">
+                                            <div class="mb-3 xl:w-96">
                                                 <form id="update" action="{{ route('cart.update') }}" method="POST" >
                                                     @csrf
                                                     <input type="hidden" name="id" id="id" value="{{ $item->rowId }}">
-                                                    <select name="qty" id="qty" class="form-select form-select-sm btn-sele" >
+                                                    <select name="qty" id="qty" class="form-select form-select-sm btn-sele">
                                                         <option selected="{{ $item->qty }}">{{ $item->qty }}</option>|
                                                         @if($item->options['stock'] <= 5)
                                                             @for ( $stock = 1;  $stock <= $item->options['stock']; $stock++)
@@ -62,12 +62,12 @@
                                                              @endfor
                                                         @endif
                                                     </select>
-                                                    <button type="submit" class="text-sm text-orange-500">
+                                                    <button type="submit" class="text-sm text-orange-500 justify-center text-center">
                                                         Update
                                                     </button>
                                                 </form>                                    
                                             </div>
-                                            <div class="flex justify-center mt-2 pr-2">
+                                            <div class="flex justify-center mt-2 px-3">
                                                 <form name="delete" id="delete" action="{{ route('cart.remove', $item->rowId) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -103,7 +103,7 @@
                             </button>
                         </form>
                         
-                    </div>updat
+                    </div>
                     
                 </div>
                 

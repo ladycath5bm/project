@@ -32,7 +32,7 @@ class PlacetoPay implements GatewayContract
                 'auth' => $this->auth,
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
-                'expiration' => date('c', strtotime('+15 min')),
+                'expiration' => date('c', strtotime('+45 min')),
                 'returnUrl' => route('orders.show', $order),
                 'cancelUrl' => route('cancel', $order),
                 'ipAddress' => app(Request::class)->getClientIp(),
@@ -40,8 +40,10 @@ class PlacetoPay implements GatewayContract
         ];
 
         $response = Http::acceptJson()->post(url($this->url), $dat);
-        $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
 
+        if ($response->successful()) {
+            $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
+        }
         return $response->json();
     }
 

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use Illuminate\Http\Request;
+use App\Actions\Custom\ConsultPaymentStatusAction;
+use App\Actions\Custom\CreateOrderAction;
 use App\Constants\OrderStatus;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Orders\OrderStoreRequest;
+use App\Models\Order;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Actions\Custom\CreateOrderAction;
-use App\Http\Requests\Orders\OrderStoreRequest;
-use App\Actions\Custom\ConsultPaymentStatusAction;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -35,26 +34,23 @@ class OrderController extends Controller
 
     public function show(Order $order): View
     {
-        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'transactions', 'created_at', 'customerName', 'customerEmail', 'reference')
+        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'created_at', 'customerName', 'customerEmail', 'reference')
             ->where('id', $order->id)
             ->where('customer_id', auth()->user()->id)
             ->first();
-        
+
         $order = (new ConsultPaymentStatusAction())->consult($order);
-        
+
         return view('orders.show', compact('order'));
     }
 
-    public function destroy(Order $order)
+    public function destroy(Order $order): RedirectResponse
     {
-        //dd($order);
         if ($order->status == OrderStatus::REJECTED) {
-            
             DB::table('order_product')->where('order_id', $order->id)->delete();
             $order->delete();
         }
-        
+
         return redirect()->route('orders.index')->with('information', 'Order deleted successfully!');
     }
-
 }

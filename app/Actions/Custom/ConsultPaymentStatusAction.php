@@ -13,6 +13,7 @@ class ConsultPaymentStatusAction
 {
     public function consult(Order $order): Order
     {
+        
         $response = PlacetoPay::getRequestInformation($order->requestId);
         $order = $this->updateStatus($response, $order);
 
@@ -26,14 +27,19 @@ class ConsultPaymentStatusAction
     private function updateStatus(Response $response, Order $order): Order
     {
         if ($response->successful()) {
+            
             $responseSesion = $response->json()['status'];
-
+            
             if ($responseSesion['status'] != 'REJECTED') {
-                $responsePayment = $response->json()['payment'];
-                $responseTransaction = $responsePayment[0]['status'];
-                $order->status = $responseTransaction['status'];
-                $message = $responseTransaction['message'];
-                $order->transactions = $responsePayment;
+
+                if ($response->json()['payment'] != null) {
+
+                    $responsePayment = $response->json()['payment'];
+                    $responseTransaction = $responsePayment[0]['status'];
+                    $order->status = $responseTransaction['status'];
+                    $message = $responseTransaction['message'];
+                    $order->transactions = $responsePayment;
+                }
             } else {
                 $order->status = $responseSesion['status'];
                 $message = $responseSesion['message'];
@@ -43,7 +49,7 @@ class ConsultPaymentStatusAction
             $responseSesion = $response->json()['status'];
             $message = $responseSesion['message'];
         }
-
+        //dd($order);
         $order->save();
         return $order;
     }

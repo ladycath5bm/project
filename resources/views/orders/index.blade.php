@@ -8,28 +8,28 @@
                 <div class="card text-center rounded-md border">
                     <div class="card-header bg-gray-200 rounded-t flex">
                         <div class="basis-1/4">
-                            <div class="flex justify-items-start mx-4 mt-2 text-xs">
+                            <div class="flex justify-items-start mx-6 mt-2 text-xs">
                                 <span>DATE</span>
                             </div>
-                            <div class="flex justify-items-start mx-4  mb-2 text-xs">
+                            <div class="flex justify-items-start mx-6  mb-2 text-xs">
                                 <span>{{ $order->created_at }}</span>
                             </div>
                         </div>
                         <div class="basis-1/4">
-                            <div class="flex justify-items-start mx-4 mt-2 text-xs">
+                            <div class="flex justify-items-start mx-6 mt-2 text-xs">
                                 <span>TOTAL</span>                       
                             </div>
-                            <div class="flex justify-items-start mx-4 mb-2  text-xs">
+                            <div class="flex justify-items-start mx-6 mb-2  text-xs">
                                 <span class="text-orange-600 font-bold">$ {{ $order->total }}</span>
                             </div>
                         </div>
                         <div class="basis-3/4">
-                            <div class="flex justify-end mx-4 mt-2 text-xs">
+                            <div class="flex justify-end mx-6 mt-2 text-xs">
                                 <span>REFERENCIA N. 
                                     <span class="font-bold">{{ $order->reference }}</span>
                                 </span>
                             </div>
-                            <div class="flex justify-end mx-4 mb-2  text-xs">
+                            <div class="flex justify-end mx-6 mb-2  text-xs">
                                 <span >
                                     <a class=" text-gray-600 hover:text-orange-600" href="{{ route('orders.show', $order) }}">Detalle de la orden  |</a>
                                 </span>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="w-full ml-2 mt-6">
                                     <div class="flex justify-items-start">
-                                        <span class="text-lg font-bold text-gray-700 justify-start">{{ $product->name }}</span>
+                                        <span class="text-md font-bold text-gray-700 justify-start">{{ $product->name }}</span>
                                     </div>
                                     <div class="flex justify-start">
                                         <span class="text-sm text-gray-600 text-left ">{{ $product->description }}</span>
@@ -64,7 +64,7 @@
                                     
                                 </div>
                                 <div class="w-full font-semibold text-gray-700 mr-4 justify-end mt-6">
-                                    <span class="text-md">$ {{ $product->price }} Und</span>
+                                    <span class="text-sm">$ {{ $product->price }} Und</span>
                                 </div>    
                             </div>
                             
@@ -110,7 +110,7 @@
                                 @method('DELETE')
                                 <button type="submit" name="delete" class="text-orange-500">
                                     @if($order->status == "REJECTED")
-                                        <span class="material-icons hover:text-orange-400">
+                                        <span class="mt-3 material-icons hover:text-orange-400">
                                             delete_forever
                                         </span>
                                     @endif

@@ -53,15 +53,14 @@
                         <span class="text-danger">{{ $message }}</span>    
                     @enderror
                 </form>
-                <button type="submit" form="payment" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mb-2 rounded-md">
-                    Pay
-                </button>
-
-                <div class="mt-6 mb-4 flex">
-                    <div class="btn-group">
-                        <a class="btn px-6 py-2 bg-gray-900 text-sm text-white  rounded-md " href="{{ route('cart.index') }}">Cancel</a>
-                    </div>
+                <div class="flex justify-between mt-4 ">
+                    <button type="submit" form="payment" class="px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 rounded-md justify-center">
+                        Pay
+                    </button>
+                    
+                    <a class="px-6 py-2 bg-gray-900 text-sm text-white  rounded-md " href="{{ route('cart.index') }}">Cancel</a>
                 </div>
+                
             </div>
             
         </div>
@@ -106,10 +105,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="mx-4 text-md text-gray-500  mt-4 mb-4">Shipping</span>
+                            <span class="mx-4 text-sm text-gray-500  mt-4 mb-4">Shipping</span>
                         </td>
                         <td>
-                            <span class="mx-4 text-md text-gray-500  mt-4 mb-4">$ 00000</span>
+                            <span class="mx-4 text-sm text-gray-500  mt-4 mb-4">$ 00000</span>
                         </td>
                     </tr>
                     
@@ -122,7 +121,7 @@
                         </td>
                         <td>
                             <hr/>
-                            <span class="mx-4 text-xl text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
+                            <span class="mx-4 text-md text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
                         </td>
                     </tr>
                 </tfoot>
