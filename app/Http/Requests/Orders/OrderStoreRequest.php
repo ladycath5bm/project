@@ -10,7 +10,6 @@ class OrderStoreRequest extends FormRequest
     public function authorize(): bool
     {
         return Cart::content()->isNotEmpty();
-        
     }
 
     public function rules(): array

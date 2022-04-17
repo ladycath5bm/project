@@ -8,11 +8,6 @@ class AdminProductStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        /**if ($this->user_id == auth()->user()->id) {
-            return true;
-        } else {
-            return false;
-        }**/
         return true;
     }
 
