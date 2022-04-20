@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Ecom</b>',
-    'logo_img' => 'storage/logo_home.png',
+    'logo_img' => 'storage/logo_home.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

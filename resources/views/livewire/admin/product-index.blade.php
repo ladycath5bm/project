@@ -1,8 +1,10 @@
-    <div class="card">   
+<div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add products</a>
-        <input wire:model="search" class="form-control-sm float-left" placeholder="Search">
+        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add product</a>
+        <!--<a class="btn btn-success btn-sm mx-4 float-none " href="{ route('admin.products.export') }">Export</a>-->
+        
+        <input wire:model="search" class="form-control-sm float-left mt-2 mx-2" placeholder="Search">
 
     </div>
     @if($products->count())
@@ -18,7 +20,7 @@
             
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
@@ -38,7 +40,9 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                        <h3>Upds, no tienes productos registrados aún</h3>
+                    @endforelse
                 </tbody>
             </table>
         </div>

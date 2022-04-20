@@ -94,12 +94,6 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-
         document.getElementById("file").addEventListener('change', changeImage);
 
         function changeImage(event){

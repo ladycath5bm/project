@@ -18,13 +18,19 @@ class ProductController extends Controller
     {
         $this->middleware('can:admin.products.index');
     }
+
     public function index(): View
+    {
+        return view('admin.products.index');
+    }
+
+    public function list(): View
     {
         //se puede pasar a un scope
         $products = Product::where('user_id', auth()->user()->id)
             ->latest('id')
             ->paginate(5);
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.list', compact('products'));
     }
 
     public function create(): View

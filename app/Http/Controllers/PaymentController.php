@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
 use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\GatewayFactory;
-use App\Services\Payments\PlacetoPay\PlacetoPay;
 use App\Actions\Custom\ConsultPaymentStatusAction;
 
 class PaymentController extends Controller

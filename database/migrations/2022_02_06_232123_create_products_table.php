@@ -21,9 +21,11 @@ class CreateProductsTable extends Migration
 
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();
+            //$table->foreignId('customer_id')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('customer_id')->references('id')->on('users');
 
             $table->timestamps();
         });

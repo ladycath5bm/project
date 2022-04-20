@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div >
+    <div>
         <p class="text-lg text-gray-500">You can manage your products, here!</p>
         <div class="row">
             <div class="col-lg-6">
@@ -17,16 +17,15 @@
                       <a href="{{ route('admin.categories.index') }}"><strong>Categories</strong></a>
                   </div>
               </div>
-            </div><div class="col-lg-6">
+            </div>
+            <div class="col-lg-6">
                 <div class="card">
                   <img class="card-img-top" height="400px" src="http://2.bp.blogspot.com/-VYLtIPZylS0/UR668BqVYxI/AAAAAAAA28E/n1YpNLfoD78/s1600/Hermoso-Atardecer-en-la-Playa-y-palmeras-HDR_Paisajes-de-Playas-en-HDR.jpg" alt="">
                     <div class="card-footer">
                         <a href="{{ route('admin.products.index') }}"><strong>Products</strong></a>
                     </div>
                 </div>
-              </div>
-          </div>
+            </div>
+        </div>
     </div>
-</div>
-
 @stop
