@@ -42,9 +42,9 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: composer testdox
+      run: composer test-u
 
-    - name: Execute php-cs-fixer
+    - name: Execute phpcs
       run: composer phpcs_validate
 
     - name: Prepare paths for SonarQube analysis

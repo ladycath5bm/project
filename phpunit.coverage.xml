@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1650558365">
-  <project timestamp="1650558365">
+<coverage generated="1650581588">
+  <project timestamp="1650581588">
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Admin/Products/CreateNewProduct.php">
       <class name="App\Actions\Admin\Products\CreateNewProduct" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="12" coveredelements="0"/>
