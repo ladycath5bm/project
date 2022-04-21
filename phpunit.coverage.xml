@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1650513184">
-  <project timestamp="1650513184">
+<coverage generated="1650558365">
+  <project timestamp="1650558365">
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Admin/Products/CreateNewProduct.php">
       <class name="App\Actions\Admin\Products\CreateNewProduct" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="12" coveredelements="0"/>
@@ -99,92 +99,92 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Fortify/CreateNewUser.php">
       <class name="App\Actions\Fortify\CreateNewUser" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
       </class>
-      <line num="21" type="method" name="create" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <metrics loc="37" ncloc="31" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
+      <line num="21" type="method" name="create" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <metrics loc="37" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Fortify/PasswordValidationRules.php">
       <class name="App\Actions\Fortify\PasswordValidationRules" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="9" type="method" name="passwordRules" visibility="protected" complexity="1" crap="2" count="0"/>
-      <line num="11" type="stmt" count="0"/>
-      <metrics loc="14" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      <line num="9" type="method" name="passwordRules" visibility="protected" complexity="1" crap="1" count="5"/>
+      <line num="11" type="stmt" count="5"/>
+      <metrics loc="14" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Fortify/ResetUserPassword.php">
       <class name="App\Actions\Fortify\ResetUserPassword" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
       </class>
-      <line num="20" type="method" name="reset" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <metrics loc="31" ncloc="24" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+      <line num="20" type="method" name="reset" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <metrics loc="31" ncloc="24" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Fortify/UpdateUserPassword.php">
       <class name="App\Actions\Fortify\UpdateUserPassword" namespace="global">
-        <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="11" coveredelements="0"/>
+        <metrics complexity="3" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
       </class>
-      <line num="20" type="method" name="update" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <metrics loc="36" ncloc="29" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="11" coveredelements="0"/>
+      <line num="20" type="method" name="update" visibility="public" complexity="3" crap="3" count="3"/>
+      <line num="22" type="stmt" count="3"/>
+      <line num="23" type="stmt" count="3"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="25" type="stmt" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="3"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <metrics loc="36" ncloc="29" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Fortify/UpdateUserProfileInformation.php">
       <class name="App\Actions\Fortify\UpdateUserProfileInformation" namespace="global">
-        <metrics complexity="5" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="19" coveredelements="0"/>
+        <metrics complexity="5" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="10" elements="19" coveredelements="10"/>
       </class>
-      <line num="19" type="method" name="update" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
+      <line num="19" type="method" name="update" visibility="public" complexity="4" crap="4.07" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
       <line num="28" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="1"/>
       <line num="33" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
       <line num="49" type="method" name="updateVerifiedUser" visibility="protected" complexity="1" crap="2" count="0"/>
       <line num="51" type="stmt" count="0"/>
       <line num="52" type="stmt" count="0"/>
       <line num="53" type="stmt" count="0"/>
       <line num="55" type="stmt" count="0"/>
       <line num="57" type="stmt" count="0"/>
-      <metrics loc="60" ncloc="46" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="19" coveredelements="0"/>
+      <metrics loc="60" ncloc="46" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="10" elements="19" coveredelements="10"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Jetstream/DeleteUser.php">
       <class name="App\Actions\Jetstream\DeleteUser" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </class>
-      <line num="15" type="method" name="delete" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      <line num="15" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Console/Commands/ConsultOrderStatusCommand.php">
       <class name="App\Console\Commands\ConsultOrderStatusCommand" namespace="global">
@@ -230,9 +230,9 @@
       <line num="16" type="method" name="schedule" visibility="protected" complexity="1" crap="2" count="0"/>
       <line num="18" type="stmt" count="0"/>
       <line num="19" type="stmt" count="0"/>
-      <line num="27" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="1"/>
-      <line num="29" type="stmt" count="1"/>
-      <line num="31" type="stmt" count="1"/>
+      <line num="27" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="37"/>
+      <line num="29" type="stmt" count="37"/>
+      <line num="31" type="stmt" count="37"/>
       <metrics loc="34" ncloc="23" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" elements="6" coveredelements="3"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Constants/Currencies.php">
@@ -268,8 +268,8 @@
       <class name="App\Exceptions\Handler" namespace="global">
         <metrics complexity="4" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="6" coveredelements="4"/>
       </class>
-      <line num="30" type="method" name="register" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="32" type="stmt" count="1"/>
+      <line num="30" type="method" name="register" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="32" type="stmt" count="12"/>
       <line num="37" type="method" name="report" visibility="public" complexity="3" crap="3.33" count="1"/>
       <line num="39" type="stmt" count="1"/>
       <line num="40" type="stmt" count="0"/>
@@ -304,18 +304,16 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/CategoryController.php">
       <class name="App\Http\Controllers\Admin\CategoryController" namespace="global">
-        <metrics complexity="7" methods="7" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="1" elements="18" coveredelements="2"/>
+        <metrics complexity="6" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="16" coveredelements="8"/>
       </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="16" type="stmt" count="1"/>
-      <line num="19" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="26" type="method" name="create" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="31" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
+      <line num="19" type="method" name="index" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="21" type="stmt" count="2"/>
+      <line num="23" type="stmt" count="2"/>
+      <line num="26" type="method" name="create" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="28" type="stmt" count="2"/>
+      <line num="31" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
       <line num="37" type="method" name="edit" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="39" type="stmt" count="0"/>
       <line num="42" type="method" name="update" visibility="public" complexity="1" crap="2" count="0"/>
@@ -324,7 +322,7 @@
       <line num="49" type="method" name="destroy" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="51" type="stmt" count="0"/>
       <line num="52" type="stmt" count="0"/>
-      <metrics loc="55" ncloc="53" classes="1" methods="7" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="1" elements="18" coveredelements="2"/>
+      <metrics loc="55" ncloc="48" classes="1" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="5" elements="16" coveredelements="8"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/HomeController.php">
       <class name="App\Http\Controllers\Admin\HomeController" namespace="global">
@@ -336,20 +334,18 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/ProductController.php">
       <class name="App\Http\Controllers\Admin\ProductController" namespace="global">
-        <metrics complexity="10" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="32" coveredelements="0"/>
+        <metrics complexity="9" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="4" elements="30" coveredelements="7"/>
       </class>
-      <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="22" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="24" type="stmt" count="0"/>
+      <line num="22" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="24" type="stmt" count="1"/>
       <line num="27" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="30" type="stmt" count="0"/>
       <line num="31" type="stmt" count="0"/>
       <line num="32" type="stmt" count="0"/>
       <line num="33" type="stmt" count="0"/>
-      <line num="36" type="method" name="create" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
+      <line num="36" type="method" name="create" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="38" type="stmt" count="3"/>
+      <line num="39" type="stmt" count="3"/>
       <line num="42" type="method" name="store" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="44" type="stmt" count="0"/>
       <line num="45" type="stmt" count="0"/>
@@ -357,8 +353,8 @@
       <line num="47" type="stmt" count="0"/>
       <line num="50" type="stmt" count="0"/>
       <line num="52" type="stmt" count="0"/>
-      <line num="55" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="57" type="stmt" count="0"/>
+      <line num="55" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="57" type="stmt" count="1"/>
       <line num="60" type="method" name="edit" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="62" type="stmt" count="0"/>
       <line num="63" type="stmt" count="0"/>
@@ -370,7 +366,7 @@
       <line num="75" type="stmt" count="0"/>
       <line num="76" type="stmt" count="0"/>
       <line num="77" type="stmt" count="0"/>
-      <metrics loc="80" ncloc="79" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="32" coveredelements="0"/>
+      <metrics loc="80" ncloc="75" classes="1" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="4" elements="30" coveredelements="7"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/ProductModulesController.php">
       <class name="App\Http\Controllers\Admin\ProductModulesController" namespace="global">
@@ -391,10 +387,8 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/UserController.php">
       <class name="App\Http\Controllers\Admin\UserController" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="9" coveredelements="0"/>
       </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
       <line num="19" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="21" type="stmt" count="0"/>
       <line num="22" type="stmt" count="0"/>
@@ -404,7 +398,7 @@
       <line num="31" type="method" name="update" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="33" type="stmt" count="0"/>
       <line num="34" type="stmt" count="0"/>
-      <metrics loc="37" ncloc="37" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+      <metrics loc="37" ncloc="32" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="9" coveredelements="0"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Controller.php">
       <class name="App\Http\Controllers\Controller" namespace="global">
@@ -414,14 +408,14 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/OrderController.php">
       <class name="App\Http\Controllers\OrderController" namespace="global">
-        <metrics complexity="5" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="22" coveredelements="0"/>
+        <metrics complexity="5" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="5" elements="22" coveredelements="6"/>
       </class>
-      <line num="16" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
+      <line num="16" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
       <line num="26" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="28" type="stmt" count="0"/>
       <line num="30" type="stmt" count="0"/>
@@ -438,7 +432,7 @@
       <line num="50" type="stmt" count="0"/>
       <line num="51" type="stmt" count="0"/>
       <line num="54" type="stmt" count="0"/>
-      <metrics loc="57" ncloc="57" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="22" coveredelements="0"/>
+      <metrics loc="57" ncloc="57" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="5" elements="22" coveredelements="6"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/PaymentController.php">
       <class name="App\Http\Controllers\PaymentController" namespace="global">
@@ -543,16 +537,16 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Livewire/Admin/CategoryIndex.php">
       <class name="App\Http\Livewire\Admin\CategoryIndex" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
+        <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
       </class>
       <line num="17" type="method" name="updatingSearch" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="19" type="stmt" count="0"/>
-      <line num="22" type="method" name="render" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <metrics loc="31" ncloc="31" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
+      <line num="22" type="method" name="render" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="24" type="stmt" count="2"/>
+      <line num="25" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="28" type="stmt" count="2"/>
+      <metrics loc="31" ncloc="31" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Livewire/Admin/ProductIndex.php">
       <class name="App\Http\Livewire\Admin\ProductIndex" namespace="global">
@@ -612,12 +606,12 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/Authenticate.php">
       <class name="App\Http\Middleware\Authenticate" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
       </class>
-      <line num="15" type="method" name="redirectTo" visibility="protected" complexity="2" crap="2" count="1"/>
-      <line num="17" type="stmt" count="1"/>
-      <line num="18" type="stmt" count="1"/>
-      <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      <line num="15" type="method" name="redirectTo" visibility="protected" complexity="2" crap="6" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/EncryptCookies.php">
       <class name="App\Http\Middleware\EncryptCookies" namespace="global">
@@ -633,15 +627,15 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/RedirectIfAuthenticated.php">
       <class name="App\Http\Middleware\RedirectIfAuthenticated" namespace="global">
-        <metrics complexity="4" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+        <metrics complexity="4" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="6" coveredelements="4"/>
       </class>
-      <line num="20" type="method" name="handle" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
+      <line num="20" type="method" name="handle" visibility="public" complexity="4" crap="4.13" count="9"/>
+      <line num="22" type="stmt" count="9"/>
+      <line num="24" type="stmt" count="9"/>
+      <line num="25" type="stmt" count="9"/>
       <line num="26" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <metrics loc="33" ncloc="25" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+      <line num="30" type="stmt" count="9"/>
+      <metrics loc="33" ncloc="25" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="6" coveredelements="4"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/TrimStrings.php">
       <class name="App\Http\Middleware\TrimStrings" namespace="global">
@@ -671,13 +665,13 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Requests/AdminCategoryStoreRequest.php">
       <class name="App\Http\Requests\AdminCategoryStoreRequest" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="9" type="method" name="authorize" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="11" type="stmt" count="0"/>
-      <line num="14" type="method" name="rules" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      <line num="9" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="11" type="stmt" count="1"/>
+      <line num="14" type="method" name="rules" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Requests/AdminCategoryUpdateRequest.php">
       <class name="App\Http\Requests\AdminCategoryUpdateRequest" namespace="global">
@@ -786,19 +780,19 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Product.php">
       <class name="App\Models\Product" namespace="global">
-        <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+        <metrics complexity="5" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="10" coveredelements="2"/>
       </class>
       <line num="27" type="method" name="user" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="29" type="stmt" count="0"/>
-      <line num="32" type="method" name="category" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="34" type="stmt" count="0"/>
+      <line num="32" type="method" name="category" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="34" type="stmt" count="1"/>
       <line num="37" type="method" name="images" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="39" type="stmt" count="0"/>
       <line num="42" type="method" name="orders" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="44" type="stmt" count="0"/>
       <line num="47" type="method" name="visits" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="49" type="stmt" count="0"/>
-      <metrics loc="52" ncloc="52" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
+      <metrics loc="52" ncloc="52" classes="1" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="10" coveredelements="2"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/ProductVisit.php">
       <class name="App\Models\ProductVisit" namespace="global">
@@ -841,36 +835,36 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Observers/ProductObserver.php">
       <class name="App\Observers\ProductObserver" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+        <metrics complexity="4" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="3" elements="11" coveredelements="5"/>
       </class>
-      <line num="10" type="method" name="created" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="12" type="stmt" count="0"/>
+      <line num="10" type="method" name="created" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="12" type="stmt" count="1"/>
       <line num="15" type="method" name="updated" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="17" type="stmt" count="0"/>
       <line num="18" type="stmt" count="0"/>
       <line num="21" type="method" name="deleted" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="23" type="stmt" count="0"/>
       <line num="24" type="stmt" count="0"/>
-      <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="2" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <metrics loc="36" ncloc="36" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+      <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="1" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <metrics loc="36" ncloc="36" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="3" elements="11" coveredelements="5"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Observers/UserObserver.php">
       <class name="App\Observers\UserObserver" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="10" coveredelements="0"/>
+        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
       </class>
-      <line num="10" type="method" name="created" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="12" type="stmt" count="0"/>
-      <line num="15" type="method" name="updated" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="21" type="method" name="deleted" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="2" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <metrics loc="35" ncloc="35" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="10" coveredelements="0"/>
+      <line num="10" type="method" name="created" visibility="public" complexity="1" crap="1" count="27"/>
+      <line num="12" type="stmt" count="27"/>
+      <line num="15" type="method" name="updated" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="17" type="stmt" count="7"/>
+      <line num="18" type="stmt" count="7"/>
+      <line num="21" type="method" name="deleted" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="1" count="27"/>
+      <line num="31" type="stmt" count="27"/>
+      <metrics loc="35" ncloc="35" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Policies/CategoryPolicy.php">
       <class name="App\Policies\CategoryPolicy" namespace="global">
@@ -888,8 +882,8 @@
       <class name="App\Providers\AuthServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="23" type="method" name="boot" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="25" type="stmt" count="1"/>
+      <line num="23" type="method" name="boot" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="25" type="stmt" count="37"/>
       <metrics loc="30" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Providers/BroadcastServiceProvider.php">
@@ -905,61 +899,61 @@
       <class name="App\Providers\EventServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </class>
-      <line num="35" type="method" name="boot" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="37" type="stmt" count="1"/>
-      <line num="38" type="stmt" count="1"/>
-      <line num="39" type="stmt" count="1"/>
+      <line num="35" type="method" name="boot" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="37" type="stmt" count="37"/>
+      <line num="38" type="stmt" count="37"/>
+      <line num="39" type="stmt" count="37"/>
       <metrics loc="42" ncloc="37" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Providers/FortifyServiceProvider.php">
       <class name="App\Providers\FortifyServiceProvider" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="6" elements="10" coveredelements="6"/>
+        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="10" coveredelements="8"/>
       </class>
-      <line num="32" type="method" name="boot" visibility="public" complexity="1" crap="1.04" count="1"/>
-      <line num="34" type="stmt" count="1"/>
-      <line num="35" type="stmt" count="1"/>
-      <line num="36" type="stmt" count="1"/>
-      <line num="37" type="stmt" count="1"/>
-      <line num="39" type="stmt" count="1"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="1"/>
+      <line num="32" type="method" name="boot" visibility="public" complexity="1" crap="1.00" count="37"/>
+      <line num="34" type="stmt" count="37"/>
+      <line num="35" type="stmt" count="37"/>
+      <line num="36" type="stmt" count="37"/>
+      <line num="37" type="stmt" count="37"/>
+      <line num="39" type="stmt" count="37"/>
+      <line num="40" type="stmt" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="45" type="stmt" count="37"/>
       <line num="46" type="stmt" count="0"/>
-      <metrics loc="50" ncloc="39" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="6" elements="10" coveredelements="6"/>
+      <metrics loc="50" ncloc="39" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="10" coveredelements="8"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Providers/JetstreamServiceProvider.php">
       <class name="App\Providers\JetstreamServiceProvider" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </class>
-      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="28" type="stmt" count="1"/>
-      <line num="30" type="stmt" count="1"/>
-      <line num="38" type="method" name="configurePermissions" visibility="protected" complexity="1" crap="1" count="1"/>
-      <line num="40" type="stmt" count="1"/>
-      <line num="42" type="stmt" count="1"/>
+      <line num="26" type="method" name="boot" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="28" type="stmt" count="37"/>
+      <line num="30" type="stmt" count="37"/>
+      <line num="38" type="method" name="configurePermissions" visibility="protected" complexity="1" crap="1" count="37"/>
+      <line num="40" type="stmt" count="37"/>
+      <line num="42" type="stmt" count="37"/>
       <metrics loc="50" ncloc="34" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Providers/RouteServiceProvider.php">
       <class name="App\Providers\RouteServiceProvider" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="18" coveredelements="16"/>
       </class>
-      <line num="36" type="method" name="boot" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="38" type="stmt" count="1"/>
-      <line num="40" type="stmt" count="1"/>
-      <line num="41" type="stmt" count="1"/>
-      <line num="42" type="stmt" count="1"/>
-      <line num="43" type="stmt" count="1"/>
-      <line num="44" type="stmt" count="1"/>
-      <line num="46" type="stmt" count="1"/>
-      <line num="47" type="stmt" count="1"/>
-      <line num="48" type="stmt" count="1"/>
-      <line num="50" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="1"/>
-      <line num="52" type="stmt" count="1"/>
-      <line num="53" type="stmt" count="1"/>
-      <line num="54" type="stmt" count="1"/>
-      <line num="63" type="method" name="configureRateLimiting" visibility="protected" complexity="2" crap="2.50" count="1"/>
-      <line num="65" type="stmt" count="1"/>
+      <line num="36" type="method" name="boot" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="38" type="stmt" count="37"/>
+      <line num="40" type="stmt" count="37"/>
+      <line num="41" type="stmt" count="37"/>
+      <line num="42" type="stmt" count="37"/>
+      <line num="43" type="stmt" count="37"/>
+      <line num="44" type="stmt" count="37"/>
+      <line num="46" type="stmt" count="37"/>
+      <line num="47" type="stmt" count="37"/>
+      <line num="48" type="stmt" count="37"/>
+      <line num="50" type="stmt" count="37"/>
+      <line num="51" type="stmt" count="37"/>
+      <line num="52" type="stmt" count="37"/>
+      <line num="53" type="stmt" count="37"/>
+      <line num="54" type="stmt" count="37"/>
+      <line num="63" type="method" name="configureRateLimiting" visibility="protected" complexity="2" crap="2.50" count="37"/>
+      <line num="65" type="stmt" count="37"/>
       <line num="66" type="stmt" count="0"/>
       <metrics loc="70" ncloc="45" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="18" coveredelements="16"/>
     </file>
@@ -1070,20 +1064,20 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/View/Components/AppLayout.php">
       <class name="App\View\Components\AppLayout" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="16" type="stmt" count="4"/>
+      <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/View/Components/GuestLayout.php">
       <class name="App\View\Components\GuestLayout" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="16" type="stmt" count="5"/>
+      <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
-    <metrics files="77" loc="2740" ncloc="2406" classes="66" methods="146" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="478" coveredstatements="37" elements="624" coveredelements="46"/>
+    <metrics files="77" loc="2740" ncloc="2392" classes="66" methods="143" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="475" coveredstatements="111" elements="618" coveredelements="142"/>
   </project>
 </coverage>

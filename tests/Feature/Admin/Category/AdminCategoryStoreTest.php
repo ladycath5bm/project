@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class AdminCategoryStoreTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     private array $data = [
         'name' => 'kepler',

@@ -1,23 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="0.237873">
-    <testsuite name="Unit" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.006221">
-      <testsuite name="Tests\Unit\ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.006221">
-        <testcase name="test_example" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Unit/ExampleTest.php" line="14" assertions="1" time="0.006221"/>
+  <testsuite name="" tests="48" assertions="70" errors="1" warnings="2" failures="0" skipped="7" time="115.971366">
+    <testsuite name="Unit" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.002819">
+      <testsuite name="Tests\Unit\ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Unit/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.002819">
+        <testcase name="test_example" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Unit/ExampleTest.php" line="14" assertions="1" time="0.002819"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Feature" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.231652">
-      <testsuite name="Tests\Feature\Admin\Category\AdminCategoryCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.231652">
-        <testcase name="testItVisitCreateCategory" class="Tests\Feature\Admin\Category\AdminCategoryCreateTest" classname="Tests.Feature.Admin.Category.AdminCategoryCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php" line="9" assertions="1" time="0.231652">
-          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\Admin\Category\AdminCategoryCreateTest::testItVisitCreateCategory
-Expected response status code [200] but received 302.
-Failed asserting that 200 is identical to 302.
+    <testsuite name="Feature" tests="47" assertions="69" errors="1" warnings="2" failures="0" skipped="7" time="115.968547">
+      <testsuite name="Tests\Feature\Admin\Category\AdminCategoryCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.709793">
+        <testcase name="testItVisitCreateCategory" class="Tests\Feature\Admin\Category\AdminCategoryCreateTest" classname="Tests.Feature.Admin.Category.AdminCategoryCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php" line="20" assertions="1" time="0.465027"/>
+        <testcase name="testItCreateProducts" class="Tests\Feature\Admin\Category\AdminCategoryCreateTest" classname="Tests.Feature.Admin.Category.AdminCategoryCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php" line="27" assertions="1" time="0.244766"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Category\AdminCategoryIndexTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryIndexTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="1.989444">
+        <testcase name="testItVisitListCategories" class="Tests\Feature\Admin\Category\AdminCategoryIndexTest" classname="Tests.Feature.Admin.Category.AdminCategoryIndexTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryIndexTest.php" line="12" assertions="1" time="0.079307"/>
+        <testcase name="testItListCategories" class="Tests\Feature\Admin\Category\AdminCategoryIndexTest" classname="Tests.Feature.Admin.Category.AdminCategoryIndexTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryIndexTest.php" line="19" assertions="2" time="1.910137"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Category\AdminCategoryStoreTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryStoreTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.192020">
+        <testcase name="testACategoryCanBeCreated" class="Tests\Feature\Admin\Category\AdminCategoryStoreTest" classname="Tests.Feature.Admin.Category.AdminCategoryStoreTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryStoreTest.php" line="16" assertions="1" time="0.192020"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Imports\ImportFileTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Imports/ImportFileTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000451">
+        <testcase name="Warning" assertions="0" time="0.000451">
+          <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "Tests\Feature\Admin\Imports\ImportFileTest".
 
-/home/ladycath/php/eCommerce-2/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:177
-/home/ladycath/php/eCommerce-2/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:99
-/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Category/AdminCategoryCreateTest.php:13
-/home/ladycath/php/eCommerce-2/vendor/phpunit/phpunit/phpunit:98</failure>
+/home/ladycath/php/eCommerce-2/vendor/phpunit/phpunit/phpunit:98</warning>
         </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\AdminProductCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductCreateTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.954527">
+        <testcase name="testItVisitCreateproduct" class="Tests\Feature\Admin\Product\AdminProductCreateTest" classname="Tests.Feature.Admin.Product.AdminProductCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductCreateTest.php" line="22" assertions="2" time="0.207916"/>
+        <testcase name="testItCreateProducts" class="Tests\Feature\Admin\Product\AdminProductCreateTest" classname="Tests.Feature.Admin.Product.AdminProductCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductCreateTest.php" line="30" assertions="1" time="0.480914"/>
+        <testcase name="testYouCanSeeCreateProductAndSeeLog" class="Tests\Feature\Admin\Product\AdminProductCreateTest" classname="Tests.Feature.Admin.Product.AdminProductCreateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductCreateTest.php" line="38" assertions="2" time="0.265697"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\AdminProductDeleteTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductDeleteTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.061624">
+        <testcase name="test_example" class="Tests\Feature\Admin\Product\AdminProductDeleteTest" classname="Tests.Feature.Admin.Product.AdminProductDeleteTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductDeleteTest.php" line="14" assertions="1" time="0.061624"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\AdminProductEditTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductEditTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000053">
+        <testcase name="Warning" assertions="0" time="0.000053">
+          <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "Tests\Feature\Admin\Product\AdminProductEditTest".
+
+/home/ladycath/php/eCommerce-2/vendor/phpunit/phpunit/phpunit:98</warning>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\AdminProductShowTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductShowTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.507258">
+        <testcase name="testItVisitProduct" class="Tests\Feature\Admin\Product\AdminProductShowTest" classname="Tests.Feature.Admin.Product.AdminProductShowTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductShowTest.php" line="14" assertions="1" time="0.507258"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\AdminProductUpdateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductUpdateTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.060058">
+        <testcase name="test_example" class="Tests\Feature\Admin\Product\AdminProductUpdateTest" classname="Tests.Feature.Admin.Product.AdminProductUpdateTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/AdminProductUpdateTest.php" line="14" assertions="1" time="0.060058"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\Admin\Product\ProductIndexAdminTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/ProductIndexAdminTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.054524">
+        <testcase name="testItVisitListProduct" class="Tests\Feature\Admin\Product\ProductIndexAdminTest" classname="Tests.Feature.Admin.Product.ProductIndexAdminTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Admin/Product/ProductIndexAdminTest.php" line="14" assertions="1" time="0.054524"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ApiTokenPermissionsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ApiTokenPermissionsTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="103.984579">
+        <testcase name="test_api_token_permissions_can_be_updated" class="Tests\Feature\ApiTokenPermissionsTest" classname="Tests.Feature.ApiTokenPermissionsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ApiTokenPermissionsTest.php" line="17" assertions="0" time="103.984579">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\AuthenticationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/AuthenticationTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.627956">
+        <testcase name="test_login_screen_can_be_rendered" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/AuthenticationTest.php" line="14" assertions="1" time="0.057976"/>
+        <testcase name="test_users_can_authenticate_using_the_login_screen" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/AuthenticationTest.php" line="21" assertions="3" time="0.350031"/>
+        <testcase name="test_users_can_not_authenticate_with_invalid_password" class="Tests\Feature\AuthenticationTest" classname="Tests.Feature.AuthenticationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/AuthenticationTest.php" line="34" assertions="1" time="0.219949"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\BrowserSessionsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/BrowserSessionsTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.161400">
+        <testcase name="test_other_browser_sessions_can_be_logged_out" class="Tests\Feature\BrowserSessionsTest" classname="Tests.Feature.BrowserSessionsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/BrowserSessionsTest.php" line="15" assertions="1" time="0.161400"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\CreateApiTokenTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/CreateApiTokenTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="0.044628">
+        <testcase name="test_api_tokens_can_be_created" class="Tests\Feature\CreateApiTokenTest" classname="Tests.Feature.CreateApiTokenTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/CreateApiTokenTest.php" line="16" assertions="0" time="0.044628">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Custom\Orders\OrderIndexTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Custom/Orders/OrderIndexTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.403498">
+        <testcase name="testYouCanSeeListOfOrders" class="Tests\Feature\Custom\Orders\OrderIndexTest" classname="Tests.Feature.Custom.Orders.OrderIndexTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Custom/Orders/OrderIndexTest.php" line="10" assertions="0" time="0.403498">
+          <error type="PHPUnit\Framework\RiskyTestError">Tests\Feature\Custom\Orders\OrderIndexTest::testYouCanSeeListOfOrders
+This test did not perform any assertions
+
+/home/ladycath/php/eCommerce-2/tests/Feature/Custom/Orders/OrderIndexTest.php:10
+
+/home/ladycath/php/eCommerce-2/vendor/phpunit/phpunit/phpunit:98</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\Custom\ShoppingHistoryTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Custom/ShoppingHistoryTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.333232">
+        <testcase name="testYouCanSeeYourShoppingHistory" class="Tests\Feature\Custom\ShoppingHistoryTest" classname="Tests.Feature.Custom.ShoppingHistoryTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/Custom/ShoppingHistoryTest.php" line="20" assertions="2" time="0.333232"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DeleteAccountTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/DeleteAccountTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.554058">
+        <testcase name="test_user_accounts_can_be_deleted" class="Tests\Feature\DeleteAccountTest" classname="Tests.Feature.DeleteAccountTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/DeleteAccountTest.php" line="16" assertions="2" time="0.247272"/>
+        <testcase name="test_correct_password_must_be_provided_before_account_can_be_deleted" class="Tests\Feature\DeleteAccountTest" classname="Tests.Feature.DeleteAccountTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/DeleteAccountTest.php" line="31" assertions="4" time="0.306786"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\DeleteApiTokenTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/DeleteApiTokenTest.php" tests="1" assertions="0" errors="0" warnings="0" failures="0" skipped="1" time="0.045066">
+        <testcase name="test_api_tokens_can_be_deleted" class="Tests\Feature\DeleteApiTokenTest" classname="Tests.Feature.DeleteApiTokenTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/DeleteApiTokenTest.php" line="17" assertions="0" time="0.045066">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\EmailVerificationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/EmailVerificationTest.php" tests="3" assertions="0" errors="0" warnings="0" failures="0" skipped="3" time="0.140174">
+        <testcase name="test_email_verification_screen_can_be_rendered" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/EmailVerificationTest.php" line="18" assertions="0" time="0.047106">
+          <skipped/>
+        </testcase>
+        <testcase name="test_email_can_be_verified" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/EmailVerificationTest.php" line="31" assertions="0" time="0.047085">
+          <skipped/>
+        </testcase>
+        <testcase name="test_email_can_not_verified_with_invalid_hash" class="Tests\Feature\EmailVerificationTest" classname="Tests.Feature.EmailVerificationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/EmailVerificationTest.php" line="55" assertions="0" time="0.045983">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Feature\ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.055640">
+        <testcase name="test_example" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ExampleTest.php" line="14" assertions="1" time="0.055640"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PasswordConfirmationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordConfirmationTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.969073">
+        <testcase name="test_confirm_password_screen_can_be_rendered" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordConfirmationTest.php" line="13" assertions="1" time="0.375349"/>
+        <testcase name="test_password_can_be_confirmed" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordConfirmationTest.php" line="22" assertions="2" time="0.317426"/>
+        <testcase name="test_password_is_not_confirmed_with_invalid_password" class="Tests\Feature\PasswordConfirmationTest" classname="Tests.Feature.PasswordConfirmationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordConfirmationTest.php" line="34" assertions="1" time="0.276298"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\PasswordResetTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordResetTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.969608">
+        <testcase name="test_reset_password_link_screen_can_be_rendered" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordResetTest.php" line="16" assertions="1" time="0.073309"/>
+        <testcase name="test_reset_password_link_can_be_requested" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordResetTest.php" line="27" assertions="1" time="0.353928"/>
+        <testcase name="test_reset_password_screen_can_be_rendered" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordResetTest.php" line="44" assertions="2" time="0.254309"/>
+        <testcase name="test_password_can_be_reset_with_valid_token" class="Tests\Feature\PasswordResetTest" classname="Tests.Feature.PasswordResetTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/PasswordResetTest.php" line="67" assertions="2" time="0.288062"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\ProfileInformationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ProfileInformationTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.487930">
+        <testcase name="test_current_profile_information_is_available" class="Tests\Feature\ProfileInformationTest" classname="Tests.Feature.ProfileInformationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ProfileInformationTest.php" line="15" assertions="3" time="0.211727"/>
+        <testcase name="test_profile_information_can_be_updated" class="Tests\Feature\ProfileInformationTest" classname="Tests.Feature.ProfileInformationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/ProfileInformationTest.php" line="25" assertions="3" time="0.276204"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\RegistrationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/RegistrationTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="1" time="0.238985">
+        <testcase name="test_registration_screen_can_be_rendered" class="Tests\Feature\RegistrationTest" classname="Tests.Feature.RegistrationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/RegistrationTest.php" line="15" assertions="1" time="0.058590"/>
+        <testcase name="test_registration_screen_cannot_be_rendered_if_support_is_disabled" class="Tests\Feature\RegistrationTest" classname="Tests.Feature.RegistrationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/RegistrationTest.php" line="26" assertions="0" time="0.049156">
+          <skipped/>
+        </testcase>
+        <testcase name="test_new_users_can_register" class="Tests\Feature\RegistrationTest" classname="Tests.Feature.RegistrationTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/RegistrationTest.php" line="37" assertions="3" time="0.131239"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\TwoFactorAuthenticationSettingsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/TwoFactorAuthenticationSettingsTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="1.479393">
+        <testcase name="test_two_factor_authentication_can_be_enabled" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="15" assertions="3" time="0.390467"/>
+        <testcase name="test_recovery_codes_can_be_regenerated" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="30" assertions="3" time="0.610438"/>
+        <testcase name="test_two_factor_authentication_can_be_disabled" class="Tests\Feature\TwoFactorAuthenticationSettingsTest" classname="Tests.Feature.TwoFactorAuthenticationSettingsTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/TwoFactorAuthenticationSettingsTest.php" line="48" assertions="3" time="0.478488"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\UpdatePasswordTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/UpdatePasswordTest.php" tests="3" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.943574">
+        <testcase name="test_password_can_be_updated" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/UpdatePasswordTest.php" line="16" assertions="2" time="0.269653"/>
+        <testcase name="test_current_password_must_be_correct" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/UpdatePasswordTest.php" line="31" assertions="4" time="0.342730"/>
+        <testcase name="test_new_passwords_must_match" class="Tests\Feature\UpdatePasswordTest" classname="Tests.Feature.UpdatePasswordTest" file="/home/ladycath/php/eCommerce-2/tests/Feature/UpdatePasswordTest.php" line="47" assertions="4" time="0.331192"/>
       </testsuite>
     </testsuite>
   </testsuite>

@@ -15,7 +15,7 @@ class AdminProductCreateTest extends TestCase
         parent::setUp();
 
         $user = User::factory()->create();
-        $user->assignRole('admin');
+        //$user->assignRole('admin');
         Sanctum::actingAs($user);
     }
 

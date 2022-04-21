@@ -13,15 +13,15 @@ class ShoppingHistoryTest extends TestCase
         parent::setUp();
 
         $user = User::factory()->create();
-        $user->assignRole('custom');
+        //$user->assignRole('custom');
         Sanctum::actingAs($user);
     }
 
     public function testYouCanSeeYourShoppingHistory(): void
     {
-        $response = $this->get(route('/shophistory'));
+        $response = $this->get(route('orders.index'));
 
         $response->assertOk();
-        $response->assertViewIs('shophistory');
+        $response->assertViewIs('orders.index');
     }
 }

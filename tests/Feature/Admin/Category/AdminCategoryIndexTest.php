@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class AdminCategoryIndexTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
     public function testItVisitListCategories()
     {
         $response = $this->get(route('admin.categories.index'));

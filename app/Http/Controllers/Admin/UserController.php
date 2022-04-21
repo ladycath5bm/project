@@ -11,11 +11,11 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function __construct()
+   /*  public function __construct()
     {
         $this->middleware('can:admin.users.index');
     }
-
+ */
     public function index(): View
     {
         $users = User::paginate(10);

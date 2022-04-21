@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    public function __construct()
+    /* public function __construct()
     {
         $this->middleware('can:admin.products.index');
-    }
+    } */
 
     public function index(): View
     {

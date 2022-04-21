@@ -30,6 +30,7 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
+        "phpunit/php-timer": "^5.0",
         "phpunit/phpunit": "^9.5.10",
         "sentry/sentry-laravel": "^2.11"
     },
@@ -62,7 +63,6 @@
         "test-u": "vendor/bin/phpunit",
         "test-unit": "vendor/bin/phpunit --testsuite unit",
         "test": "vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-clover phpunit.coverage.xml --log-junit phpunit.report.xml",
-        "testdox": "vendor/bin/phpunit --verbose --testdox",
         "test-ci": ["php -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude=\"~vendor~\" vendor/bin/phpunit -d memory_limit=512M"],
         "phpcs": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no",
         "phpcs_validate": "vendor/bin/php-cs-fixer fix --dry-run --diff"

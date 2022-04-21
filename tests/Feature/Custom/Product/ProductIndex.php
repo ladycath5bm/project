@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class ProductIndexTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     public function testGuestItVisitListProduct(): void
     {

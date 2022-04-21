@@ -7,13 +7,21 @@ use Tests\TestCase;
 
 class AdminProductStoreTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     private array $dataStore = [
             'name' => 'nametest',
             'code' => 124345,
-            'price' => 323,
+            'price' => 323000,
             'stock' => 10,
+            'discount' => 0,
+            'description' => 'hola soy una decricion',
+            'status' => 0,
+            'slug'=> null,
+            'category_id'=> null,
+            'user_id'=> null,
+            'created_at'=> '2022-04-21 04:40:24',
+            'updated_at'=> '2022-04-21 04:40:24',
     ];
 
     public function testAProductCanBeCreated()

@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class AdminProductShowTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     public function testItVisitProduct(): void
     {
