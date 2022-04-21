@@ -15,7 +15,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
         $schedule->command('consult:payment')->everyMinute();
         $schedule->command('consult:order')->everyThirtyMinutes();
     }

@@ -2,9 +2,9 @@
 
 namespace App\Services\Payments\PayPal;
 
-use App\Contracts\GatewayContract;
+use App\Models\Order;
 
-class PayPal implements GatewayContract
+class PayPal
 {
     private string $key;
 

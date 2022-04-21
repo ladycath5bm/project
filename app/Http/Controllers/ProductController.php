@@ -67,7 +67,7 @@ class ProductController extends Controller
     public function top(): View
     {
         $categories = Category::select('id', 'name')->get();
-        
+
         $top = ProductVisit::select('product_id')->selectRaw('count(product_id) as visits')
             ->with('product:id,name')
             ->groupBy('product_id')

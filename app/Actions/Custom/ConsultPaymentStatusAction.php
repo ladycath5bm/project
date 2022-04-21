@@ -2,18 +2,17 @@
 
 namespace App\Actions\Custom;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use App\Constants\OrderStatus;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Client\Response;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Log;
 
 class ConsultPaymentStatusAction
 {
     public function consult(Order $order): Order
     {
-        
         $response = PlacetoPay::getRequestInformation($order->requestId);
         $order = $this->updateStatus($response, $order);
 
@@ -27,13 +26,10 @@ class ConsultPaymentStatusAction
     private function updateStatus(Response $response, Order $order): Order
     {
         if ($response->successful()) {
-            
             $responseSesion = $response->json()['status'];
-            
+
             if ($responseSesion['status'] != 'REJECTED') {
-
                 if ($response->json()['payment'] != null) {
-
                     $responsePayment = $response->json()['payment'];
                     $responseTransaction = $responsePayment[0]['status'];
                     $order->status = $responseTransaction['status'];
@@ -44,7 +40,6 @@ class ConsultPaymentStatusAction
                 $order->status = $responseSesion['status'];
                 $message = $responseSesion['message'];
             }
-
         } else {
             $responseSesion = $response->json()['status'];
             $message = $responseSesion['message'];

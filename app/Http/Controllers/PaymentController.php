@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Custom\ConsultPaymentStatusAction;
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use App\Constants\OrderStatus;
-use Illuminate\Http\RedirectResponse;
 use App\Services\Payments\GatewayFactory;
-use App\Actions\Custom\ConsultPaymentStatusAction;
+use Illuminate\Http\RedirectResponse;
 
 class PaymentController extends Controller
 {
@@ -15,14 +15,13 @@ class PaymentController extends Controller
     {
         $gateway = GatewayFactory::make('placetopay');
         $response = $gateway->pay($order);
-        
+
         return redirect()->away($response['processUrl']);
     }
 
     public function retray(Order $order): RedirectResponse
     {
         foreach ($order->products as $product) {
-            
             Product::find($product->id)->decrement('stock', $product->pivot->quantity);
         }
 

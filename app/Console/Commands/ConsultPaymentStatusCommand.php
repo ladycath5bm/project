@@ -2,12 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Order;
+use App\Actions\Custom\ConsultPaymentStatusAction;
 use App\Constants\OrderStatus;
+use App\Models\Order;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use App\Jobs\ConsultPaymentStatusJob;
-use App\Actions\Custom\ConsultPaymentStatusAction;
 
 class ConsultPaymentStatusCommand extends Command
 {
@@ -27,7 +26,6 @@ class ConsultPaymentStatusCommand extends Command
 
     public function handle(): int
     {
-        //ConsultPaymentStatusJob::dispatch();
         $orders = Order::select('id', 'status', 'requestId')
             ->where('status', '=', OrderStatus::PENDING)
             ->get();

@@ -2,8 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\PaymentController;
-use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

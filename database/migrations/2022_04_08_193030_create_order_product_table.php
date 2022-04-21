@@ -9,7 +9,6 @@ class CreateOrderProductTable extends Migration
     public function up(): void
     {
         Schema::create('order_product', function (Blueprint $table) {
-
             $table->integer('quantity');
             $table->string('price');
             $table->string('subtotal');
@@ -19,7 +18,7 @@ class CreateOrderProductTable extends Migration
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');
-            
+
             $table->timestamps();
         });
     }

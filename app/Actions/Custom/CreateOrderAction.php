@@ -2,19 +2,18 @@
 
 namespace App\Actions\Custom;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Support\Str;
-use App\Constants\OrderStatus;
-use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateOrderAction
 {
     public function create(array $data): Order
     {
-        return DB::transaction(function() use ($data) {
-            
+        return DB::transaction(function () use ($data) {
             $order = new Order();
             $order->status = OrderStatus::CREATED;
             $order->reference = $this->createReference();
@@ -45,9 +44,9 @@ class CreateOrderAction
         foreach (Cart::content() as $product) {
             $data[$product->id] = [
                 'quantity' => $product->qty,
-                'price' => (float) $product->price,
-                'subtotal' =>  (float) $product->qty * $product->price,
-            ];         
+                'price' => (float)$product->price,
+                'subtotal' =>  (float)$product->qty * $product->price,
+            ];
             Product::find($product->id)->decrement('stock', $product->qty);
         }
 

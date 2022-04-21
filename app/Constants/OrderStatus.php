@@ -15,7 +15,7 @@ class OrderStatus
             self::APPROVED,
             self::REJECTED,
             self::PENDING,
-            self::CREATED
+            self::CREATED,
         ];
     }
 }

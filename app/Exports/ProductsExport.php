@@ -4,10 +4,8 @@ namespace App\Exports;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromQuery;
 
 class ProductsExport implements FromQuery
 {
@@ -17,7 +15,7 @@ class ProductsExport implements FromQuery
 
     public function __construct(array $filter)
     {
-        $this->filter = $filter;    
+        $this->filter = $filter;
     }
 
     public function query()
@@ -25,9 +23,9 @@ class ProductsExport implements FromQuery
         //dd($this->filter);
         $date1 = $this->filter['date1'];
         $date2 = $this->filter['date2'];
-        $category =$this->filter['category'];
-        $status =$this->filter['status'];
-        
+        $category = $this->filter['category'];
+        $status = $this->filter['status'];
+
         return Product::select('id', 'name', 'code', 'price', 'description', 'discount', 'stock', 'status', 'category_id')
             ->whereBetween('created_at', [$date1, $date2])
             ->whereIn('category_id', $this->categoryQuery($category))
@@ -40,9 +38,8 @@ class ProductsExport implements FromQuery
             $array = Category::all('id');
             return $array;
         } else {
-            return [Category::where('name', $category)->first()->id];
+            return [Category::select('id')->where('name', $category)->first()];
         }
-        
     }
 
     private function statusQuery(string $status)
@@ -52,6 +49,5 @@ class ProductsExport implements FromQuery
         } else {
             return [$status];
         }
-        
     }
 }

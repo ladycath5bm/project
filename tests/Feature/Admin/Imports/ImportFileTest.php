@@ -2,27 +2,24 @@
 
 namespace Tests\Feature\Admin\Imports;
 
-use Tests\TestCase;
 use App\Models\User;
-use Laravel\Sanctum\Sanctum;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class ImportFileTest extends TestCase
 {
     protected function setUp(): void
-        {
-            parent::setUp();
+    {
+        parent::setUp();
 
-            $user = User::factory()->create();
-            $user->assignRole('admin');
-            Sanctum::actingAs($user);
-        }
-        
+        $user = User::factory()->create();
+        $user->assignRole('admin');
+        Sanctum::actingAs($user);
+    }
+
     public function testImportFile()
     {
-
         $file = new UploadedFile(base_path('tests/stubs/import.xlsx'), 'import.xlsx');
 
         $response = $this->post('admin/import', [
