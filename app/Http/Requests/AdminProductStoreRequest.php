@@ -14,7 +14,7 @@ class AdminProductStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:15',
+            'name' => 'required|max:120',
             'code' => 'required|numeric|integer|unique:products',
             'price' => 'required|numeric',
             'stock' => 'required|integer',

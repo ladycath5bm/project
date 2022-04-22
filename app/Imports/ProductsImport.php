@@ -11,16 +11,37 @@ class ProductsImport implements ToModel, WithHeadingRow
 {
     public function model(array $row): Product
     {
-        return new Product([
-            'name' => $row['name'],
-            'code' => $row['code'],
-            'price' => $row['price'],
-            'description' => $row['description'],
-            'discount' => $row['discount'],
-            'stock' => $row['stock'],
-            'status' => $row['status'],
-            'slug' => $row['name'],
-        ]);
+        if (Product::find($row['id'])) {
+            $product = Product::find($row['id']);
+            $product->update([
+                'name' => $row['name'],
+                'code' => $row['code'],
+                'price' => $row['price'],
+                'description' => $row['description'],
+                'discount' => $row['discount'],
+                'stock' => $row['stock'],
+                'status' => $row['status'],
+                'slug' => $row['name'],
+                'category_id' => $this->assignCategory($row['category']),
+                'user_id' => auth()->id(),
+            ]);
+
+            return $product;
+        } else {
+            
+            return new Product([
+                'name' => $row['name'],
+                'code' => $row['code'],
+                'price' => $row['price'],
+                'description' => $row['description'],
+                'discount' => $row['discount'],
+                'stock' => $row['stock'],
+                'status' => $row['status'],
+                'slug' => $row['name'],
+                'category_id' => $this->assignCategory($row['category']),
+                'user_id' => auth()->id(),
+            ]);
+        }
     }
 
     private function assignCategory(string $category)

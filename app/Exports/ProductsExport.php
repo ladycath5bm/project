@@ -2,16 +2,27 @@
 
 namespace App\Exports;
 
-use App\Models\Category;
 use App\Models\Product;
-use Maatwebsite\Excel\Concerns\Exportable;
+use App\Models\Category;
+use Maatwebsite\Excel\Excel;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Contracts\Support\Responsable;
 
-class ProductsExport implements FromQuery
+class ProductsExport implements FromQuery, WithHeadings, Responsable
 {
     use Exportable;
 
     protected array $filter;
+
+    private $fileName = 'products.xlsx';
+
+    private $writerType = Excel::XLSX;
+
+    private $headers = [
+        'Content-Type' => 'text/csv',
+    ];
 
     public function __construct(array $filter)
     {
@@ -49,5 +60,20 @@ class ProductsExport implements FromQuery
         } else {
             return [$status];
         }
+    }
+
+    public function headings(): array
+    {
+        return [
+            'id',
+            'name',
+            'code',
+            'price',
+            'description',
+            'discount',
+            'stock',
+            'status',
+            'category'
+        ];
     }
 }

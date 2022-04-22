@@ -10,10 +10,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 15);
+            $table->string('name', 120);
             $table->integer('code')->unique();
             $table->decimal('price');
-            $table->text('description', 150);
+            $table->text('description', 250);
             $table->unsignedDecimal('discount')->default(0);
             $table->unsignedInteger('stock');
             $table->boolean('status')->nullable();

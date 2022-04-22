@@ -22,9 +22,11 @@ class ProductModulesController extends Controller
     public function export(Request $request)
     {
         $filter = $request->toArray();
+
+        return new ProductsExport($filter);
         //return Excel::download(new ProductsExport($filter), 'products.xlsx');
-        (new ProductsExport($filter))->queue('products.xlsx');
-        return back()->withSuccess('Export started!');
+        //(new ProductsExport($filter))->queue();
+        //return back()->withSuccess('Export started!');
     }
 
     public function import(Request $request)
