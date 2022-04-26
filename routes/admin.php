@@ -20,3 +20,6 @@ Route::get('export/', [ProductModulesController::class, 'export'])->name('produc
 Route::get('report/', [ProductModulesController::class, 'report'])->name('products.reports');
 Route::post('import/', [ProductModulesController::class, 'import'])->name('products.import');
 Route::get('module/', [ProductModulesController::class, 'index'])->name('products.module');
+
+
+Route::get('exports/', [ProductModulesController::class, 'exportFile'])->name('exports.file');

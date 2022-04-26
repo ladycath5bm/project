@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductModulesController extends Controller
@@ -22,8 +23,9 @@ class ProductModulesController extends Controller
     public function export(Request $request)
     {
         $filter = $request->toArray();
-
-        return new ProductsExport($filter);
+        
+        (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
+        return back();
         //return Excel::download(new ProductsExport($filter), 'products.xlsx');
         //(new ProductsExport($filter))->queue();
         //return back()->withSuccess('Export started!');
@@ -36,5 +38,10 @@ class ProductModulesController extends Controller
         });
 
         return redirect()->route('admin.products.index');
+    }
+
+    public function exportFile()
+    {
+        return Storage::download('public/exports/products-' . date('Y-m-d H') . '.xlsx');
     }
 }

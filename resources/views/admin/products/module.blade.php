@@ -50,6 +50,9 @@
                         form="filter"
                     >Export</button>
                 </div>
+                <div>
+                    <a href="{{ route('admin.exports.file') }}">Export file ...</a>
+                </div>
             </form>
         </div>
     </div>

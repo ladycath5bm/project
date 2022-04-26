@@ -7,20 +7,19 @@ use App\Models\Category;
 use Maatwebsite\Excel\Excel;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Contracts\Translation\HasLocalePreference;
 
-class ProductsExport implements FromQuery, WithHeadings, Responsable
+class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueue
 {
     use Exportable;
 
     protected array $filter;
-
-    private $fileName = 'products.xlsx';
-
-    private $writerType = Excel::XLSX;
-
-    private $headers = [
+    private string $fileName = 'products.xlsx';
+    private string $writerType = Excel::XLSX;
+    private array $headers = [
         'Content-Type' => 'text/csv',
     ];
 
@@ -43,17 +42,18 @@ class ProductsExport implements FromQuery, WithHeadings, Responsable
             ->whereIn('status', $this->statusQuery($status));
     }
 
-    private function categoryQuery(string $category)
+    private function categoryQuery(string $category): array
     {
         if ($category == 'all') {
-            $array = Category::all('id');
+            $array = Category::all('id')->toArray();
             return $array;
         } else {
-            return [Category::select('id')->where('name', $category)->first()];
+            //dd($category);
+            return Category::select('id')->where('name', $category)->first()->toArray();
         }
     }
 
-    private function statusQuery(string $status)
+    private function statusQuery(string $status): array
     {
         if ($status == 'all') {
             return [0, 1];
