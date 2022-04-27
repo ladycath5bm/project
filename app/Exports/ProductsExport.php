@@ -30,13 +30,14 @@ class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueu
 
     public function query()
     {
-        //dd($this->filter);
         $date1 = $this->filter['date1'];
         $date2 = $this->filter['date2'];
         $category = $this->filter['category'];
         $status = $this->filter['status'];
 
-        return Product::select('id', 'name', 'code', 'price', 'description', 'discount', 'stock', 'status', 'category_id')
+
+        return Product::select('id', 'name', 'code', 'price', 'description', 'discount', 'stock', 'status')
+            ->addSelect(['category' => Category::select('name')->whereColumn('id', 'products.category_id')])
             ->whereBetween('created_at', [$date1, $date2])
             ->whereIn('category_id', $this->categoryQuery($category))
             ->whereIn('status', $this->statusQuery($status));
@@ -48,7 +49,6 @@ class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueu
             $array = Category::all('id')->toArray();
             return $array;
         } else {
-            //dd($category);
             return Category::select('id')->where('name', $category)->first()->toArray();
         }
     }

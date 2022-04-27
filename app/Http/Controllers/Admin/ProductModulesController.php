@@ -22,13 +22,16 @@ class ProductModulesController extends Controller
 
     public function export(Request $request)
     {
+        //DB::table('exports')
         $filter = $request->toArray();
-        
+
         (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
         return back();
-        //return Excel::download(new ProductsExport($filter), 'products.xlsx');
-        //(new ProductsExport($filter))->queue();
-        //return back()->withSuccess('Export started!');
+    }
+
+    public function exportFile()
+    {
+        return Storage::download('public/exports/products-' . date('Y-m-d H') . '.xlsx');
     }
 
     public function import(Request $request)
@@ -40,8 +43,24 @@ class ProductModulesController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    public function exportFile()
+
+    /* public function import(ImportedExcelRequest $request)
     {
-        return Storage::download('public/exports/products-' . date('Y-m-d H') . '.xlsx');
-    }
+
+        DB::transaction(function () use($request) {
+
+            $file = $request->file('file');
+            $modelImport=Import::create();
+            $import = new TodoImport($modelImport);
+            Excel::import($import, $file);
+            $modelImport->filename=$file->getClientOriginalName();
+            $modelImport->row_quantity=$import->getRowCount();
+            $modelImport->save();
+//            dd('si funcione XD');
+        },3);
+
+
+//        return view('app');
+        return redirect('/app');
+    } */
 }
