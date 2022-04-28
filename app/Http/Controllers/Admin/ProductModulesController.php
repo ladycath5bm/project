@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Imports\ProductsImport;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
 {
@@ -20,47 +22,46 @@ class ProductModulesController extends Controller
         return view('admin.products.module', compact('categories'));
     }
 
-    public function export(Request $request)
+    public function export(Request $request): RedirectResponse
     {
-        //DB::table('exports')
-        $filter = $request->toArray();
+        //dd(json_encode($request));
+        DB::transaction(function () use ($request) {
 
-        (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
+            $filter = $request->toArray();
+
+            DB::table('exports')->insert([
+                'path' => 'public/exports/products-' . date('Y-m-d H') . '.xlsx',
+                'query' => json_encode($request->all()),
+                'user_id' => auth()->id(),  
+            ]);
+
+            (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
+
+        });
         return back();
     }
 
-    public function exportFile()
+    public function exportFile(): StreamedResponse
     {
         return Storage::download('public/exports/products-' . date('Y-m-d H') . '.xlsx');
     }
 
-    public function import(Request $request)
+    public function import(Request $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
-            Excel::import(new ProductsImport(), $request->file('file'));
+
+            $import = new ProductsImport();
+            Excel::import($import, $request->file('file'));
+
+            DB::table('imports')->insert([
+                'name' => $request->file('file')->getClientOriginalName(),
+                'registers' => $import->getRowsCount(),
+                'user_id' => auth()->id(),  
+            ]);
+
         });
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.module');
     }
 
-
-    /* public function import(ImportedExcelRequest $request)
-    {
-
-        DB::transaction(function () use($request) {
-
-            $file = $request->file('file');
-            $modelImport=Import::create();
-            $import = new TodoImport($modelImport);
-            Excel::import($import, $file);
-            $modelImport->filename=$file->getClientOriginalName();
-            $modelImport->row_quantity=$import->getRowCount();
-            $modelImport->save();
-//            dd('si funcione XD');
-        },3);
-
-
-//        return view('app');
-        return redirect('/app');
-    } */
 }

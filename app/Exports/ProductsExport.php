@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Contracts\Translation\HasLocalePreference;
 
 class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueue
 {
@@ -34,7 +33,6 @@ class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueu
         $date2 = $this->filter['date2'];
         $category = $this->filter['category'];
         $status = $this->filter['status'];
-
 
         return Product::select('id', 'name', 'code', 'price', 'description', 'discount', 'stock', 'status')
             ->addSelect(['category' => Category::select('name')->whereColumn('id', 'products.category_id')])
