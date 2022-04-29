@@ -56,7 +56,8 @@ class ProductModulesController extends Controller
             DB::table('imports')->insert([
                 'name' => $request->file('file')->getClientOriginalName(),
                 'registers' => $import->getRowsCount(),
-                'user_id' => auth()->id(),  
+                'user_id' => auth()->id(), 
+                'created_at' => now(),
             ]);
 
         });
