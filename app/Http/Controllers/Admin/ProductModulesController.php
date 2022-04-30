@@ -26,17 +26,15 @@ class ProductModulesController extends Controller
     {
         //dd(json_encode($request));
         DB::transaction(function () use ($request) {
-
             $filter = $request->toArray();
 
             DB::table('exports')->insert([
                 'path' => 'public/exports/products-' . date('Y-m-d H') . '.xlsx',
                 'query' => json_encode($request->all()),
-                'user_id' => auth()->id(),  
+                'user_id' => auth()->id(),
             ]);
 
             (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
-
         });
         return back();
     }
@@ -49,20 +47,17 @@ class ProductModulesController extends Controller
     public function import(Request $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
-
             $import = new ProductsImport();
             Excel::import($import, $request->file('file'));
 
             DB::table('imports')->insert([
                 'name' => $request->file('file')->getClientOriginalName(),
                 'registers' => $import->getRowsCount(),
-                'user_id' => auth()->id(), 
+                'user_id' => auth()->id(),
                 'created_at' => now(),
             ]);
-
         });
 
         return redirect()->route('admin.products.module');
     }
-
 }

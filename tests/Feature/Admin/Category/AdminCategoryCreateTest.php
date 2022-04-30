@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Admin\Category;
 
-use Tests\TestCase;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class AdminCategoryCreateTest extends TestCase
 {
@@ -16,7 +16,7 @@ class AdminCategoryCreateTest extends TestCase
         //$user->assignRole('admin');
         Sanctum::actingAs($user);
     }
-    
+
     public function testItVisitCreateCategory(): void
     {
         $response = $this->get(route('admin.categories.create'));

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Custom\Orders;
 
-use Tests\TestCase;
 use App\Models\Order;
+use Tests\TestCase;
 
 class OrderIndexTest extends TestCase
 {

@@ -11,10 +11,10 @@ use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends Controller
 {
-   /*  public function __construct()
-    {
-        $this->middleware('can:admin.categories.index');
-    }
+    /*  public function __construct()
+     {
+         $this->middleware('can:admin.categories.index');
+     }
  */
     public function index(): View
     {

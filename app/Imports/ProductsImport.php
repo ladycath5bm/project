@@ -2,15 +2,15 @@
 
 namespace App\Imports;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Rules\ProductImportRules;
-use App\Models\Category;
-use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\WithUpserts;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkReading, WithValidation
 {
@@ -20,10 +20,9 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
 
     public function model(array $row): Product
     {
-        ++$this->rows;
-        $product = Product::find($row['id']);
-        $product->update($this->getData($row));
-        return $product;
+        $this->rows++;
+
+        return new Product($this->getData($row));
     }
 
     private function getData(array $row): array
@@ -41,7 +40,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
             'user_id' => auth()->id(),
         ];
     }
-    
+
     private function assignCategory(string $category): int
     {
         return Category::select('id')->where('name', $category)->first()->id;
@@ -56,7 +55,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
     {
         return $this->rows;
     }
-    
+
     public function uniqueBy()
     {
         return 'code';

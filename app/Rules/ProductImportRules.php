@@ -4,8 +4,7 @@ namespace App\Rules;
 
 use App\Contracts\ImportProductRulesContract;
 
-class ProductImportRules  implements ImportProductRulesContract
-
+class ProductImportRules implements ImportProductRulesContract
 {
     public static function toArray(): array
     {

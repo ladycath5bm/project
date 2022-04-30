@@ -18,14 +18,14 @@ class ImportFileTest extends TestCase
         Sanctum::actingAs($user);
     }
 
-    /* public function testImportFile()
+    public function testImportFile()
     {
-        $file = new UploadedFile(base_path('tests/stubs/import.xlsx'), 'import.xlsx');
+        $file = new UploadedFile(base_path('tests/stubs/products.xlsx'), 'products.xlsx');
 
         $response = $this->post('admin/import', [
             'file' => $file,
         ]);
 
         $response->assertRedirect();
-    } */
+    }
 }

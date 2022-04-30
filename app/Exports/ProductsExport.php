@@ -2,14 +2,14 @@
 
 namespace App\Exports;
 
-use App\Models\Product;
 use App\Models\Category;
-use Maatwebsite\Excel\Excel;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\Exportable;
+use App\Models\Product;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\Support\Responsable;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Excel;
 
 class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueue
 {
@@ -71,7 +71,7 @@ class ProductsExport implements FromQuery, WithHeadings, Responsable, ShouldQueu
             'discount',
             'stock',
             'status',
-            'category'
+            'category',
         ];
     }
 }
