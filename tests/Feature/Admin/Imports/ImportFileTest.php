@@ -27,5 +27,7 @@ class ImportFileTest extends TestCase
         ]);
 
         $response->assertRedirect();
+
+        $this->assertDatabaseCount('products', 20);
     }
 }
