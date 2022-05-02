@@ -2,12 +2,13 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
-use App\Actions\Custom\UpdateOrderAction;
-use App\Contracts\GatewayContract;
 use App\Models\Order;
-use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Request;
+use App\Contracts\GatewayContract;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use App\Actions\Custom\UpdateOrderAction;
+use Illuminate\Http\Client\Response as ClientResponse;
 
 class PlacetoPay implements GatewayContract
 {
@@ -22,29 +23,16 @@ class PlacetoPay implements GatewayContract
         $this->url = config('payments.gateways.placetopay.url');
     }
 
-    protected function createRequest(Order $order)
+    protected function createRequest(Order $order): Response
     {
-        $this->buyer = Buyer::make($order);
-        $this->payment = Payment::make($order);
-
-        $dat = [
-                'locale' => 'es_CO',
-                'auth' => $this->auth,
-                'buyer' => $this->buyer,
-                'payment' => $this->payment,
-                'expiration' => date('c', strtotime('+45 min')),
-                'returnUrl' => route('orders.show', $order),
-                'cancelUrl' => route('cancel', $order),
-                'ipAddress' => app(Request::class)->getClientIp(),
-                'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
-        ];
-
-        $response = Http::acceptJson()->post(url($this->url), $dat);
+        $data = $this->getData($order);
+        $response = Http::acceptJson()->post(url($this->url), $data); //$dat);
 
         if ($response->successful()) {
-            $order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
+            //$order = (new UpdateOrderAction())->update($order, $this->payment, $response['requestId'], $response['processUrl']);
+            $order = (new UpdateOrderAction())->update($order, $data['payment'], $response['requestId'], $response['processUrl']);
         }
-        return $response->json();
+        return $response;
     }
 
     public static function getRequestInformation(string $requestId): ClientResponse
@@ -58,8 +46,26 @@ class PlacetoPay implements GatewayContract
         return $response;
     }
 
-    public function pay(Order $order): array
+    public function pay(Order $order): Response
     {
         return $this->createRequest($order);
+    }
+
+    private function getData(Order $order): array
+    {
+        $this->buyer = Buyer::make($order);
+        $this->payment = Payment::make($order);
+
+        return [
+                'locale' => 'es_CO',
+                'auth' => $this->auth,
+                'buyer' => $this->buyer,
+                'payment' => $this->payment,
+                'expiration' => date('c', strtotime('+45 min')),
+                'returnUrl' => route('orders.show', $order),
+                'cancelUrl' => route('cancel', $order),
+                'ipAddress' => app(Request::class)->getClientIp(),
+                'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
+        ];
     }
 }

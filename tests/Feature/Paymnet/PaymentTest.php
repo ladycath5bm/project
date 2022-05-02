@@ -1,0 +1,284 @@
+<?php
+
+namespace Tests\Feature\Paymnet;
+
+use App\Constants\OrderStatus;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
+use Tests\TestCase;
+
+class PaymentTest extends TestCase
+{
+    use RefreshDatabase;
+    private User $user;
+    private string $processUrl;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+        $this->processUrl = 'https://checkout-co.placetopay.com/session/1/cc9b8690b1f7228c78b759ce27d7e80a';
+    }
+
+    public function testCreateSessionWebcheckout()
+    {
+        $order = $this->dataProvider();
+
+        $processUrl = $this->processUrl;
+        Http::fake(function () use ($processUrl) {
+            return Http::response(json_encode([
+                    'status' => [
+                        'status' => 'OK',
+                        'reason' => 'PC',
+                        'message' => 'La petición se ha procesado correctamente',
+                        'date' => '2021-11-30T15:08:27-05:00',
+                    ],
+                    'requestId' => 1,
+                    'processUrl' => $processUrl,
+            ]), 200);
+        });
+
+        $response = $this->actingAs($this->user)->get(route('pay', $order));
+
+        $response->assertRedirect($processUrl);
+
+        $this->assertDatabaseCount('orders', 1);
+        $this->assertDatabaseHas('orders', [
+            'customerName' => $order->customerName,
+        ]);
+    }
+
+    public function testConsultSessionWebCheckoutApproved()
+    {
+        $order = $this->dataProvider();
+        //dd($order);
+        Http::fake(function () {
+            return Http::response(json_encode([
+                    'requestId' => 1,
+                    'status' => [
+                      'status' => 'APPROVED',
+                      'reason' => '00',
+                      'message' => 'La petición ha sido aprobada exitosamente',
+                      'date' => '2021-11-30T15:49:47-05:00',
+                    ],
+                    'request' => [
+                      'locale' => 'es_CO',
+                      'payer' => [
+                        'document' => '1033332222',
+                        'documentType' => 'CC',
+                        'name' => 'Name',
+                        'surname' => 'LastName',
+                        'email' => 'dnetix1@app.com',
+                        'mobile' => '3111111111',
+                        'address' => [
+                          'postalCode' => '12345',
+                        ],
+                    ],
+                      'payment' => [
+                        'reference' => '1122334455',
+                        'description' => 'Prueba',
+                        'amount' => [
+                          'currency' => 'USD',
+                          'total' => 1000,
+                        ],
+                        'allowPartial' => false,
+                        'subscribe' => false,
+                    ],
+                      'returnUrl' => 'https://redirection.test/home',
+                      'ipAddress' => '127.0.0.1',
+                      'userAgent' => 'PlacetoPay Sandbox',
+                      'expiration' => '2021-12-30T00:00:00-05:00',
+                    ],
+                    'payment' => [
+                      [
+                        'status' => [
+                          'status' => 'APPROVED',
+                          'reason' => '00',
+                          'message' => 'Aprobada',
+                          'date' => '2021-11-30T15:49:36-05:00',
+                        ],
+                      ],
+                    ],
+                    'subscription' => null,
+            ]), 200);
+        });
+
+        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+
+        $response->assertOk();
+        $response->assertViewIs('orders.show');
+        $this->assertDatabaseHas('orders', [
+          'id' => $order->id,
+          'status' => OrderStatus::APPROVED,
+        ]);
+    }
+
+    public function testConsultSessionWebCheckoutPending()
+    {
+        $order = $this->dataProvider();
+
+        Http::fake(function () {
+            return Http::response(json_encode([
+                "requestId" => 1,
+                "status" => [
+                  "status" => "PENDING",
+                  "reason" => "PT",
+                  "message" => "La petición se encuentra pendiente",
+                  "date" => "2021-11-30T15:45:57-05:00"
+                ],
+                "request" => [
+                  "locale" => "es_CO",
+                  "payer" => [
+                    "document" => "1033332222",
+                    "documentType" => "CC",
+                    "name" => "Name",
+                    "surname" => "lastName",
+                    "email" => "dnetix1@app.com",
+                    "mobile" => "3111111111",
+                    "address" => [
+                      "postalCode" => "12345"
+                    ]
+                  ],
+                  "payment" => [
+                    "reference" => "1122334455",
+                    "description" => "Prueba",
+                    "amount" => [
+                      "currency" => "USD",
+                      "total" => 1000
+                    ],
+                    "allowPartial" => false,
+                    "subscribe" => false
+                  ],
+                  "returnUrl" => "https://dnetix.co/p2p/client",
+                  "ipAddress" => "127.0.0.1",
+                  "userAgent" => "PlacetoPay Sandbox",
+                  "expiration" => "2021-12-30T00:00:00-05:00"
+                ],
+                "payment" => null,
+                "subscription" => null
+            ]), 200);
+        });
+
+        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+
+        $response->assertOk();
+        $response->assertViewIs('orders.show');
+        $this->assertDatabaseHas('orders', [
+          'id' => $order->id,
+          'status' => OrderStatus::PENDING,
+        ]);
+    }
+
+    public function testConsultSessionWebCheckoutRejected()
+    {
+        $order = $this->dataProvider();
+
+        Http::fake(function () {
+          return Http::response(json_encode([
+            "requestId" => 1,
+            "status" => [
+              "status" => "REJECTED",
+              "reason" => "XN",
+              "message" => "Se ha rechazado la petición",
+              "date" => "2021-11-30T16:44:24-05:00"
+            ],
+            "request" => [
+              "locale" => "es_CO",
+              "payer" => [
+                "document" => "1033332222",
+                "documentType" => "CC",
+                "name" => "Name",
+                "surname" => "LastName",
+                "email" => "dnetix@app.com",
+                "mobile" => "31111111111",
+                "address" => [
+                  "postalCode" => "12345"
+                ]
+              ],
+              "payment" => [
+                "reference" => "331122",
+                "description" => "Reference",
+                "amount" => [
+                  "currency" => "USD",
+                  "total" => 500
+                ],
+                "allowPartial" => false,
+                "subscribe" => false,
+                "dispersion" => [
+                  [
+                    "reference" => "331122",
+                    "description" => "Reference",
+                    "amount" => [
+                      "currency" => "USD",
+                      "total" => 200
+                    ],
+                    "allowPartial" => false,
+                    "subscribe" => false,
+                    "agreement" => "26",
+                    "agreementType" => "AIRLINE"
+                  ],
+                  [
+                    "reference" => "331122",
+                    "description" => "Reference",
+                    "amount" => [
+                      "currency" => "USD",
+                      "total" => 300
+                    ],
+                    "allowPartial" => false,
+                    "subscribe" => false,
+                    "agreementType" => "MERCHANT"
+                  ]
+                ]
+              ],
+              "returnUrl" => "https://redirection.test/home",
+              "ipAddress" => "127.0.0.1",
+              "userAgent" => "PlacetoPay Sandbox",
+              "expiration" => "2021-12-30T00:00:00-05:00"
+            ],
+            "payment" => [
+              [
+                "status" => [
+                  "status" => "REJECTED",
+                  "reason" => "65",
+                  "message" => "65",
+                  "date" => "2021-11-30T16:22:19-05:00"
+                ],
+              ]
+            ],
+            "subscription" => null
+          ]), 200);
+        });
+
+        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+
+        $response->assertOk();
+        $response->assertViewIs('orders.show');
+        $this->assertDatabaseHas('orders', [
+          'id' => $order->id,
+          'status' => OrderStatus::REJECTED,
+        ]);
+    }
+
+    public function dataProvider(): Order
+    {
+      $order = Order::factory()->create();
+      $order->customer_id = $this->user->id;
+      $order->requestId = 1;
+      $order->processUrl = $this->processUrl;
+      $order->save();
+
+      $product = Product::factory()->create();
+      
+      $order->products()->attach( $product->id, [
+        'quantity' => 2,
+        'price' => $product->price,
+        'subtotal' => $product->price * 2,
+      ]);
+
+      return $order;
+    }
+}

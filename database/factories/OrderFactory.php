@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Constants\OrderStatus;
 use App\Models\User;
+use App\Models\Product;
+use App\Constants\OrderStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory

@@ -38,7 +38,7 @@ class OrderController extends Controller
             ->where('id', $order->id)
             ->where('customer_id', auth()->user()->id)
             ->first();
-
+        
         $order = (new ConsultPaymentStatusAction())->consult($order);
 
         return view('orders.show', compact('order'));

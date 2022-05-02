@@ -14,38 +14,39 @@ class ConsultPaymentStatusAction
     public function consult(Order $order): Order
     {
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        $order = $this->updateStatus($response, $order);
+        $orderConsult = $this->updateStatus($response, $order);
 
-        if ($order->status == OrderStatus::REJECTED) {
+        if ($orderConsult->status == $order->status) {
+            return $orderConsult;
+        }
+        
+        if ($orderConsult->status == OrderStatus::REJECTED) {
             $order = self::updateOrderRejected($order);
         }
-
         return $order;
     }
 
     private function updateStatus(Response $response, Order $order): Order
     {
-        if ($response->successful()) {
-            $responseSesion = $response->json()['status'];
+        $data = $response->json();
 
-            if ($responseSesion['status'] != 'REJECTED') {
-                if ($response->json()['payment'] != null) {
-                    $responsePayment = $response->json()['payment'];
-                    $responseTransaction = $responsePayment[0]['status'];
-                    $order->status = $responseTransaction['status'];
-                    $message = $responseTransaction['message'];
-                    $order->transactions = $responsePayment;
-                }
-            } else {
+        if ($response->successful()) {
+            $responseSesion = $data['status'];
+
+            if (($responseSesion['status'] != OrderStatus::REJECTED) && isset($data['payment'])) {
+                $responsePayment = $data['payment'];
+                $responseTransaction = $responsePayment[0]['status'];
+                $order->status = $responseTransaction['status'];
+                $order->transactions = $responsePayment;
+                $order->save();
+            }else {
                 $order->status = $responseSesion['status'];
-                $message = $responseSesion['message'];
+                $order->save();
             }
         } else {
-            $responseSesion = $response->json()['status'];
-            $message = $responseSesion['message'];
+            $responseSesion = $data['status'];
         }
-        //dd($order);
-        $order->save();
+        
         return $order;
     }
 
@@ -53,7 +54,7 @@ class ConsultPaymentStatusAction
     {
         foreach ($order->products as $product) {
             Product::find($product->id)->increment('stock', $product->pivot->quantity);
-            Log::info(['message, se ha actualizado un producto'], [
+            Log::info(['Se ha actualizado un producto'], [
                 'product_id' => $product->getKey(),
             ]);
         }
