@@ -21,7 +21,7 @@ class OrderFactory extends Factory
             'status' => OrderStatus::CREATED,
             'reference' => $this->faker->numberBetween(000000, 999999),
             'description' => $this->faker->sentence(),
-            'customer_id' => User::factory()->create(),
+            'customer_id' => User::factory()->create()->assignRole('custom'),
         ];
     }
 }

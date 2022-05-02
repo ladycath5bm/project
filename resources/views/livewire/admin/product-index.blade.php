@@ -23,11 +23,23 @@
                     @forelse ($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->code }}</td>
-                        <td> @if ($product->status == 1) {{ __('Enable') }} @else {{ __('Disable') }} @endif </td>
-                        <td>{{ $product->stock }}</td>
                         <td><a href="{{ route('admin.products.show', $product) }}">{{ $product->name }}</a></td>
+                        <td>{{ $product->code }}</td>
+                        <td> @if ($product->status == 1) 
+                                <span class="text-success">Enable</span>
+                            @else 
+                                <span class="text-danger">Disable</span>
+                            @endif 
+                        </td>
+                        <td>
+                            @if( $product->stock == 0 )
+                                <span class="text-warning text-center">{{ $product->stock }}</span>
+                                <br>
+                                <span class="text-xs text-danger text-center">Sold Out</span>
+                            @else
+                                <span class="text-warning text-center">{{ $product->stock }}</span>
+                            @endif
+                        </td>
                         <td width="10px">
                             <a class="btn btn-sm btn-success" href="{{ route('admin.products.edit', $product) }}">Edit</a>
                         </td>
