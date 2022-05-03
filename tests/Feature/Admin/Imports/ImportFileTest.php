@@ -2,33 +2,37 @@
 
 namespace Tests\Feature\Admin\Imports;
 
+use App\Models\Category;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ImportFileTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
-
-        $user = User::factory()->create();
-        //$user->assignRole('admin');
-        Sanctum::actingAs($user);
     }
 
     public function testImportFile()
     {
+        $this->artisan('db:seed');
+        Category::create(['name' => 'sed']);
+        $user = User::factory()->create()->assignRole('admin');
+
         $file = new UploadedFile(base_path('tests/stubs/products.xlsx'), 'products.xlsx');
 
-        $response = $this->post('admin/import', [
+        $response = $this->actingAs($user)->post('admin/import', [
             'file' => $file,
         ]);
 
         $response->assertRedirect();
 
-        $this->assertDatabaseCount('products', 20);
+        $this->assertDatabaseCount('products', 50);
+
         $this->assertDatabaseHas('products', [
             'name' => 'nam',
             'code' => 20801,
@@ -37,7 +41,6 @@ class ImportFileTest extends TestCase
             'discount' => '23.00',
             'stock' => 2560,
             'status' => 1,
-            'category_id' => 10,
         ]);
     }
 }

@@ -7,28 +7,32 @@ use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Carbon;
 use App\Exports\ProductsExport;
+use Database\Seeders\RoleSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelImportProductsTest extends TestCase
 {
-
+    use RefreshDatabase;
 
     public function testUserCanDownloadProductsExport()
     {
-        $user = User::factory()->create();
+        $this->artisan('db:seed');
+        $user = User::factory()->create()->assignRole('admin');
+
         Excel::fake();
+
         $data = ['date1' => Carbon::now()->subDays(5),
             'date2' => now(),
             'categories' => 'all',
             'satus' => 'all'];
 
-        $response = $this->actingAs($user)->get('admin/export/', [
-            'request' => $data
-        ]);
+        $response = $this->actingAs($user)->get(route('admin.products.export', $data));
+        $responseDownload = $this->actingAs($user)->get(route('admin.exports.file'));
 
         $response->assertRedirect();
 
-        Excel::assertStored('products.xlsx', function(ProductsExport $export) {
+        Excel::assertStored('public/exports/products-' . date('Y-m-d H') . '.xlsx', function(ProductsExport $export) {
             return true;
         });
 

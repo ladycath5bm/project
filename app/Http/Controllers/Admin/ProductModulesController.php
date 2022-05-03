@@ -46,6 +46,7 @@ class ProductModulesController extends Controller
 
     public function import(Request $request): RedirectResponse
     {
+        
         DB::transaction(function () use ($request) {
             $import = new ProductsImport();
             Excel::import($import, $request->file('file'));

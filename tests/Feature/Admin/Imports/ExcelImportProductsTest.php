@@ -15,7 +15,9 @@ class ExcelImportProductsTest extends TestCase
    
     public function test_user_can_import_users() 
     {
-        $user = User::factory()->create();
+        $this->artisan('db:seed');
+        $user = User::factory()->create()->assignRole('admin');
+        
         Excel::fake();
 
         //$response = $this->actingAs($user)->post('admin/import');
