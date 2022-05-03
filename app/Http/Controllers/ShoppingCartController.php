@@ -15,13 +15,6 @@ class ShoppingCartController extends Controller
         return view('cart.index');
     }
 
-    public function update(Request $request)
-    {
-        Cart::update($request->id, $request->qty);
-        //dd($request->all());
-        return redirect()->route('cart.index');
-    }
-
     public function store(Request $request): RedirectResponse
     {
         $product = Product::whereId($request->id)->first();
@@ -32,7 +25,14 @@ class ShoppingCartController extends Controller
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
-        Cart::instance('default')->store((string)auth()->user()->id);
+        
+        return redirect()->route('cart.index');
+    }
+    
+    public function update(Request $request)
+    {
+        Cart::update($request->id, $request->qty);
+        //dd($request->all());
         return redirect()->route('cart.index');
     }
 

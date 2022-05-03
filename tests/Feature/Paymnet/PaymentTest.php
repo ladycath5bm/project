@@ -6,13 +6,16 @@ use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class PaymentTest extends TestCase
 {
     use RefreshDatabase;
+
     private User $user;
     private string $processUrl;
 
@@ -20,7 +23,8 @@ class PaymentTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        Role::create(['name' => 'custom']);
+        $this->user = User::factory()->create()->assignRole('custom');
         $this->processUrl = 'https://checkout-co.placetopay.com/session/1/cc9b8690b1f7228c78b759ce27d7e80a';
     }
 
@@ -29,6 +33,7 @@ class PaymentTest extends TestCase
         $order = $this->dataProvider();
 
         $processUrl = $this->processUrl;
+
         Http::fake(function () use ($processUrl) {
             return Http::response(json_encode([
                     'status' => [
@@ -42,20 +47,34 @@ class PaymentTest extends TestCase
             ]), 200);
         });
 
+        $data = [
+          'name' => $order->customerName,
+          'document' => $order->customerDocument,
+          'email' => $order->customerEmail,
+          'mobile' => $order->customerPhone,
+          'address' => $order->customerAddress,
+        ];        
+        
+        $responseOrderStore = $this->actingAs($this->user)->post(route('orders.store', $data));
         $response = $this->actingAs($this->user)->get(route('pay', $order));
-
+        
+        $responseOrderStore->assertRedirect(route('pay', 2));
         $response->assertRedirect($processUrl);
 
-        $this->assertDatabaseCount('orders', 1);
+        $this->assertDatabaseCount('orders', 2);
+
         $this->assertDatabaseHas('orders', [
+            'id' => 2,
             'customerName' => $order->customerName,
+            'customerEmail' => $order->customerEmail,
+            'status' => OrderStatus::CREATED,
         ]);
     }
 
     public function testConsultSessionWebCheckoutApproved()
     {
         $order = $this->dataProvider();
-        //dd($order);
+
         Http::fake(function () {
             return Http::response(json_encode([
                     'requestId' => 1,
@@ -123,43 +142,43 @@ class PaymentTest extends TestCase
 
         Http::fake(function () {
             return Http::response(json_encode([
-                "requestId" => 1,
-                "status" => [
-                  "status" => "PENDING",
-                  "reason" => "PT",
-                  "message" => "La petición se encuentra pendiente",
-                  "date" => "2021-11-30T15:45:57-05:00"
+                'requestId' => 1,
+                'status' => [
+                  'status' => 'PENDING',
+                  'reason' => 'PT',
+                  'message' => 'La petición se encuentra pendiente',
+                  'date' => '2021-11-30T15:45:57-05:00',
                 ],
-                "request" => [
-                  "locale" => "es_CO",
-                  "payer" => [
-                    "document" => "1033332222",
-                    "documentType" => "CC",
-                    "name" => "Name",
-                    "surname" => "lastName",
-                    "email" => "dnetix1@app.com",
-                    "mobile" => "3111111111",
-                    "address" => [
-                      "postalCode" => "12345"
-                    ]
-                  ],
-                  "payment" => [
-                    "reference" => "1122334455",
-                    "description" => "Prueba",
-                    "amount" => [
-                      "currency" => "USD",
-                      "total" => 1000
+                'request' => [
+                  'locale' => 'es_CO',
+                  'payer' => [
+                    'document' => '1033332222',
+                    'documentType' => 'CC',
+                    'name' => 'Name',
+                    'surname' => 'lastName',
+                    'email' => 'dnetix1@app.com',
+                    'mobile' => '3111111111',
+                    'address' => [
+                      'postalCode' => '12345',
                     ],
-                    "allowPartial" => false,
-                    "subscribe" => false
                   ],
-                  "returnUrl" => "https://dnetix.co/p2p/client",
-                  "ipAddress" => "127.0.0.1",
-                  "userAgent" => "PlacetoPay Sandbox",
-                  "expiration" => "2021-12-30T00:00:00-05:00"
+                  'payment' => [
+                    'reference' => '1122334455',
+                    'description' => 'Prueba',
+                    'amount' => [
+                      'currency' => 'USD',
+                      'total' => 1000,
+                    ],
+                    'allowPartial' => false,
+                    'subscribe' => false,
+                  ],
+                  'returnUrl' => 'https://dnetix.co/p2p/client',
+                  'ipAddress' => '127.0.0.1',
+                  'userAgent' => 'PlacetoPay Sandbox',
+                  'expiration' => '2021-12-30T00:00:00-05:00',
                 ],
-                "payment" => null,
-                "subscription" => null
+                'payment' => null,
+                'subscription' => null,
             ]), 200);
         });
 
@@ -178,78 +197,78 @@ class PaymentTest extends TestCase
         $order = $this->dataProvider();
 
         Http::fake(function () {
-          return Http::response(json_encode([
-            "requestId" => 1,
-            "status" => [
-              "status" => "REJECTED",
-              "reason" => "XN",
-              "message" => "Se ha rechazado la petición",
-              "date" => "2021-11-30T16:44:24-05:00"
+            return Http::response(json_encode([
+            'requestId' => 1,
+            'status' => [
+              'status' => 'REJECTED',
+              'reason' => 'XN',
+              'message' => 'Se ha rechazado la petición',
+              'date' => '2021-11-30T16:44:24-05:00',
             ],
-            "request" => [
-              "locale" => "es_CO",
-              "payer" => [
-                "document" => "1033332222",
-                "documentType" => "CC",
-                "name" => "Name",
-                "surname" => "LastName",
-                "email" => "dnetix@app.com",
-                "mobile" => "31111111111",
-                "address" => [
-                  "postalCode" => "12345"
-                ]
-              ],
-              "payment" => [
-                "reference" => "331122",
-                "description" => "Reference",
-                "amount" => [
-                  "currency" => "USD",
-                  "total" => 500
+            'request' => [
+              'locale' => 'es_CO',
+              'payer' => [
+                'document' => '1033332222',
+                'documentType' => 'CC',
+                'name' => 'Name',
+                'surname' => 'LastName',
+                'email' => 'dnetix@app.com',
+                'mobile' => '31111111111',
+                'address' => [
+                  'postalCode' => '12345',
                 ],
-                "allowPartial" => false,
-                "subscribe" => false,
-                "dispersion" => [
+              ],
+              'payment' => [
+                'reference' => '331122',
+                'description' => 'Reference',
+                'amount' => [
+                  'currency' => 'USD',
+                  'total' => 500,
+                ],
+                'allowPartial' => false,
+                'subscribe' => false,
+                'dispersion' => [
                   [
-                    "reference" => "331122",
-                    "description" => "Reference",
-                    "amount" => [
-                      "currency" => "USD",
-                      "total" => 200
+                    'reference' => '331122',
+                    'description' => 'Reference',
+                    'amount' => [
+                      'currency' => 'USD',
+                      'total' => 200,
                     ],
-                    "allowPartial" => false,
-                    "subscribe" => false,
-                    "agreement" => "26",
-                    "agreementType" => "AIRLINE"
+                    'allowPartial' => false,
+                    'subscribe' => false,
+                    'agreement' => '26',
+                    'agreementType' => 'AIRLINE',
                   ],
                   [
-                    "reference" => "331122",
-                    "description" => "Reference",
-                    "amount" => [
-                      "currency" => "USD",
-                      "total" => 300
+                    'reference' => '331122',
+                    'description' => 'Reference',
+                    'amount' => [
+                      'currency' => 'USD',
+                      'total' => 300,
                     ],
-                    "allowPartial" => false,
-                    "subscribe" => false,
-                    "agreementType" => "MERCHANT"
-                  ]
-                ]
-              ],
-              "returnUrl" => "https://redirection.test/home",
-              "ipAddress" => "127.0.0.1",
-              "userAgent" => "PlacetoPay Sandbox",
-              "expiration" => "2021-12-30T00:00:00-05:00"
-            ],
-            "payment" => [
-              [
-                "status" => [
-                  "status" => "REJECTED",
-                  "reason" => "65",
-                  "message" => "65",
-                  "date" => "2021-11-30T16:22:19-05:00"
+                    'allowPartial' => false,
+                    'subscribe' => false,
+                    'agreementType' => 'MERCHANT',
+                  ],
                 ],
-              ]
+              ],
+              'returnUrl' => 'https://redirection.test/home',
+              'ipAddress' => '127.0.0.1',
+              'userAgent' => 'PlacetoPay Sandbox',
+              'expiration' => '2021-12-30T00:00:00-05:00',
             ],
-            "subscription" => null
+            'payment' => [
+              [
+                'status' => [
+                  'status' => 'REJECTED',
+                  'reason' => '65',
+                  'message' => '65',
+                  'date' => '2021-11-30T16:22:19-05:00',
+                ],
+              ],
+            ],
+            'subscription' => null,
           ]), 200);
         });
 
@@ -265,20 +284,26 @@ class PaymentTest extends TestCase
 
     public function dataProvider(): Order
     {
-      $order = Order::factory()->create();
-      $order->customer_id = $this->user->id;
-      $order->requestId = 1;
-      $order->processUrl = $this->processUrl;
-      $order->save();
+        $order = Order::factory()->create();
+        $order->customer_id = $this->user->id;
+        $order->requestId = 1;
+        $order->processUrl = $this->processUrl;
+        $order->save();
 
-      $product = Product::factory()->create();
-      
-      $order->products()->attach( $product->id, [
-        'quantity' => 2,
+        $product = Product::factory()->create();
+        
+        Cart::add($product->id, $product->name, 1, $product->price, [
+          'code' => $product->code,
+          'discount' => $product->discount,
+          'stock' => $product->stock
+        ]);
+
+        $order->products()->attach($product->id, [
+        'quantity' => 1,
         'price' => $product->price,
-        'subtotal' => $product->price * 2,
+        'subtotal' => $product->price * 1,
       ]);
 
-      return $order;
+        return $order;
     }
 }

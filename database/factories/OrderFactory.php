@@ -13,8 +13,8 @@ class OrderFactory extends Factory
     {
         return [
             'customerName' => $this->faker->name(),
-            'customerEmail' => $this->faker->email(),
             'customerDocument' => (string)$this->faker->randomNumber(6),
+            'customerEmail' => $this->faker->email(),
             'customerPhone' => $this->faker->phoneNumber(),
             'customerAddress' => $this->faker->address(),
             'total' => $this->faker->numberBetween(10000, 999999),

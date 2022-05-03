@@ -28,7 +28,7 @@ class OrderController extends Controller
         $createNewOrderAction = new CreateOrderAction();
 
         $order = $createNewOrderAction->create($request->validated());
-
+        
         return redirect()->route('pay', $order);
     }
 

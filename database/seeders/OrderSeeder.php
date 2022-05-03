@@ -15,9 +15,9 @@ class OrderSeeder extends Seeder
                 $product = Product::factory()->create();
 
                 $order->products()->attach($product->id, [
-                    'quantity' => $this->faker->numberBetween(1,10),
-                    'price' => $this->faker->numberBetween(10000, 999999),
-                    'subtotal' => $this->faker->numberBetween(10000, 999999),
+                    'quantity' => 2,
+                    'price' => $product->price,
+                    'subtotal' => $product->price * 2,
                 ]);
             });
     }
