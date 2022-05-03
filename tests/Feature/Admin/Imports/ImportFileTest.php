@@ -19,7 +19,8 @@ class ImportFileTest extends TestCase
 
     public function testImportFile()
     {
-        $this->artisan('db:seed');
+        $this->artisan('db:seed --class=RoleSeeder');
+
         Category::create(['name' => 'sed']);
         $user = User::factory()->create()->assignRole('admin');
 
@@ -31,7 +32,7 @@ class ImportFileTest extends TestCase
 
         $response->assertRedirect();
 
-        $this->assertDatabaseCount('products', 50);
+        $this->assertDatabaseCount('products', 20);
 
         $this->assertDatabaseHas('products', [
             'name' => 'nam',
