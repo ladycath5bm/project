@@ -11,7 +11,7 @@ class CreateExportsTable extends Migration
     {
         Schema::create('exports', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
+            $table->string('path', 120);
             $table->enum('status', ExcelStatus::toArray())->default(ExcelStatus::PROCESSING);
             $table->json('query');
             $table->foreignId('user_id');

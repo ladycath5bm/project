@@ -9,6 +9,7 @@ class CreateOrderProductTable extends Migration
     public function up(): void
     {
         Schema::create('order_product', function (Blueprint $table) {
+            $table->id();
             $table->integer('quantity');
             $table->string('price');
             $table->string('subtotal');

@@ -17,12 +17,12 @@ class CreateOrdersTable extends Migration
             $table->string('customerPhone');
             $table->string('customerAddress');
             $table->json('transactions')->nullable();
-            $table->char('reference', 20)->nullable();
+            $table->char('reference', 20);
             $table->char('requestId')->nullable();
             $table->string('processUrl')->nullable();
-            $table->integer('total')->nullable();
+            $table->integer('total');
             $table->enum('status', OrderStatus::toArray());
-            $table->string('description')->nullable();
+            $table->string('description');
 
             $table->foreignId('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
