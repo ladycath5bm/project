@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
 use App\Imports\ProductsImport;
+use App\Jobs\Exports\CompletExportStatusJob;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -24,18 +25,20 @@ class ProductModulesController extends Controller
 
     public function export(Request $request): RedirectResponse
     {
-        //dd(json_encode($request));
         DB::transaction(function () use ($request) {
             $filter = $request->toArray();
 
-            DB::table('exports')->insert([
+            $id = DB::table('exports')->insertGetId([
                 'path' => 'public/exports/products-' . date('Y-m-d H') . '.xlsx',
                 'query' => json_encode($request->all()),
                 'user_id' => auth()->id(),
             ]);
 
-            (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx');
+            (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx')
+                ->chain([new CompletExportStatusJob($id)]);
+
         });
+        
         return back();
     }
 
@@ -46,7 +49,6 @@ class ProductModulesController extends Controller
 
     public function import(Request $request): RedirectResponse
     {
-        
         DB::transaction(function () use ($request) {
             $import = new ProductsImport();
             Excel::import($import, $request->file('file'));

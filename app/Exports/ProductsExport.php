@@ -2,14 +2,15 @@
 
 namespace App\Exports;
 
-use App\Models\Category;
+use Throwable;
 use App\Models\Product;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Contracts\Support\Responsable;
-use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use App\Models\Category;
 use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Contracts\Support\Responsable;
 
 class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 {
@@ -64,5 +65,10 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
             'status',
             'category',
         ];
+    }
+
+    public function failed(Throwable $exception): void
+    {
+        // handle failed export
     }
 }

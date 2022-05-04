@@ -12,10 +12,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExcelImportProductsTest extends TestCase
 {
-   
+    use RefreshDatabase;
+
     public function test_user_can_import_users() 
     {
-        $this->artisan('db:seed');
+        $this->artisan('db:seed --class=RoleSeeder');
         $user = User::factory()->create()->assignRole('admin');
         
         Excel::fake();
