@@ -3,31 +3,29 @@
 namespace Tests\Feature\Admin\Category;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class AdminCategoryCreateTest extends TestCase
 {
+    use RefreshDatabase;
+
+    private User $user;
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        $user = User::factory()->create();
-        //$user->assignRole('admin');
-        Sanctum::actingAs($user);
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()->create()->assignRole('admin');
     }
 
     public function testItVisitCreateCategory(): void
     {
-        $response = $this->get(route('admin.categories.create'));
+        $response = $this->actingAs($this->user)->get(route('admin.categories.create'));
 
         $response->assertOk();
-    }
-
-    public function testItCreateProducts(): void
-    {
-        $response = $this->get(route('admin.categories.create'));
-
         $response->assertViewIs('admin.categories.create');
     }
 }

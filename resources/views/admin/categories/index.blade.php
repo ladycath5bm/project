@@ -14,7 +14,6 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <!--livewire('admin.category-index')-->
             @livewire('admin.category-index')
         </div>
     </div>

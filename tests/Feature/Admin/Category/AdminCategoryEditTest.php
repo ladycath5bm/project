@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Admin\Category;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class AdminCategoryIndexTest extends TestCase
+class AdminCategoryEditTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,16 +18,17 @@ class AdminCategoryIndexTest extends TestCase
         parent::setUp();
 
         $this->artisan('db:seed --class=RoleSeeder');
-        Category::factory()->count(19)->create();
         $this->user = User::factory()->create()->assignRole('admin');
     }
 
-    public function testItListCategories()
+    public function testItCanEditACategory(): void
     {
-        $response = $this->actingAs($this->user)->get(route('admin.categories.index'));
+        $category = Category::create(['name' => 'electrodomestico']);
+        
+        $response = $this->actingAs($this->user)->get(route('admin.categories.edit', $category));
 
         $response->assertOk();
-        $response->assertViewIs('admin.categories.index');
-        $response->assertViewHas('categories');
+        $response->assertViewIs('admin.categories.edit');
+        $response->assertViewHas('category');
     }
 }

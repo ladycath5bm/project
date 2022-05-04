@@ -2,7 +2,9 @@
 
 namespace App\Constants;
 
-class ExcelStatus
+use App\Contracts\ConstantsContract;
+
+class ExcelStatus implements ConstantsContract
 {
     public const PROCESSING = 'PROCESSING';
     public const FINISHED = 'FINISHED';

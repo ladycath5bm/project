@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Exports\ProductsExport;
-use App\Http\Controllers\Controller;
-use App\Imports\ProductsImport;
-use App\Jobs\Exports\CompletExportStatusJob;
 use App\Models\Category;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use App\Jobs\Exports\CompletExportStatusJob;
+use App\Http\Requests\Exports\ExportProductsRequest;
+use App\Http\Requests\Imports\ImportProductsRequest;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
@@ -26,6 +28,7 @@ class ProductModulesController extends Controller
     public function export(Request $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
+            
             $filter = $request->toArray();
 
             $id = DB::table('exports')->insertGetId([
@@ -44,15 +47,16 @@ class ProductModulesController extends Controller
 
     public function exportFile(): StreamedResponse
     {
-        return Storage::download('public/exports/products-' . date('Y-m-d H') . '.xlsx');
+        return Storage::download('public/exports/products.xlsx');
     }
 
     public function import(Request $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
+
             $import = new ProductsImport();
             Excel::import($import, $request->file('file'));
-
+            
             DB::table('imports')->insert([
                 'name' => $request->file('file')->getClientOriginalName(),
                 'registers' => $import->getRowsCount(),

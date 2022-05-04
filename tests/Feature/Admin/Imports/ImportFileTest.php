@@ -17,7 +17,7 @@ class ImportFileTest extends TestCase
         parent::setUp();
     }
 
-    public function testImportFile()
+    public function testItCanImportProductsFile()
     {
         $this->artisan('db:seed --class=RoleSeeder');
 

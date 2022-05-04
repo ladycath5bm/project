@@ -2,7 +2,9 @@
 
 namespace App\Constants;
 
-class OrderStatus
+use App\Contracts\ConstantsContract;
+
+class OrderStatus implements ConstantsContract
 {
     public const APPROVED = 'APPROVED';
     public const REJECTED = 'REJECTED';

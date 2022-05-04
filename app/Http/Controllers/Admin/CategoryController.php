@@ -11,15 +11,15 @@ use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends Controller
 {
-    /*  public function __construct()
+    public function __construct()
      {
          $this->middleware('can:admin.categories.index');
-     }
- */
+    }
+
     public function index(): View
     {
         $categories = Category::paginate(5);
-        //dd($categories);
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -41,7 +41,6 @@ class CategoryController extends Controller
 
     public function update(AdminCategoryUpdateRequest $request, Category $category): RedirectResponse
     {
-        //integrar validacion
         $category->update($request->validated());
         return redirect()->route('admin.categories.index')->with('information', 'Category updated successfully');
     }

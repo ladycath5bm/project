@@ -2,7 +2,9 @@
 
 namespace App\Constants;
 
-class Currencies
+use App\Contracts\ConstantsContract;
+
+class Currencies implements ConstantsContract
 {
     public const USD = 'USD';
     public const COP = 'COP';

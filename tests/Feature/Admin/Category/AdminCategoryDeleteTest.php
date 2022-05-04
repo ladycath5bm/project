@@ -2,19 +2,15 @@
 
 namespace Tests\Feature\Admin\Category;
 
-use Tests\TestCase;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class AdminCategoryStoreTest extends TestCase
+class AdminCategoryDeleteTest extends TestCase
 {
     use RefreshDatabase;
-
     private User $user;
-
-    private array $data = [
-        'name' => 'kepler',
-    ];
 
     protected function setUp(): void
     {
@@ -24,13 +20,15 @@ class AdminCategoryStoreTest extends TestCase
         $this->user = User::factory()->create()->assignRole('admin');
     }
 
-    public function testACategoryCanBeCreated()
+    public function testItCanDeleteACategory(): void
     {
-        $response = $this->actingAs($this->user)->post(route('admin.categories.store'), $this->data);
+        $category = Category::create(['name' => 'celular']);
 
+        $response = $this->actingAs($this->user)->delete(route('admin.categories.destroy', $category));
         $response->assertRedirect(route('admin.categories.index'));
 
-        $this->assertDatabaseCount('categories', 1);
-        $this->assertDatabaseHas('categories', ['name' => 'kepler']);
+        $this->assertDatabaseCount('categories', 0);
+        $this->assertDatabaseMissing('categories', ['name' => 'celular']);
+
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 
-class ExcelImportProductsTest extends TestCase
+class ExcelExportProductsTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -63,4 +63,16 @@ class ExcelImportProductsTest extends TestCase
             return true;
         });
     }
+
+    public function testUserCanDownloadProductsExport()
+    {
+        $this->artisan('db:seed --class=RoleSeeder');
+        $user = User::factory()->create()->assignRole('admin');
+
+        $response = $this->actingAs($user)
+            ->get(route('admin.exports.file'));
+
+        $response->assertDownload('products.xlsx');
+    }
+    
 }
