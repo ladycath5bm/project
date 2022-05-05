@@ -32,12 +32,12 @@ class ProductModulesController extends Controller
             $filter = $request->toArray();
 
             $id = DB::table('exports')->insertGetId([
-                'path' => 'public/exports/products-' . date('Y-m-d H') . '.xlsx',
+                'path' => 'public/exports/products-' . auth()->id() . '.xlsx',
                 'query' => json_encode($request->all()),
                 'user_id' => auth()->id(),
             ]);
 
-            (new ProductsExport($filter))->queue('public/exports/products-' . date('Y-m-d H') . '.xlsx')
+            (new ProductsExport($filter))->queue('public/exports/products.xlsx')
                 ->chain([new CompletExportStatusJob($id)]);
 
         });

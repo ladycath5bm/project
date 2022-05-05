@@ -31,7 +31,7 @@ class ExcelExportProductsTest extends TestCase
         $this->actingAs($user)
             ->get(route('admin.products.export', $data));
 
-        Excel::assertQueued('public/exports/products-' . date('Y-m-d H') . '.xlsx', function (ProductsExport $export) {
+        Excel::assertQueued('public/exports/products.xlsx', function (ProductsExport $export) {
             return true;
         });
 
@@ -59,7 +59,7 @@ class ExcelExportProductsTest extends TestCase
 
         $response->assertRedirect();
 
-        Excel::assertStored('public/exports/products-' . date('Y-m-d H') . '.xlsx', function (ProductsExport $export) {
+        Excel::assertStored('public/exports/products.xlsx', function (ProductsExport $export) {
             return true;
         });
     }
