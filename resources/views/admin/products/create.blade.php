@@ -60,11 +60,11 @@
                     <p class="font-weight-bold">Status</p>
 
                     <label class="mr-2">
-                        {!! Form::radio('status', 0, true) !!}
-                        Disable
+                        {!! Form::radio('status', 'DISABLED', true) !!}
+                        Disabled
                     </label>
                     <label class="mr-2">
-                        {!! Form::radio('status', 1, true) !!}
+                        {!! Form::radio('status', 'ENABLED', true) !!}
                         Enabled
                     </label>
                 </div>

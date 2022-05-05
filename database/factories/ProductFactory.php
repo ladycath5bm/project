@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'discount' => $this->faker->numberBetween(0, 100),
             'stock' => $this->faker->numberBetween(0, 10000),
             'status' => $this->faker->randomElement(ProductStatus::toArray()),
+            'user_id' => 1,
         ];
     }
 }

@@ -72,7 +72,7 @@ class ExcelExportProductsTest extends TestCase
         $response = $this->actingAs($user)
             ->get(route('admin.exports.file'));
 
-        $response->assertDownload('products.xlsx');
+        $response->assertDownload('hola.xlsx');
     }
     
 }

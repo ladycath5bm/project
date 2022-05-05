@@ -34,20 +34,13 @@ class OrderController extends Controller
 
     public function show(Order $order): View
     {
-        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'created_at', 'customerName', 'customerEmail', 'reference')
-            ->where('id', $order->id)
-            ->where('customer_id', auth()->user()->id)
-            ->first();
-        
-        $order = (new ConsultPaymentStatusAction())->consult($order);
-
         return view('orders.show', compact('order'));
     }
 
     public function destroy(Order $order): RedirectResponse
     {
         if ($order->status == OrderStatus::REJECTED) {
-            DB::table('order_product')->where('order_id', $order->id)->delete();
+            //DB::table('order_product')->where('order_id', $order->id)->delete();
             $order->delete();
         }
 

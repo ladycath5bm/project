@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->text('description', 250);
             $table->unsignedInteger('discount')->default(0);
             $table->unsignedInteger('stock');
-            $table->enum('status', [ProductStatus::toArray()])->default(ProductStatus::DISABLE);
+            $table->enum('status', [ProductStatus::toArray()])->default(ProductStatus::DISABLED);
             $table->string('slug', 120)->nullable();
 
             $table->foreignId('category_id')->nullable();

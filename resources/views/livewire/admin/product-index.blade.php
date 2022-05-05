@@ -2,7 +2,7 @@
 
     <div class="card-header">
         <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add product</a>
-        <!--<a class="btn btn-success btn-sm mx-4 float-none " href="{ route('admin.products.export') }">Export</a>-->
+
         
         <input wire:model="search" class="form-control-sm float-left mt-2 mx-2" placeholder="Search">
 
@@ -25,10 +25,10 @@
                         <td>{{ $product->id }}</td>
                         <td><a href="{{ route('admin.products.show', $product) }}">{{ $product->name }}</a></td>
                         <td>{{ $product->code }}</td>
-                        <td> @if ($product->status == 1) 
-                                <span class="text-success">Enable</span>
+                        <td> @if ($product->status == 'ENABLED') 
+                                <span class="text-success">Enabled</span>
                             @else 
-                                <span class="text-danger">Disable</span>
+                                <span class="text-danger">Disabled</span>
                             @endif 
                         </td>
                         <td>

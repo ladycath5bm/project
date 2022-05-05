@@ -47,7 +47,7 @@ class ProductModulesController extends Controller
 
     public function exportFile(): StreamedResponse
     {
-        return Storage::download('public/exports/products.xlsx');
+        return Storage::download('public/exports/products.xlsx', 'hola.xlsx');
     }
 
     public function import(Request $request): RedirectResponse

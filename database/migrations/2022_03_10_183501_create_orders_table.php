@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('processUrl')->nullable();
             $table->integer('total');
             $table->enum('status', OrderStatus::toArray());
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->foreignId('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');

@@ -41,4 +41,16 @@ class PaymentController extends Controller
 
         return redirect()->route('orders.index');
     }
+
+    public function complete(string $reference): RedirectResponse
+    {
+        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'created_at', 'customerName', 'customerEmail', 'reference')
+            ->where('reference', $reference)
+            ->where('customer_id', auth()->id())
+            ->first();
+        
+        (new ConsultPaymentStatusAction())->consult($order);
+
+        return redirect()->route('orders.show', $order);
+    }
 }

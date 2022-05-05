@@ -37,3 +37,5 @@ Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('c
 Route::get('/pay/{order}', [PaymentController::class, 'pay'])->name('pay');
 Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
 Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('cancel');
+Route::get('pay/{reference}/complete', [PaymentController::class, 'complete'])->name('complete');
+//agregar index pay

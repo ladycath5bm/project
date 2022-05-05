@@ -6,14 +6,14 @@ use App\Contracts\ConstantsContract;
 
 class ProductStatus implements ConstantsContract
 {
-    public CONST ENABLE = 'ENABLE';
-    public CONST DISABLE = 'DISABLE';
+    public CONST ENABLED = 'ENABLED';
+    public CONST DISABLED = 'DISABLED';
 
     public static function toArray(): array
     {
         return [
-            self::ENABLE,
-            self::DISABLE,
+            self::ENABLED,
+            self::DISABLED,
         ];
     }
 }

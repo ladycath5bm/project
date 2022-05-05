@@ -27,9 +27,8 @@ class ProductController extends Controller
     public function list(): View
     {
         //se puede pasar a un scope
-        $products = Product::where('user_id', auth()->user()->id)
-            ->latest('id')
-            ->paginate(5);
+        //$products = Product:://where('user_id', auth()->user()->id)
+        $products = Product::paginate(5);
         return view('admin.products.list', compact('products'));
     }
 
@@ -49,7 +48,7 @@ class ProductController extends Controller
 
         Cache::flush();
 
-        return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product created successfully!');
     }
 
     public function show(Product $product): View

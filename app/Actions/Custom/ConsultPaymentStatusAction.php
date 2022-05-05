@@ -2,63 +2,56 @@
 
 namespace App\Actions\Custom;
 
-use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use App\Services\Payments\PlacetoPay\PlacetoPay;
-use Illuminate\Http\Client\Response;
+use App\Constants\OrderStatus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Client\Response;
+use App\Services\Payments\PlacetoPay\PlacetoPay;
 
 class ConsultPaymentStatusAction
 {
-    public function consult(Order $order): Order
+    public function consult(Order $order): void
     {
         $response = PlacetoPay::getRequestInformation($order->requestId);
-        $orderConsult = $this->updateStatus($response, $order);
 
-        if ($orderConsult->status == $order->status) {
-            return $orderConsult;
+        if ($response->ok()) {
+            DB::transaction(function () use ($response, $order) {
+                $this->updateStatus($response, $order);       
+            });
         }
         
-        if ($orderConsult->status == OrderStatus::REJECTED) {
-            $order = self::updateOrderRejected($order);
-        }
-        return $order;
     }
 
-    private function updateStatus(Response $response, Order $order): Order
+    private function updateStatus(Response $response, Order $order): void
     {
         $data = $response->json();
+        $responseSesion = $data['status'];
+        $responsePayment = $data['payment'] ?? [];
 
-        if ($response->successful()) {
-            $responseSesion = $data['status'];
+        if (($responseSesion['status'] === OrderStatus::APPROVED) && isset($data['payment'])) {
+            $order->status = OrderStatus::APPROVED;
+            $order->transactions = $responsePayment;
+        } elseif ($responseSesion['status'] === OrderStatus::REJECTED) {
+            $order->status = OrderStatus::REJECTED;
+            $order->transactions = $responsePayment;
 
-            if (($responseSesion['status'] != OrderStatus::REJECTED) && isset($data['payment'])) {
-                $responsePayment = $data['payment'];
-                $responseTransaction = $responsePayment[0]['status'];
-                $order->status = $responseTransaction['status'];
-                $order->transactions = $responsePayment;
-                $order->save();
-            }else {
-                $order->status = $responseSesion['status'];
-                $order->save();
-            }
+            self::updateOrderRejected($order);
         } else {
-            $responseSesion = $data['status'];
+            $order->status = OrderStatus::PENDING;
         }
-        
-        return $order;
+
+        $order->save();
     }
 
-    public static function updateOrderRejected(Order $order): Order
+    public static function updateOrderRejected(Order $order): void
     {
         foreach ($order->products as $product) {
             Product::find($product->id)->increment('stock', $product->pivot->quantity);
-            Log::info(['Se ha actualizado un producto'], [
+            Log::info('Se ha actualizado un producto', [
                 'product_id' => $product->getKey(),
             ]);
         }
-
-        return $order;
     }
 }
