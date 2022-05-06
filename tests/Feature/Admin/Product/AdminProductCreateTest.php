@@ -11,6 +11,7 @@ use Tests\TestCase;
 class AdminProductCreateTest extends TestCase
 {
     use RefreshDatabase;
+    
     private User $user;
 
     protected function setUp(): void
@@ -29,7 +30,7 @@ class AdminProductCreateTest extends TestCase
         $response->assertViewIs('admin.products.create');
     }
 
-    public function testYouCanSeeCreateProductAndSeeLog()
+    public function testYouCanSeeCreateProductAndSeeLog(): void
     {
         $monolog = new Logger('test');
         $monolog->pushHandler(new TestHandler());

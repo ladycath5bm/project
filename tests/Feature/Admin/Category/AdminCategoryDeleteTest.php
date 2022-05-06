@@ -28,7 +28,9 @@ class AdminCategoryDeleteTest extends TestCase
         $response->assertRedirect(route('admin.categories.index'));
 
         $this->assertDatabaseCount('categories', 0);
-        $this->assertDatabaseMissing('categories', ['name' => 'celular']);
+        $this->assertDatabaseMissing('categories', [
+            'id' => $category->id
+        ]);
 
     }
 }

@@ -2,48 +2,54 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Constants\ProductStatus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminProductStoreTest extends TestCase
 {
-    //use RefreshDatabase;
+    use RefreshDatabase;
+
+    private User $user;
 
     private array $dataStore = [
-            'name' => 'nametest',
-            'code' => 124345,
-            'price' => 323000,
-            'stock' => 10,
-            'discount' => 0,
-            'description' => 'hola soy una decricion',
-            'status' => 0,
-            'slug'=> null,
-            'category_id'=> null,
-            'user_id'=> null,
-            'created_at'=> '2022-04-21 04:40:24',
-            'updated_at'=> '2022-04-21 04:40:24',
+        'name' => 'nametest',
+        'code' => 124345,
+        'price' => 323000,
+        'stock' => 10,
+        'discount' => 0,
+        'description' => 'hola soy una descripcion',
+        'status' => ProductStatus::ENABLED,
+        'slug'=> 'soy un slug',
+        'user_id'=> 1,
     ];
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()->create()->assignRole('admin');
+    }
 
     public function testAProductCanBeCreated()
     {
-        $this->withoutMiddleware();
-
-        $response = $this->post(route('admin.products.store'), $this->dataStore);
+        $product = Product::create($this->dataStore);
+        $response = $this->actingAs($this->user)->post(route('admin.products.store', $product));
 
         $response->assertRedirect();
-        $this->assertDatabaseHas('products', $this->dataStore);
+        $this->assertDatabaseHas('products', ['id' => $product->id]);
     }
-    /**
-     * @dataProvider invalidInputForCreatedProduct
-     */
-    public function testValidateDataProductCreate($key, $data)
-    {
-        $this->withoutMiddleware();
 
+    /* public function testValidateDataProductCreate($key, $data)
+    {
         $response = $this->post(route('admin.products.store'), $data);
 
         $response->assertSessionHasErrors([$key]);
-    }
+    } */
 
     public function invalidInputForCreatedProduct(): array
     {

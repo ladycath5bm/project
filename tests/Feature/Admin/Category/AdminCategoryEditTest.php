@@ -23,7 +23,7 @@ class AdminCategoryEditTest extends TestCase
 
     public function testItCanEditACategory(): void
     {
-        $category = Category::create(['name' => 'electrodomestico']);
+        $category = Category::factory()->create();
         
         $response = $this->actingAs($this->user)->get(route('admin.categories.edit', $category));
 

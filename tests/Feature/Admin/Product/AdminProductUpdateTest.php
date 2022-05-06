@@ -3,18 +3,60 @@
 namespace Tests\Feature\Admin\Product;
 
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Constants\ProductStatus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminProductUpdateTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    private User $user;
+    private product $product;
+    
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()->create()->assignRole('admin');
+        $this->product = Product::factory()
+            ->create();
+    }
+
+    public function testItCanUpdateAProduct(): void
+    {
+        $category = Category::factory()->create();
+        $this->product->category_id = $category->id;
+        $this->product->save();
+
+        $dataUpdate = [
+            'name' => 'nametest',
+            'code' => $this->product->code,
+            'price' => 323000,
+            'stock' => 10,
+            'discount' => 10,
+            'description' => 'hola soy una descripcion',
+            'status' => ProductStatus::ENABLED,
+            'category_id' => $category->id,
+        ];
+
+        $reponse = $this->actingAs($this->user)->patch(route('admin.products.update', $this->product), $dataUpdate);     
+
+        $reponse->assertRedirect(route('admin.products.index'));
+
+        $this->assertDatabaseCount('products', 1);
+        $this->assertDatabaseHas('products', [
+            'id' => $this->product->id,
+            'name' => 'nametest',
+            'code' => $this->product->code,
+            'price' => '323000.00',
+            'discount' => 10,
+            'description' => 'hola soy una descripcion',
+            'status' => ProductStatus::ENABLED,
+            'category_id' => $category->id,
+        ]);
     }
 }

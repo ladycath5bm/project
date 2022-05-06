@@ -3,12 +3,12 @@
 namespace Tests\Feature\Admin\Product;
 
 use App\Models\Category;
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class AdminProductEditTest extends TestCase
+class AdminProductIndexTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -24,17 +24,12 @@ class AdminProductEditTest extends TestCase
             ->assignRole('admin');
     }
 
-    public function testItCanSeeEditFormProduct()
+    public function testItCanSeeIndexAdminProducts(): void
     {
-        $product = Product::factory()->create();
-        Category::factory()->count(10)->create();
-
         $response = $this->actingAs($this->user)
-            ->get(route('admin.products.edit', $product));
-        
-        $response->assertOk();
-        $response->assertViewIs('admin.products.edit');
-        $response->assertViewHasAll(['product', 'categories']);
-    }
+            ->get(route('admin.products.index'));
 
+        $response->assertOk();
+        $response->assertViewIs('admin.products.index');
+    }
 }
