@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    /* public function __construct()
+    public function __construct()
     {
         $this->middleware('can:admin.products.index');
-    } */
+    }
 
     public function index(): View
     {
@@ -26,8 +26,6 @@ class ProductController extends Controller
 
     public function list(): View
     {
-        //se puede pasar a un scope
-        //$products = Product:://where('user_id', auth()->user()->id)
         $products = Product::paginate(5);
         return view('admin.products.list', compact('products'));
     }
@@ -66,7 +64,7 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
         Cache::flush();
-        return redirect()->route('admin.products.index', $product)->with('information', 'Product updated successfully!');
+        return redirect()->route('admin.products.index')->with('information', 'Product updated successfully!');
     }
 
     public function destroy(Product $product): RedirectResponse

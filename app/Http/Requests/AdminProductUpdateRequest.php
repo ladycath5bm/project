@@ -13,11 +13,14 @@ class AdminProductUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:15',
+            'name' => 'required|max:120',
             'code' => 'required|numeric|integer|exists:products,code',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'description' => 'required|max:250|string',
+            'discount' => 'required',
+            'category_id' => 'required',
+            'status' => 'required',
         ];
     }
 }

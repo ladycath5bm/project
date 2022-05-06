@@ -12,13 +12,13 @@ use Illuminate\Http\RedirectResponse;
 class CategoryController extends Controller
 {
     public function __construct()
-     {
+    {
          $this->middleware('can:admin.categories.index');
     }
 
     public function index(): View
     {
-        $categories = Category::paginate(5);
+        $categories = Category::pluck('name', 'id');
 
         return view('admin.categories.index', compact('categories'));
     }
