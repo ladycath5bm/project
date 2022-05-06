@@ -30,7 +30,8 @@ class UserController extends Controller
 
     public function update(AdminUserUpdateRequest $request, User $user): RedirectResponse
     {
-        $user->roles()->sync($request->validated());
+        $validated = $request->validated();
+        $user->roles()->sync($validated['roles']);
         return redirect()->route('admin.users.index')->with('information', 'Role assgined successfully!');
     }
 }

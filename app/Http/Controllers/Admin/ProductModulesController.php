@@ -19,6 +19,11 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.products.modules');
+    }
+
     public function index(): View
     {
         $categories = Category::all();
