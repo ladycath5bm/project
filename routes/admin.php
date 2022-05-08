@@ -16,9 +16,13 @@ Route::resource('categories', CategoryController::class)->names('categories');
 
 Route::resource('users', UserController::class)->except('show', 'destroy', 'store')->names('users');
 
-Route::get('export/', [ProductModulesController::class, 'export'])->name('products.export');
-Route::get('report/', [ProductModulesController::class, 'report'])->name('products.reports');
-Route::post('import/', [ProductModulesController::class, 'import'])->name('products.import');
 Route::get('module/', [ProductModulesController::class, 'index'])->name('products.module');
 
-Route::get('exports/', [ProductModulesController::class, 'exportFile'])->name('exports.file');
+Route::get('export/generate/', [ProductModulesController::class, 'export'])->name('products.exports.generate');
+Route::get('export/list', [ProductModulesController::class, 'exportsList'])->name('products.exports.list');
+Route::get('export/{file?}', [ProductModulesController::class, 'exportFile'])->name('products.exports.file');
+
+Route::post('import/', [ProductModulesController::class, 'import'])->name('products.import');
+Route::get('import/list', [ProductModulesController::class, 'importsList'])->name('products.imports.list');
+
+Route::get('report/', [ProductModulesController::class, 'report'])->name('products.reports');

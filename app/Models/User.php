@@ -71,4 +71,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function exports(): HasMany
+    {
+        return $this->hasMany(Export::class);
+    }
+
+    public function imports(): HasMany
+    {
+        return $this->hasMany(Import::class);
+    }
 }

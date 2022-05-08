@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Jobs\Exports\CompletExportStatusJob;
 use App\Http\Requests\Exports\ExportProductsRequest;
 use App\Http\Requests\Imports\ImportProductsRequest;
+use App\Models\Export;
+use App\Models\Import;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
@@ -30,46 +32,75 @@ class ProductModulesController extends Controller
         return view('admin.products.module', compact('categories'));
     }
 
-    public function export(Request $request): RedirectResponse
+    public function export(ExportProductsRequest $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
-            
-            $filter = $request->toArray();
 
-            $id = DB::table('exports')->insertGetId([
-                'path' => 'public/exports/products-' . auth()->id() . '.xlsx',
+            $filter = $request->toArray();
+    
+            $export = Export::create([
+                'name' => 'products-' . now(),
                 'query' => json_encode($request->all()),
                 'user_id' => auth()->id(),
             ]);
 
-            (new ProductsExport($filter))->queue('public/exports/products.xlsx')
-                ->chain([new CompletExportStatusJob($id)]);
-
+            (new ProductsExport($filter))->queue('public/exports/' . $export->name . '.xlsx')
+                ->chain([new CompletExportStatusJob($export->id)]);
         });
         
         return back();
     }
 
-    public function exportFile(): StreamedResponse
+    public function exportsList(): View
     {
-        return Storage::download('public/exports/products.xlsx', 'products.xlsx');
+        $exports = Export::select('id', 'name', 'status')
+            ->where('user_id', auth()->id())
+            ->get();
+
+        return view('admin.products.exportindex', compact('exports'));
     }
 
-    public function import(Request $request): RedirectResponse
+    public function exportFile(int $id = null): StreamedResponse
     {
-        DB::transaction(function () use ($request) {
+        if ($id == null)
+        {
+            $id = Export::select('id')
+                ->where('user_id', auth()->id())
+                ->latest('id')
+                ->first()
+                ->id;
+        }
+        $export = Export::find($id);
 
-            $import = new ProductsImport();
-            Excel::import($import, $request->file('file'));
+        return Storage::download('public/exports/' . $export->name . '.xlsx', $export->name . '.xlsx');
+    }
+
+    public function import(ImportProductsRequest $request): RedirectResponse
+    {
+        dd($dataImport = $request->validated());
+
+        DB::transaction(function () use ($dataImport) {
+            $productImport = new ProductsImport();
+
+            Excel::import($productImport, $dataImport['file']);
             
-            DB::table('imports')->insert([
-                'name' => $request->file('file')->getClientOriginalName(),
-                'registers' => $import->getRowsCount(),
+            Import::create([
+                'name' => $dataImport['file']->getClientOriginalName(),
+                'registers' => $productImport->getRowsCount(),
                 'user_id' => auth()->id(),
                 'created_at' => now(),
             ]);
         });
 
         return redirect()->route('admin.products.module');
+    }
+
+    public function importsList()
+    {
+        $imports = Import::select('id', 'name', 'registers', 'status')
+            ->where('user_id', auth()->id())
+            ->get();
+
+        return view('admin.products.importindex', compact('imports'));
     }
 }

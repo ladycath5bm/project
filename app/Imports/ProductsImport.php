@@ -56,7 +56,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
         return $this->rows;
     }
 
-    public function uniqueBy()
+    public function uniqueBy(): string
     {
         return 'code';
     }

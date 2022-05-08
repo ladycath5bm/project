@@ -13,14 +13,20 @@
             <span class="text-bold">Export excel file</span>
         </div>
         <div class="card-body">
-            <form id="filter" method="GET" action="{{ route('admin.products.export') }}" accept-charset="utf-8">
+            <form id="filter" method="GET" action="{{ route('admin.products.exports.generate') }}" accept-charset="utf-8">
                 @csrf
                 <div class="row p-2">
                     <div class="card-body border rounded mr-2">
                         <label>Chose the date</label>
                         <br>
-                        <input class="rounded mr-4" type="date" name="date1" id="date1" required/>
-                        <input class="rounded" type="date" name="date2" id="date2" required/>
+                        <input class="rounded mr-4" type="date" name="date1" id="date1" max=@php
+                                echo date('Y-m-d')
+                            @endphp 
+                        required/>
+                        <input class="rounded" type="date" name="date2" id="date2" max=@php
+                                echo date('Y-m-d')
+                            @endphp
+                        required/>
                     </div>
                     <div class="card-body border rounded mr-2">
                         <label>Category</label>
@@ -37,21 +43,23 @@
                         <br>
                         <select class="form-select" name="status" id="status" aria-label="all status">
                             <option selected value="all">all</option>
-                            <option value="1">Enable</option>
-                            <option value="0">Disable</option>
+                            <option value="ENABLED">Enabled</option>
+                            <option value="DISABLE">Disabled</option>
                         </select>
                     </div>
                 </div>
                 <div>
                     <button
                         type="submit"
-                        class="btn btn-primary btn-md mt-2"
+                        class="btn btn-warning btn-sm mt-2 mr-2"
                         id="filter"
                         form="filter"
-                    >Export</button>
+                    >Generate</button>
+                    <a class="btn btn-success btn-sm mt-2 float-right " href="{{ route('admin.products.exports.list') }}">List of exports</a>
                 </div>
+                    <a class="mt-2 text-xs" href="{{ route('admin.products.exports.file', $file = null) }}">Download last file generated...</a>
                 <div>
-                    <a href="{{ route('admin.exports.file') }}">Export file ...</a>
+                    
                 </div>
             </form>
         </div>
@@ -79,10 +87,11 @@
                 <div>
                     <button
                         type="submit"
-                        class="btn btn-primary btn-md"
+                        class="btn btn-warning btn-sm mt-2 mr-2"
                         id="file"
                         form="import"
                     >Import</button>
+                    <a class="btn btn-success btn-sm mt-2 float-right " href="{{ route('admin.products.imports.list') }}">List of imports</a>
                 </div>
             </form>
         </div>

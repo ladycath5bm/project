@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Constants\ProductStatus;
 use Throwable;
 use App\Models\Product;
 use App\Models\Category;
@@ -49,7 +50,7 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 
     private function statusQuery(string $status): array
     {
-        return $status == 'all' ? [0,1] : [$status];
+        return $status == 'all' ? ProductStatus::toArray() : [$status];
     }
 
     public function headings(): array
