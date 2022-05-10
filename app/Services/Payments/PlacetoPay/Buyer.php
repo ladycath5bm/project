@@ -9,11 +9,11 @@ class Buyer
     public static function make(Order $order): array
     {
         return [
-            'name' => $order->name,
-            'document' => $order->document,
-            'email' => $order->email,
-            'mobile' => $order->mobile,
-            'address' => $order->address,
+            'name' => $order->customer_name,
+            'document' => $order->customer_document,
+            'email' => $order->customer_email,
+            'mobile' => $order->customer_phone,
+            'address' => $order->customer_address,
         ];
     }
 }

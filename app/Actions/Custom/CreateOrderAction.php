@@ -17,11 +17,11 @@ class CreateOrderAction
             $order = new Order();
             $order->status = OrderStatus::CREATED;
             $order->reference = $this->createReference();
-            $order->customerName = $data['name'];
-            $order->customerDocument = $data['document'];
-            $order->customerEmail = $data['email'];
-            $order->customerPhone = $data['mobile'];
-            $order->customerAddress = $data['address'];
+            $order->customer_name = $data['name'];
+            $order->customer_document = $data['document'];
+            $order->customer_email = $data['email'];
+            $order->customer_phone = $data['mobile'];
+            $order->customer_address = $data['address'];
             $order->total = Cart::subtotal();
             $order->customer()->associate(auth()->id());
             $order->save();

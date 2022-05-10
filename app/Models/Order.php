@@ -11,6 +11,22 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'customer_name',
+        'customer_email',
+        'customer_document',
+        'customer_phone',
+        'customer_address',
+        'transactions',
+        'reference',
+        'request_id',
+        'process_url',
+        'total',
+        'status',
+        'description',
+        'customer_id',
+    ];
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class)->withPivot('price', 'quantity', 'subtotal');

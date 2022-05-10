@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function index(): View
     {
-        $orders = Order::select('id', 'total', 'description', 'status', 'created_at', 'reference', 'requestId', 'processUrl')
+        $orders = Order::select('id', 'total', 'description', 'status', 'created_at', 'reference', 'request_id', 'process_url')
             ->where('customer_id', auth()->user()->id)
             ->latest('id')
             ->paginate(10);
@@ -40,7 +40,6 @@ class OrderController extends Controller
     public function destroy(Order $order): RedirectResponse
     {
         if ($order->status == OrderStatus::REJECTED) {
-            //DB::table('order_product')->where('order_id', $order->id)->delete();
             $order->delete();
         }
 

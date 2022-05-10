@@ -44,7 +44,7 @@ class PaymentController extends Controller
 
     public function complete(string $reference): RedirectResponse
     {
-        $order = Order::select('id', 'status', 'requestId', 'processUrl', 'created_at', 'customerName', 'customerEmail', 'reference')
+        $order = Order::select('id', 'status', 'request_id', 'process_url', 'created_at', 'customer_name', 'customer_email', 'reference')
             ->where('reference', $reference)
             ->where('customer_id', auth()->id())
             ->first();

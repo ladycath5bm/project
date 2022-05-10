@@ -11,15 +11,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('customerName');
-            $table->string('customerEmail');
-            $table->string('customerDocument');
-            $table->string('customerPhone');
-            $table->string('customerAddress');
+            $table->string('customer_name');
+            $table->string('customer_email');
+            $table->string('customer_document');
+            $table->string('customer_phone');
+            $table->string('customer_address');
             $table->json('transactions')->nullable();
             $table->char('reference', 20);
-            $table->char('requestId')->nullable();
-            $table->string('processUrl')->nullable();
+            $table->char('request_id')->nullable();
+            $table->string('process_url')->nullable();
             $table->integer('total');
             $table->enum('status', OrderStatus::toArray());
             $table->string('description')->nullable();

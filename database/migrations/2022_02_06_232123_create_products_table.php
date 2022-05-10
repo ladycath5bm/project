@@ -13,8 +13,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name', 120);
             $table->unsignedInteger('code')->unique();
-            $table->unsignedDecimal('price');
-            $table->text('description', 250);
+            $table->unsignedInteger('price');
+            $table->tinyText('description', 250);
             $table->unsignedInteger('discount')->default(0);
             $table->unsignedInteger('stock');
             $table->enum('status', [ProductStatus::toArray()])->default(ProductStatus::DISABLED);

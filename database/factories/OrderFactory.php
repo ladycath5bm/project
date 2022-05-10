@@ -12,11 +12,11 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'customerName' => $this->faker->name(),
-            'customerDocument' => (string)$this->faker->randomNumber(6),
-            'customerEmail' => $this->faker->email(),
-            'customerPhone' => $this->faker->phoneNumber(),
-            'customerAddress' => $this->faker->address(),
+            'customer_name' => $this->faker->name(),
+            'customer_document' => (string)$this->faker->randomNumber(6),
+            'customer_email' => $this->faker->email(),
+            'customer_phone' => $this->faker->phoneNumber(),
+            'customer_address' => $this->faker->address(),
             'total' => $this->faker->numberBetween(10000, 999999),
             'status' => OrderStatus::CREATED,
             'reference' => $this->faker->numberBetween(000000, 999999),

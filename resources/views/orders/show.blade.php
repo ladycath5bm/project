@@ -20,8 +20,8 @@
                 <tbody>
                     <tr>
                         <td class="px-6 py-3 text-gray-600 text-sm">{{ $order->created_at }}</td>
-                        <td class="px-6 py-3 text-gray-600 text-md">{{ $order->customerName }}</td>
-                        <td class="px-6 py-3 text-gray-600 text-md">{{ $order->customerEmail }}</td>
+                        <td class="px-6 py-3 text-gray-600 text-md">{{ $order->customer_name }}</td>
+                        <td class="px-6 py-3 text-gray-600 text-md">{{ $order->customer_email }}</td>
                         <td class="px-6 py-3 text-gray-600 text-md">{{ $order->reference }}</td>
                         <td class="px-6 py-3 text-gray-600 text-md">
                             @if($order->status == "REJECTED")
