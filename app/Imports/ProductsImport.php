@@ -2,19 +2,37 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
+use App\Constants\ExcelStatus;
 use App\Rules\ProductImportRules;
-use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Validators\Failure;
+use Maatwebsite\Excel\Concerns\Importable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithUpsertColumns;
 
-class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkReading, WithValidation
+class ProductsImport implements ToModel, 
+    WithHeadingRow, 
+    WithUpserts, 
+    WithUpsertColumns,
+    WithBatchInserts, 
+    WithChunkReading, 
+    WithValidation, 
+    ShouldQueue, 
+    SkipsEmptyRows, 
+    SkipsOnFailure
+
 {
-    use Importable;
+    use Importable, SkipsFailures;
 
     private int $rows = 0;
 
@@ -56,18 +74,43 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
         return $this->rows;
     }
 
+    public function getFinishedStatus(): string
+    {
+        return ExcelStatus::FINISHED;
+    }
+
     public function uniqueBy(): string
     {
         return 'code';
     }
 
+    public function upsertColumns()
+    {
+        return ['name', 'price', 'description', 'discount', 'stock', 'status', 'category_id'];
+    }
+
+    public function batchSize(): int
+    {
+        return 10;
+    }
+
     public function chunkSize(): int
     {
-        return 20;
+        return 10;
     }
 
     public function rules(): array
     {
         return ProductImportRules::toArray();
+    }
+
+    public function customValidationMessages(): array
+    {
+        return [
+            'name.required' => 'Campo :attribute es requerido',
+            'name.string' => 'Campo :attribute debe ser de tipo texto',
+            'name.min' => 'El campo :attribute debe tener mas de dos caracteres',
+            'name.max' => 'el campo :attribute debe tener mas de dos caracteres',
+        ];
     }
 }

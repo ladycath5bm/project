@@ -6,6 +6,12 @@
     <h4 class="text-bold text-lg">Module to export or import products</h4>
 @stop
 
+@if(session('information'))
+        <div class="alert alert-warning">
+            {{ session('information') }}
+        </div>
+@endif
+
 @section('content')
 
     <div class="card">

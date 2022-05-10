@@ -8,8 +8,6 @@ use UAParser\Parser;
 
 class AddProductVisit
 {
-    // aqui se podría inicializar el model en el cosntruct
-
     public function handle(ProductVisited $event): void
     {
         $userAgent = Parser::create()->parse($event->userAgent);
