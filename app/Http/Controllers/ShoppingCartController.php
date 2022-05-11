@@ -32,7 +32,6 @@ class ShoppingCartController extends Controller
     public function update(Request $request)
     {
         Cart::update($request->id, $request->qty);
-        //dd($request->all());
         return redirect()->route('cart.index');
     }
 

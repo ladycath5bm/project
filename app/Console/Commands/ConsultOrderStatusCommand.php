@@ -28,7 +28,7 @@ class ConsultOrderStatusCommand extends Command
     public function handle(): int
     {
         $orders = Order::select('id', 'status', 'created_at')
-            ->where('status', '=', OrderStatus::CREATED)
+            ->where('status', OrderStatus::CREATED)
             ->where('created_at', '<=', Carbon::now()->subHour())
             ->get();
 

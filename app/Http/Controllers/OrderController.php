@@ -23,10 +23,8 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function store(OrderStoreRequest $request): RedirectResponse
+    public function store(CreateOrderAction $createNewOrderAction, OrderStoreRequest $request): RedirectResponse
     {
-        $createNewOrderAction = new CreateOrderAction();
-
         $order = $createNewOrderAction->create($request->validated());
         
         return redirect()->route('pay', $order);

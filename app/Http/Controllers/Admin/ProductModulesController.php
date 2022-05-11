@@ -80,58 +80,27 @@ class ProductModulesController extends Controller
 
     public function import(ImportProductsRequest $request): RedirectResponse
     {
-        try {
-            //$import->import('import-users.xlsx');
-        
-            $dataImport = $request->validated();
-            
-            $productImport = DB::transaction(function () use ($dataImport) {
+      
+        $dataImport = $request->validated();
 
-                $import = Import::create([
-                    'name' => $dataImport['file']->getClientOriginalName(),
-                    'registers' => 4,
-                    'user_id' => auth()->id(),
-                    'created_at' => now(),
-                ]);
+        DB::transaction(function () use ($dataImport) {
 
-                $productImport = new ProductsImport();
-                //Excel::import($productImport, $dataImport['file']);
-                $productImport->import($dataImport['file']);
+            $import = Import::create([
+                'name' => $dataImport['file']->getClientOriginalName(),
+                'records' => 0,
+                'user_id' => auth()->id(),
+                'created_at' => now(),
+            ]);
 
-                $import->status = $productImport->getFinishedStatus();
-                $import->registers = $productImport->getRowsCount();
-                $import->save();
+            (new ProductsImport($import))->import($dataImport['file']);
+        });
 
-                /* if($productImport->failures())
-                {
-                    dd($productImport->failures());
-                    foreach ($productImport->failures() as $failure) {
-                        dd($failure->row()); // row that went wrong
-                        $failure->attribute(); // either heading key (if using heading row concern) or column index
-                        $failure->errors(); // Actual error messages from Laravel validator
-                        $failure->values(); // The values of the row that has failed.
-                    }
-                } */
-                return $productImport;
-            });
-            $value = $productImport->failures();
-            return redirect()->route('admin.products.module');
-
-            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                $failures = $e->failures();
-                
-                foreach ($failures as $failure) {
-                    $failure->row();
-                    $failure->attribute();
-                    $failure->errors();
-                    $failure->values();
-                }
-            }
+        return redirect()->route('admin.products.module');
     }
 
     public function importsList()
     {
-        $imports = Import::select(['id', 'name', 'registers', 'status'])
+        $imports = Import::select(['id', 'name', 'records', 'status'])
             ->where('user_id', auth()->id())
             ->get();
 

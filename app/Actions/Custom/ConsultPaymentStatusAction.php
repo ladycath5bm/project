@@ -14,7 +14,7 @@ class ConsultPaymentStatusAction
 {
     public function consult(Order $order): void
     {
-        $response = PlacetoPay::getRequestInformation($order->requestId);
+        $response = PlacetoPay::getRequestInformation($order->request_id);
 
         if ($response->ok()) {
             DB::transaction(function () use ($response, $order) {
@@ -49,7 +49,7 @@ class ConsultPaymentStatusAction
     {
         foreach ($order->products as $product) {
             Product::find($product->id)->increment('stock', $product->pivot->quantity);
-            Log::info('Se ha actualizado un producto', [
+            Log::info('Se ha actualizado el stock de un producto en una orden rechazada', [
                 'product_id' => $product->getKey(),
             ]);
         }
