@@ -25,11 +25,11 @@
                     <div class="card-body border rounded mr-2">
                         <label>Chose the date</label>
                         <br>
-                        <input class="rounded mr-4" type="date" name="date1" id="date1" max=@php
+                        <input class="rounded mr-4" type="date" name="start_date" id="start_date" max=@php
                                 echo date('Y-m-d')
                             @endphp 
                         required/>
-                        <input class="rounded" type="date" name="date2" id="date2" max=@php
+                        <input class="rounded" type="date" name="end_date" id="end_date" max=@php
                                 echo date('Y-m-d')
                             @endphp
                         required/>
@@ -50,7 +50,7 @@
                         <select class="form-select" name="status" id="status" aria-label="all status">
                             <option selected value="all">all</option>
                             <option value="ENABLED">Enabled</option>
-                            <option value="DISABLE">Disabled</option>
+                            <option value="DISABLED">Disabled</option>
                         </select>
                     </div>
                 </div>

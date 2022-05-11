@@ -14,10 +14,10 @@ class ExportProductsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date1' => 'required|date_format:Y-m-d|before:tomorrow',
-            'date2' => 'required|date_format:Y-m-d|after:date1',
-            'category' => 'required|string|max:3',
-            'status' => 'required|string|max:50',
+            'start_date' => 'required|date_format:Y-m-d|before:tomorrow',
+            'end_date' => 'required|date_format:Y-m-d|after:start_date',
+            'category' => 'required|string|min:1|max:3',
+            'status' =>  'required|string|min:3|max:8',
         ];
     }
 }

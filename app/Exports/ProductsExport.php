@@ -29,8 +29,8 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
             ->addSelect(['category' => Category::select('name')
                 ->whereColumn('id', 'products.category_id')])
             ->whereBetween('created_at', [
-                Carbon::parse($this->filter['date1'])->startOfDay(), 
-                Carbon::parse($this->filter['date2'])->endOfDay()])
+                Carbon::parse($this->filter['start_date'])->startOfDay(), 
+                Carbon::parse($this->filter['end_date'])->endOfDay()])
             ->whereIn('category_id', $this->categoryQuery($this->filter['category']))
             ->whereIn('status', $this->statusQuery($this->filter['status']));
     }
