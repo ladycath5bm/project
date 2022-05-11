@@ -12,7 +12,7 @@ class Import extends Model
 
     protected $fillable =[
         'name',
-        'registers',
+        'records',
         'status',
         'user_id',
     ];

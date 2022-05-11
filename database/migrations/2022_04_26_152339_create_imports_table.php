@@ -12,7 +12,7 @@ class CreateImportsTable extends Migration
         Schema::create('imports', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->unsignedInteger('registers');
+            $table->unsignedInteger('records')->default(0);
             $table->enum('status', ExcelStatus::toArray())->default(ExcelStatus::PROCESSING);
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users');

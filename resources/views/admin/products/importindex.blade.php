@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $import->id }}</td>
                                 <td>{{ $import->name }}</td>
-                                <td>{{ $import->registers }}</td>
+                                <td>{{ $import->records }}</td>
                                 <td>{{ $import->status }}</td>
                             </tr>
                         @empty

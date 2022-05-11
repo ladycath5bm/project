@@ -2,11 +2,12 @@
 
 namespace App\Exports;
 
-use App\Constants\ProductStatus;
 use Throwable;
 use App\Models\Product;
 use App\Models\Category;
 use Maatwebsite\Excel\Excel;
+use Illuminate\Support\Carbon;
+use App\Constants\ProductStatus;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -28,8 +29,8 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
             ->addSelect(['category' => Category::select('name')
                 ->whereColumn('id', 'products.category_id')])
             ->whereBetween('created_at', [
-                $this->filter['date1'], 
-                $this->filter['date2']])
+                Carbon::parse($this->filter['date1'])->startOfDay(), 
+                Carbon::parse($this->filter['date2'])->endOfDay()])
             ->whereIn('category_id', $this->categoryQuery($this->filter['category']))
             ->whereIn('status', $this->statusQuery($this->filter['status']));
     }
