@@ -18,7 +18,7 @@ class AdminProductUpdateRequest extends FormRequest
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'description' => 'required|max:250|string',
-            'discount' => 'required',
+            'discount' => 'required|numeric|integer',
             'category_id' => 'required',
             'status' => 'required',
         ];

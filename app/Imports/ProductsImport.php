@@ -126,7 +126,7 @@ class ProductsImport implements
                 $this->import->update([
                     'status' => ExcelStatus::FINISHED,
                 ]);
-                dump($this->error);
+                //dump($this->error);
             },
         ];
     }

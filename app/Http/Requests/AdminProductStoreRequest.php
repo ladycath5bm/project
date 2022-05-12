@@ -17,6 +17,7 @@ class AdminProductStoreRequest extends FormRequest
             'name' => 'required|max:120',
             'code' => 'required|numeric|integer|unique:products',
             'price' => 'required|numeric',
+            'discount' => 'required|numeric|integer',
             'stock' => 'required|integer',
             'description' => 'required|max:250|string',
             'user_id' => 'required',
@@ -32,7 +33,7 @@ class AdminProductStoreRequest extends FormRequest
             'name' => 'name of product',
             'code' => 'code of product',
             'price' => 'price of product',
-            'stock' => 'availale units of product',
+            'stock' => 'available units of product',
         ];
     }
 }

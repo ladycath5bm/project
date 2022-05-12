@@ -46,7 +46,6 @@ class PaymentController extends Controller
     {
         $order = Order::select('id', 'status', 'request_id', 'process_url', 'created_at', 'customer_name', 'customer_email', 'reference')
             ->where('reference', $reference)
-            ->where('customer_id', auth()->id())
             ->first();
         
         (new ConsultPaymentStatusAction())->consult($order);

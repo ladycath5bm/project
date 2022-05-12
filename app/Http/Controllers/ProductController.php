@@ -40,7 +40,6 @@ class ProductController extends Controller
         $userAgent = $request->userAgent();
 
         ProductVisited::dispatch($product, $request->ip(), $request->userAgent());
-        //event(new ProductVisited($product, $request->ip(), $request->userAgent()))
 
         $categories = Category::select('id', 'name')->get();
 

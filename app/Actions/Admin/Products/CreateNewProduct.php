@@ -15,9 +15,8 @@ class CreateNewProduct
         $product->price = $input['price'];
         $product->description = $input['description'];
         $product->stock = $input['stock'];
-        //$product->discount = $input['discount'];
+        $product->discount = $input['discount'];
         $product->status = $input['status'];
-        //$product->file = $input['file'];
         $product->category()->associate($input['category_id']);
         $product->user()->associate($input['user_id']);
         $product->save();

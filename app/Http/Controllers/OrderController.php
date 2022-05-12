@@ -9,7 +9,6 @@ use App\Http\Requests\Orders\OrderStoreRequest;
 use App\Models\Order;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {

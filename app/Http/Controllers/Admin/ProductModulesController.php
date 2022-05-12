@@ -80,8 +80,7 @@ class ProductModulesController extends Controller
 
     public function import(ImportProductsRequest $request): RedirectResponse
     {
-      
-        $dataImport = $request->validated();
+        $dataImport = $request;
 
         DB::transaction(function () use ($dataImport) {
 
