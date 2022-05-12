@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /storage/logs
+/tests/coverage
 /vendor
 .env
 .env.backup
@@ -15,5 +16,4 @@ yarn-error.log
 /.idea
 /.vscode
 .php-cs-fixer.cache
-/tests/coverage
 .env.testing
