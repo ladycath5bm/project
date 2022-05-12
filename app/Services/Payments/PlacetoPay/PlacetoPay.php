@@ -61,8 +61,8 @@ class PlacetoPay implements GatewayContract
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
                 'expiration' => date('c', strtotime('+45 min')),
-                'returnUrl' => route('complete', ['reference' => $order->reference]),
-                'cancelUrl' => route('cancel', $order),
+                'returnUrl' => route('payments.complete', ['reference' => $order->reference]),
+                'cancelUrl' => route('payments.cancel', $order),
                 'ipAddress' => app(Request::class)->getClientIp(),
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];

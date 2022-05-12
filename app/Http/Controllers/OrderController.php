@@ -26,7 +26,7 @@ class OrderController extends Controller
     {
         $order = $createNewOrderAction->create($request->validated());
         
-        return redirect()->route('pay', $order);
+        return redirect()->route('payments.pay', $order);
     }
 
     public function show(Order $order): View

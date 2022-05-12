@@ -88,14 +88,14 @@
                                     <span>{{ $order->status }}</span>
                                 </div>
                                 <div>
-                                    <a class="text-xs flex justify-items-start mx-6 hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Retray payment</a>
+                                    <a class="text-xs flex justify-items-start mx-6 hover:text-orange-500 font-extralight text-gray-400" href="{{ route('payments.retray', $order) }}">Retray payment</a>
                                 </div>
                             @elseif($order->status == "CREATED")
                                 <div class="flex justify-items-start mx-6 text-xs">
                                     {{ $order->status }}
                                 </div>
                                 <div>
-                                    <a class="text-xs flex justify-items-start mx-6 hover:text-orange-500 font-extralight text-gray-400" href="{{ route('retray', $order) }}">Pay</a>
+                                    <a class="text-xs flex justify-items-start mx-6 hover:text-orange-500 font-extralight text-gray-400" href="{{ route('payments.retray', $order) }}">Pay</a>
                                 </div>
                             @else
                                 <div class="flex justify-items-start mx-6 text-xs">

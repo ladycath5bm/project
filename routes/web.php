@@ -34,8 +34,7 @@ Route::post('cart/update/', [ShoppingCartController::class, 'update'])->name('ca
 Route::delete('cart/clear', [ShoppingCartController::class, 'clear'])->name('cart.clear');
 Route::delete('cart/{cart}', [ShoppingCartController::class, 'remove'])->name('cart.remove');
 
-Route::get('/pay/{order}', [PaymentController::class, 'pay'])->name('pay');
-Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('retray');
-Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('cancel');
-Route::get('pay/{reference}/complete', [PaymentController::class, 'complete'])->name('complete');
-//agregar index pay
+Route::get('/pay/{order}', [PaymentController::class, 'pay'])->name('payments.pay');
+Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('payments.retray');
+Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('payments.cancel');
+Route::get('pay/{reference}/complete', [PaymentController::class, 'complete'])->name('payments.complete');

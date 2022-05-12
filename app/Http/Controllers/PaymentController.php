@@ -15,7 +15,6 @@ class PaymentController extends Controller
     {
         $gateway = GatewayFactory::make('placetopay');
         $response = $gateway->pay($order);
-        //$response = $response->json();
 
         return redirect()->away($response->json()['processUrl']);
     }
