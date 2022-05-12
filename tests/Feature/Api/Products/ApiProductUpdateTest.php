@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api\Products;
 
+use App\Constants\ProductStatus;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -28,6 +29,31 @@ class ApiProductUpdateTest extends TestCase
 
     public function testItCanUpdateAProduct()
     {
-        //$response = $this->
+        $data = [
+            'name' => 'celular',
+            'code' => $this->product->code,
+            'price' => 123000,
+            'discount' => 30,
+            'stock' => 50,
+            'category_id' => $this->category->id,
+            'description' => 'celular marca xyz 4 ram 64 gb.',
+            'status' => ProductStatus::DISABLED,
+        ];
+
+        $response = $this->patchJson(route('api.products.update', $this->product), $data);
+
+        $response->assertRedirect(route('api.products.show', $this->product));
+
+        $this->assertDatabaseHas('products', [
+            'id' => $this->product->id,
+            'name' => 'celular',
+            'code' => $this->product->code,
+            'price' => 123000,
+            'discount' => 30,
+            'stock' => 50,
+            'category_id' => $this->category->id,
+            'description' => 'celular marca xyz 4 ram 64 gb.',
+            'status' => ProductStatus::DISABLED,
+        ]);
     }
 }

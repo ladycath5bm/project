@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin\Imports;
 
+use App\Constants\ProductStatus;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,27 +22,25 @@ class ImportFileTest extends TestCase
     {
         $this->artisan('db:seed --class=RoleSeeder');
 
-        Category::create(['name' => 'sed']);
+        Category::create(['name' => 'celu']);
         $user = User::factory()->create()->assignRole('admin');
 
-        $file = new UploadedFile(base_path('tests/stubs/products.xlsx'), 'products.xlsx');
+        $file = new UploadedFile(base_path('tests/stubs/productsinerror.xlsx'), 'productsinerror.xlsx');
 
-        $response = $this->actingAs($user)->post('admin/import', [
-            'file' => $file,
-        ]);
+        $response = $this->actingAs($user)->post(route('admin.products.import'), ['file' => $file]);
 
         $response->assertRedirect();
 
-        $this->assertDatabaseCount('products', 20);
+        $this->assertDatabaseCount('products', 10);
 
         $this->assertDatabaseHas('products', [
-            'name' => 'nam',
-            'code' => 20801,
-            'price' => '830842.00',
-            'description' => 'Repellendus quia quia doloribus magni in aut.',
-            'discount' => '23.00',
-            'stock' => 2560,
-            'status' => 1,
+            'name' => 'kepler',
+            'code' => 357599,
+            'price' => 116102,
+            'description' => 'Illum debitis est tempore doloremque ipsa molestiae delectus nisi.',
+            'discount' => 95,
+            'stock' => 7847,
+            'status' => ProductStatus::DISABLED,
         ]);
     }
 }

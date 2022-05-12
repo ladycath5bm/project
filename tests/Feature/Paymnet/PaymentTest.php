@@ -48,25 +48,24 @@ class PaymentTest extends TestCase
         });
 
         $data = [
-          'name' => $order->customerName,
-          'document' => $order->customerDocument,
-          'email' => $order->customerEmail,
-          'mobile' => $order->customerPhone,
-          'address' => $order->customerAddress,
+          'name' => $order->customer_name,
+          'document' => $order->customer_document,
+          'email' => $order->customer_email,
+          'mobile' => $order->customer_phone,
+          'address' => $order->customer_address,
         ];        
         
-        $responseOrderStore = $this->actingAs($this->user)->post(route('orders.store', $data));
         $response = $this->actingAs($this->user)->get(route('pay', $order));
-        
-        $responseOrderStore->assertRedirect(route('pay', 2));
+      
         $response->assertRedirect($processUrl);
 
-        $this->assertDatabaseCount('orders', 2);
+        $this->assertDatabaseCount('orders', 1);
 
         $this->assertDatabaseHas('orders', [
-            'id' => 2,
-            'customerName' => $order->customerName,
-            'customerEmail' => $order->customerEmail,
+            'id' => $order->id,
+            'reference' => $order->reference,
+            'customer_name' => $order->customer_name,
+            'customer_email' => $order->customer_email,
             'status' => OrderStatus::CREATED,
         ]);
     }
@@ -126,10 +125,10 @@ class PaymentTest extends TestCase
             ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
 
-        $response->assertOk();
-        $response->assertViewIs('orders.show');
+        $response->assertRedirect(route('orders.show', $order));
+        
         $this->assertDatabaseHas('orders', [
           'id' => $order->id,
           'status' => OrderStatus::APPROVED,
@@ -182,10 +181,9 @@ class PaymentTest extends TestCase
             ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
 
-        $response->assertOk();
-        $response->assertViewIs('orders.show');
+        $response->assertRedirect(route('orders.show', $order));
         $this->assertDatabaseHas('orders', [
           'id' => $order->id,
           'status' => OrderStatus::PENDING,
@@ -272,10 +270,9 @@ class PaymentTest extends TestCase
           ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('orders.show', $order));
+        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
 
-        $response->assertOk();
-        $response->assertViewIs('orders.show');
+        $response->assertRedirect(route('orders.show', $order));
         $this->assertDatabaseHas('orders', [
           'id' => $order->id,
           'status' => OrderStatus::REJECTED,
@@ -285,9 +282,8 @@ class PaymentTest extends TestCase
     public function dataProvider(): Order
     {
         $order = Order::factory()->create();
-        $order->customer_id = $this->user->id;
-        $order->requestId = 1;
-        $order->processUrl = $this->processUrl;
+        $order->request_id = 1;
+        $order->process_url = $this->processUrl;
         $order->save();
 
         $product = Product::factory()->create();
@@ -301,7 +297,7 @@ class PaymentTest extends TestCase
         $order->products()->attach($product->id, [
         'quantity' => 1,
         'price' => $product->price,
-        'subtotal' => $product->price * 1,
+        'subtotal' => $product->price,
       ]);
 
         return $order;

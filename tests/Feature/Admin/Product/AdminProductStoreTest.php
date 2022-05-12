@@ -24,7 +24,6 @@ class AdminProductStoreTest extends TestCase
         'description' => 'hola soy una descripcion',
         'status' => ProductStatus::ENABLED,
         'slug'=> 'soy un slug',
-        'user_id'=> 1,
     ];
 
     protected function setUp(): void
