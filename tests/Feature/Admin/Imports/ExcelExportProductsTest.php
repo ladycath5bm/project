@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Imports;
+namespace Tests\Feature\Admin\Imports;
 
 use App\Exports\ProductsExport;
 use App\Jobs\Exports\CompletExportStatusJob;

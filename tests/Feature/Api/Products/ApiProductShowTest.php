@@ -2,13 +2,25 @@
 
 namespace Tests\Feature\Api\Products;
 
-use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApiProductShowTest extends TestCase
 {
     use RefreshDatabase;
+
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+
+        Sanctum::actingAs($this->user);
+    }
 
     public function testItCanFetchASingleProduct()
     {
@@ -26,7 +38,7 @@ class ApiProductShowTest extends TestCase
             $product->status,
         ]);
 
-        $response->assertExactJson([
+        $response->assertJson([
             'data' => [
                 'type' => 'products',
                 'id' => (string)$product->id,

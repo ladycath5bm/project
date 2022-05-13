@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api\Products;
 
-use App\Constants\ProductStatus;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use Laravel\Sanctum\Sanctum;
+use App\Constants\ProductStatus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApiProductUpdateTest extends TestCase
 {
@@ -25,6 +25,8 @@ class ApiProductUpdateTest extends TestCase
         $this->user = User::factory()->create();
         $this->category = Category::factory()->create();
         $this->product = Product::factory()->create();
+
+        Sanctum::actingAs($this->user);
     }
 
     public function testItCanUpdateAProduct()
@@ -41,8 +43,6 @@ class ApiProductUpdateTest extends TestCase
         ];
 
         $response = $this->patchJson(route('api.products.update', $this->product), $data);
-
-        $response->assertRedirect(route('api.products.show', $this->product));
 
         $this->assertDatabaseHas('products', [
             'id' => $this->product->id,

@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class AdminProductListText extends TestCase
+class AdminProductListTest extends TestCase
 {
     use RefreshDatabase;
 

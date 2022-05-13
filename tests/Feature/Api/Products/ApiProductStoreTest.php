@@ -5,6 +5,7 @@ namespace Tests\Feature\Api\Products;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Category;
+use Laravel\Sanctum\Sanctum;
 use App\Constants\ProductStatus;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,6 +23,7 @@ class ApiProductStoreTest extends TestCase
 
         $this->user = User::factory()->create();
         $this->category = Category::factory()->create();
+        Sanctum::actingAs($this->user);
     }
 
     public function testItCanStoreAProduct()
@@ -39,8 +41,6 @@ class ApiProductStoreTest extends TestCase
         ];
 
         $response = $this->postJson(route('api.products.store'), $data);
-
-        $response->assertRedirect();
 
         $this->assertDatabaseHas('products', [
             'name' => 'celular',

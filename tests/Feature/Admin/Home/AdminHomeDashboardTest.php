@@ -23,8 +23,6 @@ class AdminHomeDashboardTest extends TestCase
 
         $this->admin = User::factory()->create()
             ->assignRole('admin');
-        $this->employee = user::factory()->create()
-            ->assignRole('employee');
         $this->user = User::factory()->create()
             ->assignRole('custom');
     }
@@ -32,19 +30,6 @@ class AdminHomeDashboardTest extends TestCase
     public function testItAdminCanSeeHomeDashboard(): void
     {
         $response = $this->actingAs($this->admin)
-            ->get(route('admin.admin.home'));
-
-        $response->assertOk();
-        $response->assertViewIs('admin.index');
-
-        $response->assertSee('categories');
-        $response->assertSee('users');
-        $response->assertSee('products');
-    }
-
-    public function testEmployeeCantSeeHomeDashboard(): void
-    {
-        $response = $this->actingAs($this->employee)
             ->get(route('admin.admin.home'));
 
         $response->assertOk();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Custom;
+namespace Tests\Feature\Custom\Orders;
 
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;

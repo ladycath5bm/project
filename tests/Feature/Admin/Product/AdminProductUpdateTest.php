@@ -45,7 +45,7 @@ class AdminProductUpdateTest extends TestCase
 
         $reponse = $this->actingAs($this->user)->patch(route('admin.products.update', $this->product), $dataUpdate);     
 
-        $reponse->assertRedirect(route('admin.products.index'));
+        $reponse->assertRedirect(route('admin.products.list'));
 
         $this->assertDatabaseCount('products', 1);
         $this->assertDatabaseHas('products', [

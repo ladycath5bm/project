@@ -2,11 +2,12 @@
 
 namespace Tests\Feature\Api\Products;
 
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApiProductDeleteTest extends TestCase
 {
@@ -20,13 +21,14 @@ class ApiProductDeleteTest extends TestCase
         parent::setUp();
 
         $this->product = Product::factory()->create();
+        $this->user = User::factory()->create();
+
+        Sanctum::actingAs($this->user);
     }
 
     public function testItCanDeleteAproduct()
     {
         $response = $this->deleteJson(route('api.products.destroy', $this->product));
-
-        $response->assertRedirect(route('api.products.index'));
 
         $this->assertDatabaseMissing('products', [
             'id' => $this->product->id,

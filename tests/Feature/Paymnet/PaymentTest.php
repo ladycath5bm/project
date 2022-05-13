@@ -55,7 +55,7 @@ class PaymentTest extends TestCase
           'address' => $order->customer_address,
         ];        
         
-        $response = $this->actingAs($this->user)->get(route('pay', $order));
+        $response = $this->actingAs($this->user)->get(route('payments.pay', $order));
       
         $response->assertRedirect($processUrl);
 
@@ -125,7 +125,7 @@ class PaymentTest extends TestCase
             ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
+        $response = $this->actingAs($this->user)->get(route('payments.complete', $order->reference));
 
         $response->assertRedirect(route('orders.show', $order));
         
@@ -181,7 +181,7 @@ class PaymentTest extends TestCase
             ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
+        $response = $this->actingAs($this->user)->get(route('payments.complete', $order->reference));
 
         $response->assertRedirect(route('orders.show', $order));
         $this->assertDatabaseHas('orders', [
@@ -270,7 +270,7 @@ class PaymentTest extends TestCase
           ]), 200);
         });
 
-        $response = $this->actingAs($this->user)->get(route('complete', $order->reference));
+        $response = $this->actingAs($this->user)->get(route('payments.complete', $order->reference));
 
         $response->assertRedirect(route('orders.show', $order));
         $this->assertDatabaseHas('orders', [

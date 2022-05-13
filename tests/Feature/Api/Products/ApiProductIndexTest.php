@@ -3,12 +3,24 @@
 namespace Tests\Feature\Api\Products;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ApiProductIndexTest extends TestCase
 {
     use RefreshDatabase; 
+    
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+
+        Sanctum::actingAs($this->user);
+    }
 
     public function testItCanFetchAListofProducts()
     {
@@ -16,7 +28,7 @@ class ApiProductIndexTest extends TestCase
 
         $response = $this->getJson(route('api.products.index'));
 
-        $response->assertExactJson([
+        $response->assertJson([
             'data' => [
                 [
                     'type' => 'products',
