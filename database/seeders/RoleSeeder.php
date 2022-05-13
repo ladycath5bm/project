@@ -49,22 +49,6 @@ class RoleSeeder extends Seeder
             $permissionAdminProductsModules,
         ]);
 
-        Role::create(['name' => 'employee'])->syncPermissions([
-            $permissionAdminIndex,
-            
-            $permissionAdminProductsIndex,
-            $permissionAdminProductsCreate,
-            $permissionAdminProductsEdit,
-            $permissionAdminProductsDelete,
-
-            $permissionAdminCtaegoryIndex,
-            $permissionAdminCategoryCreate,
-            $permissionAdminCategoryEdit,
-            $permissionAdminCategoryDelete,
-
-            $permissionAdminProductsModules,
-        ]);
-
         Role::create(['name' => 'custom']);
     }
 }

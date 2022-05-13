@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -41,5 +43,21 @@ class Handler extends ExceptionHandler
         }
 
         parent::report($exception);
+    }
+
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json([
+            'mensaje' => __('Los datos proporcionados no son validos.'),
+            'errores' => $exception->errors(),
+        ], $exception->status);
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof ModelNotFoundException) {
+            return response()->json(["Error" => "producto no ecnontrado"], 400);
+        }
+        return parent::render($request, $e);
     }
 }

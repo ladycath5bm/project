@@ -3,6 +3,7 @@
 namespace App\Actions\Admin\Products;
 
 use App\Models\Product;
+use Hamcrest\Core\IsNot;
 
 class CreateNewProduct
 {
@@ -20,6 +21,12 @@ class CreateNewProduct
         $product->category()->associate($input['category_id']);
         $product->user()->associate($input['user_id']);
         $product->save();
+
+        if ( isset($input['file'])){
+            $input['file']->storeAs('public', $input['file']->hashName());
+
+            $product->images()->create(['url' => $input['file']->hashName(), 'product_id' => auth()->id()]);
+        }
 
         return $product;
     }

@@ -14,7 +14,7 @@ class AdminProductUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:120',
-            'code' => 'required|numeric|integer|exists:products,code',
+            'code' => 'required|numeric|integer|unique:products,code,' . $this->route('product')->id,
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'description' => 'required|max:250|string',

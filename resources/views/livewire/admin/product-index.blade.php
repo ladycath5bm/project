@@ -33,11 +33,11 @@
                         </td>
                         <td>
                             @if( $product->stock == 0 )
-                                <span class="text-warning text-center">{{ $product->stock }}</span>
+                                <span class="text-dark text-center">{{ $product->stock }}</span>
                                 <br>
                                 <span class="text-xs text-danger text-center">Sold Out</span>
                             @else
-                                <span class="text-warning text-center">{{ $product->stock }}</span>
+                                <span class="text-dark text-center">{{ $product->stock }}</span>
                             @endif
                         </td>
                         <td width="10px">

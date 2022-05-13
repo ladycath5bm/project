@@ -38,11 +38,7 @@ class ProductController extends Controller
 
     public function store(CreateNewProduct $createNewProduct, AdminProductStoreRequest $request): RedirectResponse
     {
-        $product = $createNewProduct->create($request->validated());
-        if ($request->hasfile('file')) {
-            $request->file('file')->storeAs('public', $request->file('file')->hashName());
-            $product->images()->create(['url' => $request->file('file')->hashName()]);
-        }
+        $createNewProduct->create($request->validated());
 
         Cache::flush();
 
@@ -64,7 +60,7 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
         Cache::flush();
-        return redirect()->route('admin.products.index')->with('information', 'Product updated successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product updated successfully!');
     }
 
     public function destroy(Product $product): RedirectResponse
