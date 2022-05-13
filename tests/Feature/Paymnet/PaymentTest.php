@@ -45,15 +45,7 @@ class PaymentTest extends TestCase
                     'requestId' => 1,
                     'processUrl' => $processUrl,
             ]), 200);
-        });
-
-        $data = [
-          'name' => $order->customer_name,
-          'document' => $order->customer_document,
-          'email' => $order->customer_email,
-          'mobile' => $order->customer_phone,
-          'address' => $order->customer_address,
-        ];        
+        });     
         
         $response = $this->actingAs($this->user)->get(route('payments.pay', $order));
       
