@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\AdminUserUpdateRequest;
+use App\Http\Requests\Admin\AdminUserUpdateRequest;
 
 class UserController extends Controller
 {

@@ -6,12 +6,17 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProductResource;
 use App\Http\Resources\Api\ProductCollection;
-use App\Http\Requests\AdminProductStoreRequest;
 use App\Actions\Admin\Products\CreateNewProduct;
-use App\Http\Requests\AdminProductUpdateRequest;
+use App\Http\Requests\Admin\AdminProductStoreRequest;
+use App\Http\Requests\Admin\AdminProductUpdateRequest;
 
 class ProductController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
+
     public function index(): ProductCollection
     {
         $products = Product::all();
