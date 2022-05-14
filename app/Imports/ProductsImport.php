@@ -7,6 +7,7 @@ use App\Constants\ProductStatus;
 use App\Models\Category;
 use App\Models\Import;
 use App\Models\Product;
+use App\Notifications\ImportFinished;
 use App\Rules\ProductImportRules;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Validation\Rule;
@@ -126,7 +127,8 @@ class ProductsImport implements
                 $this->import->update([
                     'status' => ExcelStatus::FINISHED,
                 ]);
-                //dump($this->error);
+                
+                $this->import->user->notify(new ImportFinished($this->import));
             },
         ];
     }

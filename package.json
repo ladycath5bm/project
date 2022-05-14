@@ -15,10 +15,12 @@
         "alpinejs": "^3.0.6",
         "axios": "^0.21",
         "git-cz": "^4.8.0",
+        "laravel-echo": "^1.11.7",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "postcss-import": "^14.0.1",
+        "pusher-js": "^7.1.0-beta",
         "tailwindcss": "^3.0.23"
     },
     "dependencies": {

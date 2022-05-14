@@ -25,7 +25,7 @@ class CreateNewProduct
         if ( isset($input['file'])){
             $input['file']->storeAs('public', $input['file']->hashName());
 
-            $product->images()->create(['url' => $input['file']->hashName(), 'product_id' => auth()->id()]);
+            $product->images()->create(['url' => $input['file']->hashName()]);
         }
 
         return $product;

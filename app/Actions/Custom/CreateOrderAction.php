@@ -5,6 +5,7 @@ namespace App\Actions\Custom;
 use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
+use App\Notifications\NewOrderGenerated;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -27,6 +28,10 @@ class CreateOrderAction
             $order->save();
 
             $order->products()->attach($this->createPivoteData());
+
+            Cart::destroy();
+
+            $order->customer->notify(new NewOrderGenerated($order));
 
             return $order;
         });

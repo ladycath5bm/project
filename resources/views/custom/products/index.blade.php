@@ -29,7 +29,6 @@
             <div class="max-w-screen sm:px-8 lg:px-2 ">
                 <div class="mx-4">
                     
-                    <!--<input wiremodel="search" class=" rounded form-control-lg mt-2 mx-6 px-6" placeholder="Search">-->
             
                 </div>
                 
@@ -61,8 +60,6 @@
                                                 </div>
                                             
                                                     <p class="text-orange-600 text-base mb-1"><strong>$ </strong>{{ $product->price }}</p>
-                                                    <!--<p class="text-gray-900 leading-none text-sm"><strong>Code: </strong>{{ $product->code }}</p>-->
-                                                    <!--<p class="text-gray-600 mb-2"><strong>Stock: </strong>{{ $product->stock }}</p>-->
                                                     <div class="flex items-center justify-center">
                                                         <form id="add-cart-{{ $product->id }}" action="{{ route('cart.store') }}" method="POST">
                                                             @csrf

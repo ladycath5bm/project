@@ -48,7 +48,7 @@ class ProductModulesController extends Controller
             ]);
 
             (new ProductsExport($filter))->queue('public/exports/' . $export->name . '.xlsx')
-                ->chain([new CompletExportStatusJob($export->id)]);
+                ->chain([new CompletExportStatusJob($export)]);
         });
         
         return back();
