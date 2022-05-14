@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Category;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NofiticationController;
 use App\Http\Controllers\ShoppingCartController;
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $categories = Category::all();
@@ -38,3 +39,7 @@ Route::get('/pay/{order}', [PaymentController::class, 'pay'])->name('payments.pa
 Route::get('pay/retray/{order}', [PaymentController::class, 'retray'])->name('payments.retray');
 Route::get('pay/cancel/{order}', [PaymentController::class, 'cancel'])->name('payments.cancel');
 Route::get('pay/{reference}/complete', [PaymentController::class, 'complete'])->name('payments.complete');
+
+Route::get('notifications/read/all', [NofiticationController::class, 'readAll'])->name('notifications.readall');
+Route::get('notifications/', [NofiticationController::class, 'index'])->name('notifications.index');
+Route::get('notifications/{notification}', [NofiticationController::class, 'read'])->name('notifications.read');

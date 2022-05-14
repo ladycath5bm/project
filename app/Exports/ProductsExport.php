@@ -5,14 +5,12 @@ namespace App\Exports;
 use Throwable;
 use App\Models\Product;
 use App\Models\Category;
-use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Carbon;
 use App\Constants\ProductStatus;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Illuminate\Contracts\Support\Responsable;
 
 class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 {

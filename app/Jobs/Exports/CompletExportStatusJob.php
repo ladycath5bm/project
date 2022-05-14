@@ -27,7 +27,7 @@ class CompletExportStatusJob implements ShouldQueue
     public function handle(): void
     {
         DB::table('exports')->select('status')
-            ->where('id', $this->export)
+            ->where('id', $this->export->id)
             ->update(['status' => ExcelStatus::FINISHED]);
 
         $this->export->user->notify(new ExportGenerated($this->export));

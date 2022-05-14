@@ -27,7 +27,7 @@ class NewOrderGenerated extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -40,7 +40,7 @@ class NewOrderGenerated extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->line('A new order was created. Reference: ' . $this->order->reference)
-                    ->action('To check the detail, ', route('orders.show', $this->order))
+                    ->action('See the order', route('orders.show', $this->order))
                     ->line('Thank you for shop with us!');
     }
 

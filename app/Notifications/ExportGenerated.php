@@ -27,7 +27,7 @@ class ExportGenerated extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -39,7 +39,7 @@ class ExportGenerated extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Your file ' . $this->export->name . ' is yet ready.')
+                    ->line('Your file ' . $this->export->name . ' is ready!')
                     ->action('Download the file', route('admin.products.exports.file', $this->export))
                     ->line('Thank you for using our application!');
 
