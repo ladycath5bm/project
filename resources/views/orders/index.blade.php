@@ -34,7 +34,7 @@
                                     <a class=" text-gray-600 hover:text-orange-600" href="{{ route('orders.show', $order) }}">Detalle de la orden  |</a>
                                 </span>
                                 <span>
-                                    <a class="ml-2 text-gray-600 hover:text-orange-600" href="#">Ver factura</a>
+                                    <a class="ml-2 text-gray-600 hover:text-orange-600" href="{{ route('orders.report', $order) }}">Ver factura</a>
                                 </span>
                             </div>
                         </div>

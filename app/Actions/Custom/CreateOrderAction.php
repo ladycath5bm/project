@@ -2,13 +2,14 @@
 
 namespace App\Actions\Custom;
 
-use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Str;
+use App\Constants\OrderStatus;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\NewOrderGenerated;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Notification;
 
 class CreateOrderAction
 {
@@ -32,6 +33,9 @@ class CreateOrderAction
             Cart::destroy();
 
             $order->customer->notify(new NewOrderGenerated($order));
+            
+            Notification::route('nexmo', $order->customer_phone)
+                ->notify(new NewOrderGenerated($order));
 
             return $order;
         });

@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Constants\OrderStatus;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Actions\Custom\CreateOrderAction;
-use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\Orders\OrderStoreRequest;
-use App\Notifications\NewOrderGenerated;
 
 class OrderController extends Controller
 {
@@ -26,10 +25,6 @@ class OrderController extends Controller
     public function store(CreateOrderAction $createNewOrderAction, OrderStoreRequest $request): RedirectResponse
     {
         $order = $createNewOrderAction->create($request->validated());
-
-        Notification::route('nexmo', $order->customer_phone)
-            ->notify(new NewOrderGenerated($order));
-    
         
         return redirect()->route('payments.pay', $order);
     }
@@ -46,5 +41,16 @@ class OrderController extends Controller
         }
 
         return redirect()->route('orders.index')->with('information', 'Order deleted successfully!');
+    }
+
+    public function generateReport(Order $order)
+    {
+        $data = [
+            'order' => $order->toArray(),
+            'products' => $order->products->toArray()
+        ];
+
+        $pdf = PDF::loadView('orders.report', ['data' => $data]);
+        return $pdf->stream('invoice.pdf');
     }
 }
