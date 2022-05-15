@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\NexmoMessage;
 
 class NewOrderGenerated extends Notification implements ShouldQueue
 {
@@ -27,7 +28,7 @@ class NewOrderGenerated extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail', 'database', 'nexmo'];
     }
 
     /**
@@ -56,5 +57,10 @@ class NewOrderGenerated extends Notification implements ShouldQueue
             'reference' => $this->order->reference,
             'route' => route('orders.show', $this->order),
         ];
+    }
+
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)->content('A new order was created!');
     }
 }

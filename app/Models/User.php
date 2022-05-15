@@ -90,4 +90,5 @@ class User extends Authenticatable
     {
         return $this->countNotifications() > 0;
     }
+
 }

@@ -14,15 +14,18 @@
         "laravel/framework": "^8.75",
         "laravel/horizon": "^5.9",
         "laravel/jetstream": "^2.6",
+        "laravel/nexmo-notification-channel": "^2.5.1",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.3",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "nexmo/laravel": "^2.4.1",
         "predis/predis": "~1.0",
         "pusher/pusher-php-server": "^7.0",
         "spatie/laravel-permission": "^5.5",
-        "ua-parser/uap-php": "^3.9"
+        "ua-parser/uap-php": "^3.9",
+        "vonage/client": "^2.0"
     },
     "require-dev": {
         "arcanedev/log-viewer": "~8.0.0",
