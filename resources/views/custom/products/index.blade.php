@@ -1,6 +1,6 @@
 <x-app-layout>
     @section('sidebar')
-    <div class="min-h-screen px-4 py-4 rounded bg-gray-100 ">
+    <div class="min-h-screen px-2 py-4 rounded bg-gray-100 ">
         <div class="flex flex-wrap justify-center bg-white rounded-lg shadow-lg mb-4">
             <button class="font-bold flex-grow text-orange-500 rounded-lg shadow-lg bg-white text-md h-12">Category</button>            
         </div>
@@ -34,7 +34,7 @@
                 
                 @if($products)
                     
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mt-4">
                     
                         @foreach ($products as $product)
                             <div class="col-span-1 md:col-span-1 xl:col-span-1">
@@ -43,10 +43,10 @@
                                     <div class="max-w-full  h-full bg-white rounded lg:rounded p-1 flex flex-col shadow-lg justify-between leading-normal">
                                         
                                         <div class="justify-center mb-2 rounded flex items-center">
-                                            @if($product->images->isNotEmpty())
+                                            @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
                                                 <img class="h-60 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
                                             @else
-                                                <img class="h-60 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                                <img class="h-60 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                             @endif
             
                                         </div>

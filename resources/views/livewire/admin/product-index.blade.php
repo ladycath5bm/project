@@ -1,7 +1,7 @@
 <div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add product</a>
+        <a class="btn btn-warning btn-sm float-right" href="{{ route('admin.products.create') }}">Add product</a>
 
         
         <input wire:model="search" class="form-control-sm float-left mt-2 mx-2" placeholder="Search">

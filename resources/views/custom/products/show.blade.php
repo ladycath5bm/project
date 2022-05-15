@@ -40,10 +40,10 @@
                         
                         
                         <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
-                            @if($product->images->isNotEmpty())
-                                <img class="h-80 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                            @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
+                                <img class="h-90 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
                             @else
-                                <img class="h-80 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                <img class="h-90 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                             @endif
                         </div>
                         <div class="text-sm mx-4 mt-4 flex-col">
@@ -89,10 +89,10 @@
                         <div class="max-w-full  h-full bg-white rounded lg:rounded p-1 flex flex-col shadow-lg justify-between leading-normal">
                             
                             <div class="justify-center mb-2 rounded flex items-center">
-                                @if($similar->images->isNotEmpty())
+                                @if($similar->images->isNotEmpty() && $similar->images->first()->url != '0')
                                     <img class="h-50 object-cover object-center rounded" src="{{ Storage::url($similar->images->first()->url) }}" alt="">    
                                 @else
-                                    <img class="h-50 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                    <img class="h-50 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                 @endif
 
                             </div>
@@ -106,9 +106,6 @@
                                     </div>
                                 
                                         <p class="text-orange-600 text-base mb-1"><strong>$ </strong>{{ $similar->price }}</p>
-                                        <div class="flex items-center justify-center">
-                                            <a href=# class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white">Buy</a>
-                                        </div>
                                 </div>
                             </div>
                         </div>

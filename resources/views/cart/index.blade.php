@@ -21,7 +21,7 @@
                                         @if($item->options['url'])
                                             <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                         @else
-                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                         @endif
                                     </div>
                                     <div class="w-1/3 ml-2 mt-6">
@@ -122,7 +122,7 @@
                                             @if($item->options['url'])
                                                 <img class="h-20 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                             @else
-                                                <img class="h-20 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                                <img class="h-20 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                             @endif
                                         </div>
                                     </td>

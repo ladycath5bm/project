@@ -48,7 +48,7 @@
                                     @if($product->images->first()->url)
                                         <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
                                     @else
-                                        <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                        <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                     @endif
                                 </div>
                                 <div class="w-full ml-2 mt-6">

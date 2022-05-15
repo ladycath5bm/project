@@ -1,7 +1,7 @@
 <div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.users.create') }}">Add user</a>
+        <a class="btn btn-warning btn-sm float-right" href="{{ route('admin.users.create') }}">Add user</a>
         <input wire:model="search" class="form-control-sm float-left" placeholder="Search">
 
     </div>
@@ -22,7 +22,9 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td> @if(isset( $user->roles()->first()->name )) {{ $user->roles()->first()->name }} @else '' @endif </td>
+                        <td> 
+                            @if(isset( $user->roles()->first()->name )) {{ $user->roles()->first()->name }} @else 'Not role' @endif 
+                        </td>
                         <td width="10px">
                             <a class="btn btn-sm btn-success" href="{{ route('admin.users.edit', $user) }}">Role</a>
                         </td>
