@@ -275,6 +275,14 @@ return [
             'active' => ['admin/list'],
             'can' => 'admin.products.index',
         ],
+        [
+            'text' => 'Orders',
+            'route'  => 'admin.orders',
+            'icon' => 'fas fa-receipt fa-fw',
+            'active' => ['admin/products*'],
+            'active' => ['admin/orders'],
+            'can' => 'admin.products.index',
+        ],
         /*['header' => 'labels'],
         [
             'text'       => 'important',
