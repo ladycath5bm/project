@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\ProductVisited;
+use App\Actions\Admin\Exports\CreateExport;
+use App\Models\Export;
+use App\Models\Import;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use App\Actions\Admin\Imports\CreateImport;
 use App\Jobs\Exports\CompletExportStatusJob;
 use App\Http\Requests\Exports\ExportProductsRequest;
 use App\Http\Requests\Imports\ImportProductsRequest;
-use App\Models\Export;
-use App\Models\Import;
-use Maatwebsite\Excel\Events\AfterImport;
-use Maatwebsite\Excel\Jobs\AfterImportJob;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
@@ -35,17 +32,12 @@ class ProductModulesController extends Controller
         return view('admin.products.module', compact('categories'));
     }
 
-    public function export(ExportProductsRequest $request): RedirectResponse
+    public function export(CreateExport $createExport, ExportProductsRequest $request): RedirectResponse
     {
-        DB::transaction(function () use ($request) {
-
-            $filter = $request->toArray();
-    
-            $export = Export::create([
-                'name' => 'products-' . now(),
-                'query' => json_encode($request->all()),
-                'user_id' => auth()->id(),
-            ]);
+        DB::transaction(function () use ($request, $createExport) {
+            
+            $filter = $request->validated();
+            $export = $createExport->create($filter);
 
             (new ProductsExport($filter))->queue('public/exports/' . $export->name . '.xlsx')
                 ->chain([new CompletExportStatusJob($export)]);
@@ -78,19 +70,13 @@ class ProductModulesController extends Controller
         return Storage::download('public/exports/' . $export->name . '.xlsx', $export->name . '.xlsx');
     }
 
-    public function import(ImportProductsRequest $request): RedirectResponse
+    public function import(CreateImport $createImport, ImportProductsRequest $request): RedirectResponse
     {
         $dataImport = $request;
 
-        DB::transaction(function () use ($dataImport) {
-
-            $import = Import::create([
-                'name' => $dataImport['file']->getClientOriginalName(),
-                'records' => 0,
-                'user_id' => auth()->id(),
-                'created_at' => now(),
-            ]);
-
+        DB::transaction(function () use ($dataImport, $createImport) {
+            
+            $import = $createImport->create($dataImport);
             (new ProductsImport($import))->import($dataImport['file']);
         });
 

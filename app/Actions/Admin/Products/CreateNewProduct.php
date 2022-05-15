@@ -3,7 +3,6 @@
 namespace App\Actions\Admin\Products;
 
 use App\Models\Product;
-use Hamcrest\Core\IsNot;
 
 class CreateNewProduct
 {
