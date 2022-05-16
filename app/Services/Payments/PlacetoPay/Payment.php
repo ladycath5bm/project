@@ -2,21 +2,19 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Collection;
+use App\Constants\Currencies;
+use App\Models\Order;
 
 class Payment
 {
-    public static function make(int $reference, Collection $items): array
+    public static function make(Order $order): array
     {
-        $subtotal = (int)Cart::subtotal(auth()->user()->id);
-        //dd($items);
         return [
-            'reference' => $reference,
-            'description' => 'Yoour payment for Ecom by webcheckout',
+            'reference' => $order->reference,
+            'description' => trans('payment.description'),
             'amount' => [
-                'currency' => 'COP',
-                'total' => $subtotal,
+                'currency' => Currencies::COP,
+                'total' => $order->total,
                 ],
             'allowPartial' => false,
         ];

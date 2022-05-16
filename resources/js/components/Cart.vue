@@ -1,11 +1,10 @@
-
 <script setup>
     defineProps(['msg'])
 </script>
 
 <template>
     <div>
-        <span class="bg-white rounded-full  px-1 font-size-10 text-justify text-gray-400 hover:text-orange-500 font-bold">
+        <span class="bg-orange-500 rounded-full font-bold px-1 text-xs text-justify text-white">
         {{ msg }}
         </span> 
     </div>

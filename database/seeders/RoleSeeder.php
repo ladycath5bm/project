@@ -26,14 +26,17 @@ class RoleSeeder extends Seeder
         $permissionAdminCategoryEdit = Permission::create(['name' => 'admin.categories.edit']);
         $permissionAdminCategoryDelete = Permission::create(['name' => 'admin.categories.destroy']);
 
-        $rolAdmin = Role::create(['name' => 'admin'])->syncPermissions([
-            $permissionAdminProductsIndex,
+        $permissionAdminProductsModules = Permission::create(['name' => 'admin.products.modules']);
+
+        Role::create(['name' => 'admin'])->syncPermissions([
+        
             $permissionAdminIndex,
 
             $permissionAdminUsersIndex,
             $permissionAdminUsersCreate,
             $permissionAdminUsersEdit,
 
+            $permissionAdminProductsIndex,
             $permissionAdminProductsCreate,
             $permissionAdminProductsEdit,
             $permissionAdminProductsDelete,
@@ -42,8 +45,10 @@ class RoleSeeder extends Seeder
             $permissionAdminCategoryCreate,
             $permissionAdminCategoryEdit,
             $permissionAdminCategoryDelete,
+
+            $permissionAdminProductsModules,
         ]);
 
-        $rolCustom = Role::create(['name' => 'custom']);
+        Role::create(['name' => 'custom']);
     }
 }

@@ -1,10 +1,10 @@
-    <div class="card">   
+<div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-dark btn-sm float-right" href="{{ route('admin.products.create') }}">Add products</a>
-        <input wire:model="search" class="form-control-sm float-left" placeholder="Search">
-
+        <a class="btn btn-warning btn-sm float-right" href="{{ route('admin.products.create') }}">Add product</a>
+        <input wire:model="search" class="form-control-sm float-left mt-2 mx-2" placeholder="Search">
     </div>
+    
     @if($products->count())
         <div class="card-body">
             <table class="table table-striped">
@@ -18,14 +18,26 @@
             
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->code }}</td>
-                        <td> @if ($product->status == 1) {{ __('Enable') }} @else {{ __('Disable') }} @endif </td>
-                        <td>{{ $product->stock }}</td>
                         <td><a href="{{ route('admin.products.show', $product) }}">{{ $product->name }}</a></td>
+                        <td>{{ $product->code }}</td>
+                        <td> @if ($product->status == 'ENABLED') 
+                                <span class="text-success">Enabled</span>
+                            @else 
+                                <span class="text-danger">Disabled</span>
+                            @endif 
+                        </td>
+                        <td>
+                            @if( $product->stock == 0 )
+                                <span class="text-dark text-center">{{ $product->stock }}</span>
+                                <br>
+                                <span class="text-xs text-danger text-center">Sold Out</span>
+                            @else
+                                <span class="text-dark text-center">{{ $product->stock }}</span>
+                            @endif
+                        </td>
                         <td width="10px">
                             <a class="btn btn-sm btn-success" href="{{ route('admin.products.edit', $product) }}">Edit</a>
                         </td>
@@ -38,7 +50,9 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                        <h3>Upds, no tienes productos registrados aún</h3>
+                    @endforelse
                 </tbody>
             </table>
         </div>

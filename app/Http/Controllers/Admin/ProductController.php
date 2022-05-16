@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Admin\Products\CreateNewProduct;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminProductStoreRequest;
-use App\Http\Requests\AdminProductUpdateRequest;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Requests\Admin\AdminProductStoreRequest;
+use App\Actions\Admin\Products\CreateNewProduct;
+use App\Http\Requests\Admin\AdminProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -18,13 +18,16 @@ class ProductController extends Controller
     {
         $this->middleware('can:admin.products.index');
     }
+
     public function index(): View
     {
-        //se puede pasar a un scope
-        $products = Product::where('user_id', auth()->user()->id)
-            ->latest('id')
-            ->paginate(5);
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index');
+    }
+
+    public function list(): View
+    {
+        $products = Product::paginate(5);
+        return view('admin.products.list', compact('products'));
     }
 
     public function create(): View
@@ -35,19 +38,11 @@ class ProductController extends Controller
 
     public function store(CreateNewProduct $createNewProduct, AdminProductStoreRequest $request): RedirectResponse
     {
-        $product = $createNewProduct->create($request->validated());
-        if ($request->hasfile('file')) {
-            //$file = $request->file('file');
-            //$fileName = $file->hashName();
-            //$file->storeAs('public', $fileName);
-            $request->file('file')->storeAs('public', $request->file('file')->hashName());
-            $product->images()->create(['url' => $request->file('file')->hashName()]);
-            //$product->images()->create(['url' => $fileName]);
-        }
+        $createNewProduct->create($request->validated());
 
         Cache::flush();
 
-        return redirect()->route('admin.products.index')->with('information', 'Product created successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product created successfully!');
     }
 
     public function show(Product $product): View
@@ -65,7 +60,7 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
         Cache::flush();
-        return redirect()->route('admin.products.index', $product)->with('information', 'Product updated successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product updated successfully!');
     }
 
     public function destroy(Product $product): RedirectResponse

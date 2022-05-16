@@ -13,14 +13,15 @@
                 <div class="bg-white w-full">
                     
                     <div class="bg-white rounded-lg text-center w-full gap-5">
-                        @forelse ($items as $item)
+                        @forelse (Cart::content() as $item)
+                      
                             <div class="border rounded-md shadow-md px-2 py-2 mb-6 mt-6">
                                 <div class="flex w-full">
                                     <div class="w-1/4">
                                         @if($item->options['url'])
                                             <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                         @else
-                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                         @endif
                                     </div>
                                     <div class="w-1/3 ml-2 mt-6">
@@ -38,11 +39,10 @@
                                     <div class="w-1/4 mt-6">
                                         <div class="flex justify-center">
                                             <div class="mb-3 xl:w-96">
-                                                <form name="update" action="{{ route('cart.update', $item->rowId) }}" method="POST" id="update">
+                                                <form id="update" action="{{ route('cart.update') }}" method="POST" >
                                                     @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="id" value="{{ $item->id}}" >
-                                                    <select name="qty" id="qty" class="form-select form-select-sm btn-sele" aria-label=".form-select-sm">
+                                                    <input type="hidden" name="id" id="id" value="{{ $item->rowId }}">
+                                                    <select name="qty" id="qty" class="form-select form-select-sm btn-sele">
                                                         <option selected="{{ $item->qty }}">{{ $item->qty }}</option>|
                                                         @if($item->options['stock'] <= 5)
                                                             @for ( $stock = 1;  $stock <= $item->options['stock']; $stock++)
@@ -62,23 +62,26 @@
                                                              @endfor
                                                         @endif
                                                     </select>
+                                                    <button type="submit" class="text-sm text-orange-500 justify-center text-center">
+                                                        Update
+                                                    </button>
+                                                </form>                                    
+                                            </div>
+                                            <div class="flex justify-center mt-2 px-3">
+                                                <form name="delete" id="delete" action="{{ route('cart.remove', $item->rowId) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="id" value="{{ $item->rowId }}">
+                                                    <button name="delete" type="submit" class="text-sm text-orange-500 ">
+                                                        <span class="material-icons hover:text-orange-400">
+                                                            delete
+                                                        </span>
+                                                    </button>
                                                 </form>
-                                              
-                                                <button name="update" type="submit" class="text-sm text-orange-500" form="update">
-                                                    Update
-                                                </button>
+                                               
                                             </div>
                                         </div>
-                                        <div>
-                                            <form name="delete" id="delete" action="{{ route('cart.remove', $item->rowId) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="hidden" name="id" value="{{ $item->rowId }}">
-                                            </form>
-                                            <button name="delete" type="submit" class="text-sm text-orange-500" form="delete">
-                                                Delete
-                                            </button>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -92,8 +95,14 @@
                         <form class="text-lg" action="{{ route('cart.clear') }}" method="POST" id="clear" name="clear">
                             @csrf
                             @method('DELETE')
+                            <button type="submit" name="clear" class="text-orange-500" form="clear">
+                                <span class="material-icons hover:text-orange-400">
+                                    delete_forever
+                                </span>
+                                    
+                            </button>
                         </form>
-                        <button type="submit" name="clear" form="clear">Clear cart</button>
+                        
                     </div>
                     
                 </div>
@@ -105,7 +114,7 @@
                                 <span class="font-bold text-xl text-gray-600 flex justify-center mt-4 mb-4">My Cart</span>
                             </thead>
                             <tbody>
-                                @foreach ($items as $item)
+                                @forelse (Cart::content() as $item)
                                 <tr>
                                     <hr/>
                                     <td>
@@ -113,7 +122,7 @@
                                             @if($item->options['url'])
                                                 <img class="h-20 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                             @else
-                                                <img class="h-20 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                                <img class="h-20 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                             @endif
                                         </div>
                                     </td>
@@ -125,7 +134,13 @@
                                         <span class="mx-4 text-sm font-bold text-gray-700  mt-4 mb-4">$ {{ $item->price }}</span>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <div>
+                                        <span class="flex justify-center text-sm font-semibold text-gray-700  mt-4 mb-4"> Ups!, no tienes productos en tu carrito</span>
+                                    </div>
+                                </tr>
+                                @endforelse
                                 <tr>
                                     <td>
                                         <hr/>
@@ -159,20 +174,10 @@
                         </table>
                     </div>
                     <div class="flex items-center justify-center">
-                        <form name="checkout" action="{{ route('cart.checkout') }}" method="POST" id="checkout">
-                            @csrf
-                            @method('POST')
-                        </form>
-                        <button type="submit" form="checkout" name="checkout" class="btn-custom  mt-4 w-full bg-orange-500  px-6 justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white">
-                            Continue
-                        </button>
+                        <a class="btn-custom  mt-4 w-full bg-orange-500  px-6 flex justify-center text-white font-bold text-md rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white" href="{{ route('cart.checkout') }}">Continue</a>  
                     </div>
                 </div>
-                
             </div>
-            
-            </div>
-            
         </div>
     </div>
 </x-app-layout>

@@ -17,7 +17,8 @@
                 @foreach ($roles as $role)
                     <div>
                         <label>
-                            {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                            {!! Form::radio('role', $role->id, null , ['class' => 'mr-1']) !!}
+                            
                             {{ $role->name }}
                         </label>
                     </div>

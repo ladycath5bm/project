@@ -41,6 +41,14 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('discount', 'Discount') !!}
+                    {!! Form::number('discount', null, ['class' => 'form-control', 'placeholder' => 'Discount for product']) !!}
+                    @error('discount')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('category_id', 'Category') !!}
                     {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
                     
@@ -58,11 +66,11 @@
                     <p class="font-weight-bold">Status</p>
 
                     <label class="mr-2">
-                        {!! Form::radio('status', 0, true) !!}
+                        {!! Form::radio('status', 'DISABLED', true) !!}
                         Disable
                     </label>
                     <label class="mr-2">
-                        {!! Form::radio('status', 1, true) !!}
+                        {!! Form::radio('status', 'ENABLED', true) !!}
                         Enabled
                     </label>
                     
@@ -78,12 +86,4 @@
 
 @section('js')
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
 @endsection

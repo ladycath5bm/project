@@ -5,7 +5,7 @@ namespace App\Services\Payments\PlacetoPay;
 class Auth
 {
     private string $login;
-    private string $key;
+    private string $tranKey;
 
     public function __construct()
     {

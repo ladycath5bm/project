@@ -2,27 +2,32 @@
 
 namespace Tests\Feature\Admin\Category;
 
+use Tests\TestCase;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
 class AdminCategoryIndexTest extends TestCase
 {
     use RefreshDatabase;
-    public function testItVisitListCategories()
-    {
-        $response = $this->get(route('admin.categories.index'));
 
-        $response->assertOk();
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('db:seed --class=RoleSeeder');
+        Category::factory()->count(19)->create();
+        $this->user = User::factory()->create()->assignRole('admin');
     }
 
     public function testItListCategories()
     {
-        Category::factory(10)->create();
-
-        $response = $this->get(route('admin.categories.index'));
+        $response = $this->actingAs($this->user)->get(route('admin.categories.index'));
 
         $response->assertOk();
         $response->assertViewIs('admin.categories.index');
+        $response->assertViewHas('categories');
     }
 }

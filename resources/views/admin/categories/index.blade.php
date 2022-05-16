@@ -3,7 +3,9 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1 class="text-bold text-g text-gray-800">List of categories</h1>
+    <div class="card py-2">
+        <h4 class="text-bold text-center ">List of categories</h4>
+    </div>
 @stop
 
 @section('content')
@@ -14,7 +16,6 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <!--livewire('admin.category-index')-->
             @livewire('admin.category-index')
         </div>
     </div>

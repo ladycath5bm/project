@@ -6,25 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateShoppingcartTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create(config('cart.database.table'), function (Blueprint $table) {
-            //$table->id();
-            $table->string('identifier');
-            $table->string('instance');
+            
+            $table->string('identifier', 100);
+            $table->string('instance', 100);
             $table->longText('content');
             $table->nullableTimestamps();
 
             $table->primary(['identifier', 'instance']);
         });
     }
-    /**
-     * Reverse the migrations.
-     */
-    public function down()
+
+    public function down(): void
     {
         Schema::drop(config('cart.database.table'));
     }

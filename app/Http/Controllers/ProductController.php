@@ -25,11 +25,11 @@ class ProductController extends Controller
         } else {
             $products = Product::where('status', true)
             ->latest('id')
-            ->paginate(8);
+            ->paginate(16);
             Cache::put($key, $products);
         }
 
-        $categories = Category::all();
+        $categories = Category::select('id', 'name')->get();
 
         return view('custom.products.index', compact('products', 'categories'));
     }
@@ -41,8 +41,8 @@ class ProductController extends Controller
 
         ProductVisited::dispatch($product, $request->ip(), $request->userAgent());
 
-        //pasar a una consulta e otra capa
-        $categories = Category::all();
+        $categories = Category::select('id', 'name')->get();
+
         $similarProductsByCategory = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->where('status', true)
@@ -54,24 +54,27 @@ class ProductController extends Controller
 
     public function showByCategory(Category $category): View
     {
-        $categories = Category::all();
+        $categories = Category::select('id', 'name')->get();
+
         $products = Product::where('category_id', $category->id)
             ->where('status', true)
             ->paginate(9);
         $category_id = $category->id;
+
         return view('custom.products.index', compact('products', 'categories'));
     }
 
     public function top(): View
     {
-        $categories = Category::all();
+        $categories = Category::select('id', 'name')->get();
+
         $top = ProductVisit::select('product_id')->selectRaw('count(product_id) as visits')
-            ->with('product:id,name')
+            ->with('product:id,name,description,code,price')
             ->groupBy('product_id')
             ->orderBy('visits', 'DESC')
             ->limit(10)
             ->get();
-        //dd($top);
+
         return view('custom.products.top', compact('top', 'categories'));
     }
 }

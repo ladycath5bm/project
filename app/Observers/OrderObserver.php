@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Log;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderObserver
 {
@@ -19,7 +18,6 @@ class OrderObserver
             'order_id' => $order->getKey(),
         ]);
         if ($order->status == 'APPROVED') {
-            Cart::destroy();
             Log::info(['message, shopping cart clear'], [
                 'order_id' => $order->getKey(),
             ]);

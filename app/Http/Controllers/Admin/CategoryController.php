@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminCategoryStoreRequest;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\AdminCategoryStoreRequest;
+use App\Http\Requests\Admin\AdminCategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:admin.categories.index');
+         $this->middleware('can:admin.categories.index');
     }
 
     public function index(): View
     {
-        $categories = Category::paginate(5);
-        //dd($categories);
+        $categories = Category::pluck('name', 'id');
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -39,9 +39,8 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(AdminCategoryUpdateRequest $request, Category $category): RedirectResponse
     {
-        //integrar validacion
         $category->update($request->validated());
         return redirect()->route('admin.categories.index')->with('information', 'Category updated successfully');
     }

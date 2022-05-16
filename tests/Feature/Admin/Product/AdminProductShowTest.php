@@ -2,24 +2,38 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminProductShowTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testItVisitProduct(): void
+    private User $user;
+
+    protected function setUp(): void
     {
-        //$this->withoutMiddleware();
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
+        parent::setUp();
+
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()
+            ->create()
+            ->assignRole('admin');
+    }
+
+    public function testItCanSeeProduct(): void
+    {
+
         $product = Product::factory()->create();
+        $product->category_id = Category::factory()->create()->id;
+        $product->save();
 
-        $response = $this->actingAs($user)->get(route('admin.products.show', $product));
+        $response = $this->actingAs($this->user)->get(route('admin.products.show', $product));
 
-        $response->assertOk();
+        $response->assertViewIs('admin.products.show');
+        $response->assertViewHas('product');
     }
 }

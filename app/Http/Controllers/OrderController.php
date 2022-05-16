@@ -2,53 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Custom\CreateOrderAction;
 use App\Models\Order;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Constants\OrderStatus;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Actions\Custom\CreateOrderAction;
+use App\Http\Requests\Orders\OrderStoreRequest;
 
 class OrderController extends Controller
 {
     public function index(): View
     {
-        $orders = Order::where('customer_id', auth()->user()->id)
+        $orders = Order::select('id', 'total', 'description', 'status', 'created_at', 'reference', 'request_id', 'process_url')
+            ->where('customer_id', auth()->user()->id)
             ->latest('id')
-            ->paginate(5);
-        //dd($orders->toArray());
+            ->paginate(10);
+
         return view('orders.index', compact('orders'));
     }
 
-    public function create()
+    public function store(CreateOrderAction $createNewOrderAction, OrderStoreRequest $request): RedirectResponse
     {
+        $order = $createNewOrderAction->create($request->validated());
+        
+        return redirect()->route('payments.pay', $order);
     }
 
-    public function store(CreateOrderAction $createNewOrderAction, Request $request)
+    public function show(Order $order): View
     {
-        //$order = $createNewOrderAction->create($request->validated());
+        return view('orders.show', compact('order'));
     }
 
-    public function show($id)
+    public function destroy(Order $order): RedirectResponse
     {
-        //
-    }
-
-    public function completed(int $id)
-    {
-        $order = Order::finOrfail('id', $id);
-        if ($order->status == 'APROVED') {
-            Cart::destroy();
+        if ($order->status == OrderStatus::REJECTED) {
+            $order->delete();
         }
+
+        return redirect()->route('orders.index')->with('information', 'Order deleted successfully!');
     }
 
-    public function cancel(Order $order)
+    public function generateReport(Order $order)
     {
-        //dd($order);
-        $orderCancel = Order::where('id', $order->id)->first();
-        $orderCancel->status = 'REJECTED';
-        $orderCancel->save();
+        $data = [
+            'order' => $order->toArray(),
+            'products' => $order->products->toArray()
+        ];
 
-        //dd($orderCancel->first()->id);
-        return redirect()->route('cart.index');
+        $pdf = PDF::loadView('orders.report', ['data' => $data]);
+        return $pdf->stream('invoice.pdf');
     }
 }

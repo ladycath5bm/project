@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -71,4 +70,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function exports(): HasMany
+    {
+        return $this->hasMany(Export::class);
+    }
+
+    public function imports(): HasMany
+    {
+        return $this->hasMany(Import::class);
+    }
+
+    public function countNotifications(): int
+    {
+        return $this->unreadNotifications()->count();
+    }
+
+    public function hasNotifications(): bool
+    {
+        return $this->countNotifications() > 0;
+    }
+
 }

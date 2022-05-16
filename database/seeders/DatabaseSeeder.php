@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSeeder::class);
 
-        Category::factory(10)->create();
+        $this->call(CategorySeeder::class);
 
         $this->call(ProductSeeder::class);
 
-        Order::factory(10)->create();
+        $this->call(OrderSeeder::class);
     }
 }

@@ -1,43 +1,52 @@
 <x-app-layout>
     @section('sidebar')
-    <div class="min-h-screen px-4 py-4 rounded bg-gray-100 ">
-        <div class="flex flex-wrap justify-center bg-white rounded-lg shadow-lg mb-4">
-            <button class="font-bold flex-grow text-gray-900 rounded-lg shadow-lg bg-white text-lg h-12">Ecom</button>            
-        </div>
-        <nav class="flex flex-col bg-white w-48 max-h-screen tex-gray-900 rounded-lg shadow-lg">
-        
-            <div class="mt-2 mb-2 mr-2  max-h-screen">
-                <ul class="ml-2">
-                    @foreach ($categories as $category)
-                        <li class="w-full py-2 text-black flex flex-row hover:text-white   hover:bg-orange-600  hover:font-bold rounded  ">
-                            <span>
-                                
-                            </span>
-                            <a href="{{ route('products.showbycategory', $category) }}">
-                                <span class="ml-2">{{ $category->name }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <nav class="bg-white px-10 shadow-xl py-2 text-center">
+        @foreach ($categories as $category)      
+            <a href="{{ route('products.showbycategory', $category) }}" class=" hover:scale-115">
+                <span class="text-sm text-gray-500 hover:text-orange-500">{{ $category->name }}</span>
+                <span class="text-orange-600 text-md mx-4">|</span>
+            </a>
+        @endforeach
+    </nav>
     @endsection
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-4 pb-4  bg-gray-100 rounded lg:rounded justify-between leading-normal">
-       
-        @forelse ($top as $product)
-            <div>
-                <div>
-                    {{ $product }}
-                </div>
-            </div>
-        @empty
-            <div>
-                <span>
-                    Products not found
-                </span>
-            </div>
-        @endforelse
-        
+    <div class="bg-gray-100 py-6 text-center flex flex-col mt-4 px-24">
+        <div class="px-6">
+            <table>
+                <thead class="bg-gray-200 rounded-md">
+                    <tr>
+                        <th class="px-6 py-2 text-md text-gray-700" scope="col">#</th>
+                        <th class="px-6 py-2 text-md text-gray-700" scope="col">Code</th>
+                        <th class="px-6 py-2 text-md text-gray-700" scope="col">Product</th>
+                        <th class="px-6 py-2 text-md text-gray-700" scope="col">Description</th>
+                        <th class="px-6 py-2 text-md text-gray-700" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                        @forelse ($top as $product)
+                        <tr>
+                            
+                            <td class="px-6 py-3 text-gray-600 text-sm">{{ $loop->iteration }}</td>
+                            <td class="px-6 py-3 text-orange-600 text-md">
+                                <a href="{{ route('products.show', $product->product_id) }}">{{ $product->product->code }}</a>
+                            </td>
+                            <td class="px-6 py-3 text-gray-600 text-md">{{ $product->product->name }}</td>
+                            <td class="px-6 py-3 text-gray-600 text-md">{{ $product->product->description }}</td>
+                            <td class="px-6 py-3 text-gray-600 text-md">
+                                <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
+                                    @if($product->product->images->isNotEmpty() && $product->product->images->first()->url != '0')
+                                        <img class="h-40 object-cover object-center rounded" src="{{ Storage::url($product->product->images->first()->url) }}" alt="">    
+                                    @else
+                                        <img class="h-40 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                            <span>List empty</span>
+                        @endforelse
+                </tbody>
+                <tfoot></tfoot>
+           </table>
+        </div>
     </div>
 </x-app-layout>

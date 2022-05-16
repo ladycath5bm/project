@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\ProductStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,14 +11,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 15);
-            $table->integer('code')->unique();
-            $table->decimal('price');
-            $table->text('description', 150);
-            $table->unsignedDecimal('discount')->default(0);
+            $table->string('name', 120);
+            $table->unsignedInteger('code')->unique();
+            $table->unsignedInteger('price');
+            $table->tinyText('description', 250);
+            $table->unsignedInteger('discount')->default(0);
             $table->unsignedInteger('stock');
-            $table->boolean('status')->nullable();
-            $table->string('slug')->nullable();
+            $table->enum('status', [ProductStatus::toArray()])->default(ProductStatus::DISABLED);
+            $table->string('slug', 120)->nullable();
 
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();

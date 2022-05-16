@@ -45,9 +45,9 @@ return [
     |
     */
 
-    'logo' => '<b>Ecom</b>',
-    'logo_img' => 'storage/logo_home.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b><span class="text-dark font-bold">Ecom</span></b>',
+    'logo_img' => 'storage/icono.png',
+    'logo_img_class' => 'brand-image elevation-2',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'logo',
@@ -127,7 +127,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-dark elevation-4',
+    'classes_sidebar' => 'sidebar-light-warning elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -247,7 +247,7 @@ return [
             'can'  => 'manage-ecom',
         ],
         [
-            'text'        => 'Dashboard',
+            'text'        => 'Home',
             'url'         => 'admin',
             'icon'        => 'fas fa-circle fa-fw',
             'label_color' => 'success',
@@ -272,24 +272,25 @@ return [
             'route'  => 'admin.products.index',
             'icon' => 'fas fa-barcode fa-fw',
             'active' => ['admin/products*'],
+            'active' => ['admin/list'],
             'can' => 'admin.products.index',
         ],
-        /*['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text' => 'Orders',
+            'route'  => 'admin.orders.index',
+            'icon' => 'fas fa-receipt fa-fw',
+            'active' => ['admin/products*'],
+            'active' => ['admin/orders'],
+            'can' => 'admin.products.index',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text' => 'Reports',
+            'route'  => 'admin.reports.index',
+            'icon' => 'far fa-file-chart-line fa-fw',
+            'active' => ['admin/reports*'],
+            'active' => ['admin/reports'],
+            'can' => 'admin.products.index',
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],*/
     ],
 
     /*

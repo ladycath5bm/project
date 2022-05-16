@@ -6,52 +6,61 @@
                 <hr/>
             </div>
             <div class="p-4 justify-center">
-                <form id="payment" action="{{ route('pay') }}" method="POST">
+                <form id="payment" action="{{ route('orders.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>
                         <br>
                         <input type="text" name="name" id="name" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->name }}"  required>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
                     <br>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <br>
                         <input type="email" name="email" id="email" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" value="{{ auth()->user()->email }}" required>
                     </div>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
                     <br>
                     <div class="form-group">
                         <label for="document">Document</label>
                         <br>
                         <input type="text" name="document" id="document" class="text-sm w-full py-1 rounded-md focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
+                    @error('document')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
                     <br>
                     <div class="form-group">
                         <label for="mobile">Phone</label>
                         <br>
                         <input type="text" name="mobile" id="mobile" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
+                    @error('mobile')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
                     <br>
                     <div class="form-group">
                         <label for="address">Addres</label>
                         <br>
                         <input type="text" name="address" id="address" class="text-sm w-full py-1 rounded-md border focus:outline-none focus:ring-1 focus:border-orange-500 focus:ring-orange-600 shadow-md" required>
                     </div>
+                    @error('address')
+                        <span class="text-danger">{{ $message }}</span>    
+                    @enderror
                 </form>
-                <div class="mt-6 mb-4 flex">
-                    <div class="btn-group">
-                        <button type="submit" form="payment" class="btn px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 mb-2 rounded-md">
-                            Pay
-                        </button>
-                        <form id="cancel" action="{{ route('cart.index') }}" method="GET">
-                            @csrf
-                            @method('GET')
-                        </form>
-                        <button type="submit" form="cancel" class="btn px-6 py-2 bg-gray-900 text-sm text-white  rounded-md ">
-                            Cancel
-                        </button>
-                    </div>
+                <div class="flex justify-between mt-4 ">
+                    <button type="submit" form="payment" class="px-6 py-2 bg-orange-600 text-sm font-bold text-white hover:bg-orange-700 rounded-md justify-center">
+                        Pay
+                    </button>
+                    
+                    <a class="px-6 py-2 bg-gray-900 text-sm text-white  rounded-md " href="{{ route('cart.index') }}">Cancel</a>
                 </div>
+                
             </div>
             
         </div>
@@ -70,7 +79,7 @@
                                 @if($item->options['url'])
                                     <img class="h-20 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                 @else
-                                    <img class="h-20 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                    <img class="h-20 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                 @endif
                             </div>
                         </td>
@@ -96,10 +105,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="mx-4 text-md text-gray-500  mt-4 mb-4">Shipping</span>
+                            <span class="mx-4 text-sm text-gray-500  mt-4 mb-4">Shipping</span>
                         </td>
                         <td>
-                            <span class="mx-4 text-md text-gray-500  mt-4 mb-4">$ 00000</span>
+                            <span class="mx-4 text-sm text-gray-500  mt-4 mb-4">$ 00000</span>
                         </td>
                     </tr>
                     
@@ -112,7 +121,7 @@
                         </td>
                         <td>
                             <hr/>
-                            <span class="mx-4 text-xl text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
+                            <span class="mx-4 text-md text-gray-900 font-bold mt-4 mb-4">$ {{  Cart::subtotal() }}</span>
                         </td>
                     </tr>
                 </tfoot>

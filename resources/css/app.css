@@ -26,7 +26,7 @@
 }
 
 .btn-custom {
-    @apply px-24 py-2 
+    @apply  py-2 
 }
 
 .btn-primary {
@@ -37,4 +37,13 @@
 }
 .h-36 {
     height: 8.5rem;
+}
+.h-50 {
+    height: 15rem;
+}
+.h-90 {
+    height: 22.5rem;
+}
+.h-100 {
+    height: 30rem;
 }

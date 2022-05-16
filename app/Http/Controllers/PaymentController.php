@@ -2,49 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Custom\ConsultPaymentStatusAction;
+use App\Constants\OrderStatus;
 use App\Models\Order;
+use App\Models\Product;
 use App\Services\Payments\GatewayFactory;
-use App\Services\Payments\PlacetoPay\PlacetoPay;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function pay(Request $request): RedirectResponse
+    public function pay(Order $order): RedirectResponse
     {
         $gateway = GatewayFactory::make('placetopay');
-        $response = $gateway->pay($request);
+        $response = $gateway->pay($order);
 
-        return redirect()->to($response['processUrl']);
+        return redirect()->away($response->json()['processUrl']);
     }
 
-    public static function consult(int $id)
+    public function retray(Order $order): RedirectResponse
     {
-        $order = Order::select('id', 'status', 'requestId', 'transactions', 'created_at', 'customerName', 'customerEmail', 'reference')
-            ->where('customer_id', auth()->user()->id)
-            ->first();
-
-        $response = PlacetoPay::getRequestInformation($order->requestId);
-        $responsePayment = $response->json()['payment'];
-
-        if ($response->successful()) {
-            //$responseSesion = $response->json()['status'];    
-            $responseTransaction = $responsePayment[0]['status'];
-            $order->status = $responseTransaction['status'];
-            $message = $responseTransaction['message'];
-            $order->transactions = $responsePayment;
-        } else {
-            $responseTransaction = $responsePayment[0]['status'];
-            $message = $responseTransaction['message'];
+        foreach ($order->products as $product) {
+            Product::find($product->id)->decrement('stock', $product->pivot->quantity);
         }
 
-        $order->save();
-        return view('consult', compact('order', 'message'));
+        return $this->pay($order);
     }
 
-    public function retray(int $id)
+    public function cancel(Order $order): RedirectResponse
     {
-        $order = Order::where('id', $id)->first();
-        return redirect()->to($order->processUrl);
+        $orderCancel = Order::select('id', 'status')
+            ->where('id', $order->id)->first();
+
+        $orderCancel->status = OrderStatus::REJECTED;
+        $orderCancel->save();
+
+        ConsultPaymentStatusAction::updateOrderRejected($order);
+
+        return redirect()->route('orders.index');
+    }
+
+    public function complete(string $reference): RedirectResponse
+    {
+        $order = Order::select('id', 'status', 'request_id', 'process_url', 'created_at', 'customer_name', 'customer_email', 'reference')
+            ->where('reference', $reference)
+            ->first();
+        
+        (new ConsultPaymentStatusAction())->consult($order);
+
+        return redirect()->route('orders.show', $order);
     }
 }
