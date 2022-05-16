@@ -1,5 +1,5 @@
-<nav class="bg-white shadow-lg" x-data="{ open: false }">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+<nav class="bg-white fixed w-full shadow-md" x-data="{ open: false }">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -15,14 +15,14 @@
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <!--logotipo-->
         <a href="{{ route('products.index') }}" class="flex-shrink-0 flex items-center">            
-          <img class="hidden lg:block h-10 w-auto" src="{{ Storage::url('icono.png') }}" alt="">
+          <img class="hidden lg:block ml-2 h-10 w-auto" src="{{ Storage::url('icono.png') }}" alt="">
         </a>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-            <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Home</a>
-            <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Products</a>
-            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md font-medium text-md">About Us</a>
-            <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500   hover:scale-110 px-3 py-2 rounded-md font-medium text-md">Contact Us</a>
+            <a href="{{ route('welcome') }}" class="lg:text-md text-gray-500 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md font-medium text-md">Home</a>
+            <a href="{{ route('products.index') }}" class="lg:text-md text-gray-500 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md font-medium text-md">Products</a>
+            <a href="#" class="lg:text-md text-gray-500 hover:text-orange-500  hover:scale-105 px-3 py-2 rounded-md font-medium text-md">About Us</a>
+            <a href="#" class="lg:text-md text-gray-500 hover:text-orange-500   hover:scale-105 px-3 py-2 rounded-md font-medium text-md">Contact Us</a>
             
           </div>
         </div>
@@ -33,7 +33,7 @@
           <span class="bg-red-600 border-white px-1 rounded-full flex items-center text-xs text-white font-bold">
             <span>{{ Auth::user()->countNotifications() }}</span>
           </span> 
-            <a class="rounded-full text-gray-400 hover:text-orange-500   hover:scale-110 focus:outline-none focus:ring-white" href="{{ route('notifications.index') }}">
+            <a class="rounded-full text-gray-500 hover:text-orange-500   hover:scale-105 focus:outline-none focus:ring-white" href="{{ route('notifications.index') }}">
               <span class="sr-only"></span>
               
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -47,7 +47,7 @@
                     <Cart msg={{ Cart::content()->count() }} />
                 </span> 
                 <a class="bg-white flex text:xs rounded-md" href="{{ route('cart.index') }}">
-                    <span class="material-icons-sharp text-gray-400 hover:text-orange-500 text:sm">add_shopping_cart</span> 
+                    <span class="material-icons-sharp text-gray-500 hover:text-orange-500 hover:scale-105 text:sm">add_shopping_cart</span> 
                 </a>
               </div>
             </div>
@@ -61,15 +61,15 @@
             </div>
 
             <div x-show="open" x-on:click.away=" open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                <a href="{{ route('orders.index') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Your purchases</a>
+                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                <a href="{{ route('orders.index') }}" class="block px-4 py-2 text-sm text-gray-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Your purchases</a>
                 @can('admin.home')
-                  <a href="{{ url('admin') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>          
+                  <a href="{{ url('admin') }}" class="block px-4 py-2 text-sm text-gray-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>          
                 @endcan
         
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-400" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); 
+                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-500" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); 
                         this.closest('form').submit();">
                     Sign out
                 </a>
@@ -81,15 +81,14 @@
         </div>  
       @else
         <div>
-            <a href="{{ route('login') }}" class="text-gray-900 lg:text-md     hover:scale-110 px-3 py-2 rounded-md text-sm font-medium">Login</a>
-            <a href="{{ route('register') }}" class="text-gray-900 lg:text-md     hover:scale-110 px-3 py-2 rounded-md text-sm font-medium">Register</a>
+            <a href="{{ route('login') }}" class="text-gray-900 lg:text-md     hover:scale-105 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="{{ route('register') }}" class="text-gray-900 lg:text-md     hover:scale-105 px-3 py-2 rounded-md text-sm font-medium">Register</a>
         </div>
       @endauth
         
     </div>
   </div>
 
-  
   <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open = false">
     
     <div class="px-2 pt-2 pb-2 text-orange-600 space-y-1 flex">
@@ -97,10 +96,10 @@
         <img class="lg:block h-10 w-auto" src="{{ Storage::url('icono.png') }}" alt="">
       </a>
       
-      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Home</a>
-      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-400 hover:text-orange-500 hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Products</a>
-      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500  hover:scale-110 px-3 py-2 rounded-md text-md font-medium">About Us</a>
-      <a href="#" class="lg:text-md text-gray-400 hover:text-orange-500     hover:scale-110 px-3 py-2 rounded-md text-md font-medium">Contact Us</a>
+      <a href="{{ route('welcome') }}" class="lg:text-md text-gray-500 hover:text-orange-500     hover:scale-105 px-3 py-2 rounded-md text-md font-medium">Home</a>
+      <a href="{{ route('products.index') }}" class="lg:text-md text-gray-500 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-md font-medium">Products</a>
+      <a href="#" class="lg:text-md text-gray-500 hover:text-orange-500  hover:scale-105 px-3 py-2 rounded-md text-md font-medium">About Us</a>
+      <a href="#" class="lg:text-md text-gray-500 hover:text-orange-500     hover:scale-105 px-3 py-2 rounded-md text-md font-medium">Contact Us</a>
       
     </div>
 

@@ -22,11 +22,10 @@
                     <x-navigation>
                     </x-navigation>
                 </div>
-
-                <div class="flex px-6 py-4">
+                
+                <div class="py-16">
                     @yield('sidebar')
-                    
-                    <div class="flex-grow">
+                    <div class="flex-grow px-6">
                         {{ $slot }}
                     </div>
                 </div>
@@ -38,4 +37,9 @@
 
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
+    <footer class="py-5 bg-gray-50 text-center text-xs text-gray-700">
+        <span>Developed by LadyCath</span>
+        <br>
+        <span>Copyright (c) 2022</span>
+    </footer>
 </html>

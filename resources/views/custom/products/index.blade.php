@@ -1,30 +1,16 @@
 <x-app-layout>
     @section('sidebar')
-    <div class="min-h-screen px-2 py-4 rounded bg-gray-100 ">
-        <div class="flex flex-wrap justify-center bg-white rounded-lg shadow-lg mb-4">
-            <button class="font-bold flex-grow text-orange-500 rounded-lg shadow-lg bg-white text-md h-12">Category</button>            
-        </div>
-        <nav class="flex flex-col bg-white w-48 max-h-screen tex-gray-900 rounded-lg shadow-lg">
-        
-            <div class="mt-2 mb-2 mr-2  max-h-screen">
-                <ul class="ml-2">
-                    @foreach ($categories as $category)
-                        <li class="w-full py-2 text-black flex flex-row hover:text-white   hover:bg-orange-600  hover:font-bold rounded  ">
-                            <span>
-                                
-                            </span>
-                            <a href="{{ route('products.showbycategory', $category) }}">
-                                <span class="ml-2">{{ $category->name }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+        <nav class="bg-white px-10 shadow-xl py-2 text-center">
+            @foreach ($categories as $category)      
+                <a href="{{ route('products.showbycategory', $category) }}" class=" hover:scale-115">
+                    <span class="text-sm text-gray-500 hover:text-orange-500">{{ $category->name }}</span>
+                    <span class="text-orange-600 text-md mx-4">|</span>
+                </a>
+            @endforeach
         </nav>
-    </div>
     @endsection
             
-    <div class="card mr-2">
+    <div class="card mx-2">
         <div class="card-body">
             <div class="max-w-screen sm:px-8 lg:px-2 ">
                 <div class="mx-4">
