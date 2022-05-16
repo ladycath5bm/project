@@ -24,13 +24,25 @@
                       
                       <div class="flex items-center mb-4 mt-4">
                         
-                        
-                        <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
-                            @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
-                                <img class="h-90 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
-                            @else
-                                <img class="h-90 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
-                            @endif
+                        <div class="mb-6 mx-4 mt-4 flex items-center justify-center w-3/4">
+                            <div>
+                                @foreach ($product->images as $image)
+                                    <div class="py-2">
+                                        @if($image->url != '0')
+                                            <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($image->url) }}" alt="">    
+                                        @else
+                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
+                                @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
+                                    <img class="h-100 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                                @else
+                                    <img class="h-100 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
+                                @endif
+                            </div>
                         </div>
                         <div class="text-sm mx-4 mt-4 flex-col">
                             <div class="text-orange-600 font-bold text-2xl mb-2">{{ $product->name }}</div>

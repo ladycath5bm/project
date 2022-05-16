@@ -33,7 +33,7 @@ class AdminUserUpdateTest extends TestCase
         $adminRole = Role::where('name', 'admin')->first();
 
         $userUpdate = [
-            'roles' => $adminRole->id,
+            'role' => $adminRole->id,
         ];
 
         $response = $this->actingAs($this->user)
