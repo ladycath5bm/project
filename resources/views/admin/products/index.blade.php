@@ -26,14 +26,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <img class="card-img-top p-4" height="300px" src="{{ asset('images/reportes.png') }}" alt="">
-                <div class="card-footer">
-                    <a href="{{ route('admin.products.reports') }}"><strong class=" text-center ">Generate reports</strong></a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

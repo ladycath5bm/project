@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+         $this->middleware('can:admin.products.index');
+    }
+
     public function index()
     {
         $orders = Order::all();

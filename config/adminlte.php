@@ -247,7 +247,7 @@ return [
             'can'  => 'manage-ecom',
         ],
         [
-            'text'        => 'Dashboard',
+            'text'        => 'Home',
             'url'         => 'admin',
             'icon'        => 'fas fa-circle fa-fw',
             'label_color' => 'success',
@@ -277,28 +277,20 @@ return [
         ],
         [
             'text' => 'Orders',
-            'route'  => 'admin.orders',
+            'route'  => 'admin.orders.index',
             'icon' => 'fas fa-receipt fa-fw',
             'active' => ['admin/products*'],
             'active' => ['admin/orders'],
             'can' => 'admin.products.index',
         ],
-        /*['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text' => 'Reports',
+            'route'  => 'admin.reports.index',
+            'icon' => 'far fa-file-chart-line fa-fw',
+            'active' => ['admin/reports*'],
+            'active' => ['admin/reports'],
+            'can' => 'admin.products.index',
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],*/
     ],
 
     /*

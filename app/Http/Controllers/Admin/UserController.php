@@ -18,13 +18,13 @@ class UserController extends Controller
 
     public function index(): View
     {
-        $users = User::paginate(10);
+        $users = User::where('id', '!=', 1)->paginate(10);
         return view('admin.users.index', compact('users'));
     }
 
     public function edit(User $user): view
     {
-        $roles = Role::all();
+        $roles = Role::select('id', 'name')->get();
         return view('admin.users.edit', compact('user', 'roles'));
     }
 

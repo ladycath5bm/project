@@ -28,10 +28,12 @@
         </div>
       </div>
       @auth
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div  id="app" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           
           <span class="bg-red-600 border-white px-1 rounded-full flex items-center text-xs text-white font-bold">
-            <span>{{ Auth::user()->countNotifications() }}</span>
+            <span>
+              <Notifications msg={{ Auth::user()->countNotifications() }} />
+            </span>
           </span> 
             <a class="rounded-full text-gray-500 hover:text-orange-500   hover:scale-105 focus:outline-none focus:ring-white" href="{{ route('notifications.index') }}">
               <span class="sr-only"></span>
@@ -41,7 +43,7 @@
               </svg>
             </a>
 
-            <div id="app"> 
+            <div> 
               <div class="flex bg-white justify-items-center pl-2">
                 <span>
                     <Cart msg={{ Cart::content()->count() }} />
