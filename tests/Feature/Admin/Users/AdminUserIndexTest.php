@@ -4,7 +4,6 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminUserIndexTest extends TestCase

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Admin\Users;
 
-use Tests\TestCase;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
+use Tests\TestCase;
 
 class AdminUserUpdateTest extends TestCase
 {
@@ -28,7 +28,7 @@ class AdminUserUpdateTest extends TestCase
             ->assignRole('custom');
     }
 
-    public function testItCanUpdateAUserRole():void
+    public function testItCanUpdateAUserRole(): void
     {
         $adminRole = Role::where('name', 'admin')->first();
 
@@ -49,6 +49,5 @@ class AdminUserUpdateTest extends TestCase
             'model_id' => $this->userTest->id,
             'role_id' => $adminRole->id,
         ]);
-
     }
 }

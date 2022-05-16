@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'order' => 'Una nueva orden fue creada, referencia :reference .',

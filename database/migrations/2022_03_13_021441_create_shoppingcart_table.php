@@ -9,7 +9,6 @@ class CreateShoppingcartTable extends Migration
     public function up(): void
     {
         Schema::create(config('cart.database.table'), function (Blueprint $table) {
-            
             $table->string('identifier', 100);
             $table->string('instance', 100);
             $table->longText('content');

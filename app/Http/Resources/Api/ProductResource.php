@@ -16,7 +16,7 @@ class ProductResource extends JsonResource
     {
         return [
             'type' => 'products',
-            'id' => (string) $this->resource->getRouteKey(),
+            'id' => (string)$this->resource->getRouteKey(),
             'attributes' => [
                 'name' => $this->resource->name,
                 'code' => $this->resource->code,
@@ -27,8 +27,8 @@ class ProductResource extends JsonResource
                 'status' => $this->resource->status,
             ],
             'links' => [
-                'self' => route('api.products.show', $this->resource)
-            ]
+                'self' => route('api.products.show', $this->resource),
+            ],
         ];
     }
 }

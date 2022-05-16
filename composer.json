@@ -37,12 +37,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/php-timer": "^5.0",
-<<<<<<< HEAD
-        "phpunit/phpunit": "^9.5.10"
-=======
         "phpunit/phpunit": "^9.5.10",
         "sentry/sentry-laravel": "^2.11"
->>>>>>> develop
     },
     "autoload": {
         "psr-4": {
@@ -57,14 +53,6 @@
         }
     },
     "scripts": {
-<<<<<<< HEAD
-        "testdox": "XDEBUG_MODE=coverage vendor/bin/phpunit --testdox --coverage-clover phpunit.coverage.xml --log-junit phpunit.report.xml",
-        "test": ["vendor/bin/phpunit --verbose --testdox"],
-        "test-ci": ["php -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude=\"~vendor~\" vendor/bin/phpunit -d memory_limit=512M"],
-        "phpcs": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no",
-        "phpcs_validate": "vendor/bin/php-cs-fixer fix --dry-run --diff",
-=======
->>>>>>> develop
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

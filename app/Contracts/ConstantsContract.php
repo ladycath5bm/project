@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace App\Contracts;
 
-interface ConstantsContract 
+interface ConstantsContract
 {
     public static function toArray(): array;
-} 
+}

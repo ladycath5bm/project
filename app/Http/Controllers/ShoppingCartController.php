@@ -25,10 +25,10 @@ class ShoppingCartController extends Controller
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
-        
+
         return redirect()->route('cart.index');
     }
-    
+
     public function update(Request $request)
     {
         Cart::update($request->id, $request->qty);

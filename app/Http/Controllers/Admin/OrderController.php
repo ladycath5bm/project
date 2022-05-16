@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Order;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
     public function __construct()
     {
-         $this->middleware('can:admin.products.index');
+        $this->middleware('can:admin.products.index');
     }
 
     public function index()

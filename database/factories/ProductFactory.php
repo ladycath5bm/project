@@ -3,9 +3,6 @@
 namespace Database\Factories;
 
 use App\Constants\ProductStatus;
-use App\Models\Category;
-use App\Models\Image;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory

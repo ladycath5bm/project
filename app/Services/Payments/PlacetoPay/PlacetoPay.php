@@ -2,13 +2,13 @@
 
 namespace App\Services\Payments\PlacetoPay;
 
-use App\Models\Order;
-use Illuminate\Http\Request;
-use App\Contracts\GatewayContract;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
 use App\Actions\Custom\UpdateOrderAction;
+use App\Contracts\GatewayContract;
+use App\Models\Order;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Client\Response as ClientResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PlacetoPay implements GatewayContract
 {

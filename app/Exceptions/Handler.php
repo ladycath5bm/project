@@ -2,11 +2,10 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -53,15 +52,14 @@ class Handler extends ExceptionHandler
             'errores' => $exception->errors(),
         ], $exception->status);
     }
-/* 
-    public function render($request, Throwable $e)
-    {
-        if ($e instanceof ModelNotFoundException) {
-            return response()->json(["Error" => "producto no encontrado"], 400);
+    /*
+        public function render($request, Throwable $e)
+        {
+            if ($e instanceof ModelNotFoundException) {
+                return response()->json(["Error" => "producto no encontrado"], 400);
+            }
+
+            return parent::render($request, $e);
         }
-
-        return parent::render($request, $e);
-    }
- */
-
+     */
 }

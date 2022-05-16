@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api\Products;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Category;
-use Laravel\Sanctum\Sanctum;
 use App\Constants\ProductStatus;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class ApiProductUpdateTest extends TestCase
 {

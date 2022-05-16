@@ -108,8 +108,8 @@ class ProductsImport implements
     {
         return array_merge(ProductImportRules::toArray(), [
             'status' => [
-                'required', 
-                Rule::in(ProductStatus::toArray())
+                'required',
+                Rule::in(ProductStatus::toArray()),
             ],
         ]);
     }
@@ -127,7 +127,7 @@ class ProductsImport implements
                 $this->import->update([
                     'status' => ExcelStatus::FINISHED,
                 ]);
-                
+
                 $this->import->user->notify(new ImportFinished($this->import));
             },
         ];

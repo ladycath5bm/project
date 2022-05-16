@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
-    public function run(): void 
+    public function run(): void
     {
         Product::factory(10)->create()
             ->each(function (Product $product) {
@@ -18,12 +18,14 @@ class ProductSeeder extends Seeder
                     'product_id' => $product->id,
                 ]);
                 $product->category()
-                    ->associate(Category::inRandomOrder()
+                    ->associate(
+                        Category::inRandomOrder()
                         ->first()
                         ->id
                     );
                 $product->user()
-                    ->associate(User::inRandomOrder()
+                    ->associate(
+                        User::inRandomOrder()
                         ->first()
                         ->id
                     );

@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NofiticationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\NofiticationController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Models\Category;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $categories = Category::all();
@@ -64,4 +64,4 @@ Route::middleware(['auth', 'role:custom'])
             ->name('notifications.index');
         Route::get('notifications/{notification}', [NofiticationController::class, 'read'])
             ->name('notifications.read');
-});
+    });

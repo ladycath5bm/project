@@ -2,14 +2,14 @@
 
 namespace Tests\Feature\Admin\Imports;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Export;
-use Illuminate\Support\Carbon;
 use App\Exports\ProductsExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Jobs\Exports\CompletExportStatusJob;
+use App\Models\Export;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use Tests\TestCase;
 
 class ExcelExportProductsTest extends TestCase
 {
@@ -24,7 +24,7 @@ class ExcelExportProductsTest extends TestCase
     public function testUserCanQueueProductsExport()
     {
         Excel::fake();
-        
+
         $user = User::factory()->create()->assignRole('admin');
 
         $data = [
@@ -90,5 +90,4 @@ class ExcelExportProductsTest extends TestCase
 
         $response->assertDownload($name);
     }
-    
 }

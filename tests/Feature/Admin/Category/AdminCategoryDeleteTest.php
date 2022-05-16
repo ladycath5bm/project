@@ -29,8 +29,7 @@ class AdminCategoryDeleteTest extends TestCase
 
         $this->assertDatabaseCount('categories', 0);
         $this->assertDatabaseMissing('categories', [
-            'id' => $category->id
+            'id' => $category->id,
         ]);
-
     }
 }

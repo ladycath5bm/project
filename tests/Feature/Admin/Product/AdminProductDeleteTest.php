@@ -41,8 +41,7 @@ class AdminProductDeleteTest extends TestCase
 
         $this->assertDatabaseCount('products', 0);
         $this->assertDatabaseMissing('products', [
-            'id' => $product->id
+            'id' => $product->id,
         ]);
-    
     }
 }

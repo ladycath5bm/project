@@ -12,8 +12,8 @@ class NofiticationController extends Controller
     {
         $notifications = Auth::user()->notifications()->get();
         return view('notifications.index', compact('notifications'));
-    }    
-    
+    }
+
     public function read(string $notification): RedirectResponse
     {
         Auth::user()

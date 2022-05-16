@@ -2,12 +2,11 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Category;
 use App\Constants\ProductStatus;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AdminProductStoreTest extends TestCase
 {
