@@ -3,7 +3,9 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1 class="text-bold text-g text-gray-800">List of orders</h1>
+    <div class="card py-2">
+        <h4 class="text-bold text-center ">List of orders</h4>
+    </div>
 @stop
 
 @section('content')

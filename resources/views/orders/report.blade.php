@@ -76,6 +76,9 @@
     .float-left{
         float:left;
     }
+    .float-right{
+        float:right;
+    }
     .total-part{
         font-size:16px;
         line-height:12px;
@@ -85,12 +88,15 @@
     }
 </style>
 <body>
+
 <div class="head-title">
-    <h2 class="text-center m-0 p-0">Check your invoice details</h2>
+    <div class="w-15 logo mt-10">
+        <img src="https://icones.pro/wp-content/uploads/2021/06/icone-de-la-boutique-orange.png" alt="">
+    </div>
+    <h3 class="text-center m-0 p-0">Check your invoice details</h3>
 </div>
 <div class="add-detail mt-10">
     <div class="w-50 float-left mt-10">
-        
         <p class="m-0 pt-5 text-bold w-100">Invoice reference: <span class="gray-color">{{ $data['order']['reference'] }}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Order Date: <span class="gray-color">{{ $data['order']['created_at'] }}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Total: <span class="gray-color">$ {{ $data['order']['total'] }}</span></p>
@@ -164,5 +170,6 @@
             </td>
         </tr>
     </table>
+    <h3 class="text-center m-0 p-0">Thanks for shopping with us!</h3>
 </div>
 </html>
