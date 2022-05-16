@@ -69,7 +69,7 @@ class ProductController extends Controller
         $categories = Category::select('id', 'name')->get();
 
         $top = ProductVisit::select('product_id')->selectRaw('count(product_id) as visits')
-            ->with('product:id,name')
+            ->with('product:id,name,description,code,price')
             ->groupBy('product_id')
             ->orderBy('visits', 'DESC')
             ->limit(10)

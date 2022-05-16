@@ -34,7 +34,7 @@
                                     <a class=" text-gray-600 hover:text-orange-600" href="{{ route('orders.show', $order) }}">Detalle de la orden  |</a>
                                 </span>
                                 <span>
-                                    <a class="ml-2 text-gray-600 hover:text-orange-600" href="#">Ver factura</a>
+                                    <a class="ml-2 text-gray-600 hover:text-orange-600" href="{{ route('orders.report', $order) }}">Ver factura</a>
                                 </span>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                     @if($product->images->first()->url)
                                         <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
                                     @else
-                                        <img class="h-30 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                        <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                     @endif
                                 </div>
                                 <div class="w-full ml-2 mt-6">

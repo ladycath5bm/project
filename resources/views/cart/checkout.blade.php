@@ -79,7 +79,7 @@
                                 @if($item->options['url'])
                                     <img class="h-20 object-cover object-center rounded" src="{{ Storage::url($item->options['url']) }}" alt="">    
                                 @else
-                                    <img class="h-20 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                    <img class="h-20 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                 @endif
                             </div>
                         </td>

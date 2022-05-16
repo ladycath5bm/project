@@ -12,9 +12,9 @@ class ProductSeeder extends Seeder
 {
     public function run(): void 
     {
-        Product::factory(50)->create()
+        Product::factory(10)->create()
             ->each(function (Product $product) {
-                Image::factory()->create([
+                Image::factory()->count(4)->create([
                     'product_id' => $product->id,
                 ]);
                 $product->category()

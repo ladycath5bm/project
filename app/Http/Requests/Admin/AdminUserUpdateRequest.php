@@ -14,7 +14,7 @@ class AdminUserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'roles' => 'required',
+            'role' => 'required',
         ];
     }
 }

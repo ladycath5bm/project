@@ -1,27 +1,13 @@
 <x-app-layout>
     @section('sidebar')
-    <div class="min-h-screen px-4 py-4 rounded bg-gray-100 ">
-        <div class="flex flex-wrap justify-center bg-white rounded-lg shadow-lg mb-4">
-            <button class="font-bold flex-grow text-gray-900 rounded-lg shadow-lg bg-white text-lg h-12">Ecom</button>            
-        </div>
-        <nav class="flex flex-col bg-white w-48 max-h-screen tex-gray-900 rounded-lg shadow-lg">
-        
-            <div class="mt-2 mb-2 mr-2  max-h-screen">
-                <ul class="ml-2">
-                    @foreach ($categories as $category)
-                        <li class="w-full py-2 text-black flex flex-row hover:text-white   hover:bg-orange-600  hover:font-bold rounded  ">
-                            <span>
-                                
-                            </span>
-                            <a href="{{ route('products.showbycategory', $category) }}">
-                                <span class="ml-2">{{ $category->name }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+        <nav class="bg-white px-10 shadow-xl py-2 text-center">
+            @foreach ($categories as $category)      
+                <a href="{{ route('products.showbycategory', $category) }}" class=" hover:scale-115">
+                    <span class="text-sm text-gray-500 hover:text-orange-500">{{ $category->name }}</span>
+                    <span class="text-orange-600 text-md mx-4">|</span>
+                </a>
+            @endforeach
         </nav>
-    </div>
     @endsection
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-4 pb-4  bg-gray-100 rounded lg:rounded justify-between leading-normal">
         
@@ -38,13 +24,25 @@
                       
                       <div class="flex items-center mb-4 mt-4">
                         
-                        
-                        <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
-                            @if($product->images->isNotEmpty())
-                                <img class="h-80 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
-                            @else
-                                <img class="h-80 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
-                            @endif
+                        <div class="mb-6 mx-4 mt-4 flex items-center justify-center w-3/4">
+                            <div>
+                                @foreach ($product->images as $image)
+                                    <div class="py-2">
+                                        @if($image->url != '0')
+                                            <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($image->url) }}" alt="">    
+                                        @else
+                                            <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="mb-6 mx-4 mt-4 flex-col flex items-center justify-center w-full">
+                                @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
+                                    <img class="h-100 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                                @else
+                                    <img class="h-100 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
+                                @endif
+                            </div>
                         </div>
                         <div class="text-sm mx-4 mt-4 flex-col">
                             <div class="text-orange-600 font-bold text-2xl mb-2">{{ $product->name }}</div>
@@ -89,10 +87,10 @@
                         <div class="max-w-full  h-full bg-white rounded lg:rounded p-1 flex flex-col shadow-lg justify-between leading-normal">
                             
                             <div class="justify-center mb-2 rounded flex items-center">
-                                @if($similar->images->isNotEmpty())
+                                @if($similar->images->isNotEmpty() && $similar->images->first()->url != '0')
                                     <img class="h-50 object-cover object-center rounded" src="{{ Storage::url($similar->images->first()->url) }}" alt="">    
                                 @else
-                                    <img class="h-50 object-cover object-center rounded" src="{{ asset('images/image.jpg') }}" alt="">
+                                    <img class="h-50 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                 @endif
 
                             </div>
@@ -106,9 +104,6 @@
                                     </div>
                                 
                                         <p class="text-orange-600 text-base mb-1"><strong>$ </strong>{{ $similar->price }}</p>
-                                        <div class="flex items-center justify-center">
-                                            <a href=# class="btn-custom bg-white  px-6 justify-center text-gray-900 font-bold text-sm rounded hover:bg-orange-600 hover:ring-orange-600 hover:text-white">Buy</a>
-                                        </div>
                                 </div>
                             </div>
                         </div>

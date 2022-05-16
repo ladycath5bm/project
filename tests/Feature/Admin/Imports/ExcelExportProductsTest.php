@@ -2,13 +2,14 @@
 
 namespace Tests\Feature\Admin\Imports;
 
-use App\Exports\ProductsExport;
-use App\Jobs\Exports\CompletExportStatusJob;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Carbon;
-use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Export;
+use Illuminate\Support\Carbon;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Jobs\Exports\CompletExportStatusJob;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExcelExportProductsTest extends TestCase
 {
@@ -42,7 +43,7 @@ class ExcelExportProductsTest extends TestCase
         });
 
         Excel::assertQueuedWithChain([
-            new CompletExportStatusJob(1),
+            new CompletExportStatusJob(Export::find(1)),
         ]);
     }
 

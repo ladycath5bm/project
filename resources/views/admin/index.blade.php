@@ -3,35 +3,44 @@
 @section('title', 'Ecom')
 
 @section('content_header')
-    <h1 class="text-bold text-g text-gray-800">Dashboard</h1>
+    <div class="card py-3">
+        <h3 class="text-bold text-center ">Administration panel</h3>
+    </div>
 @stop
 
 @section('content')
-    <div>
-        <p class="text-lg text-gray-500">Welcome!</p>
+    <div>   
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="card">
-                <img class="card-img-top" height="400px" src="https://republicadominicanalive.com/wp-content/uploads/2020/11/playa-bonita-01.jpg" alt="">
+                <img class="card-img-top" height="250px" src="{{ asset('images/usuarios.jpg') }}" alt="">
+                
                   <div class="card-footer">
                       <a href="{{ route('admin.users.index') }}"><strong>Users</strong></a>
                   </div>
               </div>
             </div>
-            
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card">
-                  <img class="card-img-top" height="400px" src="https://republicadominicanalive.com/wp-content/uploads/2020/11/playa-bonita-01.jpg" alt="">
+                  <img class="card-img-top" height="250px" src="{{ asset('images/producto.png') }}" alt="">
+                    <div class="card-footer">
+                        <a href="{{ route('admin.products.index') }}"><strong>Products</strong></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                  <img class="card-img-top" height="250px" src="{{ asset('images/categories.jpg') }}" alt="">
                     <div class="card-footer">
                         <a href="{{ route('admin.categories.index') }}"><strong>Categories</strong></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card">
-                  <img class="card-img-top" height="400px" src="https://republicadominicanalive.com/wp-content/uploads/2020/11/playa-bonita-01.jpg" alt="">
+                  <img class="card-img-top" height="250px" src="{{ asset('images/orders.png') }}" alt="">
                     <div class="card-footer">
-                        <a href="{{ route('admin.products.index') }}"><strong>Products</strong></a>
+                        <a href="{{ route('admin.orders.index') }}"><strong>Orders</strong></a>
                     </div>
                 </div>
             </div>

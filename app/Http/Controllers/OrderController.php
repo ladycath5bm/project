@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Custom\ConsultPaymentStatusAction;
-use App\Actions\Custom\CreateOrderAction;
-use App\Constants\OrderStatus;
-use App\Http\Requests\Orders\OrderStoreRequest;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Constants\OrderStatus;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Actions\Custom\CreateOrderAction;
+use App\Http\Requests\Orders\OrderStoreRequest;
 
 class OrderController extends Controller
 {
@@ -41,5 +41,16 @@ class OrderController extends Controller
         }
 
         return redirect()->route('orders.index')->with('information', 'Order deleted successfully!');
+    }
+
+    public function generateReport(Order $order)
+    {
+        $data = [
+            'order' => $order->toArray(),
+            'products' => $order->products->toArray()
+        ];
+
+        $pdf = PDF::loadView('orders.report', ['data' => $data]);
+        return $pdf->stream('invoice.pdf');
     }
 }

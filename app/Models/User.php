@@ -80,4 +80,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Import::class);
     }
+
+    public function countNotifications(): int
+    {
+        return $this->unreadNotifications()->count();
+    }
+
+    public function hasNotifications(): bool
+    {
+        return $this->countNotifications() > 0;
+    }
+
 }
