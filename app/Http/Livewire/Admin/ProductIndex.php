@@ -22,7 +22,7 @@ class ProductIndex extends Component
     public function render()
     {
         $products = Product::where('user_id', auth()->user()->id)
-            ->where('name', 'LIKE', '%' . $this->search . '%')
+            ->where('code', 'LIKE', '%' . $this->search . '%')
             ->latest('id')
             ->paginate();
 

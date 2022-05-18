@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Constants\ExcelStatus;
 use App\Constants\ProductStatus;
 use App\Models\Category;
 use App\Models\Product;
@@ -69,6 +70,6 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 
     public function failed(Throwable $exception): void
     {
-        // handle failed export
+        $this->export->status = ExcelStatus::FAILED;
     }
 }
