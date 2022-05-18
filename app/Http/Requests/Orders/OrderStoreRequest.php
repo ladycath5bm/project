@@ -15,11 +15,11 @@ class OrderStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:120',
-            'document' => 'required|min:5|max:25',
-            'email' => 'required|string|max:50',
-            'mobile' => 'required|string|max:50',
-            'address' => 'required|string|max:100',
+            'name' => 'required|string|max:120|min:5',
+            'document' => 'required|numeric|min:999999|max:99999999999',
+            'email' => 'required|email|max:50',
+            'mobile' => 'required|numeric|min:99999|max:999999999999',
+            'address' => 'required|string|max:100|min:10',
         ];
     }
 }

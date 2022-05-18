@@ -14,10 +14,11 @@ class NotificationIndexTest extends TestCase
 
     protected function setUp(): void
     {
-        //$notification = DB::insertgetI
+        
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()->create()->assignRole('custom');
     }
 
     public function testItCanSeeListOfNotifications()

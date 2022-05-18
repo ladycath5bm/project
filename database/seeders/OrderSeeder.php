@@ -13,7 +13,7 @@ class OrderSeeder extends Seeder
 {
     public function run(): void
     {
-        Order::factory(10)->create()
+        Order::factory(5)->create()
             ->each(function (Order $order) {
                 $product = Product::factory()->create();
 

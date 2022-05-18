@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        Product::factory(10)->create()
+        Product::factory(30)->create()
             ->each(function (Product $product) {
                 Image::factory()->count(4)->create([
                     'product_id' => $product->id,
@@ -24,11 +24,7 @@ class ProductSeeder extends Seeder
                         ->id
                     );
                 $product->user()
-                    ->associate(
-                        User::inRandomOrder()
-                        ->first()
-                        ->id
-                    );
+                    ->associate(1);
                 $product->save();
             });
     }

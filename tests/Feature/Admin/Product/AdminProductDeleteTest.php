@@ -37,7 +37,7 @@ class AdminProductDeleteTest extends TestCase
         $response = $this->actingAs($this->user)
             ->delete(route('admin.products.destroy', $product));
 
-        $response->assertRedirect(route('admin.products.index'));
+        $response->assertRedirect(route('admin.products.list'));
 
         $this->assertDatabaseCount('products', 0);
         $this->assertDatabaseMissing('products', [

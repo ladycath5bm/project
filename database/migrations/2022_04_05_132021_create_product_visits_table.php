@@ -10,7 +10,7 @@ class CreateProductVisitsTable extends Migration
     {
         Schema::create('product_visits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->string('ip', 150);
             $table->string('browser', 150);
             $table->string('os', 150);

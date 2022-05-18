@@ -23,7 +23,7 @@ class PaymentTest extends TestCase
     {
         parent::setUp();
 
-        Role::create(['name' => 'custom']);
+        $this->artisan('db:seed --class=RoleSeeder');
         $this->user = User::factory()->create()->assignRole('custom');
         $this->processUrl = 'https://checkout-co.placetopay.com/session/1/cc9b8690b1f7228c78b759ce27d7e80a';
     }

@@ -19,15 +19,8 @@ class AdminProductCreateTest extends TestCase
     {
         parent::setUp();
 
-<<<<<<< HEAD
-        $user = User::factory()->create();  
-        //$role = Role::create(['name' => 'admin']);
-        //$user->assignRole('admin');
-        Sanctum::actingAs($user);
-=======
         $this->artisan('db:seed --class=RoleSeeder');
         $this->user = User::factory()->create()->assignRole('admin');
->>>>>>> develop
     }
 
     public function testItCanVisitAndFormCreateproduct(): void

@@ -67,6 +67,6 @@ class ProductController extends Controller
     {
         $product->delete();
         Cache::flush();
-        return redirect()->route('admin.products.index')->with('information', 'Product deleted successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product deleted successfully!');
     }
 }

@@ -136,8 +136,8 @@ class ProductsImport implements
     public function onFailure(Failure ...$failures): void
     {
         foreach ($failures as $failure) {
-            $this->error = 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' . $failure->values()['id'] . '. Atributo: '
-                . $failure->attribute() . ', error: ' . $failure->errors()[0];
+            echo  $this->error = 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' . $failure->values()['id'] . '. Atributo: '
+                . $failure->attribute() . ', error: ' . $failure->errors()[0] . PHP_EOL;
         }
     }
 }
