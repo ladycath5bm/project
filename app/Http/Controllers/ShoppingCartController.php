@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
@@ -23,7 +22,7 @@ class ShoppingCartController extends Controller
         Cart::add($product->id, $product->name, 1, $product->price, [
             'url' => $product->images->first() ? $product->images()->first()->url : 'img_soport.jpg',
             'code' => $product->code,
-            'discount' => $product->discount,   
+            'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
 

@@ -6,13 +6,12 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Monolog\Handler\TestHandler;
 use Monolog\Logger;
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class AdminProductCreateTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     private User $user;
 
     protected function setUp(): void

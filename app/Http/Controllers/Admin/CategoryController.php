@@ -47,8 +47,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
-        if ($category->products()->first() == null)
-        {
+        if ($category->products()->first() == null) {
             $category->delete();
             return redirect()->route('admin.categories.index')->with('information', 'Category deleted successfully');
         }

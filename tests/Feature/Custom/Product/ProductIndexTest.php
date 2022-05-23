@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Custom\Product;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ProductIndexTest extends TestCase
 {
@@ -16,7 +16,6 @@ class ProductIndexTest extends TestCase
 
     protected function setUp(): void
     {
-        
         parent::setUp();
 
         $this->artisan('db:seed --class=RoleSeeder');

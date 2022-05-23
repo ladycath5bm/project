@@ -9,7 +9,6 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class PaymentTest extends TestCase
