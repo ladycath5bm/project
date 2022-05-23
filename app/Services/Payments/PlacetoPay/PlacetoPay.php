@@ -26,7 +26,7 @@ class PlacetoPay implements GatewayContract
     protected function createRequest(Order $order): Response
     {
         $data = $this->getData($order);
-        $response = Http::acceptJson()->post(url($this->url), $data); //$dat);
+        $response = Http::acceptJson()->post(url($this->url), $data);
 
         if ($response->successful()) {
             $order = (new UpdateOrderAction())->update($order, $data['payment'], $response['requestId'], $response['processUrl']);

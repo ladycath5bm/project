@@ -10,12 +10,11 @@ class PayPal
 
     public function __construct()
     {
-        //leer configuración de pasarela de pagos
         $this->key = config('payments.gateways.paypal.key');
     }
 
     public function pay(Order $order): array
     {
-        return ["Estamos pagandpo usando paypal Key: {$this->key}"];
+        return ["Estamos pagandpo usando paypal Key: {$this->key} order: {$order->reference}"];
     }
 }

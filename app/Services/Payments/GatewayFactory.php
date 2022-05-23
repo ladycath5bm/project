@@ -17,7 +17,6 @@ class GatewayFactory
             case 'paypal':
                 return new PayPal();
             default:
-                //throw new InvalidArgumentException("Pasarela no soportada");
                 return new PlacetoPay();
         }
     }

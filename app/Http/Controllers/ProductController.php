@@ -36,9 +36,6 @@ class ProductController extends Controller
 
     public function show(Product $product, Request $request): View
     {
-        $ip = $request->ip();
-        $userAgent = $request->userAgent();
-
         ProductVisited::dispatch($product, $request->ip(), $request->userAgent());
 
         $categories = Category::select('id', 'name')->get();

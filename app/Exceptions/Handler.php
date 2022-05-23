@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
             'errores' => $exception->errors(),
         ], $exception->status);
     }
-/* 
+
     public function render($request, Throwable $e)
     {
         if ($e instanceof ModelNotFoundException) {
@@ -62,6 +62,6 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
- */
+
 
 }

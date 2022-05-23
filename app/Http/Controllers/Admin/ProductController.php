@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function list(): View
     {
         $products = Product::paginate(5);
-        return view('admin.products.list', compact('products'));
+        return view('admin.products.list', compact('products'));    
     }
 
     public function create(): View
