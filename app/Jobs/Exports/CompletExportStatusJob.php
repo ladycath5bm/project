@@ -2,20 +2,22 @@
 
 namespace App\Jobs\Exports;
 
-use App\Models\Export;
-use Illuminate\Bus\Queueable;
 use App\Constants\ExcelStatus;
-use Illuminate\Support\Facades\DB;
+use App\Models\Export;
 use App\Notifications\ExportGenerated;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 
 class CompletExportStatusJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected Export $export;
 

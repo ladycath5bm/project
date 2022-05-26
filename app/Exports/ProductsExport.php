@@ -2,15 +2,16 @@
 
 namespace App\Exports;
 
-use Throwable;
-use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Support\Carbon;
+use App\Constants\ExcelStatus;
 use App\Constants\ProductStatus;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\Exportable;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Throwable;
 
 class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 {
@@ -25,10 +26,10 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
     {
         return Product::select('id', 'name', 'code', 'price', 'description', 'discount', 'stock', 'status')
             ->addSelect(['category' => Category::select('name')
-                ->whereColumn('id', 'products.category_id')])
+                ->whereColumn('id', 'products.category_id'), ])
             ->whereBetween('created_at', [
-                Carbon::parse($this->filter['start_date'])->startOfDay(), 
-                Carbon::parse($this->filter['end_date'])->endOfDay()])
+                Carbon::parse($this->filter['start_date'])->startOfDay(),
+                Carbon::parse($this->filter['end_date'])->endOfDay(), ])
             ->whereIn('category_id', $this->categoryQuery($this->filter['category']))
             ->whereIn('status', $this->statusQuery($this->filter['status']));
     }
@@ -67,6 +68,6 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
 
     public function failed(Throwable $exception): void
     {
-        // handle failed export
+        $this->export->status = ExcelStatus::FAILED;
     }
 }

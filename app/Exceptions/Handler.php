@@ -2,11 +2,10 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -62,6 +61,4 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
-
-
 }

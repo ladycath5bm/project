@@ -9,7 +9,6 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class PaymentTest extends TestCase
@@ -23,7 +22,7 @@ class PaymentTest extends TestCase
     {
         parent::setUp();
 
-        Role::create(['name' => 'custom']);
+        $this->artisan('db:seed --class=RoleSeeder');
         $this->user = User::factory()->create()->assignRole('custom');
         $this->processUrl = 'https://checkout-co.placetopay.com/session/1/cc9b8690b1f7228c78b759ce27d7e80a';
     }
@@ -45,10 +44,10 @@ class PaymentTest extends TestCase
                     'requestId' => 1,
                     'processUrl' => $processUrl,
             ]), 200);
-        });     
-        
+        });
+
         $response = $this->actingAs($this->user)->get(route('payments.pay', $order));
-      
+
         $response->assertRedirect($processUrl);
 
         $this->assertDatabaseCount('orders', 1);
@@ -120,7 +119,7 @@ class PaymentTest extends TestCase
         $response = $this->actingAs($this->user)->get(route('payments.complete', $order->reference));
 
         $response->assertRedirect(route('orders.show', $order));
-        
+
         $this->assertDatabaseHas('orders', [
           'id' => $order->id,
           'status' => OrderStatus::APPROVED,
@@ -279,11 +278,11 @@ class PaymentTest extends TestCase
         $order->save();
 
         $product = Product::factory()->create();
-        
+
         Cart::add($product->id, $product->name, 1, $product->price, [
           'code' => $product->code,
           'discount' => $product->discount,
-          'stock' => $product->stock
+          'stock' => $product->stock,
         ]);
 
         $order->products()->attach($product->id, [

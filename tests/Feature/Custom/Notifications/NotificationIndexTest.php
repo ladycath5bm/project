@@ -4,7 +4,6 @@ namespace Tests\Feature\Custom\Notifications;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class NotificationIndexTest extends TestCase
@@ -17,7 +16,8 @@ class NotificationIndexTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        $this->artisan('db:seed --class=RoleSeeder');
+        $this->user = User::factory()->create()->assignRole('custom');
     }
 
     public function testItCanSeeListOfNotifications()

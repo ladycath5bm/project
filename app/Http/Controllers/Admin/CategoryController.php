@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\AdminCategoryStoreRequest;
 use App\Http\Requests\Admin\AdminCategoryUpdateRequest;
+use App\Models\Category;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
-         $this->middleware('can:admin.categories.index');
+        $this->middleware('can:admin.categories.index');
     }
 
     public function index(): View
@@ -47,7 +47,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
-        $category->delete();
-        return redirect()->route('admin.categories.index')->with('information', 'Category deleted successfully');
+        if ($category->products()->first() == null) {
+            $category->delete();
+            return redirect()->route('admin.categories.index')->with('information', 'Category deleted successfully');
+        }
+        return redirect()->route('admin.categories.index')->with('information', 'Category can´t be deleted');
     }
 }

@@ -46,7 +46,7 @@ class PaymentController extends Controller
         $order = Order::select('id', 'status', 'request_id', 'process_url', 'created_at', 'customer_name', 'customer_email', 'reference')
             ->where('reference', $reference)
             ->first();
-        
+
         (new ConsultPaymentStatusAction())->consult($order);
 
         return redirect()->route('orders.show', $order);

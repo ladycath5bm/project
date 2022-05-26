@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'order' => 'A new order was created with reference :reference',

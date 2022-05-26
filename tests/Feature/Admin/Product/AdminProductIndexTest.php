@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

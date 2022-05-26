@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder
 {
     public function run(): void
     {
-        Order::factory(10)->create()
+        Order::factory(5)->create()
             ->each(function (Order $order) {
                 $product = Product::factory()->create();
 
@@ -21,12 +21,14 @@ class OrderSeeder extends Seeder
                     'product_id' => $product->id,
                 ]);
                 $product->category()
-                    ->associate(Category::inRandomOrder()
+                    ->associate(
+                        Category::inRandomOrder()
                         ->first()
                         ->id
                     );
                 $product->user()
-                    ->associate(User::inRandomOrder()
+                    ->associate(
+                        User::inRandomOrder()
                         ->first()
                         ->id
                     );

@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Order;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 

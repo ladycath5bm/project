@@ -2,13 +2,13 @@
 
 namespace App\Actions\Custom;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use App\Constants\OrderStatus;
+use App\Services\Payments\PlacetoPay\PlacetoPay;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Client\Response;
-use App\Services\Payments\PlacetoPay\PlacetoPay;
 
 class ConsultPaymentStatusAction
 {
@@ -18,10 +18,9 @@ class ConsultPaymentStatusAction
 
         if ($response->ok()) {
             DB::transaction(function () use ($response, $order) {
-                $this->updateStatus($response, $order);       
+                $this->updateStatus($response, $order);
             });
         }
-        
     }
 
     private function updateStatus(Response $response, Order $order): void

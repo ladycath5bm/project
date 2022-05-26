@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-         $this->middleware('can:admin.home');
+        $this->middleware('can:admin.home');
     }
 
     public function index(): View

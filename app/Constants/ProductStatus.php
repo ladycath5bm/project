@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Constants;
 
@@ -6,8 +6,8 @@ use App\Contracts\ConstantsContract;
 
 class ProductStatus implements ConstantsContract
 {
-    public CONST ENABLED = 'ENABLED';
-    public CONST DISABLED = 'DISABLED';
+    public const ENABLED = 'ENABLED';
+    public const DISABLED = 'DISABLED';
 
     public static function toArray(): array
     {

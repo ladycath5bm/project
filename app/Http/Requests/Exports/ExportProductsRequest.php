@@ -16,7 +16,7 @@ class ExportProductsRequest extends FormRequest
         return [
             'start_date' => 'required|date_format:Y-m-d|before:tomorrow',
             'end_date' => 'required|date_format:Y-m-d|after:start_date',
-            'category' => 'required|string|min:1|max:3',
+            'category' => 'required|string|min:1',
             'status' =>  'required|string|min:3|max:8',
         ];
     }

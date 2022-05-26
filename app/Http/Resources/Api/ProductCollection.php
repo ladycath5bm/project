@@ -17,8 +17,8 @@ class ProductCollection extends ResourceCollection
         return [
             'data' => $this->collection,
             'links' => [
-                'self' => route('api.products.index')
-            ]
+                'self' => route('api.products.index'),
+            ],
         ];
     }
 }

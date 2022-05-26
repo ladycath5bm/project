@@ -20,15 +20,15 @@ class ShoppingCartController extends Controller
         $product = Product::whereId($request->id)->first();
 
         Cart::add($product->id, $product->name, 1, $product->price, [
-            'url' => $product->images->first()->url,
+            'url' => $product->images->first() ? $product->images()->first()->url : 'img_soport.jpg',
             'code' => $product->code,
             'discount' => $product->discount,
             'stock' => $product->stock,
         ]);
-        
+
         return redirect()->route('cart.index');
     }
-    
+
     public function update(Request $request)
     {
         Cart::update($request->id, $request->qty);

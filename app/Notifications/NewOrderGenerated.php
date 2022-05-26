@@ -4,10 +4,10 @@ namespace App\Notifications;
 
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
+use Illuminate\Notifications\Notification;
 
 class NewOrderGenerated extends Notification implements ShouldQueue
 {
@@ -39,7 +39,7 @@ class NewOrderGenerated extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('A new order was created. Reference: ' . $this->order->reference)
                     ->action('See the order', route('orders.show', $this->order))
                     ->line('Thank you for shop with us!');
@@ -61,6 +61,6 @@ class NewOrderGenerated extends Notification implements ShouldQueue
 
     public function toNexmo($notifiable)
     {
-        return (new NexmoMessage)->content('A new order was created!');
+        return (new NexmoMessage())->content('A new order was created!');
     }
 }

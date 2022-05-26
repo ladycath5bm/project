@@ -1,9 +1,7 @@
 <div class="card">   
 
     <div class="card-header">
-        <a class="btn btn-warning btn-sm float-right" href="{{ route('admin.users.create') }}">Add user</a>
         <input wire:model="search" class="form-control-sm float-left" placeholder="Search">
-
     </div>
     @if($users->count())
         <div class="card-body">

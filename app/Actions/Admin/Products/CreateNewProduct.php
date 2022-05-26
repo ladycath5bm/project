@@ -21,7 +21,7 @@ class CreateNewProduct
         $product->user()->associate($input['user_id']);
         $product->save();
 
-        if ( isset($input['file'])){
+        if (isset($input['file'])) {
             $input['file']->storeAs('public', $input['file']->hashName());
 
             $product->images()->create(['url' => $input['file']->hashName()]);

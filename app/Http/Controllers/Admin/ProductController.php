@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Contracts\View\View;
+use App\Actions\Admin\Products\CreateNewProduct;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AdminProductStoreRequest;
+use App\Http\Requests\Admin\AdminProductUpdateRequest;
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Requests\Admin\AdminProductStoreRequest;
-use App\Actions\Admin\Products\CreateNewProduct;
-use App\Http\Requests\Admin\AdminProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -67,6 +67,6 @@ class ProductController extends Controller
     {
         $product->delete();
         Cache::flush();
-        return redirect()->route('admin.products.index')->with('information', 'Product deleted successfully!');
+        return redirect()->route('admin.products.list')->with('information', 'Product deleted successfully!');
     }
 }

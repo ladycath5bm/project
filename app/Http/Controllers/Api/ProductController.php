@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Product;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProductResource;
-use App\Http\Resources\Api\ProductCollection;
 use App\Actions\Admin\Products\CreateNewProduct;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminProductStoreRequest;
 use App\Http\Requests\Admin\AdminProductUpdateRequest;
+use App\Http\Resources\Api\ProductCollection;
+use App\Http\Resources\Api\ProductResource;
+use App\Models\Product;
 
 class ProductController extends Controller
-{   
+{
     public function __construct()
     {
         $this->middleware('auth:sanctum');
@@ -32,7 +32,7 @@ class ProductController extends Controller
     }
 
     public function store(CreateNewProduct $createNewProduct, AdminProductStoreRequest $request): ProductResource
-    {   
+    {
         return ProductResource::make($createNewProduct->create($request->validated()))
             ->additional(['message' => 'product stored successfully']);
     }

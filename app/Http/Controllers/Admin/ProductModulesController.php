@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin\Exports\CreateExport;
-use App\Models\Export;
-use App\Models\Import;
-use App\Models\Category;
-use App\Exports\ProductsExport;
-use App\Imports\ProductsImport;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use App\Actions\Admin\Imports\CreateImport;
-use App\Jobs\Exports\CompletExportStatusJob;
+use App\Exports\ProductsExport;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Exports\ExportProductsRequest;
 use App\Http\Requests\Imports\ImportProductsRequest;
+use App\Imports\ProductsImport;
+use App\Jobs\Exports\CompletExportStatusJob;
+use App\Models\Category;
+use App\Models\Export;
+use App\Models\Import;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductModulesController extends Controller
@@ -35,14 +35,13 @@ class ProductModulesController extends Controller
     public function export(CreateExport $createExport, ExportProductsRequest $request): RedirectResponse
     {
         DB::transaction(function () use ($request, $createExport) {
-            
             $filter = $request->validated();
             $export = $createExport->create($filter);
 
             (new ProductsExport($filter))->queue('public/exports/' . $export->name . '.xlsx')
                 ->chain([new CompletExportStatusJob($export)]);
         });
-        
+
         return back();
     }
 
@@ -57,8 +56,7 @@ class ProductModulesController extends Controller
 
     public function exportFile(int $id = null): StreamedResponse
     {
-        if ($id == null)
-        {
+        if ($id == null) {
             $id = Export::select('id')
                 ->where('user_id', auth()->id())
                 ->latest('id')
@@ -75,7 +73,6 @@ class ProductModulesController extends Controller
         $dataImport = $request;
 
         DB::transaction(function () use ($dataImport, $createImport) {
-            
             $import = $createImport->create($dataImport);
             (new ProductsImport($import))->import($dataImport['file']);
         });

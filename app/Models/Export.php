@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Export extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 
-        'status', 
+        'name',
+        'status',
         'query',
         'user_id',
     ];
@@ -22,5 +21,4 @@ class Export extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

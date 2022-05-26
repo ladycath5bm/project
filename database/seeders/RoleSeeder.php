@@ -29,7 +29,7 @@ class RoleSeeder extends Seeder
         $permissionAdminProductsModules = Permission::create(['name' => 'admin.products.modules']);
 
         Role::create(['name' => 'admin'])->syncPermissions([
-        
+
             $permissionAdminIndex,
 
             $permissionAdminUsersIndex,

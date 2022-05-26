@@ -11,7 +11,7 @@ use Tests\TestCase;
 class AdminProductCreateTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     private User $user;
 
     protected function setUp(): void

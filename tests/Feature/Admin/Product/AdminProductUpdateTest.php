@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Category;
 use App\Constants\ProductStatus;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AdminProductUpdateTest extends TestCase
 {
@@ -15,7 +15,7 @@ class AdminProductUpdateTest extends TestCase
 
     private User $user;
     private product $product;
-    
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,7 +43,7 @@ class AdminProductUpdateTest extends TestCase
             'category_id' => $category->id,
         ];
 
-        $reponse = $this->actingAs($this->user)->patch(route('admin.products.update', $this->product), $dataUpdate);     
+        $reponse = $this->actingAs($this->user)->patch(route('admin.products.update', $this->product), $dataUpdate);
 
         $reponse->assertRedirect(route('admin.products.list'));
 

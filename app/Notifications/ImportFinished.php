@@ -38,7 +38,7 @@ class ImportFinished extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('The import ' . $this->import->name . ' is ready!')
                     ->action('Look at the detail', route('admin.products.imports.list'))
                     ->line('Thank you for using our application!');

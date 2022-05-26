@@ -45,11 +45,12 @@
                         @forelse ($order->products as $product)
                             <div class="flex w-full px-6 mt-6 mb-4">
                                 <div class="md:w-2/3">
-                                    @if($product->images->first()->url)
+                                    @if($product->images->isNotEmpty() && $product->images->first()->url != '0')
                                         <img class="h-30 object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
                                     @else
                                         <img class="h-30 object-cover object-center rounded" src="{{ asset('images/img_soport.jpg') }}" alt="">
                                     @endif
+            
                                 </div>
                                 <div class="w-full ml-2 mt-6">
                                     <div class="flex justify-items-start">

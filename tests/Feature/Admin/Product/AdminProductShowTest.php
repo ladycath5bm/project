@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Admin\Product;
 
-use Tests\TestCase;
-use App\Models\User;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AdminProductShowTest extends TestCase
 {
@@ -26,7 +26,6 @@ class AdminProductShowTest extends TestCase
 
     public function testItCanSeeProduct(): void
     {
-
         $product = Product::factory()->create();
         $product->category_id = Category::factory()->create()->id;
         $product->save();

@@ -108,8 +108,8 @@ class ProductsImport implements
     {
         return array_merge(ProductImportRules::toArray(), [
             'status' => [
-                'required', 
-                Rule::in(ProductStatus::toArray())
+                'required',
+                Rule::in(ProductStatus::toArray()),
             ],
         ]);
     }
@@ -127,7 +127,7 @@ class ProductsImport implements
                 $this->import->update([
                     'status' => ExcelStatus::FINISHED,
                 ]);
-                
+
                 $this->import->user->notify(new ImportFinished($this->import));
             },
         ];
@@ -136,8 +136,8 @@ class ProductsImport implements
     public function onFailure(Failure ...$failures): void
     {
         foreach ($failures as $failure) {
-            $this->error = 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' . $failure->values()['id'] . '. Atributo: '
-                . $failure->attribute() . ', error: ' . $failure->errors()[0];
+            echo  $this->error = 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' . $failure->values()['id'] . '. Atributo: '
+                . $failure->attribute() . ', error: ' . $failure->errors()[0] . PHP_EOL;
         }
     }
 }
