@@ -12,7 +12,7 @@ class CreateExport
 
         $export->name = 'products-' . now();
         $export->query = json_encode($input);
-        $export->user_id = auth()->id();
+        //$export->user_id = auth()->id();
 
         $export->save();
 
