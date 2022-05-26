@@ -41,16 +41,17 @@ jobs:
 
     - name: Execute php-cs-fixer
       run: composer phpcs
-
-    - name: Prepare paths for SonarQube analysis
-      run: |
-        sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" coverage.xml
-        
+    
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: composer test
+
+    - name: Prepare paths for SonarQube analysis
+      run: |
+        sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.report.xml
+        sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.coverage.xml
 
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
