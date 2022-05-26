@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="RedirectIfAuthenticated.php" path="/Http/Middleware">
+    <totals>
+      <lines total="33" comments="8" code="25" executable="5" executed="4" percent="80.00"/>
+      <methods count="1" tested="0" percent="0.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Http\Middleware\RedirectIfAuthenticated" start="10" executable="5" executed="4" crap="4.13">
+      <namespace name="App\Http\Middleware"/>
+      <method name="handle" signature="handle(Illuminate\Http\Request $request, Closure $next, $guards)" start="20" end="31" crap="4.13" executable="5" executed="4" coverage="80"/>
+    </class>
+    <coverage>
+      <line nr="22">
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+      </line>
+      <line nr="24">
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+      </line>
+      <line nr="25">
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Http\Middleware</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Providers\RouteServiceProvider</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Closure</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Http\Request</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Facades\Auth</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9"/>
+      <line no="10">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">RedirectIfAuthenticated</token>
+      </line>
+      <line no="11">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="13">
+        <token name="T_DOC_COMMENT">     * Handle an incoming request.</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT">     * @param  \Illuminate\Http\Request  $request</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT">     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT">     * @param  string|null  ...$guards</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT">     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">handle</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">Request</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Closure</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$next</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELLIPSIS">...</token>
+        <token name="T_VARIABLE">$guards</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$guards</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$guards</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_STRING">null</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$guards</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="23"/>
+      <line no="24">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_FOREACH">foreach</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$guards</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$guard</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">Auth</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">guard</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$guard</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">check</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">redirect</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">RouteServiceProvider</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">HOME</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="29"/>
+      <line no="30">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$next</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$request</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="32">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="33"/>
+    </source>
+  </file>
+</phpunit>

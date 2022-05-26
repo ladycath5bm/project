@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Kernel.php" path="/Console">
+    <totals>
+      <lines total="34" comments="11" code="23" executable="4" executed="2" percent="50.00"/>
+      <methods count="2" tested="1" percent="50.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Console\Kernel" start="8" executable="4" executed="2" crap="2.5">
+      <namespace name="App\Console"/>
+      <method name="schedule" signature="schedule(Illuminate\Console\Scheduling\Schedule $schedule)" start="16" end="20" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="commands" signature="commands()" start="27" end="32" crap="1" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="29">
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryCreateTest::testItVisitCreateCategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryDeleteTest::testItCanDeleteACategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryEditTest::testItCanEditACategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryIndexTest::testItListCategories"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryStoreTest::testACategoryCanBeCreated"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryUpdateTest::testItCanUpdateACategory"/>
+        <covered by="Tests\Feature\Admin\Home\AdminHomeDashboardTest::testItAdminCanSeeHomeDashboard"/>
+        <covered by="Tests\Feature\Admin\Home\AdminHomeDashboardTest::testUserCantSeeHomeDashboard"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ImportFileTest::testItCanImportProductsFile"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductCreateTest::testItCanVisitAndFormCreateproduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductCreateTest::testYouCanSeeCreateProductAndSeeLog"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductDeleteTest::testItCanDeleteAProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductEditTest::testItCanSeeEditFormProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductIndexTest::testItCanSeeIndexAdminProducts"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductListTest::testItVisitListProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductShowTest::testItCanSeeProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductStoreTest::testAProductCanBeCreated"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductUpdateTest::testItCanUpdateAProduct"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserEditTest::testItCanSeeEditUserForm"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserIndexTest::testAdminCanVisitListUsers"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserUpdateTest::testItCanUpdateAUserRole"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductDeleteTest::testItCanDeleteAproduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductIndexTest::testItCanFetchAListofProducts"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductShowTest::testItCanFetchASingleProduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductStoreTest::testItCanStoreAProduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductUpdateTest::testItCanUpdateAProduct"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\BrowserSessionsTest::test_other_browser_sessions_can_be_logged_out"/>
+        <covered by="Tests\Feature\Custom\Notifications\NotificationIndexTest::testItCanSeeListOfNotifications"/>
+        <covered by="Tests\Feature\Custom\Orders\OrderIndexTest::testYouCanSeeListOfOrders"/>
+        <covered by="Tests\Feature\Custom\Orders\ShoppingHistoryTest::testYouCanSeeYourShoppingHistory"/>
+        <covered by="Tests\Feature\Custom\Product\ProductIndexTest::testGuestItListProduct"/>
+        <covered by="Tests\Feature\DeleteAccountTest::test_user_accounts_can_be_deleted"/>
+        <covered by="Tests\Feature\DeleteAccountTest::test_correct_password_must_be_provided_before_account_can_be_deleted"/>
+        <covered by="Tests\Feature\ExampleTest::test_example"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_confirm_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_password_can_be_confirmed"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_password_is_not_confirmed_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+        <covered by="Tests\Feature\ProfileInformationTest::test_current_profile_information_is_available"/>
+        <covered by="Tests\Feature\ProfileInformationTest::test_profile_information_can_be_updated"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_two_factor_authentication_can_be_enabled"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_recovery_codes_can_be_regenerated"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_two_factor_authentication_can_be_disabled"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_password_can_be_updated"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_current_password_must_be_correct"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_new_passwords_must_match"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryCreateTest::testItVisitCreateCategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryDeleteTest::testItCanDeleteACategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryEditTest::testItCanEditACategory"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryIndexTest::testItListCategories"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryStoreTest::testACategoryCanBeCreated"/>
+        <covered by="Tests\Feature\Admin\Category\AdminCategoryUpdateTest::testItCanUpdateACategory"/>
+        <covered by="Tests\Feature\Admin\Home\AdminHomeDashboardTest::testItAdminCanSeeHomeDashboard"/>
+        <covered by="Tests\Feature\Admin\Home\AdminHomeDashboardTest::testUserCantSeeHomeDashboard"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ImportFileTest::testItCanImportProductsFile"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductCreateTest::testItCanVisitAndFormCreateproduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductCreateTest::testYouCanSeeCreateProductAndSeeLog"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductDeleteTest::testItCanDeleteAProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductEditTest::testItCanSeeEditFormProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductIndexTest::testItCanSeeIndexAdminProducts"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductListTest::testItVisitListProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductShowTest::testItCanSeeProduct"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductStoreTest::testAProductCanBeCreated"/>
+        <covered by="Tests\Feature\Admin\Product\AdminProductUpdateTest::testItCanUpdateAProduct"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserEditTest::testItCanSeeEditUserForm"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserIndexTest::testAdminCanVisitListUsers"/>
+        <covered by="Tests\Feature\Admin\Users\AdminUserUpdateTest::testItCanUpdateAUserRole"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductDeleteTest::testItCanDeleteAproduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductIndexTest::testItCanFetchAListofProducts"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductShowTest::testItCanFetchASingleProduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductStoreTest::testItCanStoreAProduct"/>
+        <covered by="Tests\Feature\Api\Products\ApiProductUpdateTest::testItCanUpdateAProduct"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_login_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_authenticate_using_the_login_screen"/>
+        <covered by="Tests\Feature\AuthenticationTest::test_users_can_not_authenticate_with_invalid_password"/>
+        <covered by="Tests\Feature\BrowserSessionsTest::test_other_browser_sessions_can_be_logged_out"/>
+        <covered by="Tests\Feature\Custom\Notifications\NotificationIndexTest::testItCanSeeListOfNotifications"/>
+        <covered by="Tests\Feature\Custom\Orders\OrderIndexTest::testYouCanSeeListOfOrders"/>
+        <covered by="Tests\Feature\Custom\Orders\ShoppingHistoryTest::testYouCanSeeYourShoppingHistory"/>
+        <covered by="Tests\Feature\Custom\Product\ProductIndexTest::testGuestItListProduct"/>
+        <covered by="Tests\Feature\DeleteAccountTest::test_user_accounts_can_be_deleted"/>
+        <covered by="Tests\Feature\DeleteAccountTest::test_correct_password_must_be_provided_before_account_can_be_deleted"/>
+        <covered by="Tests\Feature\ExampleTest::test_example"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_confirm_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_password_can_be_confirmed"/>
+        <covered by="Tests\Feature\PasswordConfirmationTest::test_password_is_not_confirmed_with_invalid_password"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_link_can_be_requested"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_reset_password_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\PasswordResetTest::test_password_can_be_reset_with_valid_token"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+        <covered by="Tests\Feature\ProfileInformationTest::test_current_profile_information_is_available"/>
+        <covered by="Tests\Feature\ProfileInformationTest::test_profile_information_can_be_updated"/>
+        <covered by="Tests\Feature\RegistrationTest::test_registration_screen_can_be_rendered"/>
+        <covered by="Tests\Feature\RegistrationTest::test_new_users_can_register"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_two_factor_authentication_can_be_enabled"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_recovery_codes_can_be_regenerated"/>
+        <covered by="Tests\Feature\TwoFactorAuthenticationSettingsTest::test_two_factor_authentication_can_be_disabled"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_password_can_be_updated"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_current_password_must_be_correct"/>
+        <covered by="Tests\Feature\UpdatePasswordTest::test_new_passwords_must_match"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Console</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Console\Scheduling\Schedule</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Foundation\Console\Kernel</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ConsoleKernel</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7"/>
+      <line no="8">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Kernel</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ConsoleKernel</token>
+      </line>
+      <line no="9">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="11">
+        <token name="T_DOC_COMMENT">     * Define the application's command schedule.</token>
+      </line>
+      <line no="12">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="13">
+        <token name="T_DOC_COMMENT">     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT">     * @return void</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">schedule</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">Schedule</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$schedule</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$schedule</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">command</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'consult:payment'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">everyMinute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$schedule</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">command</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'consult:order'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">everyThirtyMinutes</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="21"/>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT">     * Register the commands for the application.</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT">     * @return void</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">commands</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">load</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/Commands'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="30"/>
+      <line no="31">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_REQUIRE">require</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">base_path</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'routes/console.php'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="33">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="34"/>
+    </source>
+  </file>
+</phpunit>

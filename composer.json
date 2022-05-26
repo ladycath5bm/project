@@ -67,7 +67,7 @@
             "@php artisan key:generate --ansi"
         ],
         "test-unit": "vendor/bin/phpunit --testsuite unit",
-        "test": "vendor/bin/phpunit --coverage-html tests/coverage",
+        "test": "vendor/bin/phpunit --coverage-clover=coverage.xml",
         "test-ci": ["php -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude=\"~vendor~\" vendor/bin/phpunit -d memory_limit=512M"],
         "phpcs": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no",
         "phpcs_validate": "vendor/bin/php-cs-fixer fix --dry-run --diff"

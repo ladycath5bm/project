@@ -15,7 +15,6 @@ class NotificationIndexTest extends TestCase
 
     protected function setUp(): void
     {
-        //$notification = DB::insertgetI
         parent::setUp();
 
         $this->user = User::factory()->create();
