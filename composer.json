@@ -65,7 +65,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
+        ],  
         "test-unit": "vendor/bin/phpunit --testsuite unit",
         "test": "vendor/bin/phpunit --coverage-html tests/coverage",
         "test-ci": ["php -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude=\"~vendor~\" vendor/bin/phpunit -d memory_limit=512M"],
