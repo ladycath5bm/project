@@ -2,31 +2,32 @@
 
 namespace App\Imports;
 
-use App\Constants\ExcelStatus;
-use App\Constants\ProductStatus;
-use App\Models\Category;
 use App\Models\Import;
 use App\Models\Product;
-use App\Notifications\ImportFinished;
-use App\Rules\ProductImportRules;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Models\Category;
+use App\Constants\ExcelStatus;
 use Illuminate\Validation\Rule;
-use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\RemembersRowNumber;
-use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
-use Maatwebsite\Excel\Concerns\SkipsFailures;
-use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use App\Constants\ProductStatus;
+use App\Rules\ProductImportRules;
+use Illuminate\Support\Facades\DB;
+use App\Notifications\ImportFinished;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Events\AfterImport;
+use Maatwebsite\Excel\Validators\Failure;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpsertColumns;
-use Maatwebsite\Excel\Concerns\WithUpserts;
-use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Events\AfterImport;
-use Maatwebsite\Excel\Events\AfterSheet;
-use Maatwebsite\Excel\Validators\Failure;
+use Maatwebsite\Excel\Concerns\RemembersRowNumber;
 
 class ProductsImport implements
     ToModel,
@@ -136,8 +137,14 @@ class ProductsImport implements
     public function onFailure(Failure ...$failures): void
     {
         foreach ($failures as $failure) {
-            echo  $this->error = 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' . $failure->values()['id'] . '. Atributo: '
-                . $failure->attribute() . ', error: ' . $failure->errors()[0] . PHP_EOL;
+            DB::transaction(function () use ($failure){
+                DB::table('import_errors')
+                    ->insert([
+                        'error' => 'Fallo de importación en la fila no. ' . $failure->row() . ', id del producto ' 
+                            . $failure->values()['id'] . '. Atributo: ' . $failure->attribute() . ', error: ' . $failure->errors()[0],
+                        'import_id' => $this->import->id,
+                    ]);
+            });
         }
     }
 }

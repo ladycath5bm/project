@@ -25,7 +25,7 @@ class ReversePaymentAction
 
     private function updateStatus(Order $order): void
     {
-        $order->update(['sttus', OrderStatus::REJECTED]);
+        $order->status = OrderStatus::REJECTED;
         $this->updateOrderReverse($order);
         $order->save();
     }
