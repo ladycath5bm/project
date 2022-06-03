@@ -6,7 +6,6 @@ use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\Payments\PlacetoPay\PlacetoPay;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -16,40 +15,27 @@ class ReversePaymentAction
     {
         $response = PlacetoPay::reversePayment(json_decode($order->transactions)[0]->internalReference);
         dd($response->json());
-/* 
+
         if ($response->ok()) {
-            /* DB::transaction(function () use ($response, $order) {
-                $this->updateStatus($response, $order);
+            
+            DB::transaction(function () use ($order) {
+                $this->updateStatus($order);
             }); 
-        } */
+        }
     }
 
-    private function updateStatus(Response $response, Order $order): void
+    private function updateStatus(Order $order): void
     {
-        $data = $response->json();
-        $responseSesion = $data['status'];
-        $responsePayment = $data['payment'] ?? [];
-
-        if (($responseSesion['status'] === OrderStatus::APPROVED) && isset($data['payment'])) {
-            $order->status = OrderStatus::APPROVED;
-            $order->transactions = $responsePayment;
-        } elseif ($responseSesion['status'] === OrderStatus::REJECTED) {
-            $order->status = OrderStatus::REJECTED;
-            $order->transactions = $responsePayment;
-
-            self::updateOrderReverse($order);
-        } else {
-            $order->status = OrderStatus::PENDING;
-        }
-
+        $order->update(['sttus', OrderStatus::REJECTED]);
+        $this->updateOrderReverse($order);
         $order->save();
     }
 
-    public static function updateOrderReverse(Order $order): void
+    private function updateOrderReverse(Order $order): void
     {
         foreach ($order->products as $product) {
             Product::find($product->id)->increment('stock', $product->pivot->quantity);
-            Log::info('Se ha actualizado el stock de un producto en una orden rechazada', [
+            Log::info('Se ha actualizado el stock de un producto en una orden reversada', [
                 'product_id' => $product->getKey(),
             ]);
         }
