@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Custom\ConsultPaymentStatusAction;
-use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Product;
-use App\Services\Payments\GatewayFactory;
+use App\Constants\OrderStatus;
 use Illuminate\Http\RedirectResponse;
+use App\Services\Payments\GatewayFactory;
+use App\Actions\Custom\ReversePaymentAction;
+use App\Actions\Custom\ConsultPaymentStatusAction;
 
 class PaymentController extends Controller
 {
@@ -50,5 +51,17 @@ class PaymentController extends Controller
         (new ConsultPaymentStatusAction())->consult($order);
 
         return redirect()->route('orders.show', $order);
+    }
+
+    public function reverse(Order $order)
+    {
+        $order = Order::select('id', 'status', 'transactions')
+            ->where('id', $order->id)
+            ->first();
+
+        (new ReversePaymentAction())->reverse($order);
+
+        return redirect()->route('orders.index');
+
     }
 }

@@ -57,6 +57,8 @@ Route::middleware(['auth', 'role:custom'])
             ->name('payments.cancel');
         Route::get('pay/{reference}/complete', [PaymentController::class, 'complete'])
             ->name('payments.complete');
+        Route::get('pay/{order}/reverse', [PaymentController::class, 'reverse'])
+            ->name('payments.reverse');
 
         Route::get('notifications/read/all', [NofiticationController::class, 'readAll'])
             ->name('notifications.readall');
