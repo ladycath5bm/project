@@ -14,7 +14,6 @@ class ReversePaymentAction
     public function reverse(order $order): void
     {
         $response = PlacetoPay::reversePayment(json_decode($order->transactions)[0]->internalReference);
-        dd($response->json());
 
         if ($response->ok()) {
             
