@@ -26,7 +26,7 @@ class PlacetoPay implements GatewayContract
     protected function createRequest(Order $order): Response
     {
         $data = $this->getData($order);
-        $response = Http::acceptJson()->post(url($this->url), $data); //$dat);
+        $response = Http::acceptJson()->post(url($this->url . 'session/'), $data);
 
         if ($response->successful()) {
             $order = (new UpdateOrderAction())->update($order, $data['payment'], $response['requestId'], $response['processUrl']);
@@ -36,12 +36,12 @@ class PlacetoPay implements GatewayContract
 
     public static function getRequestInformation(string $requestId): ClientResponse
     {
-        $url = url(config('payments.gateways.placetopay.url') . $requestId);
+        $url = url(config('payments.gateways.placetopay.url') . 'session/'. $requestId);
         $data = [
             'auth' => Auth::make(),
         ];
 
-        $response = Http::post($url, $data);
+        $response = Http::acceptJson()->post($url, $data);
         return $response;
     }
 
@@ -60,11 +60,24 @@ class PlacetoPay implements GatewayContract
                 'auth' => $this->auth,
                 'buyer' => $this->buyer,
                 'payment' => $this->payment,
-                'expiration' => date('c', strtotime('+45 min')),
+                'expiration' => date('c', strtotime('+70 min')),
                 'returnUrl' => route('payments.complete', ['reference' => $order->reference]),
                 'cancelUrl' => route('payments.cancel', $order),
                 'ipAddress' => app(Request::class)->getClientIp(),
                 'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ];
+    }
+
+    public static function reversePayment(int $internalReference)
+    {
+        $url = url(config('payments.gateways.placetopay.url') . 'reverse/');
+
+        $data = [
+            'auth' => Auth::make(),
+            'internalReference' => $internalReference
+        ];
+
+        $response = Http::acceptJson()->post($url, $data);
+        return $response;
     }
 }

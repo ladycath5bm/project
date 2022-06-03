@@ -75,7 +75,7 @@
                         </div>
                         <div class="w-1/4 justify-items-center flex-col py-4 px-4">
                             <div class="flex w-3/4"><a class="w-full btn-custom  mt-4 bg-orange-400 font-semibold flex justify-center text-gray-800 text-xs rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white" href="#">Rastrear pedido</a></div>
-                            <div class="flex w-3/4"><a class="w-full btn-custom  mt-4 bg-orange-400 font-semibold flex justify-center text-gray-800 text-xs rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white" href="#">Cancelar pedido</a></div>    
+                            <div class="flex w-3/4"><a class="w-full btn-custom  mt-4 bg-orange-400 font-semibold flex justify-center text-gray-800 text-xs rounded hover:bg-orange-500 hover:ring-orange-500 hover:text-white" href="{{ route('payments.reverse', $order) }}">Cancelar pedido</a></div>    
                         </div>
                         
                     </div>
