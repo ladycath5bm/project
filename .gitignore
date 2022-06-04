@@ -5,6 +5,7 @@
 /storage/logs
 /tests/coverage
 /vendor
+.env.testing
 .env
 .env.backup
 .phpunit.result.cache
@@ -16,4 +17,3 @@ yarn-error.log
 /.idea
 /.vscode
 .php-cs-fixer.cache
-.env.testing
