@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="CreateExport.php" path="/Actions/Admin/Exports">
+    <totals>
+      <lines total="22" comments="0" code="22" executable="6" executed="6" percent="100.00"/>
+      <methods count="1" tested="1" percent="100.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="1" percent="100.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Actions\Admin\Exports\CreateExport" start="7" executable="6" executed="6" crap="1">
+      <namespace name="App\Actions\Admin\Exports"/>
+      <method name="create" signature="create(array $input): App\Models\Export" start="9" end="20" crap="1" executable="6" executed="6" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="11">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+      <line nr="13">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+      <line nr="14">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+      <line nr="15">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+      <line nr="17">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanQueueProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanStoreProductsExport"/>
+        <covered by="Tests\Feature\Admin\Imports\ExcelExportProductsTest::testUserCanDownloadProductsExport"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Actions\Admin\Exports</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Models\Export</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CreateExport</token>
+      </line>
+      <line no="8">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="9">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">create</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$input</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Export</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Export</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">name</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'products-'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">now</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">query</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">json_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$input</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">user_id</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">auth</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">id</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">        </token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">save</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18"/>
+      <line no="19">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$export</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="21">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="22"/>
+    </source>
+  </file>
+</phpunit>

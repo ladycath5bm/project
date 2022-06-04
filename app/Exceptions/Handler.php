@@ -52,14 +52,13 @@ class Handler extends ExceptionHandler
             'errores' => $exception->errors(),
         ], $exception->status);
     }
-    /*
-        public function render($request, Throwable $e)
-        {
-            if ($e instanceof ModelNotFoundException) {
-                return response()->json(["Error" => "producto no encontrado"], 400);
-            }
 
-            return parent::render($request, $e);
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof ModelNotFoundException) {
+            return response()->json(["Error" => "producto no encontrado"], 400);
         }
-     */
+
+        return parent::render($request, $e);
+    }
 }

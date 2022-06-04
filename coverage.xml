@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<coverage generated="1653591123">
+  <project timestamp="1653591123">
+=======
 <coverage generated="1653593790">
   <project timestamp="1653593790">
+>>>>>>> origin/master
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Admin/Exports/CreateExport.php">
       <class name="App\Actions\Admin\Exports\CreateExport" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
@@ -59,6 +64,27 @@
       <line num="19" type="stmt" count="3"/>
       <line num="20" type="stmt" count="3"/>
       <line num="21" type="stmt" count="3"/>
+<<<<<<< HEAD
+      <line num="27" type="method" name="updateStatus" visibility="private" complexity="4" crap="4" count="3"/>
+      <line num="29" type="stmt" count="3"/>
+      <line num="30" type="stmt" count="3"/>
+      <line num="31" type="stmt" count="3"/>
+      <line num="33" type="stmt" count="3"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="2"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="3"/>
+      <line num="48" type="method" name="updateOrderRejected" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <metrics loc="58" ncloc="58" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="23" coveredelements="23"/>
+=======
       <line num="26" type="method" name="updateStatus" visibility="private" complexity="4" crap="4" count="3"/>
       <line num="28" type="stmt" count="3"/>
       <line num="29" type="stmt" count="3"/>
@@ -78,6 +104,7 @@
       <line num="51" type="stmt" count="1"/>
       <line num="52" type="stmt" count="1"/>
       <metrics loc="57" ncloc="57" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="23" coveredelements="23"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Actions/Custom/CreateOrderAction.php">
       <class name="App\Actions\Custom\CreateOrderAction" namespace="global">
@@ -315,6 +342,35 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Exceptions/Handler.php">
       <class name="App\Exceptions\Handler" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="7" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="5" elements="15" coveredelements="6"/>
+      </class>
+      <line num="33" type="method" name="register" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="35" type="stmt" count="40"/>
+      <line num="40" type="method" name="report" visibility="public" complexity="3" crap="3.33" count="6"/>
+      <line num="42" type="stmt" count="6"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="6"/>
+      <line num="49" type="method" name="invalidJson" visibility="protected" complexity="1" crap="2" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="57" type="method" name="render" visibility="public" complexity="2" crap="2.15" count="6"/>
+      <line num="59" type="stmt" count="6"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="63" type="stmt" count="6"/>
+      <metrics loc="68" ncloc="57" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="5" elements="15" coveredelements="6"/>
+    </file>
+    <file name="/home/ladycath/php/eCommerce-2/app/Exports/ProductsExport.php">
+      <class name="App\Exports\ProductsExport" namespace="global">
+        <metrics complexity="8" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="13" elements="22" coveredelements="17"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="21" type="stmt" count="3"/>
+      <line num="24" type="method" name="query" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+=======
         <metrics complexity="5" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="3" elements="11" coveredelements="4"/>
       </class>
       <line num="32" type="method" name="register" visibility="public" complexity="1" crap="1" count="44"/>
@@ -337,6 +393,7 @@
       <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="22" type="stmt" count="3"/>
       <line num="25" type="method" name="query" visibility="public" complexity="1" crap="1" count="1"/>
+>>>>>>> origin/master
       <line num="27" type="stmt" count="1"/>
       <line num="28" type="stmt" count="1"/>
       <line num="29" type="stmt" count="1"/>
@@ -344,6 +401,24 @@
       <line num="31" type="stmt" count="1"/>
       <line num="32" type="stmt" count="1"/>
       <line num="33" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <line num="36" type="method" name="categoryQuery" visibility="private" complexity="2" crap="3.19" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="48" type="method" name="statusQuery" visibility="private" complexity="2" crap="2" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="53" type="method" name="headings" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <metrics loc="73" ncloc="72" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="13" elements="22" coveredelements="17"/>
+    </file>
+    <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/CategoryController.php">
+      <class name="App\Http\Controllers\Admin\CategoryController" namespace="global">
+        <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+=======
       <line num="34" type="stmt" count="1"/>
       <line num="37" type="method" name="categoryQuery" visibility="private" complexity="2" crap="2.50" count="1"/>
       <line num="39" type="stmt" count="1"/>
@@ -365,6 +440,7 @@
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/CategoryController.php">
       <class name="App\Http\Controllers\Admin\CategoryController" namespace="global">
         <metrics complexity="8" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="20" coveredelements="18"/>
+>>>>>>> origin/master
       </class>
       <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
       <line num="16" type="stmt" count="6"/>
@@ -381,12 +457,19 @@
       <line num="42" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="44" type="stmt" count="1"/>
       <line num="45" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <line num="48" type="method" name="destroy" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <metrics loc="54" ncloc="54" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+=======
       <line num="48" type="method" name="destroy" visibility="public" complexity="2" crap="2.06" count="1"/>
       <line num="50" type="stmt" count="1"/>
       <line num="51" type="stmt" count="1"/>
       <line num="52" type="stmt" count="1"/>
       <line num="54" type="stmt" count="0"/>
       <metrics loc="57" ncloc="57" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="20" coveredelements="18"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/HomeController.php">
       <class name="App\Http\Controllers\Admin\HomeController" namespace="global">
@@ -453,6 +536,39 @@
       <line num="32" type="stmt" count="0"/>
       <line num="35" type="method" name="export" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="37" type="stmt" count="3"/>
+<<<<<<< HEAD
+      <line num="39" type="stmt" count="3"/>
+      <line num="40" type="stmt" count="3"/>
+      <line num="42" type="stmt" count="3"/>
+      <line num="43" type="stmt" count="3"/>
+      <line num="46" type="stmt" count="3"/>
+      <line num="49" type="method" name="exportsList" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="58" type="method" name="exportFile" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="68" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="1"/>
+      <line num="73" type="method" name="import" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="75" type="stmt" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="79" type="stmt" count="1"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="86" type="method" name="importsList" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="88" type="stmt" count="0"/>
+      <line num="89" type="stmt" count="0"/>
+      <line num="90" type="stmt" count="0"/>
+      <line num="92" type="stmt" count="0"/>
+      <metrics loc="95" ncloc="95" classes="1" methods="7" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="20" elements="37" coveredelements="24"/>
+=======
       <line num="38" type="stmt" count="3"/>
       <line num="39" type="stmt" count="3"/>
       <line num="41" type="stmt" count="3"/>
@@ -484,6 +600,7 @@
       <line num="87" type="stmt" count="0"/>
       <line num="89" type="stmt" count="0"/>
       <metrics loc="92" ncloc="92" classes="1" methods="7" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="20" elements="37" coveredelements="24"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/ReportController.php">
       <class name="App\Http\Controllers\Admin\ReportController" namespace="global">
@@ -494,6 +611,16 @@
       <line num="18" type="method" name="usersReport" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="20" type="stmt" count="0"/>
       <line num="24" type="stmt" count="0"/>
+<<<<<<< HEAD
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="31" type="method" name="ordersReport" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <metrics loc="48" ncloc="48" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+=======
       <line num="26" type="stmt" count="0"/>
       <line num="27" type="stmt" count="0"/>
       <line num="30" type="method" name="ordersReport" visibility="public" complexity="1" crap="2" count="0"/>
@@ -502,6 +629,7 @@
       <line num="42" type="stmt" count="0"/>
       <line num="43" type="stmt" count="0"/>
       <metrics loc="46" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/Admin/UserController.php">
       <class name="App\Http\Controllers\Admin\UserController" namespace="global">
@@ -577,11 +705,19 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/NofiticationController.php">
       <class name="App\Http\Controllers\NofiticationController" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
+      </class>
+      <line num="11" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+=======
         <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="2" elements="14" coveredelements="3"/>
       </class>
       <line num="11" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="13" type="stmt" count="1"/>
       <line num="14" type="stmt" count="1"/>
+>>>>>>> origin/master
       <line num="17" type="method" name="read" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="19" type="stmt" count="0"/>
       <line num="20" type="stmt" count="0"/>
@@ -593,18 +729,31 @@
       <line num="30" type="stmt" count="0"/>
       <line num="31" type="stmt" count="0"/>
       <line num="33" type="stmt" count="0"/>
+<<<<<<< HEAD
+      <metrics loc="36" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
+=======
       <metrics loc="36" ncloc="36" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="2" elements="14" coveredelements="3"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/OrderController.php">
       <class name="App\Http\Controllers\OrderController" namespace="global">
         <metrics complexity="6" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="5" elements="21" coveredelements="6"/>
       </class>
+<<<<<<< HEAD
+      <line num="15" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+=======
       <line num="15" type="method" name="index" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="17" type="stmt" count="2"/>
       <line num="18" type="stmt" count="2"/>
       <line num="19" type="stmt" count="2"/>
       <line num="20" type="stmt" count="2"/>
       <line num="22" type="stmt" count="2"/>
+>>>>>>> origin/master
       <line num="25" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="27" type="stmt" count="0"/>
       <line num="29" type="stmt" count="0"/>
@@ -651,6 +800,56 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/ProductController.php">
       <class name="App\Http\Controllers\ProductController" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="0" elements="37" coveredelements="0"/>
+      </class>
+      <line num="15" type="method" name="index" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="37" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="52" type="method" name="showByCategory" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <line num="64" type="method" name="top" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="0"/>
+      <line num="70" type="stmt" count="0"/>
+      <line num="71" type="stmt" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <metrics loc="78" ncloc="78" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="0" elements="37" coveredelements="0"/>
+    </file>
+    <file name="/home/ladycath/php/eCommerce-2/app/Http/Controllers/ShoppingCartController.php">
+      <class name="App\Http\Controllers\ShoppingCartController" namespace="global">
+        <metrics complexity="6" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="22" coveredelements="0"/>
+      </class>
+      <line num="13" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="18" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
+=======
         <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="9" elements="39" coveredelements="9"/>
       </class>
       <line num="15" type="method" name="index" visibility="public" complexity="3" crap="3.05" count="1"/>
@@ -701,6 +900,7 @@
       <line num="13" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="15" type="stmt" count="0"/>
       <line num="18" type="method" name="store" visibility="public" complexity="2" crap="6" count="0"/>
+>>>>>>> origin/master
       <line num="20" type="stmt" count="0"/>
       <line num="22" type="stmt" count="0"/>
       <line num="23" type="stmt" count="0"/>
@@ -812,12 +1012,21 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/Authenticate.php">
       <class name="App\Http\Middleware\Authenticate" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </class>
+      <line num="15" type="method" name="redirectTo" visibility="protected" complexity="2" crap="2" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+=======
         <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
       </class>
       <line num="15" type="method" name="redirectTo" visibility="protected" complexity="2" crap="6" count="0"/>
       <line num="17" type="stmt" count="0"/>
       <line num="18" type="stmt" count="0"/>
       <metrics loc="22" ncloc="16" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Middleware/EncryptCookies.php">
       <class name="App\Http\Middleware\EncryptCookies" namespace="global">
@@ -920,7 +1129,11 @@
       <line num="11" type="stmt" count="1"/>
       <line num="14" type="method" name="rules" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="17" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <metrics loc="20" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+=======
       <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Requests/Api/LoginRequest.php">
       <class name="App\Http\Requests\Api\LoginRequest" namespace="global">
@@ -972,6 +1185,8 @@
       <line num="18" type="stmt" count="0"/>
       <metrics loc="26" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
     </file>
+<<<<<<< HEAD
+=======
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Requests/ProductStoreRequest.php">
       <class name="App\Http\Requests\ProductStoreRequest" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
@@ -982,6 +1197,7 @@
       <line num="28" type="stmt" count="0"/>
       <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
     </file>
+>>>>>>> origin/master
     <file name="/home/ladycath/php/eCommerce-2/app/Http/Resources/Api/ProductCollection.php">
       <class name="App\Http\Resources\Api\ProductCollection" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
@@ -1066,6 +1282,16 @@
       <class name="App\Jobs\Exports\CompletExportStatusJob" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
       </class>
+<<<<<<< HEAD
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="27" type="method" name="handle" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <metrics loc="36" ncloc="36" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+=======
       <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="26" type="stmt" count="3"/>
       <line num="29" type="method" name="handle" visibility="public" complexity="1" crap="1" count="1"/>
@@ -1074,6 +1300,7 @@
       <line num="33" type="stmt" count="1"/>
       <line num="35" type="stmt" count="1"/>
       <metrics loc="38" ncloc="38" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Listeners/AddProductVisit.php">
       <class name="App\Listeners\AddProductVisit" namespace="global">
@@ -1090,19 +1317,33 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Category.php">
       <class name="App\Models\Category" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="15" type="method" name="products" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <metrics loc="20" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+=======
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
       <line num="15" type="method" name="products" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="17" type="stmt" count="1"/>
       <metrics loc="20" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Export.php">
       <class name="App\Models\Export" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
+<<<<<<< HEAD
+      <line num="21" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <metrics loc="26" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+=======
       <line num="20" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="22" type="stmt" count="1"/>
       <metrics loc="25" ncloc="25" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Image.php">
       <class name="App\Models\Image" namespace="global">
@@ -1116,9 +1357,15 @@
       <class name="App\Models\Import" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
+<<<<<<< HEAD
+      <line num="21" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <metrics loc="26" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+=======
       <line num="20" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="22" type="stmt" count="1"/>
       <metrics loc="25" ncloc="25" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Order.php">
       <class name="App\Models\Order" namespace="global">
@@ -1132,19 +1379,32 @@
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/Product.php">
       <class name="App\Models\Product" namespace="global">
+<<<<<<< HEAD
+        <metrics complexity="5" methods="5" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="2" elements="10" coveredelements="4"/>
+=======
         <metrics complexity="5" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="10" coveredelements="6"/>
+>>>>>>> origin/master
       </class>
       <line num="33" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="35" type="stmt" count="1"/>
       <line num="38" type="method" name="category" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="40" type="stmt" count="2"/>
+<<<<<<< HEAD
+      <line num="43" type="method" name="images" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+=======
       <line num="43" type="method" name="images" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="45" type="stmt" count="1"/>
+>>>>>>> origin/master
       <line num="48" type="method" name="orders" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="50" type="stmt" count="0"/>
       <line num="53" type="method" name="visits" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="55" type="stmt" count="0"/>
+<<<<<<< HEAD
+      <metrics loc="58" ncloc="58" classes="1" methods="5" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="2" elements="10" coveredelements="4"/>
+=======
       <metrics loc="58" ncloc="58" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="10" coveredelements="6"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Models/ProductVisit.php">
       <class name="App\Models\ProductVisit" namespace="global">
@@ -1166,11 +1426,19 @@
       <line num="76" type="stmt" count="0"/>
       <line num="79" type="method" name="imports" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="81" type="stmt" count="0"/>
+<<<<<<< HEAD
+      <line num="84" type="method" name="countNotifications" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="86" type="stmt" count="1"/>
+      <line num="89" type="method" name="hasNotifications" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="91" type="stmt" count="0"/>
+      <metrics loc="95" ncloc="75" classes="1" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="12" coveredelements="2"/>
+=======
       <line num="84" type="method" name="countNotifications" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="86" type="stmt" count="4"/>
       <line num="89" type="method" name="hasNotifications" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="91" type="stmt" count="0"/>
       <metrics loc="94" ncloc="74" classes="1" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="12" coveredelements="2"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Notifications/ExportGenerated.php">
       <class name="App\Notifications\ExportGenerated" namespace="global">
@@ -1185,10 +1453,17 @@
       <line num="42" type="stmt" count="1"/>
       <line num="43" type="stmt" count="1"/>
       <line num="44" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <line num="54" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <metrics loc="62" ncloc="44" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="12" coveredelements="12"/>
+=======
       <line num="53" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="56" type="stmt" count="1"/>
       <line num="57" type="stmt" count="1"/>
       <metrics loc="61" ncloc="43" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="12" coveredelements="12"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Notifications/ImportFinished.php">
       <class name="App\Notifications\ImportFinished" namespace="global">
@@ -1269,16 +1544,26 @@
       <class name="App\Observers\UserObserver" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
       </class>
+<<<<<<< HEAD
+      <line num="10" type="method" name="created" visibility="public" complexity="1" crap="1" count="56"/>
+      <line num="12" type="stmt" count="56"/>
+=======
       <line num="10" type="method" name="created" visibility="public" complexity="1" crap="1" count="57"/>
       <line num="12" type="stmt" count="57"/>
+>>>>>>> origin/master
       <line num="15" type="method" name="updated" visibility="public" complexity="1" crap="1" count="7"/>
       <line num="17" type="stmt" count="7"/>
       <line num="18" type="stmt" count="7"/>
       <line num="21" type="method" name="deleted" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="23" type="stmt" count="1"/>
       <line num="24" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="1" count="56"/>
+      <line num="31" type="stmt" count="56"/>
+=======
       <line num="28" type="method" name="info" visibility="protected" complexity="1" crap="1" count="57"/>
       <line num="31" type="stmt" count="57"/>
+>>>>>>> origin/master
       <metrics loc="35" ncloc="35" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Policies/CategoryPolicy.php">
@@ -1401,18 +1686,30 @@
       <line num="16" type="stmt" count="1"/>
       <line num="17" type="stmt" count="0"/>
       <line num="18" type="stmt" count="0"/>
+<<<<<<< HEAD
+      <line num="20" type="stmt" count="0"/>
+      <metrics loc="24" ncloc="24" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="3" elements="7" coveredelements="3"/>
+=======
       <line num="21" type="stmt" count="0"/>
       <metrics loc="25" ncloc="24" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="3" elements="7" coveredelements="3"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Services/Payments/PayPal/PayPal.php">
       <class name="App\Services\Payments\PayPal\PayPal" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
       </class>
       <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+<<<<<<< HEAD
+      <line num="13" type="stmt" count="0"/>
+      <line num="16" type="method" name="pay" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <metrics loc="21" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+=======
       <line num="14" type="stmt" count="0"/>
       <line num="17" type="method" name="pay" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="19" type="stmt" count="0"/>
       <metrics loc="22" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/Services/Payments/PlacetoPay/Auth.php">
       <class name="App\Services\Payments\PlacetoPay\Auth" namespace="global">
@@ -1497,14 +1794,23 @@
       <line num="65" type="stmt" count="1"/>
       <line num="66" type="stmt" count="1"/>
       <line num="67" type="stmt" count="1"/>
+<<<<<<< HEAD
+      <metrics loc="71" ncloc="71" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="29" coveredelements="29"/>
+=======
       <metrics loc="71" ncloc="70" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="29" coveredelements="29"/>
+>>>>>>> origin/master
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/View/Components/AppLayout.php">
       <class name="App\View\Components\AppLayout" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
+<<<<<<< HEAD
+      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="16" type="stmt" count="2"/>
+=======
       <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="5"/>
       <line num="16" type="stmt" count="5"/>
+>>>>>>> origin/master
       <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/ladycath/php/eCommerce-2/app/View/Components/GuestLayout.php">
@@ -1515,6 +1821,10 @@
       <line num="16" type="stmt" count="5"/>
       <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
+<<<<<<< HEAD
+    <metrics files="103" loc="3861" ncloc="3467" classes="91" methods="226" coveredmethods="134" conditionals="0" coveredconditionals="0" statements="662" coveredstatements="404" elements="888" coveredelements="538"/>
+=======
     <metrics files="104" loc="3894" ncloc="3478" classes="92" methods="228" coveredmethods="135" conditionals="0" coveredconditionals="0" statements="668" coveredstatements="416" elements="896" coveredelements="551"/>
+>>>>>>> origin/master
   </project>
 </coverage>

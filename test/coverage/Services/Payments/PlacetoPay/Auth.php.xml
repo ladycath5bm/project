@@ -1,0 +1,513 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Auth.php" path="/Services/Payments/PlacetoPay">
+    <totals>
+      <lines total="53" comments="0" code="53" executable="16" executed="13" percent="81.25"/>
+      <methods count="5" tested="4" percent="80.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="App\Services\Payments\PlacetoPay\Auth" start="5" executable="16" executed="13" crap="7.32">
+      <namespace name="App\Services\Payments\PlacetoPay"/>
+      <method name="__construct" signature="__construct()" start="10" end="14" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="generateNonce" signature="generateNonce(): string" start="16" end="27" crap="4.12" executable="6" executed="3" coverage="50"/>
+      <method name="generateTranKey" signature="generateTranKey(string $nonce, string $seed): string" start="29" end="32" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getLogin" signature="getLogin(): string" start="34" end="37" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="make" signature="make(): array" start="39" end="51" crap="1" executable="6" executed="6" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="12">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="13">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="18">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="26">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="41">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="42">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="43">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="46">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="47">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+      <line nr="48">
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testCreateSessionWebcheckout"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutApproved"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutPending"/>
+        <covered by="Tests\Feature\Paymnet\PaymentTest::testConsultSessionWebCheckoutRejected"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">App\Services\Payments\PlacetoPay</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Auth</token>
+      </line>
+      <line no="6">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="7">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$login</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$tranKey</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9"/>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="12">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">login</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">config</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'payments.gateways.placetopay.login'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">tranKey</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">config</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'payments.gateways.placetopay.key'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="15"/>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">generateNonce</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">function_exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'random_bytes'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bin2hex</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">random_bytes</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_LNUMBER">16</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELSEIF">elseif</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">function_exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'openssl_random_pseudo_bytes'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">bin2hex</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">openssl_random_pseudo_bytes</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_LNUMBER">16</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ELSE">else</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">mt_rand</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="25"/>
+      <line no="26">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="28"/>
+      <line no="29">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">generateTranKey</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$seed</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">base64_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">sha1</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$seed</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">tranKey</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="33"/>
+      <line no="34">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getLogin</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">login</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="38"/>
+      <line no="39">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STATIC">static</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">make</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="41">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$auth</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">self</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="42">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$auth</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">generateNonce</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$seed</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">date</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'c'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="44"/>
+      <line no="45">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'login'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$auth</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getLogin</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'tranKey'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$auth</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">generateTranKey</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$seed</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'nonce'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">base64_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$nonce</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'seed'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$seed</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="50">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="52">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="53"/>
+    </source>
+  </file>
+</phpunit>

@@ -37,9 +37,7 @@ class ProductsExport implements FromQuery, WithHeadings, ShouldQueue
     private function categoryQuery(string $category): array
     {
         if ($category == 'all') {
-            $array = Category::all('id')
-                ->toArray();
-            return $array;
+            return Category::all('id')->toArray();
         } else {
             return Category::select('id')
                 ->where('name', $category)
