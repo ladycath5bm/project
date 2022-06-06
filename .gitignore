@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /storage/logs
+/test/coverage
 /tests/coverage
 /vendor
 .env.testing
